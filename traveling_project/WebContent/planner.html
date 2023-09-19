@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="utf-8">
+    <title>my page -> 내 일정</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet">    
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/member.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/planner.css">
+    <script src="./js/planner.js"></script>
+    <script src="js/header.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav id="menu_nav">
+        <h1 id="logo">
+          <a href="index.html"><img src="images/logo.png" alt="" /></a>
+        </h1>
+        <form action="reservation.jsp" id="accomodation_search">
+          <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
+          <input type="date" name="check_in_date" id="check_in_date" data-placeholder="체크인" required aria-required="true" />
+          <input type="date" name="check_out_date" id="check_out_date" data-placeholder="체크 아웃" required aria-required="true" />
+          <input type="number" name="people_num" id="people_num" required placeholder="인원 수를 입력해주세요." max="32" min="1" />
+          <input id="search_btn" type="submit" value="검색하기" />
+        </form>
+        <div class="right_menu">
+          <a href="#" class="ir_pm">내정보</a>
+          <a href="#" class="ir_pm">언어 선택</a>
+          <a href="#" class="ir_pm">고객 센터</a>
+        </div>
+        <ul id="my_info">
+          <li><a href="login.html">로그인</a></li>
+          <li><a href="signup.html">회원 가입</a></li>
+          <li><a href="my_info.html">내 정보</a></li>
+          <li><a href="planner.html">내 일정</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- 마이페이지 공통 배너 -->
+    <section id="member_status">
+      <div id="status_wrap">
+        <article id="member_info">
+          <a href="#">회원정보수정</a>
+          <h2>hakkdo</h2>
+          <p> 마지막으로 여행을 다녀온지 <u>47일</u>이 <!-- 마지막 체크아웃 날짜를 통해 연산해서 n일로 표시 -->
+          </p>
+          <p>지났습니다.</p>
+        </article>
+        <article id="member_grade">
+          <a href="#">등급 별 혜택 확인</a>
+          <h2>SILVER</h2> <!-- 누적 금액을 통해 멤버십 등급 산정 -->
+          <p> 예약할 때마다 <span><u>0.01%</u> 추가 적립</span>을 받게 됩니다. </p>
+        </article>
+        <article id="member_content">
+          <div> <!-- 이용횟수, 마일리지, 쿠폰 -->
+            <ul id="content_lodgment">
+              <li class="content_img">
+                <figure id="won_img"></figure>
+              </li>
+              <li style="padding-top: 26px;">2박</li> <!-- 회원이 숙박한 횟수 연산해서 추출 -->
+              <li class="content_text">숙박완료</li>
+            </ul>
+            <ul id="member_mileage">
+              <li class="content_img">
+                <figure id="point_img"></figure>
+              </li>
+              <li style="padding-top: 26px;">4800P</li> <!-- 누적된 마일리지 추출 -->
+              <li class="content_text">0.01% 적립 중</li> <!-- 회원 등급 별 해당하는 적립 비율 추출 -->
+            </ul>
+            <ul id="member_coupon">
+              <li class="content_img">
+                <figure id="coupon_img"></figure>
+              </li>
+              <li style="padding-top: 22px;"><a href="#">1개</a></li> <!-- 회원이 보유한 쿠폰 개수 추출, 쿠폰 화면 이동 가능 -->
+              <li class="content_text_last">보유 쿠폰</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+    <main id="member_contents">
+      <nav id="member_contents_nav"> <!-- 왼쪽 nav -->
+        <h2>전체 메뉴</h2>
+        <h3>내 예약</h3>
+        <ul>
+          <li><a href="./reservation.html">예약정보</a></li>
+          <li><a href="#">취소/환불정보</a></li>
+          <li><a href="#">찜 목록</a></li>
+          <li><a href="./planner.html">내 일정</a></li>
+          <li><a href="#">메시지</a></li>
+        </ul>
+        <h3>내 계정</h3>
+        <ul>
+          <li><a href="#">회원정보 확인/수정</a></li>
+          <li><a href="#">등급 별 혜택</a></li>
+          <li><a href="#">쿠폰/마일리지</a></li>
+          <li><a href="#">회원탈퇴</a></li>
+        </ul>
+        <h3>고객센터</h3>
+        <ul>
+          <li><a href="#">1:1문의</a></li>
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+        <h3>로그아웃</h3>
+        <a href="#">로그아웃</a>
+      </nav>
+      <section> <!-- 이 부분에 기능 index 페이지 -->
+        <div id="planner_wrap">
+          <article>
+            <h2>내 일정</h2>
+            <ul id="planner_category">
+              <li>숙소 이름</li>
+              <li>여행 기간</li>
+              <li>상세보기</li>
+              <li>공유하기</li>
+              <li>최근수정일</li>
+            </ul>
+            <ul class="planner_list">
+              <li>
+                <a href="#">
+                  <span>경기/가평</span>
+                  <h6>리버웨이브</h6>
+                </a>
+              </li>
+              <li>2023.08.14 ~ 2023.08.16</li>
+              <li><button id="show_btn" class="show_detail">상세보기</button></li>
+              <li><a href="#"><img src="./images/share.png" alt=""></a></li>
+              <li>
+                <span>2023.08.12</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+    </div>
+    <div class="go_top"></div>
+    <footer>
+      <div class="footerInner">
+        <ul>
+          <li><a href="#"><b>회사소개</b></a> |</li>
+          <li><a href="#">개인정보처리방침</a> |</li>
+          <li><a href="#">서비스 이용약관</a> |</li>
+          <li><a href="#">고객문의</a></li>
+        </ul>
+        <p> 법인명: (주) Traveling 대표자: 이준섭 사업자등록번호 123-45-12345 통신판매업: 제2023-서울서초-1234호 <br /> 주소 : 서울특별시 서초구 테혜란로 92,
+          7층(역삼동, 케이지타워) 대표전화 : 02-1234-5678 (가맹문의 : 02-1234-5678) <br /> COPYRIGHT (C) KG F&B. All Rights Reserved.
+        </p>
+        <ul class="sns">
+          <li><a href="#" class="ir_pm">facebook</a></li>
+          <li><a href="#" class="ir_pm">twitter</a></li>
+          <li><a href="#" class="ir_pm">blog</a></li>
+          <li><a href="#" class="ir_pm">instagram</a></li>
+          <li><a href="#" class="ir_pm">youtube</a></li>
+        </ul>
+      </div>
+    </footer>
+    <!-- 수정하기 인덱스 -->
+    <div id="planner_modal" class="modal">
+      <div class="modal_content">
+        <span class="close">&times;</span>
+        <section id="planner_header">
+          <h2>리버웨이브</h2> <!-- 예약한 숙소의 이름을 추출 -->
+          <h5>2023.08.14 ~ 2023.08.16</h5> <!-- 예약한 체크인&아웃 날짜 추출 -->
+        </section>
+        <section>
+          <div class="main">
+            <div class="tabs">
+              <ul class="days_tabs">
+                <!-- <li id="travel_item" class="click_days"><b>준비물</b></li> -->
+              </ul>
+            </div>
+            <div class="contents">
+              <div class="days_selected show">
+                <div class="days_title">
+                  <h3>1일차</h3>
+                </div>
+                <div class="days_sub">
+                  <form>
+                    <input class="select_all" type="checkbox"> 전체선택
+                  </form>
+                  <span id="add_plan">일정 추가하기 +</span>
+                  <span id="delete_plan">일정 삭제하기 -</span>
+                </div>
+                <div class="days_contents">
+                  <!-- 일정 추가하기 & 삭제 버튼을 통해 form 생성 및 제거 -->
+                </div>
+              </div>
+              <div class="days_selected">
+                <div class="days_title">
+                  <h2>여행 준비물</h2>
+                </div>
+                <div class="category_items">
+                  <div class="category_list">
+                    <div class="item_clothes">
+                      <img src="./images/clothes.png" alt="" width="36px" height="36px">
+                    </div>
+                    <div class="item_essential">
+                      <img src="./images/essential.png" alt="" width="36px" height="36px">
+                    </div>
+                    <div class="item_shower">
+                      <img src="./images/shower.png" alt="" width="36px" height="36px">
+                    </div>
+                    <div class="item_medicine">
+                      <img src="./images/medicine.png" alt="" width="36px" height="36px">
+                    </div>
+                    <div class="item_food">
+                      <img src="./images/pork.png" alt="" width="36px" height="36px">
+                    </div>
+                    <div class="item_etc">
+                      <img src="./images/etc.png" alt="" width="36px" height="36px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal_footer">
+        <button id="modify_btn">수정하기</button>
+        <button id="share_btn">공유하기</button>
+      </div>
+    </div>
+  </body>
+
+</html>
