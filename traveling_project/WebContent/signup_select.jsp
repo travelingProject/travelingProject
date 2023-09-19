@@ -45,12 +45,12 @@
         <li>
           <h3>개인 회원</h3>
           <p>individual</p>
-          <a href="agree.html"><input type="button" value="가입하기" /></a>
+          <a href="agree.jsp"><input type="button" value="가입하기" /></a>
         </li>
         <li>
           <h3>호스트</h3>
           <p>host</p>
-          <a href="host_agree.html"><input type="button" value="가입하기" /></a>
+          <a href="host_agree.jsp"><input type="button" value="가입하기" /></a>
         </li>
       </ul>
     </main>

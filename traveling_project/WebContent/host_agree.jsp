@@ -19,9 +19,10 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/agree.css" />
     <link rel="stylesheet" href="css/footer.css" />
-    <script src="js/signup.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="js/header.js"></script>
+    <script src="js/agree.js"></script>
+    
     <title>회원가입</title>
   </head>
   <body>

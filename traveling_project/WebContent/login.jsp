@@ -20,7 +20,7 @@
 			if(userId.equals(id) && userPw.equals(pw)){
 				session.setAttribute("id",id);
 				session.setAttribute("pw",pw);
-				response.sendRedirect("index.html");
+				response.sendRedirect("index.jsp");
 			} else{
 				response.sendRedirect("login.html");
 			}

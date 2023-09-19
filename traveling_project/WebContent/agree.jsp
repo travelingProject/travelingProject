@@ -39,7 +39,11 @@
             <li>03.회원 정보 입력</li>
             <li>04.가입 완료</li>
           </ul>
-          <h2>Traveling 이용 약관</h2>
+          <h2>이용 약관</h2>
+          <div id="agree_all_checkbox" class="clearfix">
+            <input type="checkbox" name="agree_all" id="agree_all" />
+            <label for="agree_all">약관에 전체 동의 합니다.</label>
+          </div>
           <div class="agree_content">
             제 1장 총칙 제1조 (목적) 이 약관은 호텔패스글로벌이 운영하는 호텔패스닷컴(http://www.hotelpass.com) 인터넷쇼핑몰(이하 "호텔패스"라
             한다)에서 제공하는 인터넷관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 호텔패스글로벌과 이용자의 권리 의무 및 책임사항을 규정함을
@@ -256,11 +260,7 @@
             예약수행이 불가함을 알려드립니다.
           </div>
           <input type="checkbox" name="agree3_checkbox" id="agree3_checkbox" class="agree_checkbox" />
-          <label for="agree3_checkbox">(선택) 개인 정보 제공에 동의 합니다.</label>
-          <div id="agree_all_checkbox" class="clearfix">
-            <input type="checkbox" name="agree_all" id="agree_all" />
-            <label for="agree_all">약관에 전체 동의 합니다.</label>
-          </div>
+          <label for="agree3_checkbox">(선택) 개인 정보 제공에 동의 합니다.</label>          
         </div>
         
         <p>

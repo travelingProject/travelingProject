@@ -18,8 +18,13 @@ body{
   padding: 0 0 10px;
   color:#1aa3ff;  
 }
+
 td {
   padding-top: 10px;
+}
+
+td:has(label){
+	padding-top:5px;
 }
 
 input#id,
@@ -38,6 +43,15 @@ input#id:focus,
 input#pw:focus{
   outline:none;
   border: 3px solid #1aa3ff;
+}
+
+#error_text{
+	font-size:14px;
+	color:red;
+}
+
+tr:has(#error_text){
+	display:none;
 }
 
 #login_btn{    

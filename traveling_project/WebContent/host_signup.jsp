@@ -61,7 +61,7 @@
 
 		}
 	}
-	response.sendRedirect("signup_complete.html");
+	response.sendRedirect("signup_complete.jsp");
 %>
 <!DOCTYPE html>
 <html>

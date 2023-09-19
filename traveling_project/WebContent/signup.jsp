@@ -21,7 +21,7 @@
 	String mail = email + "@" + email_addr;
 	String birth = birth_year + "-" + birth_month + "-" + birth_day;
 	Connection conn = null;
-	Statement stmt = null;	
+	Statement stmt = null;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");

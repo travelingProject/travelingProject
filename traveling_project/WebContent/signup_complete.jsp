@@ -37,7 +37,7 @@
         <h2>회원가입이 완료되었습니다!</h2>        
       </div>
       <div id="btn">
-        <a href="login.html"><input type="button" id="login" value="로그인하기"></a>
+        <a href="login_select.jsp"><input type="button" id="login" value="로그인하기"></a>
         <a href="index.html"><input type="button" id="main" value="메인 화면"></a>
       </div>      
     </main>
