@@ -40,11 +40,11 @@ public class CheckIn {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("select * from reservation where status='예약 확정';");
+			rs = stmt.executeQuery("SELECT * FROM user_join , reservation where user_join.user_id = reservation.user_id and status='예약 확정';");
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
-				rsInfo.setUserId(rs.getString("user_id"));
+				rsInfo.setUserId(rs.getString("name"));
 				rsInfo.setRoomId(rs.getInt("room_id"));
 				rsInfo.setCheckInDate(rs.getString("check_in_date"));
 				rsInfo.setCheckOutDate(rs.getString("check_out_date"));
@@ -69,11 +69,11 @@ public class CheckIn {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("select * from reservation where status='체크인';");
+			rs = stmt.executeQuery("SELECT * FROM user_join , reservation where user_join.user_id = reservation.user_id and status='체크인';");
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
-				rsInfo.setUserId(rs.getString("user_id"));
+				rsInfo.setUserId(rs.getString("name"));
 				rsInfo.setRoomId(rs.getInt("room_id"));
 				rsInfo.setCheckInDate(rs.getString("check_in_date"));
 				rsInfo.setCheckOutDate(rs.getString("check_out_date"));
