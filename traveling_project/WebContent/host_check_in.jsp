@@ -39,8 +39,7 @@
 </head>
 <body>
 	<%@ include file="host_header.jsp"%>
-	<jsp:useBean id="checkIn" class="com.jslee.traveling.CheckIn"
-		scope="page" />
+	<jsp:useBean id="checkIn" class="com.jslee.traveling.CheckIn" scope="page" />
 	<%
 		// 예약 확정된 예약 테이블 객체 배열
 		ArrayList<ReservationInfo> rcArr = checkIn.reservationConfirmed();
@@ -68,7 +67,7 @@
 				</thead>
 				<tbody>
 				<%
- 					for (int i = 0; i < rcArr.size(); i++) {
+  					for (int i = 0; i < rcArr.size(); i++) {
 						out.println("<tr>");
 						out.println("<td>" + rcArr.get(i).getReservationId() + "</td>");
 						out.println("<td>" + rcArr.get(i).getUserId() + "</td>");
@@ -82,7 +81,7 @@
 						out.println("<td>" + rcArr.get(i).getPaymentTime() + "</td>");						
 						out.println("<td><a class='btn' href='update.jsp?reservationId=" + rcArr.get(i).getReservationId() + "'>체크인</a></td>");
 						out.println("</tr>");
-					} 
+					}
 				%>
 				</tbody>
 			</table>
@@ -107,7 +106,7 @@
 				</thead>
 				<tbody>
 				<%
-					for (int i = 0; i < cirArr.size(); i++) {
+ 					for (int i = 0; i < cirArr.size(); i++) {
 						out.println("<tr>");
 						out.println("<td>" + cirArr.get(i).getReservationId() + "</td>");
 						out.println("<td>" + cirArr.get(i).getUserId() + "</td>");
@@ -121,7 +120,7 @@
 						out.println("<td>" + cirArr.get(i).getPaymentTime() + "</td>");						
 						out.println("<td><a class='btn' href='update.jsp?checkInId=" + cirArr.get(i).getReservationId() + "'>체크인 취소</a></td>");
 						out.println("</tr>");
-					}
+					} 
 				%>
 				</tbody>
 			</table>

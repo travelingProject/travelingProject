@@ -25,13 +25,13 @@
     <header>
       <nav id="menu_nav">
         <h1 id="logo">
-          <a href="host_index.html"><img src="images/logo.png" alt="" /></a>
+          <a href="host_index.jsp"><img src="images/logo.png" alt="" /></a>
         </h1>
         <ul class="lnb">
           <li><a href="#">숙소 등록</a></li>
-          <li><a href="reservation_supervise.html">예약 관리</a></li>
-          <li><a href="host_check_in.html">체크인</a></li>
-          <li><a href="host_check_out.html">체크 아웃</a></li>
+          <li><a href="reservation_supervise.jsp">예약 관리</a></li>
+          <li><a href="host_check_in.jsp">체크인</a></li>
+          <li><a href="host_check_out.jsp">체크 아웃</a></li>
           <li><a href="#">매출 현황</a></li>
           <li><a href="#">리뷰</a></li>
         </ul>
