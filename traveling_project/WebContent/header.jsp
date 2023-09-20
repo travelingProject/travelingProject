@@ -22,7 +22,7 @@
     <header>
       <nav id="menu_nav">
         <h1 id="logo">
-          <a href="index.html"><img src="images/logo.png" alt="" /></a>
+          <a href="index.jsp"><img src="images/logo.png" alt="" /></a>
         </h1>
         <form action="reservation.jsp" id="accomodation_search">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />

@@ -18,6 +18,8 @@
 			String userPw = rs.getString("pw");
 			if (id.equals(userId) && pw.equals(userPw)) {
 				response.sendRedirect("host_index.jsp");
+				session.setAttribute("id",userId);
+				session.setAttribute("pw",userPw);
 			}
 		} else {
 			response.sendRedirect("host_login_fail.html");
