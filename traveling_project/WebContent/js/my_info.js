@@ -3,10 +3,11 @@ $(document).ready(function() {
 	$.ajax({
 		url : "./user_reserv_info.jsp",
 		method : "GET",
-		data : {user_id : user_id},
+		data : {
+			user_id : user_id
+		},
 		success : function(data) {
 			$("#reservationInfo").html(data);
 		}
-		
 	});
 });

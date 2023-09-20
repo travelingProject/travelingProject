@@ -80,9 +80,5 @@ public class ControlDB {
 			discon();
 		}
 		return rinfoList;
-	}
-	
-	public void plz() {
-		
-	}
+	}	
 }
