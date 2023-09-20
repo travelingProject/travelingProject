@@ -15,7 +15,7 @@ public class ControlDB {
 	// connect용 메소드
 	public void condb() {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 			sta = con.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
