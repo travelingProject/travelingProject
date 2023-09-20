@@ -15,7 +15,7 @@ public class ControlDB {
 	// connect용 메소드
 	public void condb() {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
 			sta = con.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,12 +61,13 @@ public class ControlDB {
 			Class.forName("com.mysql.jdbc.Driver");
 			condb();
 			// 예약번호, 체크인&아웃 날짜, 인원수 추출
-			rs = sta.executeQuery("SELECT r.check_in_date, r.check_out_date, r.people, si.stay_name, si.location "
+			rs = sta.executeQuery("SELECT r.reservation_id, r.check_in_date, r.check_out_date, r.people, si.stay_name, si.location "
 					+ "FROM reservation r "
 					+ "JOIN room_info ri ON r.room_id = ri.room_id "
 					+ "JOIN stay_info si ON ri.stay_id = si.stay_id WHERE user_id = '" + user_id + "';");
 			while (rs.next()) {
 				MyPageObj rinfo = new MyPageObj();
+				rinfo.setReservation_id(rs.getString("reservation_id"));
 				rinfo.setCheckInDate(rs.getString("check_in_date"));
 				rinfo.setCheckOutDate(rs.getString("check_out_date"));
 				rinfo.setPeople(rs.getInt("people"));

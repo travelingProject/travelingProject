@@ -1,9 +1,22 @@
 $(document).ready(function() {
 	// 모달 열기
-	$(".review_modal").click(function() {
-		$("#review_modal_wrap").show();
-		$("body").css("overflow", "hidden");
-	});
+    $(".review_modal").click(function() {
+        // 클릭한 작성하기 버튼이 속한 ul 요소를 선택
+        var $reservationInfo = $(this).closest("ul.index_list");
+
+        // ul 요소 내에서 이미 가져온 데이터를 읽음
+        var stayName = $reservationInfo.find(".r_stay_name").text();
+        var chkDate = $reservationInfo.find(".r_chk_date").text();
+
+        // 모달에 예약 정보 추가
+        $("#rm_header h3").text(stayName);
+        $("#rm_header span").text(chkDate);
+
+        // 모달 열기
+        $("#review_modal_wrap").css("display", "block");
+        $("#review_modal_wrap").show();
+        $("body").css("overflow", "hidden");
+    });
 
 	// 모달 닫기 오른쪽 위 X
 	$(".close_btn").click(function() {

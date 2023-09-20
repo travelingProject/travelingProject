@@ -17,6 +17,7 @@
 <body>
 	<%
 		for (int i = 0; i < rinfoList.size(); i++) {
+			String rid = rinfoList.get(i).getReservation_id();
 			String chkIn = rinfoList.get(i).getCheckInDate();
 			String chkOut = rinfoList.get(i).getCheckOutDate();
 			int people = rinfoList.get(i).getPeople();
@@ -31,7 +32,7 @@
 		<li class='r_chk_date'><%=chkIn%> ~ <%=chkOut%></li>
 		<li class='r_people'><%=people%></li>
 		<li><a href='#'>상세보기</a></li>
-		<li><button class='review_modal'>작성하기</button></li>
+		<li><button class='review_modal' onclick="modal(event)" data-reservation_id="<%=rid%>">작성하기</button></li>
 	</ul>
 	<%
 		}
