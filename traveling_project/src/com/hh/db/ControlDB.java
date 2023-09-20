@@ -15,7 +15,6 @@ public class ControlDB {
 	// connect용 메소드
 	public void condb() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
 					"0509");
 			sta = con.createStatement();
@@ -41,6 +40,7 @@ public class ControlDB {
 	// 리뷰 DB 입력용 메소드
 	public void insertReview(ReviewObj obj) {
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			condb();
 			sta.executeUpdate(
 					"INSERT INTO review_info (reservation_id, review_title, review_content, rating, review_time) VALUES ("
@@ -57,6 +57,7 @@ public class ControlDB {
 	public ArrayList<MyPageObj> getReservInfo(String user_id) {
 		ArrayList<MyPageObj> rinfoList = new ArrayList<MyPageObj>();
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			condb();
 			// 예약번호, 체크인&아웃 날짜, 인원수 추출
 			rs = sta.executeQuery(
@@ -85,6 +86,7 @@ public class ControlDB {
 	public LoginObj chkLoginId(String id, String pw) {
 		LoginObj logChk = new LoginObj();
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			condb();
 			rs = sta.executeQuery("SELECT user_id, pw FROM user_join WHERE user_id = '" + id + "';");
 			while (rs.next()) {
@@ -103,6 +105,7 @@ public class ControlDB {
 	public int statusPrice(String id) {
 		int sum = 0;
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			condb();
 			rs = sta.executeQuery("SELECT SUM(price) FROM reservation WHERE user_id = '" + id + "';");
 			while (rs.next()) {
@@ -121,12 +124,25 @@ public class ControlDB {
 		String grade = null;
 		if (sum > 1000000) {
 			grade = "PLATINUM";
-		} else if (sum > 300000) {
+		} else if (sum > 500000) {
 			grade = "GOLD";
 		} else {
 			grade = "SILVER";
 		}
 		return grade;
+	}
+	
+	// 등급별 적립율
+	public double gradePer(String grade) {
+		double percent = 0.0;
+		if (grade.equals("PLATINUM")) {
+			percent = 1.0;
+		} else if (grade.equals("GOLD")) {
+			percent = 0.5;
+		} else {
+			percent = 0.2;
+		}
+		return percent;
 	}
 
 }

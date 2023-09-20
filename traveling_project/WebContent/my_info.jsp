@@ -15,7 +15,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
 <!-- jquery -->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- css -->
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/member.css" />
@@ -24,7 +24,6 @@
 <!-- js -->
 <!--<script src="js/review_modal.js"></script> -->
 <script src="js/my_info.js"></script>
-<script src="js/user_status.js"></script>
 </head>
 <body>
 	<jsp:include page="login_header.jsp"/>

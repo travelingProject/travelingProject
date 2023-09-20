@@ -3,9 +3,10 @@ $(document).ready(function() {
 		url : "select_user_status.jsp",
 		dataType : "html",
 		success : function(data) {
-			console.log(data);
-			const ugrade = $(data).find("#ugrade").text();
-			console.log("ugrade = " + ugrade);
+			var ugrade = $(data).find("#ugrade").text();
+			var uper = $(data).find("#uper").text();
+			$('#grade_text').html(ugrade);
+			$('#discount_percent').html(uper + "%");
 		}
 	});
 });
