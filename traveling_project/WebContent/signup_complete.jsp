@@ -24,7 +24,7 @@
     <title>가입 완료</title>
   </head>
   <body>
-    <%@ include file="header.jsp"%>
+    <%@ include file="login_header.jsp"%>
     <main>
       <ul id="step">
         <li>01.회원 선택</li>

@@ -22,7 +22,7 @@
   <script src="js/header.js"></script>
   <title>로그인 선택</title>
   <body>
-    <%@ include file="header.jsp"%>
+    <%@ include file="guest_header.jsp"%>
     <main>
       <div id="content1">
         <img src="images/logo.png" alt="">
@@ -32,7 +32,7 @@
         <li>
           <h3>개인 회원</h3>
           <p>individual</p>
-          <a href="login.html"><input type="button" value="로그인하기" /></a>
+          <a href="user_login.html"><input type="button" value="로그인하기" /></a>
         </li>
         <li>
           <h3>호스트</h3>

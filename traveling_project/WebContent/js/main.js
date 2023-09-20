@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
   
   // 숙소 예약 창
   $('.menu li:eq(0)').click(function(){

@@ -22,7 +22,7 @@
     <header>
       <nav id="menu_nav">
         <h1 id="logo">
-          <a href="index.jsp"><img src="images/logo.png" alt="" /></a>
+          <a href="guest_index.jsp"><img src="images/logo.png" alt="" /></a>
         </h1>
         <form action="reservation.jsp" id="accomodation_search">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
@@ -39,8 +39,6 @@
         <ul id="my_info">
           <li><a href="login_select.jsp">로그인</a></li>
           <li><a href="signup_select.jsp">회원 가입</a></li>
-          <!-- <li><a href="my_info.jsp">내 정보</a></li>
-          <li><a href="planner.html">내 일정</a></li> -->
         </ul>
       </nav>
     </header>

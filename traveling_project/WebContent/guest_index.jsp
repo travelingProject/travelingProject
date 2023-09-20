@@ -30,7 +30,8 @@
     <title>Traveling</title>
   </head>
   <body>
-	<%@ include file="header.jsp"%>
+  <%= session.getAttribute("id") %>
+	<%@ include file="guest_header.jsp"%>
     <!-- slider -->
     <section id="video">
       <video autoplay loop muted>

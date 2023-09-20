@@ -6,7 +6,7 @@
 <%@ page import="com.hh.db.MyPageObj"%>
 
 <%
-	String id = request.getParameter("user_id");
+	String id = (String)session.getAttribute("id");
 
 	ArrayList<MyPageObj> rinfoList = getInfo.getReservInfo(id);
 %>

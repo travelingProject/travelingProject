@@ -1,30 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
 <%
 	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");	
-	
+	String pw = request.getParameter("pw");
+
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
-	
+
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8",
+				"root", "0509");
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery("select * from user_info where user_id='" + id + "';");
-		if(rs.next()){			
+		if (rs.next()) {
 			String userId = rs.getString("user_id");
 			String userPw = rs.getString("pw");
-			if(userId.equals(id) && userPw.equals(pw)){
-				session.setAttribute("id",id);
-				session.setAttribute("pw",pw);
-				response.sendRedirect("index.jsp");
-			} else{
-				response.sendRedirect("login.html");
+			if (userId.equals(id) && userPw.equals(pw)) {
+				session.setAttribute("id", id);
+				session.setAttribute("pw", pw);
+				response.sendRedirect("user_index.jsp");
+			} else {
+				response.sendRedirect("user_login_fail.html");
 			}
-		}		
+		} else {
+			response.sendRedirect("user_login_fail.html");
+		}
 	} finally {
 		try {
 			stmt.close();
@@ -36,7 +39,7 @@
 		} catch (Exception ignored) {
 
 		}
-	}	
+	}
 %>
 <!DOCTYPE html>
 <html>
