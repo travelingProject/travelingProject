@@ -24,6 +24,7 @@
 <!-- js -->
 <!--<script src="js/review_modal.js"></script> -->
 <script src="js/my_info.js"></script>
+<script src="js/user_status.js"></script>
 </head>
 <body>
 	<jsp:include page="login_header.jsp"/>
