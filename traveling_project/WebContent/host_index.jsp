@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kr">
-
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,7 +33,11 @@
     <main>
     <aside>    	
     </aside>
-      <h2>호스트 페이지에 오신 것을 환영합니다!</h2>	            
+      <h2>
+      <%
+      	String id = (String) session.getAttribute("id");
+      	out.println(id + "님 환영합니다!");
+      %></h2>
     </main>
 	<%@ include file="footer.jsp"%>
   </body>
