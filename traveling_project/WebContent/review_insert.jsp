@@ -10,4 +10,5 @@
     obj.setRating(Double.parseDouble(request.getParameter("rating")));
     
     db.insertReview(obj);
+    response.sendRedirect("my_info.jsp");
 %>

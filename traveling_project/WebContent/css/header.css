@@ -68,7 +68,7 @@ header {
   background: #fff;   
 }
 
-/* 달력 */
+/* �떖�젰 */
 input[type='date'] {
   position: relative;
   padding-right: 20px;
@@ -109,7 +109,7 @@ input[type='number']::-webkit-outer-spin-button {
   appearance: none;
 }
 
-/* 검색하기 버튼 */
+/* 寃��깋�븯湲� 踰꾪듉 */
 
 #accomodation_search #search_btn {
   width: 15%;
@@ -170,7 +170,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 #my_info {
   width: 150px;
-  height: 160px;
+/*   height: 160px; */
   background: #fff;
   padding: 10px 40px;
   position: absolute;

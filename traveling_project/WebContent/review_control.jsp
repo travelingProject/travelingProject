@@ -48,13 +48,13 @@
 					</ul>
 					<ul class="index_list">
 						<li><a href="#">
-							<span>전라도</span> <!-- 예약 테이블의 location 컬럼 -->
-							<h6>리버웨이브</h6> <!-- 예약 테이블의 참조키인 방 정보 테이블에서 가져온 숙소 이름 -->
+							<span></span> <!-- 예약 테이블의 location 컬럼 -->
+							<h6></h6> <!-- 예약 테이블의 참조키인 방 정보 테이블에서 가져온 숙소 이름 -->
 						</a></li>
-						<li>2023.08.14 ~ 2023.08.16</li> <!-- 예약 테이블의 체크인 ~ 체크아웃 날짜 -->
+						<li></li> <!-- 예약 테이블의 체크인 ~ 체크아웃 날짜 -->
 						<li><button class="replace_review_btn">수정하기</button></li>
 						<li><button class="remove_review_btn">삭제하기</button></li>
-						<li>2023.09.18</li>
+						<li></li> <!-- 리뷰 테이블 최종수정일 -->
 					</ul>
 				</article>
 			</div>

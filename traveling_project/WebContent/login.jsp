@@ -11,9 +11,9 @@
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("select * from user_join where user_id='" + id + "';");
+		rs = stmt.executeQuery("select * from user_info where user_id='" + id + "';");
 		if(rs.next()){			
 			String userId = rs.getString("user_id");
 			String userPw = rs.getString("pw");

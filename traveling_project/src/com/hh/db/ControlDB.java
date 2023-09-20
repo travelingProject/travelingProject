@@ -81,5 +81,24 @@ public class ControlDB {
 			discon();
 		}
 		return rinfoList;
-	}	
+	}
+	
+	// 로그인 유효성 체크
+	public LoginObj chkLoginId(String id, String pw) {
+		LoginObj logChk = new LoginObj();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			condb();
+			rs = sta.executeQuery("SELECT user_id, pw FROM user_join WHERE user_id = '" + id + "';");
+			while(rs.next()) {
+				logChk.setId(rs.getString("user_id"));
+				logChk.setPw(rs.getString("pw"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+		return logChk;
+	}
 }
