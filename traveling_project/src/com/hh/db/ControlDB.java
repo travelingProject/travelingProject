@@ -11,7 +11,7 @@ public class ControlDB {
 	Connection con = null;
 	Statement sta = null;
 	ResultSet rs = null;
-
+	
 	// connect용 메소드
 	public void condb() {
 		try {
