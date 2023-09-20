@@ -10,8 +10,7 @@ body{
   background: #fff;
   border-radius: 20px;
   height: 100px;
-  border:1px solid #ccc; 
-  
+  border:1px solid #ccc;   
 }
 #login_table th {
   border-radius: 5px;

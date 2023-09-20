@@ -36,7 +36,7 @@
       <h2>
       <%
       	String id = (String) session.getAttribute("id");
-      out.println(id + "님 환영합니다!");
+      	out.println(id + "님 환영합니다!");
       %></h2>
     </main>
 	<%@ include file="footer.jsp"%>
