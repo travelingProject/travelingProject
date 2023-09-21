@@ -128,5 +128,18 @@ public class ControlDB {
 		}
 		return grade;
 	}
+	
+	// 등급별 적립율 추출
+	public double gradePer(String grade) {
+		double per = 0.0;
+		if (grade.equals("PLATINUM")) {
+			per = 1.0;
+		} else if (grade.equals("GOLD")) {
+			per = 0.5;
+		} else {
+			per = 0.2;
+		}
+		return per;
+	}
 
 }
