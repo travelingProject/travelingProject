@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.jslee.traveling.ReservationInfo"%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -35,12 +37,22 @@
 	src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <!-- script -->
 <script src="js/host_header.js"></script>
+<script src="js/reservation_acception.js"></script>
 <title>호스트 페이지</title>
 </head>
 <body>
 	<%@ include file="host_header.jsp"%>
+	<jsp:useBean id="reservationAcception"
+		class="com.jslee.traveling.ReservationAcception" scope="page" />
 	<%
-	
+		// 예약 대기중인 예약 테이블 객체 배열
+		ArrayList<ReservationInfo> rwArr = reservationAcception.reservationWaiting();
+		// 예약 확정된 예약 테이블 객체 배열
+		ArrayList<ReservationInfo> rcArr = reservationAcception.reservationConfirmed();
+		// 예약 거부된 예약 테이블 객체 배열
+		ArrayList<ReservationInfo> rRArr = reservationAcception.reservationRejected();
+		// 예약 취소된 예약 테이블 객체 배열
+		ArrayList<ReservationInfo> rCancArr = reservationAcception.reservationCancelled();
 	%>
 	<main>
 		<aside>
@@ -85,41 +97,102 @@
 							<th>결제 금액</th>
 							<th>결제 시간</th>
 							<th>예약 상태</th>
-							<th>관리</th>
+							<th>비고</th>
 						</tr>
 					</thead>
-					<tr>
-						<td>123</td>
-						<td>이준섭</td>
-						<td>101호</td>
-						<td>2023.09.20</td>
-						<td>2023.09.21</td>
-						<td>15:00</td>
-						<td>11:00</td>
-						<td>4</td>
-						<td>170,000</td>
-						<td>2023.08.15 09:23:37</td>
-						<td>예약 대기중</td>
-						<td><input type="button" id="accept_btn" value="승인" /> <input
-							type="button" id="reject_btn" value="거부" /></td>
-					</tr>
-					<tr>
-						<td>123</td>
-						<td>이준섭</td>
-						<td>101호</td>
-						<td>2023.09.20</td>
-						<td>2023.09.21</td>
-						<td>15:00</td>
-						<td>11:00</td>
-						<td>4</td>
-						<td>170,000</td>
-						<td>2023.08.15 09:23:37</td>
-						<td>예약 확정</td>
-						<td><input type="button" id="cancel_btn" value="확정 취소" /></td>
-					</tr>
+					<%
+						// 예약 대기중
+						for (int i = 0; i < rwArr.size(); i++) {
+							out.println("<tr>");
+							out.println("<td>" + rwArr.get(i).getReservationId() + "</td>");
+							out.println("<td>" + rwArr.get(i).getUserId() + "</td>");
+							out.println("<td>" + rwArr.get(i).getRoomId() + "</td>");
+							out.println("<td>" + rwArr.get(i).getCheckInDate() + "</td>");
+							out.println("<td>" + rwArr.get(i).getCheckOutDate() + "</td>");
+							out.println("<td>" + rwArr.get(i).getCheckInTime() + "</td>");
+							out.println("<td>" + rwArr.get(i).getCheckOutTime() + "</td>");
+							out.println("<td>" + rwArr.get(i).getPeople() + "</td>");
+							out.println("<td>" + rwArr.get(i).getPrice() + "</td>");
+							out.println("<td>" + rwArr.get(i).getPaymentTime() + "</td>");
+							out.println("<td style='color:#999'>" + rwArr.get(i).getStatus() + "</td>");
+							out.println("<td>");
+							out.println("<a id='accept_btn' href='reservationUpdate.jsp?reservationId="
+									+ rwArr.get(i).getReservationId() + "'>승인</a>");
+							out.println("<a id='reject_btn' href='reservationUpdate.jsp?cancelId=" + rwArr.get(i).getReservationId()
+									+ "'>거부</a>");
+							out.println("</td>");
+							out.println("</tr>");
+						}
+						// 예약 확정
+						for (int i = 0; i < rcArr.size(); i++) {
+							out.println("<tr>");
+							out.println("<td>" + rcArr.get(i).getReservationId() + "</td>");
+							out.println("<td>" + rcArr.get(i).getUserId() + "</td>");
+							out.println("<td>" + rcArr.get(i).getRoomId() + "</td>");
+							out.println("<td>" + rcArr.get(i).getCheckInDate() + "</td>");
+							out.println("<td>" + rcArr.get(i).getCheckOutDate() + "</td>");
+							out.println("<td>" + rcArr.get(i).getCheckInTime() + "</td>");
+							out.println("<td>" + rcArr.get(i).getCheckOutTime() + "</td>");
+							out.println("<td>" + rcArr.get(i).getPeople() + "</td>");
+							out.println("<td>" + rcArr.get(i).getPrice() + "</td>");
+							out.println("<td>" + rcArr.get(i).getPaymentTime() + "</td>");
+							out.println("<td style='color:#1a44ff; font-weight:bold'>" + rcArr.get(i).getStatus() + "</td>");
+							out.println("<td>-</td>");
+							out.println("</tr>");
+						}
+						// 예약 거부
+						for (int i = 0; i < rRArr.size(); i++) {
+							out.println("<tr>");
+							out.println("<td>" + rRArr.get(i).getReservationId() + "</td>");
+							out.println("<td>" + rRArr.get(i).getUserId() + "</td>");
+							out.println("<td>" + rRArr.get(i).getRoomId() + "</td>");
+							out.println("<td>" + rRArr.get(i).getCheckInDate() + "</td>");
+							out.println("<td>" + rRArr.get(i).getCheckOutDate() + "</td>");
+							out.println("<td>" + rRArr.get(i).getCheckInTime() + "</td>");
+							out.println("<td>" + rRArr.get(i).getCheckOutTime() + "</td>");
+							out.println("<td>" + rRArr.get(i).getPeople() + "</td>");
+							out.println("<td>" + rRArr.get(i).getPrice() + "</td>");
+							out.println("<td>" + rRArr.get(i).getPaymentTime() + "</td>");
+							out.println("<td style='color:red;font-weight:bold'>" + rRArr.get(i).getStatus() + "</td>");
+							out.println("<td>-</td>");
+							out.println("</tr>");
+						}
+						// 예약 취소
+						for (int i = 0; i < rCancArr.size(); i++) {
+							out.println("<tr>");
+							out.println("<td>" + rCancArr.get(i).getReservationId() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getUserId() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getRoomId() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getCheckInDate() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getCheckOutDate() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getCheckInTime() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getCheckOutTime() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getPeople() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getPrice() + "</td>");
+							out.println("<td>" + rCancArr.get(i).getPaymentTime() + "</td>");
+							out.println("<td style='color:red;font-weight:bold'>" + rCancArr.get(i).getStatus() + "</td>");
+							out.println("<td>-</td>");
+							out.println("</tr>");
+						}
+					%>
 				</table>
 			</div>
 		</section>
+		<div id="accept_modal" class="modal">
+			<div>
+				<h2>예약 승인</h2>
+				<p>
+					예약을 확정하시겠습니까?<br />(예약이 확정되면 취소하실 수 없습니다.)
+				</p>
+				<div id="btn">
+					<a href="#" id="accept" class="btn">확인</a> <input type="button"
+						class="btn" value="취소" />
+				</div>
+				<span class="ir_pm">닫기</span>
+			</div>
+		</div>
+		<div id="reject_modal" class="modal"></div>
+		<div id="background_overlay"></div>
 	</main>
 	<%@ include file="footer.jsp"%>
 </body>

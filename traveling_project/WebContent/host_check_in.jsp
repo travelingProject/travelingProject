@@ -39,12 +39,12 @@
 </head>
 <body>
 	<%@ include file="host_header.jsp"%>
-	<jsp:useBean id="checkIn" class="com.jslee.traveling.CheckIn" scope="page" />
+	<jsp:useBean id="reservationAcception" class="com.jslee.traveling.ReservationAcception" scope="page" />
 	<%
 		// 예약 확정된 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> rcArr = checkIn.reservationConfirmed();
+		ArrayList<ReservationInfo> rcArr = reservationAcception.reservationConfirmed();
 		// 체크인된 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> cirArr = checkIn.CheckInReservation();
+		ArrayList<ReservationInfo> cirArr = reservationAcception.CheckInReservation();		
 	%>
 	<main>
 		<span class="line1"></span>
