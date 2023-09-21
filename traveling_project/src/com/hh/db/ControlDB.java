@@ -115,30 +115,63 @@ public class ControlDB {
 		}
 		return sum;
 	}
-
-	// 합산 가격을 통해 멤버십 등급 추출
-	public String userGrade(int sum) {
-		String grade = null;
-		if (sum > 1000000) {
-			grade = "PLATINUM";
-		} else if (sum > 500000) {
-			grade = "GOLD";
-		} else {
-			grade = "SILVER";
+	
+	// 마지막 여행 다녀온지 n일 추출
+	public int lastTravel(String id) {
+		int ndays = 0;
+		try {
+			condb();
+			rs = sta.executeQuery(
+					"SELECT DATEDIFF(NOW(), MAX(check_out_date)) AS days_since_last_travel "
+					+ "FROM reservation "
+					+ "WHERE user_id = '" + id + "' "
+					+ "AND check_out_date < CURDATE();");
+			while (rs.next()) {
+				ndays = rs.getInt("days_since_last_travel");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
 		}
-		return grade;
+		return ndays;
 	}
 	
-	// 등급별 적립율 추출
-	public double gradePer(String grade) {
-		double per = 0.0;
-		if (grade.equals("PLATINUM")) {
-			per = 1.0;
-		} else if (grade.equals("GOLD")) {
-			per = 0.5;
-		} else {
-			per = 0.2;
+	// 현재날짜 기준 총 숙박일수 추출
+	public int totalStay(String id) {
+		int tstay = 0;
+		try {
+			condb();
+			rs = sta.executeQuery(
+					"SELECT SUM(DATEDIFF(check_out_date, check_in_date)) AS total_stay "
+					+ "FROM reservation "
+					+ "WHERE user_id = '" + id + "' "
+					+ "AND check_out_date < CURDATE();");
+			while (rs.next()) {
+				tstay = rs.getInt("total_stay");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
 		}
-		return per;
+		return tstay;
+	}
+	
+	// 로그인 한 사용자의 누적 마일리지 추출
+	public int totalMileage(String id) {
+		int mil = 0;
+		try {
+			condb();
+			rs = sta.executeQuery("SELECT total_mileage FROM mileage WHERE user_id = '" + id + "';");
+			while (rs.next()) {
+				mil = rs.getInt("total_mileage");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+		return mil;
 	}
 }

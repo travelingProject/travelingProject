@@ -10,6 +10,6 @@
 </body>
 		<%
 			session.invalidate();
-			response.sendRedirect("guest_index.jsp");
+			response.sendRedirect("index.jsp");
 		%>
 </html>

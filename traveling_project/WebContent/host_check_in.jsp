@@ -44,7 +44,7 @@
 		// 예약 확정된 예약 테이블 객체 배열
 		ArrayList<ReservationInfo> rcArr = reservationAcception.reservationConfirmed();
 		// 체크인된 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> cirArr = reservationAcception.CheckInReservation();		
+		ArrayList<ReservationInfo> cirArr = reservationAcception.reservationRejected();
 	%>
 	<main>
 		<span class="line1"></span>
