@@ -6,18 +6,16 @@
 	int sum = sumPrice.statusPrice(id);
 	
 	String grade = sumPrice.userGrade(sum);
-	double per = sumPrice.gradePer(grade);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>Insert title here</title>
 </head>
 <body>
-<!-- 등급 연산 추출 -->
+
 <div><p id="ugrade"><%=grade %></p></div>
-<!-- 등급에 맞는 적립율 추출 -->
-<div><p id="uper"><%=per %></p></div>
+
 </body>
 </html>
