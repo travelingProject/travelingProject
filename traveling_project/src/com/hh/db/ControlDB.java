@@ -121,7 +121,7 @@ public class ControlDB {
 		String grade = null;
 		if (sum > 1000000) {
 			grade = "PLATINUM";
-		} else if (sum > 300000) {
+		} else if (sum > 500000) {
 			grade = "GOLD";
 		} else {
 			grade = "SILVER";
