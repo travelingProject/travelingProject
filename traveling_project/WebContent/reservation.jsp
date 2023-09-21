@@ -23,7 +23,7 @@
     <title>예약하기</title>
   </head>
   <body>
-    <%@ include file="guest_header.jsp"%>
+    <%@ include file="header.jsp"%>
     <main>
       <section id="accomodation_info">
         <div class="accomodation">

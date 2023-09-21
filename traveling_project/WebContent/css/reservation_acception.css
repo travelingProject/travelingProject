@@ -1,102 +1,101 @@
 main {
-    display: flex;
-  }
+	display: flex;
+}
 
-  aside {
-    width: 400px;
-    text-align: center;
-    margin-top: 50px;
-  }
+aside {
+	width: 400px;
+	margin-top: 50px;
+	padding-left: 20px;
+}
 
-  aside ul li:first-child {
-    font-weight: bold;
-    font-size: 20px;
-  }
+aside ul li:first-child {
+	font-weight: bold;
+	font-size: 20px;
+}
 
-  aside ul li {
-    width: 180px;
-    font-size: 14px;
-    padding: 10px 0;
-    position: relative;      
-  }
+aside ul li {
+	width: 180px;
+	font-size: 14px;
+	padding: 10px 0;
+	position: relative;
+}
 
-  aside ul li:last-child {
-    margin-bottom: 20px;
-  }
+aside ul li:last-child {
+	margin-bottom: 20px;
+}
 
-  section {
-    margin: 50px 0 0;
-    height: 700px;
-    display: inline-block;
-    border: 1px solid #ccc;      
-    padding: 50px 0;
-    background: #f5f5f5;
-  }
+section {
+	margin: 50px 0 0;
+	height: 700px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	padding: 50px 0;
+	background: #f5f5f5;
+}
 
-  section h2 {
-    font-size: 20px;
-    padding: 0;
-    margin-bottom: 20px;
-  }
+section h2 {
+	font-size: 20px;
+	padding: 0;
+	margin-bottom: 20px;
+}
 
-  #reservation_table{
-      border:1px solid #ccc;
-      background:#e2e2e2;
-      width:1220px;
-      height:500px;        
-      padding:0;
-      margin:0 auto;
-      float:none;
-      overflow-y:scroll;        
-  }
+#reservation_table {
+	border: 1px solid #ccc;
+	background: #e2e2e2;
+	width: 1220px;
+	height: 500px;
+	padding: 0;
+	margin: 0 auto;
+	float: none;
+	overflow-y: scroll;
+}
 
-  table {
-    width: 1200px;            
-    text-align: center;
-    border-collapse: collapse;    
-  }
+table {
+	width: 1200px;
+	text-align: center;
+	border-collapse: collapse;
+}
 
-  th {
-    border: 1px solid #ccc;
-    background: #7ac5ff;
-  }
+th {
+	border: 1px solid #ccc;
+	background: #7ac5ff;
+}
 
-  td {
-    border: 1px solid #ccc;
-    background:#fff;
-    padding:5px;
-  }
+td {
+	border: 1px solid #ccc;
+	background: #fff;
+	padding: 5px;
+}
 
-  #accept_btn,
-  #reject_btn{
-      width:50px;
-      height:25px;
-      background:#b3e2ff;
-      border:0;
-      border-radius:5px;
-      cursor:pointer;
-  }
+#accept_btn, #reject_btn {
+	width: 50px;
+	height: 25px;
+	background: #b3e2ff;
+	border: 0;
+	border-radius: 5px;
+	cursor: pointer;
+}
 
-  #accept_btn:hover{
-      background:#1aa3ff;
-      color:#fff;
-  }
+#accept_btn:hover {
+	background: #1aa3ff;
+	color: #fff;
+}
 
-  #reject_btn:hover{
-      background:red;
-      color:#fff;
-  }
+#reject_btn:hover {
+	background: red;
+	color: #fff;
+}
 
-  #cancel_btn{
-      width:100px;
-      height:25px;
-      background:#b3e2ff;
-      border:0;
-      border-radius:5px;
-      cursor:pointer;
-  }
+#cancel_btn {
+	width: 100px;
+	height: 25px;
+	background: #b3e2ff;
+	border: 0;
+	border-radius: 5px;
+	cursor: pointer;
+}
 
-  #cancel_btn:hover{
-      background:red;
-      color:#fff;
-  }
+#cancel_btn:hover {
+	background: red;
+	color: #fff;
+}

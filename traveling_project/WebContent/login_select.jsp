@@ -22,7 +22,7 @@
   <script src="js/header.js"></script>
   <title>로그인 선택</title>
   <body>
-    <%@ include file="guest_header.jsp"%>
+    <%@ include file="header.jsp"%>
     <main>
       <div id="content1">
         <img src="images/logo.png" alt="">

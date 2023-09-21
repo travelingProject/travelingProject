@@ -25,13 +25,11 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- script -->
-    <script src="js/main.js"></script>
-    <script src="js/header.js"></script>
+    <!-- <script src="js/main.js"></script> -->
     <title>Traveling</title>
   </head>
-  <body>
-  <%= session.getAttribute("id") %>
-	<%@ include file="guest_header.jsp"%>
+  <body>  
+	<%@ include file="header.jsp"%>
     <!-- slider -->
     <section id="video">
       <video autoplay loop muted>

@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />    
     <!-- script -->    
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="js/header.js"></script>
     <title>Traveling</title>
   </head>
@@ -22,7 +23,7 @@
     <header>
       <nav id="menu_nav">
         <h1 id="logo">
-          <a href="guest_index.jsp"><img src="images/logo.png" alt="" /></a>
+          <a href="user_index.jsp"><img src="images/logo.png" alt="" /></a>
         </h1>
         <form action="reservation.jsp" id="accomodation_search">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
@@ -32,13 +33,15 @@
           <input id="search_btn" type="submit" value="검색하기" />
         </form>
         <div class="right_menu">
-          <a href="#" class="ir_pm">내정보</a>
+          <a href="#" class="ir_pm">내 정보</a>
           <a href="#" class="ir_pm">언어 선택</a>
           <a href="#" class="ir_pm">고객 센터</a>
         </div>
         <ul id="my_info">
           <li><a href="login_select.jsp">로그인</a></li>
           <li><a href="signup_select.jsp">회원 가입</a></li>
+          <li><a href="my_info.jsp">내 정보</a></li>
+          <li><a href="planner.html">내 일정</a></li>
         </ul>
       </nav>
     </header>

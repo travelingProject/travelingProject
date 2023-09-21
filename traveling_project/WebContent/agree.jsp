@@ -26,7 +26,7 @@
     <title>회원가입</title>
   </head>
   <body>
-    <%@ include file="guest_header.jsp"%>
+    <%@ include file="header.jsp"%>
     <main>
       <section id="section">
         <div id="img">
