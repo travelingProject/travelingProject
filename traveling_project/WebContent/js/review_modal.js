@@ -15,7 +15,7 @@ $(document).ready(function() {
         // 모달 열기
         $("#review_modal_wrap").css("display", "block");
         $("#review_modal_wrap").show();
-        $("body").css("overflow", "hidden");
+/*        $("body").css("overflow", "hidden");*/
     });
 
 	// 모달 닫기 오른쪽 위 X

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- css -->
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/login_header.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <!-- favicon -->
@@ -25,13 +25,35 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- script -->
-    <!-- <script src="js/main.js"></script> -->
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
     <title>Traveling</title>
   </head>
   <body>
-  <%= session.getAttribute("id") %>
-	<%@ include file="login_header.jsp"%>
-    <!-- slider -->
+	<header>
+      <nav id="menu_nav">
+        <h1 id="logo">
+          <a href="user_index.jsp"><img src="images/logo.png" alt="" /></a>
+        </h1>
+        <form action="reservation.jsp" id="accomodation_search">
+          <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
+          <input type="date" name="check_in_date" id="check_in_date" data-placeholder="체크인" required aria-required="true" />
+          <input type="date" name="check_out_date" id="check_out_date" data-placeholder="체크 아웃" required aria-required="true" />
+          <input type="number" name="people_num" id="people_num" required placeholder="인원 수를 입력해주세요." max="32" min="1" />
+          <input id="search_btn" type="submit" value="검색하기" />
+        </form>
+        <div class="right_menu">
+          <a href="#" class="ir_pm">내 정보</a>
+          <a href="#" class="ir_pm">언어 선택</a>
+          <a href="#" class="ir_pm">고객 센터</a>
+        </div>
+        <ul id="my_info">
+          <li><a href="my_info.jsp">내 정보</a></li>
+          <li><a href="planner.html">내 일정</a></li>
+          <li><button class="logout_btn">로그아웃</button></li>
+        </ul>
+      </nav>
+    </header>
     <section id="video">
       <video autoplay loop muted>
         <source src="video/Banner.mp4" type="video/mp4" width="100%" />

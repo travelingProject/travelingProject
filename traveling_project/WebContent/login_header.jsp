@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- css -->
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/header.css" />    
+    <link rel="stylesheet" href="css/login_header.css" />    
     <!-- favicon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
     <!-- font -->

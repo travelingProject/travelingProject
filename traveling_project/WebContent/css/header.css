@@ -170,7 +170,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 #my_info {
   width: 150px;
-/*   height: 160px; */
   background: #fff;
   padding: 10px 40px;
   position: absolute;
@@ -210,3 +209,12 @@ input[type='number']::-webkit-outer-spin-button {
   transform: scaleX(1);
   transform-origin: 0% 50%;
 }
+
+.logout_btn {
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: white;
+}
+
