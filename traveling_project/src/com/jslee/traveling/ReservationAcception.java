@@ -14,7 +14,8 @@ public class ReservationAcception {
 	// Connection
 	public void connect() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
 			stmt = conn.createStatement();
 		} catch (Exception e) {
 			System.out.println(e);
@@ -40,7 +41,7 @@ public class ReservationAcception {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT * FROM user_join , reservation where user_join.user_id = reservation.user_id and status='예약 대기중';");
+			rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 대기';");
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -69,7 +70,7 @@ public class ReservationAcception {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT * FROM user_join , reservation where user_join.user_id = reservation.user_id and status='예약 확정';");
+			rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 확정';");
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -96,7 +97,7 @@ public class ReservationAcception {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT * FROM user_join , reservation where user_join.user_id = reservation.user_id and status='예약 거부됨';");
+			rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 거부';");
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -123,7 +124,7 @@ public class ReservationAcception {
 			ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 			try {
 				connect();
-				rs = stmt.executeQuery("SELECT * FROM user_join , reservation where user_join.user_id = reservation.user_id and status='예약 취소됨';");
+				rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 취소';");
 				while(rs.next()) {
 					ReservationInfo rsInfo = new ReservationInfo();
 					rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -149,7 +150,7 @@ public class ReservationAcception {
 	public void reservationAccept(String reservationId) {
 		try {
 			connect();
-			stmt.executeUpdate("update reservation set status='예약 확정' where status='예약 대기중' and reservation_id ='" + reservationId + "';");
+			stmt.executeUpdate("update reservation set status='예약 확정' where status='예약 대기' and reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
 			System.out.println(e);
 		} finally {
@@ -161,7 +162,7 @@ public class ReservationAcception {
 	public void reservationReject(String reservationId) {
 		try {
 			connect();
-			stmt.executeUpdate("update reservation set status='예약 거부됨' where status='예약 대기중' and reservation_id ='" + reservationId + "';");
+			stmt.executeUpdate("update reservation set status='예약 거부' where status='예약 대기' and reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
 			System.out.println(e);
 		} finally {

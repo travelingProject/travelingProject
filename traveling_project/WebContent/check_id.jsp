@@ -8,13 +8,13 @@
 	Statement sta = null;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "xhddlf336!");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "0509");
 		if (con == null) {
 			throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 		}
 		sta = con.createStatement();
 		ResultSet rs = sta
-				.executeQuery("SELECT user_id FROM project.user_join WHERE user_id = '" + user_id + "';");
+				.executeQuery("SELECT user_id FROM project.user_info WHERE user_id = '" + user_id + "';");
 		if (rs.next()) {
 			result = "true";
 		}

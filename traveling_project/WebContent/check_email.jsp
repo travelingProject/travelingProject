@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
 	String email = request.getParameter("email");
@@ -10,10 +10,10 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "0509");
 		if (con == null) {
-			throw new Exception("µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.<br>");
+			throw new Exception("ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.<br>");
 		}
 		sta = con.createStatement();
-		ResultSet rs = sta.executeQuery("SELECT email FROM project.user_join WHERE email = '" + email + "';");
+		ResultSet rs = sta.executeQuery("SELECT email FROM project.user_info WHERE email = '" + email + "';");
 		if (rs.next()) {
 			result = "true";			
 		}

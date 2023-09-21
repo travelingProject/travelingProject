@@ -10,9 +10,9 @@
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8",
-				"root", "xhddlf336!");
+				"root", "0509");
 		stmt = conn.createStatement();
-		rs = stmt.executeQuery("select * from host_join where host_id='" + id + "';");
+		rs = stmt.executeQuery("select * from host_info where host_id='" + id + "';");
 		if (rs.next()) {
 			String userId = rs.getString("host_id");
 			String userPw = rs.getString("pw");
