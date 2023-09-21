@@ -22,6 +22,7 @@
 	String birth = birth_year + "-" + birth_month + "-" + birth_day;
 	Connection conn = null;
 	Statement stmt = null;
+	// db 비밀번호
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");

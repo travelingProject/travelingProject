@@ -13,6 +13,7 @@ public class ControlDB {
 	ResultSet rs = null;
 
 	// connect용 메소드
+	// db 비밀번호
 	public void condb() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

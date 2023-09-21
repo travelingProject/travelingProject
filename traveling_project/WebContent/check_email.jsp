@@ -6,6 +6,7 @@
 	String result = "false";	
 	Connection con = null;
 	Statement sta = null;
+	// db 비밀번호
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "0509");
