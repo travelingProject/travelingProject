@@ -20,7 +20,5 @@
 <!-- 등급에 맞는 적립율 추출 -->
 <div><p id="uper"><%=per %></p></div>
 
-<div><p id="ugrade"><%=grade %></p></div>
-
 </body>
 </html>
