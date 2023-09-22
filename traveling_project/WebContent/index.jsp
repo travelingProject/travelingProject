@@ -60,8 +60,6 @@
 			<ul id="my_info">
 				<li><a href="login_select.jsp">로그인</a></li>
 				<li><a href="signup_select.jsp">회원 가입</a></li>
-				<li><a href="my_info.jsp">내 정보</a></li>
-				<li><a href="planner.html">내 일정</a></li>
 			</ul>
 		</nav>
 	</header>
