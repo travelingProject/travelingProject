@@ -128,3 +128,49 @@ ul .index_category {
 	padding: 5px 15px;
 	border-radius: 10px;
 }
+
+.review-container {
+    position: relative;
+    display: inline-block;
+}
+
+.review_written {
+    cursor: auto;
+    background-color: #ccc;
+    font-weight: bold;
+    color: black;
+}
+
+.tooltip-text {
+    display: none;
+    width: 200px;
+    background-color: #333;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: -10%;
+    left: 130%;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+}
+
+.review-container:hover .tooltip-text {
+    display: block;
+    opacity: 1;
+}
+
+.tooltip-text:after {
+    border: solid transparent;
+    border-right-color: #333;
+    border-width: 9px;
+    pointer-events: none;
+    content: ' ';
+    position: absolute;
+    bottom: 35%;
+    left: -4%;
+    margin-left: -10px;
+}

@@ -1,7 +1,7 @@
 package com.hh.db;
 
 public class MyPageObj {
-	private String reservation_id, checkInDate, checkOutDate, stayName, location;
+	private String reservation_id, checkInDate, checkOutDate, stayName, location, reviewTime;
 	private int people;
 
 	public String getCheckInDate() {
@@ -50,6 +50,14 @@ public class MyPageObj {
 
 	public void setReservation_id(String reservation_id) {
 		this.reservation_id = reservation_id;
+	}
+
+	public String getReviewTime() {
+		return reviewTime;
+	}
+
+	public void setReviewTime(String reviewTime) {
+		this.reviewTime = reviewTime;
 	}
 
 }

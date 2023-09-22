@@ -15,14 +15,14 @@
   @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 </style>
 <!-- jquery -->
-<<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- css -->
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/member.css" />
 <link rel="stylesheet" href="css/my_info.css" />
 <link rel="stylesheet" href="css/review_modal.css" />
 <!-- js -->
-<!--<script src="js/review_modal.js"></script> -->
+<script src="js/review_modal.js"></script>
 <script src="js/my_info.js"></script>
 </head>
 <body>
@@ -55,6 +55,7 @@
 							<button class="close_btn">&times;</button>
 							<form action="review_insert.jsp" id="review_form" method="post">
 								<!-- 리뷰 form -->
+								<input type="hidden" name="rid" id="rid_hidden" value="">
 								<div id="rm_header">
 									<p></p>
 									<!-- stay_info 테이블의 stay_name 컬럼 -->
@@ -101,14 +102,17 @@
 	<div class="go_top"></div>
 	<jsp:include page="./footer.jsp"/>
 </body>
-<script>
+<!-- <script>
 function modal(event) {
     // 클릭한 작성하기 버튼 요소를 선택
     var $button = $(event.target);
 
     // 클릭한 작성하기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
     var $reservationInfo = $button.closest("ul.index_list");
-
+    
+ 	// data-reservation_id 속성 값을 가져옴
+    var reservationId = $button.data("reservation_id");
+	console.log(reservationId);
     // ul 요소 내에서 이미 가져온 데이터를 읽음
     var stayName = $reservationInfo.find(".r_stay_name").text();
     var chkDate = $reservationInfo.find(".r_chk_date").text();
@@ -121,6 +125,6 @@ function modal(event) {
     $("#review_modal_wrap").show();
     $("body").css("overflow", "hidden");
 }
-</script>
+</script> -->
 
 </html>

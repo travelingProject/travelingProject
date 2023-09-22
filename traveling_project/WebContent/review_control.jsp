@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="css/review_modal.css" />
 <!-- js -->
 <script src="js/review_modal.js"></script>
+<script src="js/review_control.js"></script>
 </head>
 <body>
 	<jsp:include page="login_header.jsp"/>
@@ -46,16 +47,9 @@
 						<li>삭제하기</li>
 						<li>최근수정일</li>
 					</ul>
-					<ul class="index_list">
-						<li><a href="#">
-							<span></span> <!-- 예약 테이블의 location 컬럼 -->
-							<h6></h6> <!-- 예약 테이블의 참조키인 방 정보 테이블에서 가져온 숙소 이름 -->
-						</a></li>
-						<li></li> <!-- 예약 테이블의 체크인 ~ 체크아웃 날짜 -->
-						<li><button class="replace_review_btn">수정하기</button></li>
-						<li><button class="remove_review_btn">삭제하기</button></li>
-						<li></li> <!-- 리뷰 테이블 최종수정일 -->
-					</ul>
+					<div id="review_list">
+					<!-- ajax로 동적으로 생성 -->
+					</div>
 				</article>
 			</div>
 		</section>

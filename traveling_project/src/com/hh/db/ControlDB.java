@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ControlDB {
 	Connection con = null;
@@ -46,7 +49,7 @@ public class ControlDB {
 			sta.executeUpdate(
 					"INSERT INTO review_info (reservation_id, review_title, review_content, rating, review_time) VALUES ("
 							+ obj.getReservation_id() + ", '" + obj.getRtitle() + "', '" + obj.getRcontent() + "', "
-							+ obj.getRating() + ", " + "date_format(now(), '%Y%m%d%H%i%s'));");
+							+ obj.getRating() + ", now());");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -81,6 +84,46 @@ public class ControlDB {
 		}
 		return rinfoList;
 	}
+	
+	// 리뷰 작성 여부를 캐싱하기 위한 전역 변수
+	private Map<String, List<Integer>> userReviewCache = new HashMap<>();
+
+	// 리뷰 작성했는지 여부 조회용
+	public List<Integer> hasReview(String id) {
+	    // 캐시에서 리뷰 정보를 가져오기 시도
+	    List<Integer> cachedReviews = userReviewCache.get(id);
+
+	    if (cachedReviews != null) {
+	        // 캐시에서 리뷰 정보를 찾았을 경우 바로 반환
+	        return cachedReviews;
+	    } else {
+	        // 캐시에 리뷰 정보가 없을 경우 데이터베이스 조회
+	        List<Integer> reviews = new ArrayList<>();
+	        try {
+	            condb();
+	            rs = sta.executeQuery(
+	            		"SELECT re.reservation_id AS review_exists "
+	            		+ "FROM reservation r "
+	            		+ "LEFT JOIN review_info re ON r.reservation_id = re.reservation_id "
+	            		+ "WHERE r.user_id = '" + id + "';"
+	            );
+	            while (rs.next()) {
+	                int reviewId = rs.getInt("review_exists");
+	                reviews.add(reviewId);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            discon();
+	        }
+
+	        // 조회한 리뷰 정보를 캐시에 저장
+	        userReviewCache.put(id, reviews);
+
+	        return reviews;
+	    }
+	}
+
 
 	// 로그인 유효성 체크
 	public LoginObj chkLoginId(String id, String pw) {
@@ -174,5 +217,36 @@ public class ControlDB {
 			discon();
 		}
 		return mil;
+	}
+	
+	// 작성한 리뷰 목록 추출
+	public ArrayList<MyPageObj> reviewControlPage(String id) {
+		ArrayList<MyPageObj> rivConList = new ArrayList<MyPageObj>();
+		try {
+			condb();
+			rs = sta.executeQuery(
+					"SELECT r.reservation_id, si.stay_name, si.location, r.check_in_date, r.check_out_date, rv.review_time " 
+					+ "FROM reservation AS r "
+					+ "JOIN room_info AS ri ON r.room_id = ri.room_id "
+					+ "JOIN stay_info AS si ON ri.stay_id = si.stay_id "
+					+ "JOIN review_info AS rv ON r.reservation_id = rv.reservation_id "
+					+ "WHERE r.user_id = '" + id + "' AND rv.review_time IS NOT NULL;"
+					);
+			while(rs.next()) {
+				MyPageObj rivCon = new MyPageObj();
+				rivCon.setReservation_id(rs.getString("reservation_id"));
+				rivCon.setStayName(rs.getString("stay_name"));
+				rivCon.setLocation(rs.getString("location"));
+				rivCon.setCheckInDate(rs.getString("check_in_date"));
+				rivCon.setCheckOutDate(rs.getString("check_out_date"));
+				rivCon.setReviewTime(rs.getString("review_time"));
+				rivConList.add(rivCon);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+		return rivConList;
 	}
 }
