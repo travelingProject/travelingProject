@@ -6,12 +6,12 @@
 	String pw = request.getParameter("pw");	
 	Connection conn = null;
 	Statement stmt = null;
-	ResultSet rs = null;
+	ResultSet rs = null;	
 	// db 비밀번호
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8",
-				"root", "0509");
+				"root", "xhddlf336!");
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery("select * from host_info where host_id='" + id + "';");
 		if (rs.next()) {
@@ -23,6 +23,9 @@
 				session.setAttribute("id",userId);
 				session.setAttribute("pw",userPw);
 				session.setAttribute("name",name);
+			}
+			else{
+				response.sendRedirect("host_login_fail.html");	
 			}
 		} else {
 			response.sendRedirect("host_login_fail.html");

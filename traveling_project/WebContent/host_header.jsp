@@ -22,6 +22,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- script -->
+<script src=js/header.js></script>
 <script src="js/host_header.js"></script>
 </head>
 <body>
@@ -44,11 +45,15 @@
 				<li><a href="#">리뷰 조회하기</a><a href="#">리뷰 답글 달기</a> <a href="#">리뷰
 						신고하기</a> <a href="#">자주 사용된 키워드</a></li>
 			</ul>
-
 			<div class="right_menu">
-				<a href="#" class="ir_pm">내정보</a> <a href="#" class="ir_pm">언어
-					선택</a> <a href="#" class="ir_pm">고객 센터</a>
+				<a href="#" class="ir_pm">내정보</a>
+				<a href="#" class="ir_pm">언어 선택</a>
+				<a href="#" class="ir_pm">고객 센터</a>
 			</div>
+			<ul id="my_info">
+				<li><a href="login_select.jsp">내 정보</a></li>
+				<li><a href="host_logout.jsp">로그 아웃</a></li>
+			</ul>
 		</nav>
 	</header>
 </body>

@@ -97,11 +97,11 @@
 							<th>결제 금액</th>
 							<th>결제 시간</th>
 							<th>예약 상태</th>
-							<th>비고</th>
+							<th id="note">비고</th>
 						</tr>
 					</thead>
 					<%
-						// 예약 대기중
+						// 예약 대기
 						for (int i = 0; i < rwArr.size(); i++) {
 							out.println("<tr>");
 							out.println("<td>" + rwArr.get(i).getReservationId() + "</td>");
@@ -116,12 +116,33 @@
 							out.println("<td>" + rwArr.get(i).getPaymentTime() + "</td>");
 							out.println("<td style='color:#999'>" + rwArr.get(i).getStatus() + "</td>");
 							out.println("<td>");
-							out.println("<a id='accept_btn' href='reservationUpdate.jsp?reservationId="
-									+ rwArr.get(i).getReservationId() + "'>승인</a>");
-							out.println("<a id='reject_btn' href='reservationUpdate.jsp?cancelId=" + rwArr.get(i).getReservationId()
-									+ "'>거부</a>");
+							out.println("<input type='button' class='accept_btn' value='승인'>");
+							out.println("<input type='button' class='reject_btn' value='거부'>");												
 							out.println("</td>");
 							out.println("</tr>");
+							
+							// 예약 승인 
+							out.println("<div id='accept_modal' class='modal'>");
+							out.println("<div>");
+							out.println("<h2>예약 승인</h2>");
+							out.println("<p>예약을 확정하시겠습니까?<br />(예약이 확정되면 취소하실 수 없습니다.)</p>");
+							out.println("<div id='btn'><a id='accept' class='btn' href='reservationUpdate.jsp?reservationId=" + rwArr.get(i).getReservationId() + "'>확인</a>");
+							out.println("<input type='button' class='btn' value='취소'/></div>");
+							out.println("<span class='ir_pm'>닫기</span>");
+							out.println("</div>");
+							out.println("</div>");
+							
+							// 예약 거부
+							out.println("<div id='reject_modal' class='modal'>");
+							out.println("<div>");
+							out.println("<h2>예약 거부</h2>");
+							out.println("<p>예약을 거부하시겠습니까?<br />(예약을 거부하시면 취소하실 수 없습니다.)</p>");
+							out.println("<div id='btn'><a id='acccept' class='btn' href='reservationUpdate.jsp?cancelId=" + rwArr.get(i).getReservationId() + "'>확인</a>");
+							out.println("<input type='button' class='btn' value='취소'/></div>");
+							out.println("<span class='ir_pm'>닫기</span>");
+							out.println("</div>");
+							out.println("</div>");
+							
 						}
 						// 예약 확정
 						for (int i = 0; i < rcArr.size(); i++) {
@@ -178,19 +199,20 @@
 				</table>
 			</div>
 		</section>
-		<div id="accept_modal" class="modal">
+		<!-- 승인 모달 -->
+		<!-- <div id="accept_modal" class="modal">
 			<div>
 				<h2>예약 승인</h2>
 				<p>
 					예약을 확정하시겠습니까?<br />(예약이 확정되면 취소하실 수 없습니다.)
 				</p>
 				<div id="btn">
-					<a href="#" id="accept" class="btn">확인</a> <input type="button"
-						class="btn" value="취소" />
+					<a href="reservationUpdate.jsp" id="accept" class="btn">확인</a> <input type="button" class="btn" value="취소" />
 				</div>
 				<span class="ir_pm">닫기</span>
 			</div>
-		</div>
+		</div> -->
+		<!-- 거부 모달 -->
 		<div id="reject_modal" class="modal"></div>
 		<div id="background_overlay"></div>
 	</main>

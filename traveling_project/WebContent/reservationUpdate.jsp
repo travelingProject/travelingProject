@@ -9,12 +9,12 @@
 </head>
 <body>
 	<%
-		ReservationAcception checkIn = new ReservationAcception();
+		ReservationAcception reservationAcception = new ReservationAcception();
 		String reservationId = request.getParameter("reservationId");
 		String cancelId = request.getParameter("cancelId");
 		out.println(reservationId);
-		checkIn.reservationAccept(reservationId);
-		checkIn.reservationReject(cancelId);
+		reservationAcception.reservationAccept(reservationId);
+		reservationAcception.reservationReject(cancelId);
 		response.sendRedirect("reservation_acception.jsp");
 	%>
 </body>

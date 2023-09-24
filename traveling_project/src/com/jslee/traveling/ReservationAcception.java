@@ -16,7 +16,7 @@ public class ReservationAcception {
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 			stmt = conn.createStatement();
 		} catch (Exception e) {
 			System.out.println(e);
@@ -24,6 +24,7 @@ public class ReservationAcception {
 	}
 	
 	// Close	
+	
 	public void close() {
 		try {
 			stmt.close();
