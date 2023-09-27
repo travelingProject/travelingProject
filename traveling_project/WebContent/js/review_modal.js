@@ -43,7 +43,6 @@ function modal(event) {
     
  	// data-reservation_id 속성 값을 가져옴
     var reservationId = $button.data("reservation_id");
-	console.log(reservationId);
     // ul 요소 내에서 이미 가져온 데이터를 읽음
     var stayName = $reservationInfo.find(".r_stay_name").text();
     var chkDate = $reservationInfo.find(".r_chk_date").text();

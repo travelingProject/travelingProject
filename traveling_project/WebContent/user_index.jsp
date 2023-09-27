@@ -49,8 +49,8 @@
         </div>
         <ul id="my_info">
           <li><a href="my_info.jsp">내 정보</a></li>
-          <li><a href="planner.html">내 일정</a></li>
-          <li><button class="logout_btn">로그아웃</button></li>
+          <li><a href="planner.jsp">내 일정</a></li>
+          <li><a href="logout.jsp">로그아웃</a></li>
         </ul>
       </nav>
     </header>

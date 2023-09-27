@@ -5,11 +5,14 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.hh.db.MyPageObj"%>
+<%@ page import="com.hh.db.ReservationSort" %>
 
 <%
 	String id = (String) session.getAttribute("id");
 
 	ArrayList<MyPageObj> rivConList = getInfo.reviewControlPage(id);
+	
+	ReservationSort.sortByCheckInDate(rivConList);
 %>
 <!DOCTYPE html>
 <html>

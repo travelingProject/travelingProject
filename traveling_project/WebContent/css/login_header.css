@@ -196,13 +196,14 @@ input[type='number']::-webkit-outer-spin-button {
   transition: transform 250ms ease-in-out;
 }
 
-#my_info li:nth-child(2) a:after {
-  width: 73px;
+#my_info li:nth-child(1) a:after,
+#my_info li:nth-child(2) a:after
+ {
+  width: 53px;
 }
 
-#my_info li:nth-child(3) a:after,
 #my_info li:last-child a:after {
-  width: 55px;
+  width: 68px;
 }
 
 #my_info li:hover a:after {

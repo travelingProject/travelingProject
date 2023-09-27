@@ -1,10 +1,4 @@
 $(document).ready(function() {
-	// 로그아웃
-	$(".logout_btn").click(function() {
-		if (confirm("로그아웃 하시겠습니까?")) {
-			window.location.href = "logout.jsp";
-		}
-	});
 
 	// 내 정보 아이콘 클릭시 a 링크 막기
 	const loginIcon = $('#menu_nav .right_menu a:eq(0)');

@@ -16,7 +16,7 @@
 			<li><a href="./my_info.jsp">예약정보</a></li>
 			<li><a href="#">취소/환불정보</a></li>
 			<li><a href="#">찜 목록</a></li>
-			<li><a href="./planner.html">내 일정</a></li>
+			<li><a href="./planner.jsp">내 일정</a></li>
 			<li><a href="#">메시지</a></li>
 			<li><a href="./review_control.jsp">리뷰관리</a></li>
 		</ul>
@@ -34,7 +34,7 @@
 			<li><a href="#">FAQ</a></li>
 		</ul>
 		<h3>로그아웃</h3>
-		<a href="#">로그아웃</a>
+		<a href="logout.jsp">로그아웃</a>
 	</nav>
 
 </body>
