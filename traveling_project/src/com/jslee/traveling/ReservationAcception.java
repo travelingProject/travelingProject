@@ -16,7 +16,7 @@ public class ReservationAcception {
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 			stmt = conn.createStatement();
 		} catch (Exception e) {
 			System.out.println(e);
@@ -24,7 +24,6 @@ public class ReservationAcception {
 	}
 	
 	// Close	
-	
 	public void close() {
 		try {
 			stmt.close();
@@ -39,11 +38,19 @@ public class ReservationAcception {
 	}
 	
 	// 예약 상태가 예약 대기중인 예약 정보 추출
-	public ArrayList<ReservationInfo> reservationWaiting() {
+	public ArrayList<ReservationInfo> reservationWaiting(String hostId) {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 대기';");
+			rs = stmt.executeQuery(
+					"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+					+ "FROM reservation r " 
+					+ "JOIN room_info ro ON ro.room_id = r.room_id "
+					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
+					+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
+					+ "INNER JOIN user_info u ON u.user_id = r.user_id "
+					+ "where r.status='예약 대기';"
+					);
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -68,11 +75,19 @@ public class ReservationAcception {
 	}
 	
 	// 예약 상태가 에약 확정인 예약 정보 추출
-	public ArrayList<ReservationInfo> reservationConfirmed() {
+	public ArrayList<ReservationInfo> reservationConfirmed(String hostId) {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 확정';");
+			rs = stmt.executeQuery(
+					"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+					+ "FROM reservation r " 
+					+ "JOIN room_info ro ON ro.room_id = r.room_id "
+					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
+					+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
+					+ "INNER JOIN user_info u ON u.user_id = r.user_id "
+					+ "where r.status='예약 확정';"
+					);
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -95,11 +110,19 @@ public class ReservationAcception {
 	}
 	
 	// 예약 상태가 예약 거부됨인 예약 정보 추출
-	public ArrayList<ReservationInfo> reservationRejected() {
+	public ArrayList<ReservationInfo> reservationRejected(String hostId) {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 거부';");
+			rs = stmt.executeQuery(
+					"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+					+ "FROM reservation r " 
+					+ "JOIN room_info ro ON ro.room_id = r.room_id "
+					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
+					+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
+					+ "INNER JOIN user_info u ON u.user_id = r.user_id "
+					+ "where r.status='예약 거부';"
+					);
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
@@ -122,11 +145,19 @@ public class ReservationAcception {
 	}
 	
 	// 예약 상태가 예약 취소됨인 예약 정보 추출
-		public ArrayList<ReservationInfo> reservationCancelled() {
+		public ArrayList<ReservationInfo> reservationCancelled(String hostId) {
 			ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 			try {
 				connect();
-				rs = stmt.executeQuery("SELECT * FROM user_info , reservation where user_info.user_id = reservation.user_id and status='예약 취소';");
+				rs = stmt.executeQuery(
+						"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+						+ "FROM reservation r " 
+						+ "JOIN room_info ro ON ro.room_id = r.room_id "
+						+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
+						+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
+						+ "INNER JOIN user_info u ON u.user_id = r.user_id "
+						+ "where r.status='예약 취소';"
+						);
 				while(rs.next()) {
 					ReservationInfo rsInfo = new ReservationInfo();
 					rsInfo.setReservationId(rs.getInt("reservation_id"));

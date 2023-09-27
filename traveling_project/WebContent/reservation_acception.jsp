@@ -45,21 +45,23 @@
 	<jsp:useBean id="reservationAcception"
 		class="com.jslee.traveling.ReservationAcception" scope="page" />
 	<%
+		String hostId = (String) session.getAttribute("id");
 		// 예약 대기중인 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> rwArr = reservationAcception.reservationWaiting();
+		ArrayList<ReservationInfo> rwArr = reservationAcception.reservationWaiting(hostId);
 		// 예약 확정된 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> rcArr = reservationAcception.reservationConfirmed();
+		ArrayList<ReservationInfo> rcArr = reservationAcception.reservationConfirmed(hostId);
 		// 예약 거부된 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> rRArr = reservationAcception.reservationRejected();
+		ArrayList<ReservationInfo> rRArr = reservationAcception.reservationRejected(hostId);
 		// 예약 취소된 예약 테이블 객체 배열
-		ArrayList<ReservationInfo> rCancArr = reservationAcception.reservationCancelled();
+		ArrayList<ReservationInfo> rCancArr = reservationAcception.reservationCancelled(hostId);
 	%>
 	<main>
 		<aside>
 			<ul>
-				<li><a href="#">숙소 등록</a></li>
+				<li><a href="#">숙소 관리</a></li>
 				<li><a href="#">숙소 등록하기</a></li>
 				<li><a href="#">객실 등록하기</a></li>
+				<li><a href="#">내가 등록한 숙소</a></li>
 			</ul>
 			<ul>
 				<li><a href="#">예약 관리</a></li>
@@ -117,32 +119,34 @@
 							out.println("<td style='color:#999'>" + rwArr.get(i).getStatus() + "</td>");
 							out.println("<td>");
 							out.println("<input type='button' class='accept_btn' value='승인'>");
-							out.println("<input type='button' class='reject_btn' value='거부'>");												
+							out.println("<input type='button' class='reject_btn' value='거부'>");
 							out.println("</td>");
 							out.println("</tr>");
-							
+
 							// 예약 승인 
 							out.println("<div id='accept_modal' class='modal'>");
 							out.println("<div>");
 							out.println("<h2>예약 승인</h2>");
 							out.println("<p>예약을 확정하시겠습니까?<br />(예약이 확정되면 취소하실 수 없습니다.)</p>");
-							out.println("<div id='btn'><a id='accept' class='btn' href='reservationUpdate.jsp?reservationId=" + rwArr.get(i).getReservationId() + "'>확인</a>");
+							out.println("<div id='btn'><a id='accept' class='btn' href='reservationUpdate.jsp?reservationId="
+									+ rwArr.get(i).getReservationId() + "'>확인</a>");
 							out.println("<input type='button' class='btn' value='취소'/></div>");
 							out.println("<span class='ir_pm'>닫기</span>");
 							out.println("</div>");
 							out.println("</div>");
-							
+
 							// 예약 거부
 							out.println("<div id='reject_modal' class='modal'>");
 							out.println("<div>");
 							out.println("<h2>예약 거부</h2>");
 							out.println("<p>예약을 거부하시겠습니까?<br />(예약을 거부하시면 취소하실 수 없습니다.)</p>");
-							out.println("<div id='btn'><a id='acccept' class='btn' href='reservationUpdate.jsp?cancelId=" + rwArr.get(i).getReservationId() + "'>확인</a>");
+							out.println("<div id='btn'><a id='acccept' class='btn' href='reservationUpdate.jsp?cancelId="
+									+ rwArr.get(i).getReservationId() + "'>확인</a>");
 							out.println("<input type='button' class='btn' value='취소'/></div>");
 							out.println("<span class='ir_pm'>닫기</span>");
 							out.println("</div>");
 							out.println("</div>");
-							
+
 						}
 						// 예약 확정
 						for (int i = 0; i < rcArr.size(); i++) {
@@ -213,7 +217,19 @@
 			</div>
 		</div> -->
 		<!-- 거부 모달 -->
-		<div id="reject_modal" class="modal"></div>
+		<!-- <div id="reject_modal" class="modal">
+			<div>
+				<h2>예약 거부</h2>
+				<p>
+					예약을 거부하시겠습니까?<br />(예약이 거부하시면 취소하실 수 없습니다.)
+				</p>
+				<div id="btn">
+					<a href="reservationUpdate.jsp" id="accept" class="btn">확인</a> <input
+						type="button" class="btn" value="취소" />
+				</div>
+				<span class="ir_pm">닫기</span>
+			</div>
+		</div> -->
 		<div id="background_overlay"></div>
 	</main>
 	<%@ include file="footer.jsp"%>

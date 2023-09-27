@@ -32,7 +32,7 @@
 				<a href="host_index.jsp"><img src="images/logo.png" alt="" /></a>
 			</h1>
 			<ul class="lnb">
-				<li>숙소 등록</li>
+				<li>숙소 관리</li>
 				<li>예약 관리</li>
 				<li>매출 현황</li>
 				<li>리뷰 관리</li>
