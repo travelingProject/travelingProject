@@ -28,8 +28,7 @@
     <title>숙소 등록</title>
   </head>
 <body>
-	<%@ include file="host_header.jsp"%>
-	
+	<%@ include file="host_header.jsp"%>	
 	<%@ include file='footer.jsp' %>
 </body>
 </html>
