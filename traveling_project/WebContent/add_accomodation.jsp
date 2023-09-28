@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="kr">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,21 +22,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>    
     <!-- script -->
-    <title>호스트 페이지</title>
+    <title>숙소 등록</title>
   </head>
-  <body>  
-    <%@ include file="host_header.jsp"%>
-    <main>
-    <aside>    	
-    </aside>
-      <h2>
-      <%
-      	String name = (String) session.getAttribute("name");
-      	out.println(name + "님 환영합니다!");
-      %></h2>
-    </main>
-	<%@ include file="footer.jsp"%>
-  </body>
+<body>
+	<%@ include file="host_header.jsp"%>
+	<%@ include file='footer.jsp' %>
+</body>
 </html>
