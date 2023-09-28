@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/signup.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="js/host_signup.js"></script>    
+    <script src="js/signup.js"></script>    
     <script src="js/header.js"></script>
     <title>회원가입</title>
   </head>
@@ -98,27 +98,25 @@
               </tr>
               <!-- 통신사 -->
               <tr>
-                <th rowspan="2"><b>통신사</b></th>
+                <th><b>통신사</b></th>
                 <td id="agency_td">
-				  <input type="radio" name="news_agency" id="skt" value="SKT"/>
-                  <label for="skt" class="label1">SKT</label>
-                  <input type="radio" name="news_agency" id="kt" value="KT"/>
-                  <label for="kt" class="label2">KT</label>
-                  <input type="radio" name="news_agency" id="lg" value="LG"/>
-                  <label for="lg">LG</label>
-                  <input type="radio" name="news_agency" id="aldeul_skt" value="aldeulSKT"/>
-                  <label for="aldeul_skt">알뜰폰SKT</label>
-                  <input type="radio" name="news_agency" id="aldeul_kt" value="aldeulKT"/>
-                  <label for="aldeul_kt">알뜰폰KT</label>
-                  <input type="radio" name="news_agency" id="aldeul_lg" value="aldeulLG"/>
-                  <label for="aldeul_lg">알뜰폰LG</label>
+                  <div class="clearfix" style="width:auto">
+                    <input type="radio" name="news_agency" id="skt" value="SKT"/>
+                    <label for="skt" class="label1">SKT</label>
+                    <input type="radio" name="news_agency" id="kt" value="KT"/>
+                    <label for="kt" class="label2">KT</label>
+                    <input type="radio" name="news_agency" id="lg" value="LG"/>
+                    <label for="lg">LG</label>
+                    <input type="radio" name="news_agency" id="aldeul_skt" value="aldeulSKT"/>
+                    <label for="aldeul_skt">알뜰폰SKT</label>
+                    <input type="radio" name="news_agency" id="aldeul_kt" value="aldeulKT"/>
+                    <label for="aldeul_kt">알뜰폰KT</label>
+                    <input type="radio" name="news_agency" id="aldeul_lg" value="aldeulLG"/>
+                    <label for="aldeul_lg">알뜰폰LG</label>
+                  </div>
+				  <p id="agency_text"></p>                  
                 </td>
-              </tr>
-              <tr>
-                <td id="agency_text_td">
-                  <p id="agency_text"></p>
-                </td>
-              </tr>
+              </tr>              
               <!-- 전화번호 -->
               <tr>
                 <th><b>전화번호</b></th>
