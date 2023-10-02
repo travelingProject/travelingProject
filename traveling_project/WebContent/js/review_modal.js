@@ -3,7 +3,7 @@ $(document).ready(function() {
 	// 모달 닫기 오른쪽 위 X
 	$(".close_btn").click(function() {
 		if (confirm("저장되지 않은 정보는 복원할 수 없습니다. 종료하시겠습니까?")) {
-			$("#review_modal_wrap").hide();
+			$(".review_modal_wrap").hide();
 			$("body").css("overflow", "auto");
 			$("#review_form")[0].reset();
 		}
@@ -12,7 +12,7 @@ $(document).ready(function() {
 	// 모달 닫기 취소 버튼
 	$("#can_btn").click(function() {
 		if (confirm("저장되지 않은 정보는 복원할 수 없습니다. 취소하시겠습니까?")) {
-			$("#review_modal_wrap").hide();
+			$(".review_modal_wrap").hide();
 			$("body").css("overflow", "auto");
 			$("#review_form")[0].reset();
 		}
@@ -53,7 +53,7 @@ function modal(event) {
     $("#rm_header span").text(chkDate);
 
     // 모달 열기
-    $("#review_modal_wrap").show();
+    $(".review_modal_wrap").show();
     $("body").css("overflow", "hidden");
 }
 

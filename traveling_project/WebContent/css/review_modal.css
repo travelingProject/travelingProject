@@ -1,5 +1,5 @@
 /* 모달 래퍼 */
-#review_modal_wrap {
+.review_modal_wrap {
 	position: fixed;
 	z-index: 1000;
 	left: 0;

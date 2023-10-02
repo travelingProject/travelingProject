@@ -50,7 +50,7 @@
 						<!-- DB에 연동해 받아온 정보들을 출력 -->
 					</div>
 				</article>
-					<div id="review_modal_wrap">
+					<div class="review_modal_wrap">
 						<div id="review_modal_index">
 							<button class="close_btn">&times;</button>
 							<form action="review_insert.jsp" id="review_form" method="post">
@@ -122,7 +122,7 @@ function modal(event) {
     $("#rm_header span").text(chkDate);
 
     // 모달 열기
-    $("#review_modal_wrap").show();
+    $(".review_modal_wrap").show();
     $("body").css("overflow", "hidden");
 }
 </script> -->

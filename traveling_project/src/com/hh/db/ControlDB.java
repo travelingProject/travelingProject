@@ -21,7 +21,7 @@ public class ControlDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
-					"xhddlf336!");
+					"0509");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -248,5 +248,51 @@ public class ControlDB {
 			discon();
 		}
 		return rivConList;
+	}
+	
+	// 리뷰 수정 버튼 클릭시 리뷰 내용 추출
+	public ReviewObj reviewReplace(String rid) {
+		ReviewObj riv = new ReviewObj();
+		try {
+			condb();
+			rs = sta.executeQuery("SELECT * FROM review_info WHERE reservation_id = " + rid + ";");
+			while (rs.next()) {
+				riv.setRtitle(rs.getString("review_title"));
+				riv.setRcontent(rs.getString("review_content"));
+				riv.setRating(rs.getDouble("rating"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+		return riv;
+	}
+	
+	// 리뷰 수정 update
+	public void reviewUpdate(ReviewObj obj) {
+		try {
+			condb();
+			sta.executeUpdate("UPDATE review_info SET review_title = '" + obj.getRtitle()
+							+ "', review_content = '" + obj.getRcontent()
+							+ "', rating = " + obj.getRating()
+							+ ", review_time = now() WHERE reservation_id = " + obj.getReservation_id() + ";");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+	}
+	
+	// 리뷰 삭제
+	public void reviewDelete(String rid) {
+		try {
+			condb();
+			sta.executeUpdate("DELETE FROM review_info WHERE reservation_id = " + rid + ";");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
 	}
 }
