@@ -2,28 +2,6 @@ main {
 	display: flex;
 }
 
-aside {
-	width: 400px;
-	margin-top: 50px;
-	padding-left: 20px;
-}
-
-aside ul li:first-child {
-	font-weight: bold;
-	font-size: 20px;
-}
-
-aside ul li {
-	width: 180px;
-	font-size: 14px;
-	padding: 10px 0;
-	position: relative;
-}
-
-aside ul li:last-child {
-	margin-bottom: 20px;
-}
-
 section {
 	margin: 50px 0 0;
 	height: 700px;

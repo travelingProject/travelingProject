@@ -29,7 +29,9 @@
   </head>
 <body>
 	<%@ include file="host_header.jsp"%>	
-	
+	<main>
+		
+	</main>
 	<%@ include file='footer.jsp' %>
 </body>
 </html>

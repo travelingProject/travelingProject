@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/header.css" />
 <link rel="stylesheet" href="css/host_header.css" />
+<link rel="stylesheet" href="css/host_aside.css" />
 <link rel="stylesheet" href="css/host_index.css" />
 <link rel="stylesheet" href="css/reservation_acception.css" />
 <link rel="stylesheet" href="css/footer.css" />
@@ -42,8 +43,7 @@
 </head>
 <body>
 	<%@ include file="host_header.jsp"%>
-	<jsp:useBean id="reservationAcception"
-		class="com.jslee.traveling.ReservationAcception" scope="page" />
+	<jsp:useBean id="reservationAcception" class="com.jslee.traveling.ReservationAcception" scope="page" />
 	<%
 		String hostId = (String) session.getAttribute("id");
 		// 예약 대기중인 예약 테이블 객체 배열
