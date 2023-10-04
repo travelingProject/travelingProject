@@ -64,7 +64,7 @@ public class ControlDB {
 			condb();
 			// 예약번호, 체크인&아웃 날짜, 인원수 추출
 			rs = sta.executeQuery(
-					"SELECT r.reservation_id, r.check_in_date, r.check_out_date, r.people, si.stay_name, si.location "
+					"SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, r.people, si.stay_name, si.location "
 							+ "FROM reservation r " + "JOIN room_info ri ON r.room_id = ri.room_id "
 							+ "JOIN stay_info si ON ri.stay_id = si.stay_id WHERE user_id = '" + user_id + "';");
 			while (rs.next()) {
@@ -225,7 +225,7 @@ public class ControlDB {
 		try {
 			condb();
 			rs = sta.executeQuery(
-					"SELECT r.reservation_id, si.stay_name, si.location, r.check_in_date, r.check_out_date, rv.review_time " 
+					"SELECT r.reservation_id, si.stay_name, si.location, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, DATE_FORMAT(rv.review_time, '%Y.%m.%d') AS review_time " 
 					+ "FROM reservation AS r "
 					+ "JOIN room_info AS ri ON r.room_id = ri.room_id "
 					+ "JOIN stay_info AS si ON ri.stay_id = si.stay_id "

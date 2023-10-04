@@ -1,4 +1,4 @@
-/* 내 일정 인덱스 */
+/* �궡 �씪�젙 �씤�뜳�뒪 */
 
 #planner_wrap h2 {
     font-size: 20px;
@@ -115,7 +115,7 @@ ul #planner_category {
     cursor: pointer;
 }
 
-/* 상세보기 인덱스 */
+/* �긽�꽭蹂닿린 �씤�뜳�뒪 */
 
 #planner_header {
     margin-left: 70px;
@@ -182,12 +182,12 @@ ul #planner_category {
     font-size: 14px;
 }
 
-#first_content {
-    padding: 20px;
+form.content_form {
+    padding: 10px 20px;
 }
 
-.days_contents > div > form {
-    padding: 10px 20px;
+.content:nth-child(n+2) .content_form {
+	padding: 0px 20px 10px;
 }
 
 .content > form {
@@ -195,10 +195,17 @@ ul #planner_category {
 }
 
 .content_time {
-    display: flex;
     margin: 10px;
     text-align: center;
 }
+
+.content_form input[type="time"],
+.content_form input[type="text"] {
+	padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
 
 .content_act {
     margin: 11px;
@@ -216,19 +223,20 @@ ul #planner_category {
     margin: 10px 20px 20px;
 }
 
-/* modal창 CSS */
+/* modal李� CSS */
 
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
     top: 100px;
     left: 500px;
     width: 1000px;
     height: 700px;
     overflow: auto;
-    background-color: rgb(219, 235, 241);
     border: 1px solid black;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #fff;
 }
 
 .modal-content {

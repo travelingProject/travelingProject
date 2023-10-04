@@ -19,9 +19,11 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/planner.css">
-    <script src="./js/planner.js"></script>
+    <script src="js/planner.js"></script>
     <script src="js/header.js"></script>
   </head>
+<%@ page import="java.util.List" %>
+<%@ page import="com.hh.DTO.MyPlanner" %>
 
   <body>
     <jsp:include page="login_header.jsp" />
@@ -42,20 +44,35 @@
               <li>공유하기</li>
               <li>최근수정일</li>
             </ul>
+            <%
+				List<MyPlanner> selList = (List<MyPlanner>) request.getAttribute("selList");
+            	if (selList.size() == 0) {
+        	%>
+            		<ul class="planner_list">
+            			<li>숙소를 예약하시면 일정이 등록됩니다.</li>
+            		</ul>
+         	<%	
+            	} else {
+					for (int i = 0; i < selList.size(); i++) {		
+			%>            
             <ul class="planner_list">
-              <li>
+              <li class="planner_stay_info">
                 <a href="#">
-                  <span>경기/가평</span>
-                  <h6>리버웨이브</h6>
+                  <span><%= selList.get(i).getLocation() %></span>
+                  <h6 class="p_stay_name"><%= selList.get(i).getStay_name() %></h6>
                 </a>
               </li>
-              <li>2023.08.14 ~ 2023.08.16</li>
-              <li><button id="show_btn" class="show_detail">상세보기</button></li>
+              <li class="planner_trip_date"><%= selList.get(i).getCheck_in_date() %> ~ <%= selList.get(i).getCheck_out_date() %></li>
+              <li><button id="show_btn" class="show_detail" onclick="detail_plan(event)" data-plan_id="<%= selList.get(i).getPlan_id() %>">상세보기</button></li>
               <li><a href="#"><img src="./images/share.png" alt=""></a></li>
               <li>
-                <span>2023.08.12</span>
+                <span class="planner_update_date"><%= selList.get(i).getModified_date() %></span>
               </li>
             </ul>
+            <%
+            	}
+           	}
+			%>
           </article>
         </div>
       </section>
@@ -69,8 +86,8 @@
       <div class="modal_content">
         <span class="close">&times;</span>
         <section id="planner_header">
-          <h2>리버웨이브</h2> <!-- 예약한 숙소의 이름을 추출 -->
-          <h5>2023.08.14 ~ 2023.08.16</h5> <!-- 예약한 체크인&아웃 날짜 추출 -->
+          <h2></h2> <!-- 예약한 숙소의 이름을 추출 -->
+          <h5></h5> <!-- 예약한 체크인&아웃 날짜 추출 -->
         </section>
         <section>
           <div class="main">

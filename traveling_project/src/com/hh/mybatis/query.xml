@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="query_ex">
+
+	<select id="sel" resultType="com.hh.DTO.MyPlanner" parameterType="com.hh.DTO.MyPlanner">
+		SELECT s.stay_name, s.location,
+		date_format(r.check_in_date, '%Y.%m.%d') AS check_in_date,
+		date_format(r.check_out_date, '%Y.%m.%d') AS check_out_date,
+		date_format(p.modified_date, '%Y.%m.%d') AS modified_date,
+		p.plan_id
+		FROM planner p
+		JOIN reservation r ON p.reservation_id = r.reservation_id
+		JOIN room_info ro ON r.room_id = ro.room_id
+		JOIN stay_info s ON ro.stay_id = s.stay_id
+		WHERE r.user_id = #{user_id};
+	</select>
+
+</mapper>

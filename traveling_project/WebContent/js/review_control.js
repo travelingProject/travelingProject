@@ -24,7 +24,12 @@ function delete_review(event) {
 				reservationId : reservationId
 			},
 			success: function(data) {
-				$reviewItem.remove();
+				$.ajax({
+					url : "user_review_info.jsp",
+					success : function(data) {
+						$("#review_list").html(data);
+					}
+				});
 			}
 		});
 	}
