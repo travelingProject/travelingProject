@@ -17,19 +17,14 @@
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-    <!-- slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />    
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <!-- 카카오 우편번호 찾기 api -->
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>    
 	<!-- 카카오맵 api -->
-	<script src="//dapi.kakao.com/v2/maps/sdk.js?4f4f7eda96f049ce4276eb62ec56ca08"></script>
-	<!-- script -->
-    <script src="js/add_accomodation.js"></script>
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
+	<!-- script -->    
     <script src="js/host_header.js"></script>
     <title>숙소 등록</title>
   </head>
@@ -114,9 +109,9 @@
               </tr>
               <tr>
                 <th>숙소 주소</th>
-                <td><input type="text" id="sample5_address" placeholder="주소"></td>
-                <td><input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br></td>
-                <td><div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div></td>
+                <td><input type="text" id="sample5_address" placeholder="주소" /></td>
+    			<td><input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" /><br /></td>
+                <td><div id="map" style="width:300px;height:300px;margin-top:10px;display:none"></div></td>                
               </tr>
               <tr>
                 <th>숙소 이미지</th>
@@ -151,5 +146,6 @@
         </ul>
       </div>
     </footer>
+    <script src="js/add_accomodation.js"></script>
   </body>
 </html>

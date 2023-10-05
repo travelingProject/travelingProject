@@ -1,20 +1,75 @@
-main{
-    display:flex;
+main {
+	display: flex;
 }
 
-table{
-    border-collapse:collapse;
-    border:1px solid #000;
+main section {
+	width: 100%;
+	margin-top: 60px;
+	padding: 50px 250px;	
+	background: #f5f5f5;
+	text-align:center;
 }
 
-#add{    
-    margin: 60px auto;
+section h2 {
+	padding: 0;
+	margin-bottom:20px;
+	font-size: 20px;
 }
 
-th{
-    border:1px solid #000;
+table {
+	border-collapse: collapse;
+	border: 1px solid #000;
+	width: 100%;
 }
 
-td{
-    border:1px solid #000;
+#add {
+	margin: 60px auto;
+}
+
+th {
+	border: 1px solid #ccc;
+	background: #f8f8fa
+}
+
+td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	background:#fff;
+	text-align:left;
+}
+
+input[type="text"] {
+	width: 300px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+input[type="text"]:focus{
+	outline:none;
+	border:2px solid #1aa3ff;
+}
+
+input[type="button"] {
+	width: 70px;
+	height: 31px;
+	background: #1aa3ff;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+
+input[type="submit"]{
+	margin-top:20px;
+	width:200px;
+	height:30px;
+	background:#1aa3ff;
+	border:1px solid #ccc;
+	border-radius:5px;
+	cursor:pointer;	
+}
+
+input#sample5_address:focus{
+	outline:none;	
+	border:1px solid #ccc;
 }
