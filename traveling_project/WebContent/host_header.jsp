@@ -41,6 +41,8 @@
 				<li>
 					<a href="add_accomodation.jsp">숙소 등록하기</a>
 					<a href="#">객실 등록하기</a>
+					<a href="#">숙소  수정하기</a>
+					<a href="#">객실 수정하기</a>
 				</li>
 				<li>
 					<a href="#">예약 정보 조회</a>

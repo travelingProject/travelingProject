@@ -289,7 +289,7 @@ $(document).ready(function () {
             $("#id_text").css("color", "#1aa3ff");
             $("#id_text").html("사용가능한 아이디 입니다.");
             $("#id").css("border", "2px solid #1aa3ff");
-          } else {
+          } else{
             $("#id_text").html("특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.");
             $("#id").css("border", "2px solid red");
           }
@@ -335,7 +335,7 @@ $(document).ready(function () {
       $("#name_text_td").css("display", "block");
       $("#name_text").html("이름을 올바르게 입력해주세요.");
       $("#name").css("border", "2px solid red");
-    } else {
+    } else{
       $("#name_text_td").css("display", "none");
       $("#name").css("border", "2px solid #1aa3ff");
       $("#name_text").hide();

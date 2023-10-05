@@ -1,11 +1,28 @@
 var mapContainer = document.getElementById("map"), // 지도를 표시할 div
 mapOption = {
-	center : new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+	center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막으려면 draggable: false 옵션을 추가하세요
 	level : 5, // 지도의 확대 레벨
 };
 
 // 지도를 미리 생성
 var map = new daum.maps.Map(mapContainer, mapOption);
+
+// 지도가 이동, 확대, 축소로 인해 중심좌표가 변경되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
+kakao.maps.event.addListener(map, 'center_changed', function() {
+
+	// 지도의 레벨을 얻어옵니다
+	var level = map.getLevel();
+
+	// 지도의 중심좌표를 얻어옵니다
+	var latlng = map.getCenter();
+
+	var latitude = latlng.getLat();
+	var longitude = latlng.getLng();
+
+	document.getElementById("latitudeInput").value = latitude;
+    document.getElementById("longitudeInput").value = longitude;
+});
 
 // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -13,58 +30,12 @@ var mapTypeControl = new kakao.maps.MapTypeControl();
 // 지도 타입 컨트롤을 지도에 표시합니다
 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-function getInfo() {
-	// 지도의 현재 중심좌표를 얻어옵니다
-	var center = map.getCenter();
-
-	// 지도의 현재 레벨을 얻어옵니다
-	var level = map.getLevel();
-
-	// 지도타입을 얻어옵니다
-	var mapTypeId = map.getMapTypeId();
-
-	// 지도의 현재 영역을 얻어옵니다
-	var bounds = map.getBounds();
-
-	// 영역의 남서쪽 좌표를 얻어옵니다
-	var swLatLng = bounds.getSouthWest();
-
-	// 영역의 북동쪽 좌표를 얻어옵니다
-	var neLatLng = bounds.getNorthEast();
-
-	// 영역정보를 문자열로 얻어옵니다. ((남,서), (북,동)) 형식입니다
-	var boundsStr = bounds.toString();
-
-	var message = '지도 중심좌표는 위도 ' + center.getLat() + ', <br>';
-	message += '경도 ' + center.getLng() + ' 이고 <br>';
-	message += '지도 레벨은 ' + level + ' 입니다 <br> <br>';
-	message += '지도 타입은 ' + mapTypeId + ' 이고 <br> ';
-	message += '지도의 남서쪽 좌표는 ' + swLatLng.getLat() + ', ' + swLatLng.getLng()
-			+ ' 이고 <br>';
-	message += '북동쪽 좌표는 ' + neLatLng.getLat() + ', ' + neLatLng.getLng()
-			+ ' 입니다';
-
-	// 개발자도구를 통해 직접 message 내용을 확인해 보세요.
-	console.log(message);
-}
-
 // 주소-좌표 변환 객체를 생성
 var geocoder = new kakao.maps.services.Geocoder();
 
-var callback = function(result, status) {
-	if (status === kakao.maps.services.Status.OK) {
-		$("input[name=lng]").val(result[0].x);
-		$("input[name=lat]").val(result[0].y);
-	}
-};
-
-var stayAddr = document.getElementById('sample5_address').value;
-
-geocoder.addressSearch(stayAddr, callback);
-
 // 마커를 미리 생성
 var marker = new daum.maps.Marker({
-	position : new daum.maps.LatLng(37.537187, 127.005476),
+	position : new daum.maps.LatLng(33.450701, 126.570667),
 	map : map,
 });
 
@@ -95,3 +66,60 @@ function sample5_execDaumPostcode() {
 		},
 	}).open();
 }
+
+$(document).ready(function(){
+	$('#stay_name').blur(function(){
+		if($('#stay_name').val() == ''){
+			$('#stay_name').css('border','2px solid red');
+			$('#stay_name_text').css('display','block');
+		} else{
+			$('#stay_name').css('border','1px solid #ccc');
+			$('#stay_name_text').css('display','none');
+		}
+	});
+	
+	$('#addr_search').click(function(){
+		$('#sample5_address').css('border','1px solid #ccc');
+		$('#addr_text').css('display','none');
+	});
+	
+	$('#host_phone').blur(function(){
+		if($('#host_phone').val() == ''){
+			$('#host_phone').css('border','2px solid red');
+			$('#phone_text').css('display','block');
+		} else{
+			$('#host_phone').css('border','1px solid #ccc');
+			$('#phone_text').css('display','none');
+		}
+	});	
+	
+	
+	$('#add_btn').click(function(e){
+		if($('#stay_name').val() == ''){
+			e.preventDefault();
+			$('#stay_name').css('border','2px solid red');
+			$('#stay_name_text').css('display','block');
+		} else if($('#sample5_address').val() == ''){
+			e.preventDefault();
+			$('#sample5_address').css('border','2px solid red');
+			$('#addr_text').css('display','block');
+		} else if($('#host_phone').val() == ''){
+			e.preventDefault();
+			$('#host_phone').css('border','2px solid red');
+			$('#phone_text').css('display','block');
+		}
+	});	
+});
+
+function readURL(input) {
+	  if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('preview').style.display = 'block';
+	      document.getElementById('preview').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('preview').src = "";
+	  }
+	}

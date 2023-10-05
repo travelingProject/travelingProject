@@ -16,6 +16,16 @@ section h2 {
 	font-size: 20px;
 }
 
+section .error_text{
+	display:inline-block;
+	font-size:13px;
+	line-height:1;
+	margin:5px 0 0 2px;	
+	color:red;
+	font-weight:bold;
+	display:none;
+}
+
 table {
 	border-collapse: collapse;
 	border: 1px solid #000;
@@ -57,6 +67,7 @@ input[type="button"] {
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	cursor: pointer;
+	font-weight:bold;
 }
 
 input[type="submit"]{
@@ -67,6 +78,7 @@ input[type="submit"]{
 	border:1px solid #ccc;
 	border-radius:5px;
 	cursor:pointer;	
+	font-weight:bold;
 }
 
 input#sample5_address:focus{
