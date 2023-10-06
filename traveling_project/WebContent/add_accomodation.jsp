@@ -27,14 +27,10 @@
 <link rel="stylesheet" type="text/css"
 	href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <!-- jquery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- 카카오 api -->
+<script	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
 <!-- script -->
 <title>숙소 등록</title>
 </head>
@@ -44,7 +40,7 @@
 		<%@ include file="host_aside.jsp"%>
 		<section>
 			<h2>숙소 등록하기</h2>
-			<form action="hello.jsp">
+			<form action="insert.condb">
 				<table>
 					<tr>
 						<th>숙소 이름</th>
@@ -54,13 +50,25 @@
 						</td>						
 					</tr>
 					<tr>
-						<th rowspan="2">숙소 주소</th>
+						<th rowspan="4">숙소 주소</th>
 						<td>
 							<input type="hidden" name="latitude" id="latitudeInput">
     						<input type="hidden" name="longitude" id="longitudeInput">
-							<input type="text" id="sample5_address" name="stay_addr" readonly="readonly" placeholder="주소" />
+							<input type="text" id="sample4_postcode" name="post_code" readonly="readonly" placeholder="우편번호" />
 							<input type="button" id="addr_search" onclick="sample5_execDaumPostcode()" value="주소 검색" />
 							<p id="addr_text" class="error_text">주소를 입력해주세요.</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" name="road_addr" id="sample4_roadAddress" placeholder="도로명주소" readonly="readonly" />
+                  			<input type="text" name="jibun_addr" id="sample4_jibunAddress" placeholder="지번주소" readonly="readonly" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" id="sample4_detailAddress" name="detail_addr" placeholder="상세주소" />
+                  			<input type="text" id="sample4_extraAddress" name="reference_addr" placeholder="참고항목" readonly="readonly" />
 						</td>
 					</tr>
 					<tr>
@@ -71,17 +79,28 @@
 					<tr>
 						<th>연락받을 전화번호</th>
 						<td>
-							<input type="text" id="host_phone" name="host_phone" placeholder="전화번호를 입력하세요.">
+							<input type="text" id="host_phone" name="host_phone" placeholder="연락받을 전화번호를 입력하세요.">
 							<p id="phone_text" class="error_text">"-"를 제외한 전화번호 11자리를 입력해주세요.</p>
 						</td>
 					</tr>
 					<tr>
 						<th>숙소 이미지</th>
-						<td>
-							<input type="file" name="" id="" multiple onchange="readURL(this);"/>
-							<img id="preview"style="display:none; height:300px;"/>							
+						<td>							
+							<input type="file" id="btnAtt" name="stay_image" multiple="multiple" onchange="readURL(this);"/>
+							<label for="btnAtt">이미지 업로드</label>							
+							<input type="button" id="file_delete_all" value="이미지 전체 삭제" onclick="deleteAllFiles()"/>
+							<p id="file_error_text" class="error_text"></p>
+							<div id="att_zone" data-placeholder="파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요"></div>							
 						</td>
-					</tr>					
+					</tr>
+					<tr>
+						<th>숙소 상세 정보</th>
+						<td>
+							<p style="line-height:1">
+								<textarea name="contents" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea>
+							</p>							
+						</td>
+					</tr>	
 				</table>
 				<input type="submit" id='add_btn' value="등록하기">
 			</form>

@@ -11,7 +11,7 @@ $(document).ready(function () {
   // 이메일 검사 정규식
   const emailJ = /^[a-zA-Z0-9]+$/;
   // 휴대폰 번호 정규식
-  const phoneJ = /^\d{3}-?\d{3,4}-?\d{4}$/;
+  const phoneJ = /^01[016789]\d{3,4}\d{5}$/;
   // 사업자 등록번호 정규식
   const businessNumJ1 = /^[0-9]{3}$/;
   const businessNumJ2 = /^[0-9]{2}$/;
