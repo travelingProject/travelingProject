@@ -37,6 +37,7 @@
         <div id="planner_wrap">
           <article>
             <h2>내 일정</h2>
+            <span class="notice_help"><u>#상세보기를 눌러 일정을 수정할 수 있습니다.</u></span>
             <ul id="planner_category">
               <li>숙소 이름</li>
               <li>여행 기간</li>
@@ -44,8 +45,10 @@
               <li>공유하기</li>
               <li>최근수정일</li>
             </ul>
+            <%@ page import="com.hh.db.ReservationSort" %>
             <%
 				List<MyPlanner> selList = (List<MyPlanner>) request.getAttribute("selList");
+            	ReservationSort.sortByCheckInDateForPlanner(selList); // 체크인 날짜 빠른 순으로 정렬
             	if (selList.size() == 0) {
         	%>
             		<ul class="planner_list">
@@ -82,71 +85,74 @@
     <!-- footer include -->
     <jsp:include page="./footer.jsp"/>
     <!-- 수정하기 인덱스 -->
-    <div id="planner_modal" class="modal">
-      <div class="modal_content">
-        <span class="close">&times;</span>
-        <section id="planner_header">
-          <h2></h2> <!-- 예약한 숙소의 이름을 추출 -->
-          <h5></h5> <!-- 예약한 체크인&아웃 날짜 추출 -->
-        </section>
-        <section>
-          <div class="main">
-            <div class="tabs">
-              <ul class="days_tabs">
-                <!-- <li id="travel_item" class="click_days"><b>준비물</b></li> -->
-              </ul>
-            </div>
-            <div class="contents">
-              <div class="days_selected show">
-                <div class="days_title">
-                  <h3>1일차</h3>
+    <div class="planner_modal_wrap">
+        <div id="planner_modal_index">
+            <button class="close_btn">&times;</button>
+            <form action="" id="planner_form" method="post">
+                <!-- 모달 form -->
+                <input type="hidden" name="pid" id="rid_hidden" value=""> <!-- plan_id hidden-->
+                <div id="pm_header">
+                    <p></p>
+                    <!-- stay_info 테이블의 stay_name 컬럼 -->
+                    <span></span>
+                    <!-- reservation 테이블의 check_in_date, check_out_date 컬럼 -->
                 </div>
-                <div class="days_sub">
-                  <form>
-                    <input class="select_all" type="checkbox"> 전체선택
-                  </form>
-                  <span id="add_plan">일정 추가하기 +</span>
-                  <span id="delete_plan">일정 삭제하기 -</span>
+                <div id="pm_contents">
+                    <div class="planner_tab">
+                        <ul class="tab_list">
+                            <li class="is_on" data-tab="day1">
+                              <a href="#day1" class="tab_btn">1일차</a>
+                              <div id="day1" class="tab_cont">
+                                <p>2023.10.24</p> <!-- n일차별 날짜 출력 -->
+                                <span></span>
+                                <div class="schedule">
+                                    <div class="schedule_detail">
+                                    	<div class="plist_numb"></div>
+                                        <input type="time" name="plan_start_time" class="pst"> ~ 
+                                        <input type="time" name="plan_end_time" class="pet">
+                                        <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요.">
+                                        <span></span>
+                                    </div>
+                                    <div class="schedule_detail">
+                                    	<div class="plist_numb"></div>
+                                        <input type="time" name="plan_start_time" class="pst"> ~ 
+                                        <input type="time" name="plan_end_time" class="pet"> <br>
+                                        <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요.">
+                                        <span></span>
+                                    </div>
+                                    
+                                </div>
+                              </div>
+                            </li>
+                            <li data-tab="day2">
+                              <a href="#day2" class="tab_btn">2일차</a>
+                              <div id="day2" class="tab_cont">
+                                <p>2023.10.25</p> <!-- n일차별 날짜 출력 -->
+                                <div class="schedule">
+                    
+                                </div>
+                              </div>
+                            </li>
+                            <li data-tab="day3">
+                              <a href="#day3" class="tab_btn">3일차</a>
+                              <div id="day3" class="tab_cont">
+                                <p>2023.10.26</p> <!-- n일차별 날짜 출력 -->
+                                <div class="schedule">
+                                    
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                    </div>
+                <div id="pm_btn">
+                    <input type="button" id="modi_btn" value="수정">
+                    <input type="submit" id="modi_save_btn" value="저장">
+                    <input type="button" id="can_btn" name="can_btn" value="종료">
+                    <input type="button" id="modi_can_btn" name="can_btn" value="취소">
                 </div>
-                <div class="days_contents">
-                  <!-- 일정 추가하기 & 삭제 버튼을 통해 form 생성 및 제거 -->
-                </div>
-              </div>
-              <div class="days_selected">
-                <div class="days_title">
-                  <h2>여행 준비물</h2>
-                </div>
-                <div class="category_items">
-                  <div class="category_list">
-                    <div class="item_clothes">
-                      <img src="./images/clothes.png" alt="" width="36px" height="36px">
-                    </div>
-                    <div class="item_essential">
-                      <img src="./images/essential.png" alt="" width="36px" height="36px">
-                    </div>
-                    <div class="item_shower">
-                      <img src="./images/shower.png" alt="" width="36px" height="36px">
-                    </div>
-                    <div class="item_medicine">
-                      <img src="./images/medicine.png" alt="" width="36px" height="36px">
-                    </div>
-                    <div class="item_food">
-                      <img src="./images/pork.png" alt="" width="36px" height="36px">
-                    </div>
-                    <div class="item_etc">
-                      <img src="./images/etc.png" alt="" width="36px" height="36px">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="modal_footer">
-        <button id="modify_btn">수정하기</button>
-        <button id="share_btn">공유하기</button>
-      </div>
+            </form>
+
+        </div>
     </div>
   </body>
 

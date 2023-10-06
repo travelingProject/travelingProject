@@ -1,12 +1,16 @@
-/* �궡 �씪�젙 �씤�뜳�뒪 */
+/* 내 일정 인덱스 */
 
 #planner_wrap h2 {
     font-size: 20px;
-    margin-bottom: 45px;
 }
 
 #planner_wrap article {
     max-width: 950px;
+}
+
+.notice_help > u {
+	font-size: 14px;
+	color: #777777;
 }
 
 #planner_category {
@@ -18,6 +22,7 @@
     border-top: 2px solid #000;
     overflow: hidden;
     border-bottom: 1px solid #444447;
+    margin-top: 21px;
 }
 
 ul #planner_category {
@@ -115,7 +120,7 @@ ul #planner_category {
     cursor: pointer;
 }
 
-/* �긽�꽭蹂닿린 �씤�뜳�뒪 */
+/* 상세보기 인덱스 */
 
 #planner_header {
     margin-left: 70px;
@@ -182,12 +187,12 @@ ul #planner_category {
     font-size: 14px;
 }
 
-form.content_form {
-    padding: 10px 20px;
+#first_content {
+    padding: 20px;
 }
 
-.content:nth-child(n+2) .content_form {
-	padding: 0px 20px 10px;
+.days_contents > div > form {
+    padding: 10px 20px;
 }
 
 .content > form {
@@ -195,17 +200,10 @@ form.content_form {
 }
 
 .content_time {
+    display: flex;
     margin: 10px;
     text-align: center;
 }
-
-.content_form input[type="time"],
-.content_form input[type="text"] {
-	padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
 
 .content_act {
     margin: 11px;
@@ -223,59 +221,177 @@ form.content_form {
     margin: 10px 20px 20px;
 }
 
-/* modal李� CSS */
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    top: 100px;
-    left: 500px;
-    width: 1000px;
-    height: 700px;
-    overflow: auto;
-    border: 1px solid black;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    background-color: #fff;
+/* 모달 래퍼 */
+.planner_modal_wrap {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6); /* 반투명한 배경 */
+	display: none;
+	justify-content: center;
+	align-items: center;
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;                        
+/* 모달 창 */
+#planner_modal_index {
+	font-family: 'Nanum Gothic', sans-serif;
+	position: relative;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+	max-width: 1000px;
+    height: 830px;
+	margin: 45px auto;
+	padding: 20px;
+	border: 1px solid #888;
 }
 
-.close {
-    color: black;
-    float: right;
-    font-size: 39px;
-    margin: 0 auto;
+#pm_header > p {
+	font-size: 26px;
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+
+.tab_cont > p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#pm_header > span {
+	font-size: 16px;
+}
+
+.schedule_detail {
+    margin: 10px 0;
+}
+
+.schedule_detail > span {
+    display: block;
+    content: "";
     position: absolute;
-    top: -8px;
-    right: 8px;
+    border-bottom: 1px solid #ccc;
+    margin-left: -30px;
+    width: 100%;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.schedule_detail > input {
+    border: none;
 }
 
-.modal_footer {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
+.pst, .pet {
+    color: #136BF0;
+    font-size: 15px;
+    border-radius: 5px;
 }
 
-.modal_footer > button {
-    margin: 0 10px;
-    padding: 10px 25px;
-    cursor: pointer;
+.pcon {
+    font-size: 18px;
+    margin: 10px 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
 }
 
-.modal_btn {
+/* 저장, 취소 버튼은 default 숨김상태 */
+#modi_save_btn,
+#modi_can_btn {
     display: none;
+}
+
+/* 닫기 버튼 */
+#planner_modal_index .close_btn {
+	color: #888;
+	font-size: 24px;
+	position: absolute;
+	right: 3%;
+	cursor: pointer;
+	padding: 2px 10px;
+	border: 1px solid #ccc;
+	border-radius: 35%;
+	background-color: #f3f2f2;
+}
+
+.close_btn:hover, .close_btn:focus {
+	color: black;
+	text-decoration: none;
+}
+
+/* 버튼 스타일 */
+#pm_btn {
+	margin-top: 575px;
+	display: flex;
+	justify-content: center;
+}
+
+#pm_btn input {
+	padding: 10px 20px;
+	margin: 0 10px;
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+#pm_btn input:hover {
+	background-color: #0056b3;
+}
+
+/* tab */
+.planner_tab {
+    position: relative;
+    margin-top: 40px;
+}
+
+.planner_tab .tab_list {
+    display: flex;
+}
+
+.planner_tab .tab_list li {
+    margin-right: 3px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.planner_tab .tab_list .tab_btn {
+    font-size: 20px;
+}
+
+.planner_tab .tab_list .tab_cont {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: 906px;
+    height: 555px;
+    padding: 30px;
+    background-color: #F7F8F9;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.planner_tab .tab_list li.is_on {
+    background-color: #1aa3ff;
+}
+
+.planner_tab .tab_list li.is_on .tab_btn {
+    color: #fff;
+    font-weight: bold;
+}
+
+.planner_tab .tab_list li.is_on .tab_cont {
+    display: block;
+}
+
+.plist_numb {
+	width: 24px;
+	height: 24px;
+	background: url("../images/numb_one.png") no-repeat center/contain;
+	vertical-align: top;
+	display: inline-block;
 }
