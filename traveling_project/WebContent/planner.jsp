@@ -107,14 +107,14 @@
                                 <span></span>
                                 <div class="schedule">
                                     <div class="schedule_detail">
-                                    	<div class="plist_numb"></div>
-                                        <input type="time" name="plan_start_time" class="pst"> ~ 
-                                        <input type="time" name="plan_end_time" class="pet">
-                                        <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요.">
+                                    	<div class="plist_numb one"></div>
+                                        <input type="time" name="plan_start_time" class="pst" disabled="disabled"> ~ 
+                                        <input type="time" name="plan_end_time" class="pet" disabled="disabled">
+                                        <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요." disabled="disabled">
                                         <span></span>
                                     </div>
                                     <div class="schedule_detail">
-                                    	<div class="plist_numb"></div>
+                                    	<div class="plist_numb two"></div>
                                         <input type="time" name="plan_start_time" class="pst"> ~ 
                                         <input type="time" name="plan_end_time" class="pet"> <br>
                                         <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요.">
