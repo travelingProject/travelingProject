@@ -373,7 +373,7 @@ ul #planner_category {
     height: 555px;
     padding: 30px;
     background-color: #F7F8F9;
-    border-radius: 4px;
+    border-radius: 10px;
     overflow: auto;
 }
 
