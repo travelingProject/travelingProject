@@ -1,15 +1,8 @@
 package com.jslee.stayinfo;
 
 public class StayInfo {
-	String stayName,postCode,lat,lngt,roadAddr,JibunAddr,detailAddr,extraAddr,hostPhone,stayImage1,stayImage2,stayImage3,stayImage4,stayImage5,contents;
-
-	public String getDetailAddr() {
-		return detailAddr;
-	}
-
-	public void setDetailAddr(String detailAddr) {
-		this.detailAddr = detailAddr;
-	}
+	String stayName, postCode, roadAddr, JibunAddr, detailAddr, extraAddr, lat, lngt, hostPhone, image1, image2, image3,
+			image4, image5, contents;
 
 	public String getStayName() {
 		return stayName;
@@ -25,22 +18,6 @@ public class StayInfo {
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
-	}
-
-	public String getLat() {
-		return lat;
-	}
-
-	public void setLat(String lat) {
-		this.lat = lat;
-	}
-
-	public String getLngt() {
-		return lngt;
-	}
-
-	public void setLngt(String lngt) {
-		this.lngt = lngt;
 	}
 
 	public String getRoadAddr() {
@@ -59,12 +36,36 @@ public class StayInfo {
 		JibunAddr = jibunAddr;
 	}
 
+	public String getDetailAddr() {
+		return detailAddr;
+	}
+
+	public void setDetailAddr(String detailAddr) {
+		this.detailAddr = detailAddr;
+	}
+
 	public String getExtraAddr() {
 		return extraAddr;
 	}
 
 	public void setExtraAddr(String extraAddr) {
 		this.extraAddr = extraAddr;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+
+	public String getLngt() {
+		return lngt;
+	}
+
+	public void setLngt(String lngt) {
+		this.lngt = lngt;
 	}
 
 	public String getHostPhone() {
@@ -75,44 +76,44 @@ public class StayInfo {
 		this.hostPhone = hostPhone;
 	}
 
-	public String getStayImage1() {
-		return stayImage1;
+	public String getImage1() {
+		return image1;
 	}
 
-	public void setStayImage1(String stayImage1) {
-		this.stayImage1 = stayImage1;
+	public void setImage1(String image1) {
+		this.image1 = image1;
 	}
 
-	public String getStayImage2() {
-		return stayImage2;
+	public String getImage2() {
+		return image2;
 	}
 
-	public void setStayImage2(String stayImage2) {
-		this.stayImage2 = stayImage2;
+	public void setImage2(String image2) {
+		this.image2 = image2;
 	}
 
-	public String getStayImage3() {
-		return stayImage3;
+	public String getImage3() {
+		return image3;
 	}
 
-	public void setStayImage3(String stayImage3) {
-		this.stayImage3 = stayImage3;
+	public void setImage3(String image3) {
+		this.image3 = image3;
 	}
 
-	public String getStayImage4() {
-		return stayImage4;
+	public String getImage4() {
+		return image4;
 	}
 
-	public void setStayImage4(String stayImage4) {
-		this.stayImage4 = stayImage4;
+	public void setImage4(String image4) {
+		this.image4 = image4;
 	}
 
-	public String getStayImage5() {
-		return stayImage5;
+	public String getImage5() {
+		return image5;
 	}
 
-	public void setStayImage5(String stayImage5) {
-		this.stayImage5 = stayImage5;
+	public void setImage5(String image5) {
+		this.image5 = image5;
 	}
 
 	public String getContents() {
@@ -122,5 +123,5 @@ public class StayInfo {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
+
 }

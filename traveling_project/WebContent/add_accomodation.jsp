@@ -21,11 +21,6 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"
 	rel="stylesheet" />
-<!-- slider -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <!-- jquery -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- 카카오 api -->
@@ -40,7 +35,7 @@
 		<%@ include file="host_aside.jsp"%>
 		<section>
 			<h2>숙소 등록하기</h2>
-			<form action="insert.condb">
+			<form action="insert.staydb?comm=ins" method="post">
 				<table>
 					<tr>
 						<th>숙소 이름</th>

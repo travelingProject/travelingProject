@@ -6,9 +6,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.jslee.stayinfo.StayInfo;
 
 public class Insert {
-	static DBSelect mo = new DBSelect();
+	static Select mo = new Select();
 	
-	public static DBSelect instance() {
+	public static Select instance() {
 		return mo;
 	}
 	
@@ -16,7 +16,7 @@ public class Insert {
 	
 	public void dbInsert(StayInfo user){
 		SqlSession s = f.openSession();
-		s.insert("student_insert", user);
+		s.insert("stayInfoInsert", user);
 		s.commit();
 		s.close();
 	}

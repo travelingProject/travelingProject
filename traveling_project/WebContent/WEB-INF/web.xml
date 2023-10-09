@@ -5,7 +5,6 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 
-
 	<servlet>
 
 		<servlet-name>condb</servlet-name>
@@ -20,6 +19,23 @@
 		<servlet-name>condb</servlet-name>
 
 		<url-pattern>*.condb</url-pattern>
+
+	</servlet-mapping>
+
+	<servlet>
+
+		<servlet-name>stayDB</servlet-name>
+
+		<servlet-class>com.jslee.controller.Servlet</servlet-class>
+
+	</servlet>
+
+
+	<servlet-mapping>
+
+		<servlet-name>stayDB</servlet-name>
+
+		<url-pattern>*.staydb</url-pattern>
 
 	</servlet-mapping>
 
