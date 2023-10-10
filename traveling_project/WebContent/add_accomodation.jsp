@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/header.css" />
 <link rel="stylesheet" href="css/add_accomodation.css" />
-<link rel="stylesheet" href="css/host_header.css" />
-<link rel="stylesheet" href="css/host_index.css" />
+<link rel="stylesheet" href="css/host_common.css" />
 <link rel="stylesheet" href="css/footer.css" />
 <!-- favicon -->
 <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />

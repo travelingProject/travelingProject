@@ -11,14 +11,14 @@
 	<aside>
 		<ul>
 			<li><a href="#">숙소 관리</a></li>
-			<li><a href="#">숙소 등록하기</a></li>
+			<li><a href="add_accomodation.jsp">숙소 등록하기</a></li>
 			<li><a href="#">객실 등록하기</a></li>
 			<li><a href="#">내가 등록한 숙소</a></li>
 		</ul>
 		<ul>
 			<li><a href="#">예약 관리</a></li>
 			<li><a href="#">예약 정보 조회</a></li>
-			<li><a href="#">예약 승인/거부</a></li>
+			<li><a href="reservation_acception.jsp">예약 승인/거부</a></li>
 			<li><a href="#">지난 예약 내역</a></li>
 		</ul>
 		<ul>

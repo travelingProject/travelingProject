@@ -1,11 +1,10 @@
 body{
-  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);
-  overflow:hidden;
+  background: linear-gradient(lightCyan, skyBlue, deepSkyBlue);  
 }
 
 #login_table {
   width: 500px;  
-  margin: 170px auto 90px;
+  margin: 190px auto 110px;
   padding: 60px 50px;
   background: #fff;
   border-radius: 20px;
