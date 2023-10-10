@@ -21,7 +21,7 @@ public class ControlDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
-					"xhddlf336!");
+					"0509");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,6 +76,7 @@ public class ControlDB {
 				rinfo.setStayName(rs.getString("stay_name"));
 				rinfo.setLocation(rs.getString("location"));
 				rinfoList.add(rinfo);
+				System.out.println(rs.getString("reservation_id"));
 			}
 		} catch (Exception e) {
 
