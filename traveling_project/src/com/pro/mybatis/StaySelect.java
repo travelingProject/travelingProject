@@ -1,23 +1,21 @@
-package com.jslee.mybatis;
-
-
+package com.pro.mybatis;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.jslee.stayinfo.StayInfo;
+import com.pro.dto.StayInfo;
 
-public class Select {
+public class StaySelect {
 	// DB Select 페이지
-	static Select mo = new Select();
+	static StaySelect mo = new StaySelect();
 
-	public static Select instance() {
+	public static StaySelect instance() {
 		return mo;
 	}
 
-	SqlSessionFactory f = SqlCon.getSqlSession();
+	SqlSessionFactory f = DBCon.getSqlSession();
 
 	public List<StayInfo> dbSelect() {
 		// xml파일과 연결된 java파일에 있는 sqlSession을 open

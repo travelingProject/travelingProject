@@ -1,25 +1,25 @@
-package com.jslee.controller;
+package com.pro.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jslee.mybatis.Insert;
-import com.jslee.stayinfo.StayInfo;
+import com.pro.dto.StayInfo;
+import com.pro.mybatis.StayInsert;
 
-public class DBInsert implements Interface{
+public class StayIns implements ControlQuery{
 
-	static DBInsert dbi = new DBInsert();
+	static StayIns dbi = new StayIns();
 
-	public static DBInsert instance() {
+	public static StayIns instance() {
 		return dbi;
 	}
 
 	@Override
-	public String shData(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
+	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
 		HttpSession session = rq.getSession();
 		rs.setCharacterEncoding("UTF-8");
-		Insert insert = new Insert();
+		StayInsert insert = new StayInsert();
 		StayInfo stayInfo = new StayInfo();		
 		String hostId = (String) session.getAttribute("id");
 		stayInfo.setHostId(hostId);

@@ -26,7 +26,7 @@
     <script src="js/header.js"></script>
   </head>
 <%@ page import="java.util.List" %>
-<%@ page import="com.hh.DTO.MyPlanner" %>
+<%@ page import="com.pro.dto.MyPlanner" %>
 
   <body>
     <jsp:include page="login_header.jsp" />

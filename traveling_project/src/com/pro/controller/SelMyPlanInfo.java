@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.pro.controller;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.hh.DTO.MyPlanner;
-import com.hh.mybatis.SelMyPlan;
+import com.pro.dto.MyPlanner;
+import com.pro.mybatis.SelMyPlan;
 
 public class SelMyPlanInfo implements ControlQuery {
 	

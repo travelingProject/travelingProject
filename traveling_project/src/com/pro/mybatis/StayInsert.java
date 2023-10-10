@@ -1,18 +1,18 @@
-package com.jslee.mybatis;
+package com.pro.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.jslee.stayinfo.StayInfo;
+import com.pro.dto.StayInfo;
 
-public class Insert {
-	static Select mo = new Select();
+public class StayInsert {
+	static StayInsert mo = new StayInsert();
 	
-	public static Select instance() {
+	public static StayInsert instance() {
 		return mo;
 	}
 	
-	SqlSessionFactory f = SqlCon.getSqlSession();
+	SqlSessionFactory f = DBCon.getSqlSession();
 	
 	public void dbInsert(StayInfo user){
 		SqlSession s = f.openSession();

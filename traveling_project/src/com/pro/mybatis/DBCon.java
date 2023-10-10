@@ -1,4 +1,4 @@
-package com.hh.mybatis;
+package com.pro.mybatis;
 
 import java.io.Reader;
 
@@ -17,7 +17,7 @@ public class DBCon { // DB 연결옹 클래스
 
 	static {
 		try {
-			String resource = "com/hh/mybatis/dbcon.xml"; // xml 파일의 경로가 들어감 (패키지도 적어줘야 함)
+			String resource = "com/pro/mybatis/dbcon.xml"; // xml 파일의 경로가 들어감 (패키지도 적어줘야 함)
 			Reader reader = Resources.getResourceAsReader(resource); // resource(xml 파일)를 읽어줌
 			SqlSessionFactoryBuilder factory = new SqlSessionFactoryBuilder();
 			sqlSession = factory.build(reader);

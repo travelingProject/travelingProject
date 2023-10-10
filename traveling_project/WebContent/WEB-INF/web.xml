@@ -9,7 +9,7 @@
 
 		<servlet-name>condb</servlet-name>
 
-		<servlet-class>com.hh.controller.ServletFile</servlet-class>
+		<servlet-class>com.pro.controller.ServletFile</servlet-class>
 
 	</servlet>
 
@@ -19,23 +19,6 @@
 		<servlet-name>condb</servlet-name>
 
 		<url-pattern>*.condb</url-pattern>
-
-	</servlet-mapping>
-
-	<servlet>
-
-		<servlet-name>stayDB</servlet-name>
-
-		<servlet-class>com.jslee.controller.Servlet</servlet-class>
-
-	</servlet>
-
-
-	<servlet-mapping>
-
-		<servlet-name>stayDB</servlet-name>
-
-		<url-pattern>*.staydb</url-pattern>
 
 	</servlet-mapping>
 

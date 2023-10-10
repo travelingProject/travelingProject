@@ -1,24 +1,24 @@
-package com.jslee.controller;
+package com.pro.controller;
 
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jslee.mybatis.Select;
-import com.jslee.stayinfo.StayInfo;
+import com.pro.dto.StayInfo;
+import com.pro.mybatis.StaySelect;
 
-public class DBSelect implements Interface {
+public class StaySel implements ControlQuery {
 
-	static DBSelect dbs = new DBSelect();
+	static StaySel dbs = new StaySel();
 
-	public static DBSelect instance() {
+	public static StaySel instance() {
 		return dbs;
 	}
 
 	@Override
-	public String shData(HttpServletRequest re, HttpServletResponse rs) throws Exception {
-		Select select = Select.instance();
+	public String dataCon(HttpServletRequest re, HttpServletResponse rs) throws Exception {
+		StaySelect select = StaySelect.instance();
 		// Select.java안에 있는 openSession 메소드 호출
 		// Return type을 List로 맞춰준다.
 		List<StayInfo> list = select.dbSelect();

@@ -1,11 +1,11 @@
-package com.hh.mybatis;
+package com.pro.mybatis;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.hh.DTO.MyPlanner;
+import com.pro.dto.MyPlanner;
 
 public class SelMyPlan {
 	
@@ -19,7 +19,7 @@ public class SelMyPlan {
 	public List<MyPlanner> sel(MyPlanner mp) {
 		SqlSession sqls = sqlSession.openSession();
 		
-		List<MyPlanner> selList = sqls.selectList("sel", mp);
+		List<MyPlanner> selList = sqls.selectList("myPlannerSelect", mp);
 		
 		sqls.close();
 		

@@ -1,4 +1,4 @@
-package com.hh.DTO;
+package com.pro.dto;
 
 public class MyPlanner {
 	// 내 일정 페이지에 출력할 값

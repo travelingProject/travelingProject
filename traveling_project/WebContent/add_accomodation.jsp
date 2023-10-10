@@ -37,9 +37,9 @@
 			<h2>숙소 등록하기</h2>
 			<%				
 				String hostId = (String) session.getAttribute("id");				
-				out.println("<form action='insert.staydb?comm=ins&name=" + hostId +  "' method='post'>");
+				out.println("<form action='insert.condb?comm=ins&name=" + hostId +  "' method='post'>");
 			%>
-			<form action="insert.staydb?comm=ins&name=name" method="post">
+<!-- 			<form action="insert.condb?comm=ins&name=name" method="post"> -->
 				<table>
 					<tr>
 						<th>숙소 이름</th>

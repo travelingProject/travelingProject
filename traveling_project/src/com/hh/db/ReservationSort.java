@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.hh.DTO.MyPlanner;
+import com.pro.dto.MyPlanner;
 
 public class ReservationSort {
 	

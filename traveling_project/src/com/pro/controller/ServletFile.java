@@ -1,4 +1,4 @@
-package com.hh.controller;
+package com.pro.controller;
 
 import java.io.IOException;
 
@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.pro.controller.StayIns;
+import com.pro.controller.StaySel;
 
 public class ServletFile extends HttpServlet {
 	@Override
@@ -24,7 +27,16 @@ public class ServletFile extends HttpServlet {
 				
 				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp"); // Dispatcher는 forward 메소드와 함께 사용
 				dispatcher.forward(req, res);
-			} 
+			} else if (comm.equals("sel")) {
+				inter = StaySel.instance();
+				inter.dataCon(req, res);
+				RequestDispatcher dispatcher = req.getRequestDispatcher("print.jsp");
+				dispatcher.forward(req, res);
+			} else if (comm.equals("ins")) {
+				inter = StayIns.instance();
+				inter.dataCon(req, res);
+				res.sendRedirect("add_accomodation_result.jsp");
+			}
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
