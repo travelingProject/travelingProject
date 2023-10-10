@@ -64,7 +64,7 @@ public class ControlDB {
 			condb();
 			// 예약번호, 체크인&아웃 날짜, 인원수 추출
 			rs = sta.executeQuery(
-					"SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, r.people, si.stay_name, si.location "
+					"SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, r.people, r.status, si.stay_name, si.location "
 							+ "FROM reservation r " + "JOIN room_info ri ON r.room_id = ri.room_id "
 							+ "JOIN stay_info si ON ri.stay_id = si.stay_id WHERE user_id = '" + user_id + "';");
 			while (rs.next()) {
@@ -73,10 +73,10 @@ public class ControlDB {
 				rinfo.setCheckInDate(rs.getString("check_in_date"));
 				rinfo.setCheckOutDate(rs.getString("check_out_date"));
 				rinfo.setPeople(rs.getInt("people"));
+				rinfo.setStatus(rs.getString("status"));
 				rinfo.setStayName(rs.getString("stay_name"));
 				rinfo.setLocation(rs.getString("location"));
 				rinfoList.add(rinfo);
-				System.out.println(rs.getString("reservation_id"));
 			}
 		} catch (Exception e) {
 

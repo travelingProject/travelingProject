@@ -79,8 +79,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image1.webp" alt="" /> <img
-								src="images/hotel_rec_image2.webp" alt="" />
+							<img src="images/hotel_rec_image1.webp" alt="" />
+							<img src="images/hotel_rec_image2.webp" alt="" />
 						</div>
 						<h3>페어필드 바이 메리어트 서울</h3>
 						<p>서울특별시 영등포구 경인로 870</p>
@@ -97,8 +97,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image3.webp" alt="" /> <img
-								src="images/hotel_rec_image4.webp" alt="" />
+							<img src="images/hotel_rec_image3.webp" alt="" />
+							<img src="images/hotel_rec_image4.webp" alt="" />
 						</div>
 						<h3>토요코인 서울 영등포</h3>
 						<p>서울특별시 영등포구 신길로 293</p>
@@ -115,8 +115,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image5.webp" alt="" /> <img
-								src="images/hotel_rec_image6.webp" alt="" />
+							<img src="images/hotel_rec_image5.webp" alt="" />
+							<img src="images/hotel_rec_image6.webp" alt="" />
 						</div>
 						<h3>나인트리 프리미어 호텔 인사동</h3>
 						<p>서울특별시 종로구 인사동길 49</p>

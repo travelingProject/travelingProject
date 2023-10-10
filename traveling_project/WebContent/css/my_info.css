@@ -174,3 +174,14 @@ ul .index_category {
     left: -4%;
     margin-left: -10px;
 }
+
+.r_location {
+	font-weight: normal;
+}
+
+.reserv_can {
+	cursor: auto;
+    background-color: #ccc;
+    font-weight: bold;
+    color: red;
+}
