@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet">    
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- 장소 선택 다음 지도 api -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c58ef23f11133451e52c26eedfc5668&libraries=services"></script>
     <!-- css -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/header.css">
@@ -86,74 +89,58 @@
     <jsp:include page="./footer.jsp"/>
     <!-- 수정하기 인덱스 -->
     <div class="planner_modal_wrap">
-        <div id="planner_modal_index">
-            <button class="close_btn">&times;</button>
-            <form action="" id="planner_form" method="post">
-                <!-- 모달 form -->
-                <input type="hidden" name="pid" id="rid_hidden" value=""> <!-- plan_id hidden-->
-                <div id="pm_header">
-                    <p></p>
-                    <!-- stay_info 테이블의 stay_name 컬럼 -->
-                    <span></span>
-                    <!-- reservation 테이블의 check_in_date, check_out_date 컬럼 -->
-                </div>
-                <div id="pm_contents">
-                    <div class="planner_tab">
-                        <ul class="tab_list">
-                            <li class="is_on" data-tab="day1">
-                              <a href="#day1" class="tab_btn">1일차</a>
-                              <div id="day1" class="tab_cont">
-                                <p>2023.10.24</p> <!-- n일차별 날짜 출력 -->
-                                <span></span>
-                                <div class="schedule">
-                                    <div class="schedule_detail">
-                                    	<div class="plist_numb one"></div>
-                                        <input type="time" name="plan_start_time" class="pst"> ~ 
-                                        <input type="time" name="plan_end_time" class="pet">
-                                        <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요.">
-                                        <span></span>
-                                    </div>
-                                    <div class="schedule_detail">
-                                    	<div class="plist_numb two"></div>
-                                        <input type="time" name="plan_start_time" class="pst"> ~ 
-                                        <input type="time" name="plan_end_time" class="pet"> <br>
-                                        <input type="text" name="plan_content" class="pcon" maxlength="100" placeholder="일정 내용은 100자 이내로 작성해주세요.">
-                                        <span></span>
-                                    </div>
-                                    
-                                </div>
-                              </div>
-                            </li>
-                            <li data-tab="day2">
-                              <a href="#day2" class="tab_btn">2일차</a>
-                              <div id="day2" class="tab_cont">
-                                <p>2023.10.25</p> <!-- n일차별 날짜 출력 -->
-                                <div class="schedule">
-                    
-                                </div>
-                              </div>
-                            </li>
-                            <li data-tab="day3">
-                              <a href="#day3" class="tab_btn">3일차</a>
-                              <div id="day3" class="tab_cont">
-                                <p>2023.10.26</p> <!-- n일차별 날짜 출력 -->
-                                <div class="schedule">
-                                    
-                                </div>
-                              </div>
-                            </li>
-                          </ul>
+            <div id="planner_modal_index">
+                <button class="close_btn">&times;</button>
+                <form action="" id="planner_form" method="post">
+                    <!-- 모달 form -->
+                    <input type="hidden" name="pid" id="rid_hidden" value=""> <!-- plan_id hidden-->
+                    <div id="pm_header">
+                        <p></p>
+                        <!-- stay_info 테이블의 stay_name 컬럼 -->
+                        <span></span>
+                        <!-- reservation 테이블의 check_in_date, check_out_date 컬럼 -->
                     </div>
-                <div id="pm_btn">
-                    <input type="button" id="modi_btn" value="수정">
-                    <input type="submit" id="modi_save_btn" value="저장">
-                    <input type="button" id="can_btn" name="can_btn" value="종료">
-                    <input type="button" id="modi_can_btn" name="can_btn" value="취소">
-                </div>
-            </form>
-
+                    <div id="pm_contents">
+                        <div class="planner_tab">
+                            <ul class="tab_list">
+                                <li class="is_on" data-tab="day1">
+                                    <a href="#day1" class="tab_btn">1일차</a>
+                                    <div id="day1" class="tab_cont">
+                                        <p>2023.10.24</p> <!-- n일차별 날짜 출력 -->
+                                        <div class="schedule">
+                                            <input type="text" id="sample5_address" placeholder="주소" style="display:none">
+                                            <input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+                                            <div id="map" style="width:150px;height:150px;margin-top:10px;display:none"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-tab="day2">
+                                    <a href="#day2" class="tab_btn">2일차</a>
+                                    <div id="day2" class="tab_cont">
+                                        <p>2023.10.25</p> <!-- n일차별 날짜 출력 -->
+                                        <div class="schedule">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-tab="day3">
+                                    <a href="#day3" class="tab_btn">3일차</a>
+                                    <div id="day3" class="tab_cont">
+                                        <p>2023.10.26</p> <!-- n일차별 날짜 출력 -->
+                                        <div class="schedule">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="pm_btn">
+                            <input type="button" id="modi_btn" value="수정">
+                            <input type="submit" id="modi_save_btn" value="저장">
+                            <input type="button" id="can_btn" name="can_btn" value="종료">
+                            <input type="button" id="modi_can_btn" name="can_btn" value="취소">
+                        </div>
+                </form>
+            </div>
         </div>
-    </div>
   </body>
 
 </html>
