@@ -3,10 +3,10 @@
 <%@ page import="java.sql.*"%>
 <%
 	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");	
+	String pw = request.getParameter("pw");
 	Connection conn = null;
 	Statement stmt = null;
-	ResultSet rs = null;	
+	ResultSet rs = null;
 	// db 비밀번호
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -15,21 +15,20 @@
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery("select * from host_info where host_id='" + id + "';");
 		if (rs.next()) {
-			String userId = rs.getString("host_id");
-			String userPw = rs.getString("pw");
+			String hostId = rs.getString("host_id");
+			String hostPw = rs.getString("pw");
 			String name = rs.getString("name");
-			if (id.equals(userId) && pw.equals(userPw)) {
+			if (id.equals(hostId) && pw.equals(hostPw)) {
+				session.setAttribute("id", hostId);
+				session.setAttribute("pw", hostPw);
+				session.setAttribute("name", name);
 				response.sendRedirect("host_index.jsp");
-				session.setAttribute("id",userId);
-				session.setAttribute("pw",userPw);
-				session.setAttribute("name",name);
-			}
-			else{
-				response.sendRedirect("host_login_fail.html");	
+			} else {
+				response.sendRedirect("host_login_fail.html");
 			}
 		} else {
 			response.sendRedirect("host_login_fail.html");
-		}		
+		}
 	} finally {
 		try {
 			stmt.close();

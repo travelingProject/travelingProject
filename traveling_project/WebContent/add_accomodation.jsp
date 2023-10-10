@@ -29,13 +29,17 @@
 <!-- script -->
 <title>숙소 등록</title>
 </head>
-<body>
+<body>	
 	<%@ include file="host_header.jsp"%>
 	<main>
 		<%@ include file="host_aside.jsp"%>
-		<section>
+		<section>	
 			<h2>숙소 등록하기</h2>
-			<form action="insert.staydb?comm=ins" method="post">
+			<%				
+				String hostId = (String) session.getAttribute("id");				
+				out.println("<form action='insert.staydb?comm=ins&name=" + hostId +  "' method='post'>");
+			%>
+			<form action="insert.staydb?comm=ins&name=name" method="post">
 				<table>
 					<tr>
 						<th>숙소 이름</th>

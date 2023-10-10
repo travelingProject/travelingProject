@@ -1,8 +1,16 @@
 package com.jslee.stayinfo;
 
 public class StayInfo {
-	String stayName, postCode, roadAddr, JibunAddr, detailAddr, extraAddr, lat, lngt, hostPhone, image1, image2, image3,
-			image4, image5, contents;
+	String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, extraAddr, lat, lngt, hostPhone, image1, image2,
+			image3, image4, image5, contents;
+
+	public String getHostId() {
+		return hostId;
+	}
+
+	public void setHostId(String hostId) {
+		this.hostId = hostId;
+	}
 
 	public String getStayName() {
 		return stayName;

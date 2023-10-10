@@ -10,11 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jslee.mybatis.Select;
 
-
-
-public class Servlet extends HttpServlet{
+public class Servlet extends HttpServlet {
 	@Override
-	protected void service(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {		
+	protected void service(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
 		rq.setCharacterEncoding("UTF-8");
 		// DBExtract에서 생성한 static 객체에 있는 instance 메소드 호출
 		// 인터페이스 주머니 하나만 생성
@@ -32,7 +30,7 @@ public class Servlet extends HttpServlet{
 			} else if (comm.equals("ins")) {
 				inter = DBInsert.instance();
 				inter.shData(rq, rs);
-				rs.sendRedirect("result.jsp");
+				rs.sendRedirect("add_accomodation_result.jsp");
 			}
 			// List<Info> list = rq.getAttribute("list");
 			// print.jsp로 setAttribute 되어있는 값을 넘기기 위해서 RequestDispatcher를 사용

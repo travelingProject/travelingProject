@@ -2,6 +2,7 @@ package com.jslee.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jslee.mybatis.Insert;
 import com.jslee.stayinfo.StayInfo;
@@ -16,9 +17,12 @@ public class DBInsert implements Interface{
 
 	@Override
 	public String shData(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
+		HttpSession session = rq.getSession();
 		rs.setCharacterEncoding("UTF-8");
 		Insert insert = new Insert();
-		StayInfo stayInfo = new StayInfo();
+		StayInfo stayInfo = new StayInfo();		
+		String hostId = (String) session.getAttribute("id");
+		stayInfo.setHostId(hostId);
 		stayInfo.setStayName(rq.getParameter("stay_name"));
 		stayInfo.setLat(rq.getParameter("latitude"));
 		stayInfo.setLngt(rq.getParameter("longitude"));
