@@ -12,8 +12,9 @@
 		<ul>
 			<li><a href="#">숙소 관리</a></li>
 			<li><a href="add_accomodation.jsp">숙소 등록하기</a></li>
-			<li><a href="#">객실 등록하기</a></li>
-			<li><a href="#">내가 등록한 숙소</a></li>
+			<li><a href="add_room.jsp">객실 등록하기</a></li>
+			<li><a href="#">숙소 정보</a></li>
+			<li><a href="#">객실 정보</a></li>
 		</ul>
 		<ul>
 			<li><a href="#">예약 관리</a></li>

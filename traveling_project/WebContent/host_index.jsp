@@ -47,9 +47,9 @@
 			</div>
 			<div>
 				<input type="button" value="체크아웃 예정">				
-				<input type="button" value="현재 호스팅">				
-				<input type="button" value="체크인 예정">				
-				<input type="button" value="답변 안한 후기">				
+				<input type="button" value="현재 호스팅">
+				<input type="button" value="체크인 예정">
+				<input type="button" value="답변 안한 후기">
 			</div>
 			<div>
 				<p>오늘 체크 아웃하는 게스트가 없습니다. </p>
