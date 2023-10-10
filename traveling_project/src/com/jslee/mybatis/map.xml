@@ -9,8 +9,17 @@
 
 	<insert id="stayInfoInsert"
 		parameterType="com.jslee.stayinfo.StayInfo">
-		insert into
-		stay_info(host_id,stay_name,post_code,road_addr,jibun_addr,detail_addr,extra_addr,latitude,longitude,host_phone,image1,image2,image3,image4,image5,contents)
-		values(#{hostId},#{stayName},#{postCode},#{roadAddr},#{jibunAddr},#{detailAddr},#{extraAddr},#{lat},#{lngt},#{hostPhone},#{image1},#{image2},#{image3},#{image4},#{image5},#{contents});
+		INSERT INTO stay_info(
+		host_id, stay_name, location, post_code, road_addr, jibun_addr,
+		detail_addr, extra_addr, latitude, longitude, host_phone, image1,
+		image2, image3, image4, image5, contents
+		)
+		VALUES (
+		#{hostId}, #{stayName},
+		SUBSTRING_INDEX(#{roadAddr}, ' ', 2), -- '경기 성남시' 부분 추출
+		#{postCode}, #{roadAddr}, #{jibunAddr}, #{detailAddr}, #{extraAddr},
+		#{lat}, #{lngt}, #{hostPhone}, #{image1}, #{image2}, #{image3}, #{image4},
+		#{image5}, #{contents}
+		);
 	</insert>
 </mapper>
