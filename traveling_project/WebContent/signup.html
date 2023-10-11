@@ -338,21 +338,21 @@
               <tr>
                 <th rowspan="4"><b>주소</b></th>
                 <td class="addr_td">
-                  <input type="text" name="post_code" id="sample4_postcode" placeholder="우편번호" readonly="true" />
+                  <input type="text" name="post_code" id="sample4_postcode" placeholder="우편번호" readonly="readonly" />
                   <input type="button" id="post_search_btn" onclick="sample4_execDaumPostcode()" value="주소 검색" />
                   <span id="guide" style="color: #999; display: none"></span>
                 </td>
               </tr>
               <tr>
                 <td class="addr_td">
-                  <input type="text" name="road_addr" id="sample4_roadAddress" placeholder="도로명주소" readonly="true" />
-                  <input type="text" name="jibun_addr" id="sample4_jibunAddress" placeholder="지번주소" readonly="true" />
+                  <input type="text" name="road_addr" id="sample4_roadAddress" placeholder="도로명주소" readonly="readonly" />
+                  <input type="text" name="jibun_addr" id="sample4_jibunAddress" placeholder="지번주소" readonly="readonly" />
                 </td>
               </tr>
               <tr>
                 <td class="addr_td last_addr_td">
                   <input type="text" id="sample4_detailAddress" name="detail_addr" placeholder="상세주소" />
-                  <input type="text" id="sample4_extraAddress" name="reference_addr" placeholder="참고항목" readonly="true" />
+                  <input type="text" id="sample4_extraAddress" name="reference_addr" placeholder="참고항목"/>
                   <p id="addr_text" class="error_text"></p>
                 </td>
               </tr>

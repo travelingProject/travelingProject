@@ -2,7 +2,7 @@ package com.hh.db;
 
 public class MemberStatus {
 	
-	// ÇÕ»ê °¡°İÀ» ÅëÇØ ¸â¹ö½Ê µî±Ş ÃßÃâ
+	// í•©ì‚° ê°€ê²©ì„ í†µí•´ ë©¤ë²„ì‹­ ë“±ê¸‰ ì¶”ì¶œ
 	public String userGrade(int sum) {
 		String grade = null;
 		if (sum >= 1000000) {
@@ -15,7 +15,7 @@ public class MemberStatus {
 		return grade;
 	}
 	
-	// µî±Şº° Àû¸³À² ÃßÃâ
+	// ë“±ê¸‰ë³„ ì ë¦½ìœ¨ ì¶”ì¶œ
 	public int gradePer(String grade) {
 		int per = 0;
 		if (grade.equals("VIP")) {

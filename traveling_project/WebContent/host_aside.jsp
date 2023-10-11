@@ -10,25 +10,25 @@
 <body>
 	<aside>
 		<ul>
-			<li><a href="#">숙소 관리</a></li>
+			<li>숙소 관리</li>
 			<li><a href="add_accomodation.jsp">숙소 등록하기</a></li>
 			<li><a href="add_room.jsp">객실 등록하기</a></li>
-			<li><a href="#">숙소 정보</a></li>
+			<li><a href="accomodation_info.jsp">숙소 정보</a></li>
 			<li><a href="#">객실 정보</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">예약 관리</a></li>
+			<li>예약 관리</li>
 			<li><a href="#">예약 정보 조회</a></li>
 			<li><a href="reservation_acception.jsp">예약 승인/거부</a></li>
 			<li><a href="#">지난 예약 내역</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">매출 현황</a></li>
+			<li>매출 현황</li>
 			<li><a href="#">기간별 매출 조회</a></li>
 			<li><a href="#">객실별 매출 조회</a></li>
 		</ul>
 		<ul>
-			<li><a href="#">리뷰 관리</a></li>
+			<li>리뷰 관리</li>
 			<li><a href="#">리뷰 조회하기</a></li>
 			<li><a href="#">리뷰 답글 달기</a></li>
 			<li><a href="#">리뷰 신고하기</a></li>

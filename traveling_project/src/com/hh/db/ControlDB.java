@@ -15,20 +15,20 @@ public class ControlDB {
 	Statement sta = null;
 	ResultSet rs = null;
 
-	// connect¿ë ¸Ş¼Òµå
-	// db ºñ¹Ğ¹øÈ£
+	// connectìš© ë©”ì†Œë“œ
+	// db ë¹„ë°€ë²ˆí˜¸
 	public void condb() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
-					"0509");
+					"xhddlf336!");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// close¿ë ¸Ş¼Òµå
+	// closeìš© ë©”ì†Œë“œ
 	public void discon() {
 		try {
 			sta.close();
@@ -42,7 +42,7 @@ public class ControlDB {
 		}
 	}
 
-	// ¸®ºä DB ÀÔ·Â¿ë ¸Ş¼Òµå
+	// ë¦¬ë·° DB ì…ë ¥ìš© ë©”ì†Œë“œ
 	public void insertReview(ReviewObj obj) {
 		try {
 			condb();
@@ -57,12 +57,12 @@ public class ControlDB {
 		}
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö - ¿¹¾àÁ¤º¸ ÃßÃâ¿ë ¸Ş¼Òµå
+	// ë§ˆì´í˜ì´ì§€ - ì˜ˆì•½ì •ë³´ ì¶”ì¶œìš© ë©”ì†Œë“œ
 	public ArrayList<MyPageObj> getReservInfo(String user_id) {
 		ArrayList<MyPageObj> rinfoList = new ArrayList<MyPageObj>();
 		try {
 			condb();
-			// ¿¹¾à¹øÈ£, Ã¼Å©ÀÎ&¾Æ¿ô ³¯Â¥, ÀÎ¿ø¼ö ÃßÃâ
+			// ì˜ˆì•½ë²ˆí˜¸, ì²´í¬ì¸&ì•„ì›ƒ ë‚ ì§œ, ì¸ì›ìˆ˜ ì¶”ì¶œ
 			rs = sta.executeQuery(
 					"SELECT r.reservation_id, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, r.people, r.status, si.stay_name, si.location "
 							+ "FROM reservation r " + "JOIN room_info ri ON r.room_id = ri.room_id "
@@ -86,19 +86,19 @@ public class ControlDB {
 		return rinfoList;
 	}
 	
-	// ¸®ºä ÀÛ¼º ¿©ºÎ¸¦ Ä³½ÌÇÏ±â À§ÇÑ Àü¿ª º¯¼ö
+	// ë¦¬ë·° ì‘ì„± ì—¬ë¶€ë¥¼ ìºì‹±í•˜ê¸° ìœ„í•œ ì „ì—­ ë³€ìˆ˜
 	private Map<String, List<Integer>> userReviewCache = new HashMap<>();
 
-	// ¸®ºä ÀÛ¼ºÇß´ÂÁö ¿©ºÎ Á¶È¸¿ë
+	// ë¦¬ë·° ì‘ì„±í–ˆëŠ”ì§€ ì—¬ë¶€ ì¡°íšŒìš©
 	public List<Integer> hasReview(String id) {
-	    // Ä³½Ã¿¡¼­ ¸®ºä Á¤º¸¸¦ °¡Á®¿À±â ½Ãµµ
+	    // ìºì‹œì—ì„œ ë¦¬ë·° ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ê¸° ì‹œë„
 	    List<Integer> cachedReviews = userReviewCache.get(id);
 
 	    if (cachedReviews != null) {
-	        // Ä³½Ã¿¡¼­ ¸®ºä Á¤º¸¸¦ Ã£¾ÒÀ» °æ¿ì ¹Ù·Î ¹İÈ¯
+	        // ìºì‹œì—ì„œ ë¦¬ë·° ì •ë³´ë¥¼ ì°¾ì•˜ì„ ê²½ìš° ë°”ë¡œ ë°˜í™˜
 	        return cachedReviews;
 	    } else {
-	        // Ä³½Ã¿¡ ¸®ºä Á¤º¸°¡ ¾øÀ» °æ¿ì µ¥ÀÌÅÍº£ÀÌ½º Á¶È¸
+	        // ìºì‹œì— ë¦¬ë·° ì •ë³´ê°€ ì—†ì„ ê²½ìš° ë°ì´í„°ë² ì´ìŠ¤ ì¡°íšŒ
 	        List<Integer> reviews = new ArrayList<>();
 	        try {
 	            condb();
@@ -118,7 +118,7 @@ public class ControlDB {
 	            discon();
 	        }
 
-	        // Á¶È¸ÇÑ ¸®ºä Á¤º¸¸¦ Ä³½Ã¿¡ ÀúÀå
+	        // ì¡°íšŒí•œ ë¦¬ë·° ì •ë³´ë¥¼ ìºì‹œì— ì €ì¥
 	        userReviewCache.put(id, reviews);
 
 	        return reviews;
@@ -126,7 +126,7 @@ public class ControlDB {
 	}
 
 
-	// ·Î±×ÀÎ À¯È¿¼º Ã¼Å©
+	// ë¡œê·¸ì¸ ìœ íš¨ì„± ì²´í¬
 	public LoginObj chkLoginId(String id, String pw) {
 		LoginObj logChk = new LoginObj();
 		try {
@@ -144,7 +144,7 @@ public class ControlDB {
 		return logChk;
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö »óÅÂÃ¢ - ÇÕ»ê °¡°İ ÃßÃâ
+	// ë§ˆì´í˜ì´ì§€ ìƒíƒœì°½ - í•©ì‚° ê°€ê²© ì¶”ì¶œ
 	public int statusPrice(String id) {
 		int sum = 0;
 		try {
@@ -161,7 +161,7 @@ public class ControlDB {
 		return sum;
 	}
 	
-	// ¸¶Áö¸· ¿©Çà ´Ù³à¿ÂÁö nÀÏ ÃßÃâ
+	// ë§ˆì§€ë§‰ ì—¬í–‰ ë‹¤ë…€ì˜¨ì§€ nì¼ ì¶”ì¶œ
 	public int lastTravel(String id) {
 		int ndays = 0;
 		try {
@@ -182,7 +182,7 @@ public class ControlDB {
 		return ndays;
 	}
 	
-	// ÇöÀç³¯Â¥ ±âÁØ ÃÑ ¼÷¹ÚÀÏ¼ö ÃßÃâ
+	// í˜„ì¬ë‚ ì§œ ê¸°ì¤€ ì´ ìˆ™ë°•ì¼ìˆ˜ ì¶”ì¶œ
 	public int totalStay(String id) {
 		int tstay = 0;
 		try {
@@ -203,7 +203,7 @@ public class ControlDB {
 		return tstay;
 	}
 	
-	// ·Î±×ÀÎ ÇÑ »ç¿ëÀÚÀÇ ´©Àû ¸¶ÀÏ¸®Áö ÃßÃâ
+	// ë¡œê·¸ì¸ í•œ ì‚¬ìš©ìì˜ ëˆ„ì  ë§ˆì¼ë¦¬ì§€ ì¶”ì¶œ
 	public int totalMileage(String id) {
 		int mil = 0;
 		try {
@@ -220,7 +220,7 @@ public class ControlDB {
 		return mil;
 	}
 	
-	// ÀÛ¼ºÇÑ ¸®ºä ¸ñ·Ï ÃßÃâ
+	// ì‘ì„±í•œ ë¦¬ë·° ëª©ë¡ ì¶”ì¶œ
 	public ArrayList<MyPageObj> reviewControlPage(String id) {
 		ArrayList<MyPageObj> rivConList = new ArrayList<MyPageObj>();
 		try {
@@ -251,7 +251,7 @@ public class ControlDB {
 		return rivConList;
 	}
 	
-	// ¸®ºä ¼öÁ¤ ¹öÆ° Å¬¸¯½Ã ¸®ºä ³»¿ë ÃßÃâ
+	// ë¦¬ë·° ìˆ˜ì • ë²„íŠ¼ í´ë¦­ì‹œ ë¦¬ë·° ë‚´ìš© ì¶”ì¶œ
 	public ReviewObj reviewReplace(String rid) {
 		ReviewObj riv = new ReviewObj();
 		try {
@@ -270,7 +270,7 @@ public class ControlDB {
 		return riv;
 	}
 	
-	// ¸®ºä ¼öÁ¤ update
+	// ë¦¬ë·° ìˆ˜ì • update
 	public void reviewUpdate(ReviewObj obj) {
 		try {
 			condb();
@@ -285,7 +285,7 @@ public class ControlDB {
 		}
 	}
 	
-	// ¸®ºä »èÁ¦
+	// ë¦¬ë·° ì‚­ì œ
 	public void reviewDelete(String rid) {
 		try {
 			condb();

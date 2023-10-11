@@ -6,19 +6,19 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class DBCon { // DB ¿¬°á¿Ë Å¬·¡½º
+public class DBCon { // DB ì—°ê²°ì˜¹ í´ë˜ìŠ¤
 	
 	private static SqlSessionFactory sqlSession;
-	// SqlSessionFactory : DB¿Í ¿¬°á ÇØÁÖ´Â ¿ªÇÒ (mybatis ¾È¿¡ ÀÖ´Â Å¬·¡½º)
+	// SqlSessionFactory : DBì™€ ì—°ê²° í•´ì£¼ëŠ” ì—­í•  (mybatis ì•ˆì— ìˆëŠ” í´ë˜ìŠ¤)
 
-	public static SqlSessionFactory getSqlSession() { // static À¸·Î ¿Ã·ÁÁÜ (½Ì±ÛÅæ Å¸ÀÔ)
+	public static SqlSessionFactory getSqlSession() { // static ìœ¼ë¡œ ì˜¬ë ¤ì¤Œ (ì‹±ê¸€í†¤ íƒ€ì…)
 		return sqlSession;
 	}
 
 	static {
 		try {
-			String resource = "com/pro/mybatis/dbcon.xml"; // xml ÆÄÀÏÀÇ °æ·Î°¡ µé¾î°¨ (ÆĞÅ°Áöµµ Àû¾îÁà¾ß ÇÔ)
-			Reader reader = Resources.getResourceAsReader(resource); // resource(xml ÆÄÀÏ)¸¦ ÀĞ¾îÁÜ
+			String resource = "com/pro/mybatis/dbcon.xml"; // xml íŒŒì¼ì˜ ê²½ë¡œê°€ ë“¤ì–´ê° (íŒ¨í‚¤ì§€ë„ ì ì–´ì¤˜ì•¼ í•¨)
+			Reader reader = Resources.getResourceAsReader(resource); // resource(xml íŒŒì¼)ë¥¼ ì½ì–´ì¤Œ
 			SqlSessionFactoryBuilder factory = new SqlSessionFactoryBuilder();
 			sqlSession = factory.build(reader);
 		} catch (Exception e) {

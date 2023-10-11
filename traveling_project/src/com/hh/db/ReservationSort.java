@@ -8,23 +8,23 @@ import com.pro.dto.MyPlanner;
 
 public class ReservationSort {
 	
-    // ¿¹¾à Á¤º¸ ¸®½ºÆ®¸¦ Ã¼Å©ÀÎ ³¯Â¥°¡ ºü¸¥ ¼ø¼­·Î Á¤·Ä
+    // ì˜ˆì•½ ì •ë³´ ë¦¬ìŠ¤íŠ¸ë¥¼ ì²´í¬ì¸ ë‚ ì§œê°€ ë¹ ë¥¸ ìˆœì„œë¡œ ì •ë ¬
     public static void sortByCheckInDate(List<MyPageObj> rinfoList) {
         Collections.sort(rinfoList, new Comparator<MyPageObj>() {
             @Override
             public int compare(MyPageObj r1, MyPageObj r2) {
-                // Ã¼Å©ÀÎ ³¯Â¥¸¦ ºñ±³ÇÏ¿© Á¤·Ä ¼ø¼­¸¦ °áÁ¤
+                // ì²´í¬ì¸ ë‚ ì§œë¥¼ ë¹„êµí•˜ì—¬ ì •ë ¬ ìˆœì„œë¥¼ ê²°ì •
                 return r1.getCheckInDate().compareTo(r2.getCheckInDate());
             }
         });
     }
     
-    // ÀÏÁ¤ ÇÃ·¡³Ê ÆäÀÌÁö¿¡¼­ Ã¼Å©ÀÎ ³¯Â¥°¡ ºü¸¥ ¼øÀ¸·Î Á¤·Ä
+    // ì¼ì • í”Œë˜ë„ˆ í˜ì´ì§€ì—ì„œ ì²´í¬ì¸ ë‚ ì§œê°€ ë¹ ë¥¸ ìˆœìœ¼ë¡œ ì •ë ¬
     public static void sortByCheckInDateForPlanner(List<MyPlanner> selList) {
         Collections.sort(selList, new Comparator<MyPlanner>() {
             @Override
             public int compare(MyPlanner r1, MyPlanner r2) {
-                // Ã¼Å©ÀÎ ³¯Â¥¸¦ ºñ±³ÇÏ¿© Á¤·Ä ¼ø¼­¸¦ °áÁ¤
+                // ì²´í¬ì¸ ë‚ ì§œë¥¼ ë¹„êµí•˜ì—¬ ì •ë ¬ ìˆœì„œë¥¼ ê²°ì •
                 return r1.getCheck_in_date().compareTo(r2.getCheck_in_date());
             }
         });

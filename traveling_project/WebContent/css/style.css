@@ -20,11 +20,12 @@
 
 main {
 	width: 1700px;
-	margin: 0 auto;
+	margin: 0 auto;	
+	background:#fff;
 }
 
 section {
-	margin-top: 20px;
+	margin-top: 20px;	
 }
 
 .slider {

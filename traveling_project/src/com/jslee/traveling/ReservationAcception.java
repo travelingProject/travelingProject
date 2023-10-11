@@ -12,11 +12,11 @@ public class ReservationAcception {
 	ResultSet rs = null;
 	
 	// Connection
-	// db ºñ¹Ğ¹øÈ£
+	// db ë¹„ë°€ë²ˆí˜¸
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "0509");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 			stmt = conn.createStatement();
 		} catch (Exception e) {
 			System.out.println(e);
@@ -37,7 +37,7 @@ public class ReservationAcception {
 		}
 	}
 	
-	// ¿¹¾à »óÅÂ°¡ ¿¹¾à ´ë±âÁßÀÎ ¿¹¾à Á¤º¸ ÃßÃâ
+	// ì˜ˆì•½ ìƒíƒœê°€ ì˜ˆì•½ ëŒ€ê¸°ì¤‘ì¸ ì˜ˆì•½ ì •ë³´ ì¶”ì¶œ
 	public ArrayList<ReservationInfo> reservationWaiting(String hostId) {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
@@ -49,7 +49,7 @@ public class ReservationAcception {
 					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
 					+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
 					+ "INNER JOIN user_info u ON u.user_id = r.user_id "
-					+ "where r.status='¿¹¾à ´ë±â';"
+					+ "where r.status='ì˜ˆì•½ ëŒ€ê¸°';"
 					);
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
@@ -74,7 +74,7 @@ public class ReservationAcception {
 		return arr;
 	}
 	
-	// ¿¹¾à »óÅÂ°¡ ¿¡¾à È®Á¤ÀÎ ¿¹¾à Á¤º¸ ÃßÃâ
+	// ì˜ˆì•½ ìƒíƒœê°€ ì—ì•½ í™•ì •ì¸ ì˜ˆì•½ ì •ë³´ ì¶”ì¶œ
 	public ArrayList<ReservationInfo> reservationConfirmed(String hostId) {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
@@ -86,7 +86,7 @@ public class ReservationAcception {
 					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
 					+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
 					+ "INNER JOIN user_info u ON u.user_id = r.user_id "
-					+ "where r.status='¿¹¾à È®Á¤';"
+					+ "where r.status='ì˜ˆì•½ í™•ì •';"
 					);
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
@@ -109,7 +109,7 @@ public class ReservationAcception {
 		return arr;
 	}
 	
-	// ¿¹¾à »óÅÂ°¡ ¿¹¾à °ÅºÎµÊÀÎ ¿¹¾à Á¤º¸ ÃßÃâ
+	// ì˜ˆì•½ ìƒíƒœê°€ ì˜ˆì•½ ê±°ë¶€ë¨ì¸ ì˜ˆì•½ ì •ë³´ ì¶”ì¶œ
 	public ArrayList<ReservationInfo> reservationRejected(String hostId) {
 		ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 		try {
@@ -121,7 +121,7 @@ public class ReservationAcception {
 					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
 					+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
 					+ "INNER JOIN user_info u ON u.user_id = r.user_id "
-					+ "where r.status='¿¹¾à °ÅºÎ';"
+					+ "where r.status='ì˜ˆì•½ ê±°ë¶€';"
 					);
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
@@ -144,7 +144,7 @@ public class ReservationAcception {
 		return arr;
 	}
 	
-	// ¿¹¾à »óÅÂ°¡ ¿¹¾à Ãë¼ÒµÊÀÎ ¿¹¾à Á¤º¸ ÃßÃâ
+	// ì˜ˆì•½ ìƒíƒœê°€ ì˜ˆì•½ ì·¨ì†Œë¨ì¸ ì˜ˆì•½ ì •ë³´ ì¶”ì¶œ
 		public ArrayList<ReservationInfo> reservationCancelled(String hostId) {
 			ArrayList<ReservationInfo> arr = new ArrayList<ReservationInfo>();
 			try {
@@ -156,7 +156,7 @@ public class ReservationAcception {
 						+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
 						+ "JOIN host_info h ON h.host_id = s.host_id AND h.host_id = '"+ hostId + "' "
 						+ "INNER JOIN user_info u ON u.user_id = r.user_id "
-						+ "where r.status='¿¹¾à Ãë¼Ò';"
+						+ "where r.status='ì˜ˆì•½ ì·¨ì†Œ';"
 						);
 				while(rs.next()) {
 					ReservationInfo rsInfo = new ReservationInfo();
@@ -179,11 +179,11 @@ public class ReservationAcception {
 			return arr;
 		}
 			
-	// ¿¹¾à ½ÂÀÎ
+	// ì˜ˆì•½ ìŠ¹ì¸
 	public void reservationAccept(String reservationId) {
 		try {
 			connect();
-			stmt.executeUpdate("update reservation set status='¿¹¾à È®Á¤' where status='¿¹¾à ´ë±â' and reservation_id ='" + reservationId + "';");
+			stmt.executeUpdate("update reservation set status='ì˜ˆì•½ í™•ì •' where status='ì˜ˆì•½ ëŒ€ê¸°' and reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
 			System.out.println(e);
 		} finally {
@@ -191,11 +191,11 @@ public class ReservationAcception {
 		}
 	}
 	
-	// ¿¹¾à °ÅºÎ
+	// ì˜ˆì•½ ê±°ë¶€
 	public void reservationReject(String reservationId) {
 		try {
 			connect();
-			stmt.executeUpdate("update reservation set status='¿¹¾à °ÅºÎ' where status='¿¹¾à ´ë±â' and reservation_id ='" + reservationId + "';");
+			stmt.executeUpdate("update reservation set status='ì˜ˆì•½ ê±°ë¶€' where status='ì˜ˆì•½ ëŒ€ê¸°' and reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
 			System.out.println(e);
 		} finally {

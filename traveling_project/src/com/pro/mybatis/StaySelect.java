@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.pro.dto.CheckInInfo;
 
 public class StaySelect {
-	// DB Select ∆‰¿Ã¡ˆ
 	static StaySelect mo = new StaySelect();
 
 	public static StaySelect instance() {
