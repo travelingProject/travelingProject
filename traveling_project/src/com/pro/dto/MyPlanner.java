@@ -2,7 +2,7 @@ package com.pro.dto;
 
 public class MyPlanner {
 	// 내 일정 페이지에 출력할 값
-	private String plan_id, user_id, stay_name, location, check_in_date, check_out_date, modified_date;
+	private String plan_id, user_id, stay_name, location, check_in_date, check_out_date, modified_date, days_count;
 
 	public String getStay_name() {
 		return stay_name;
@@ -58,6 +58,14 @@ public class MyPlanner {
 
 	public void setPlan_id(String plan_id) {
 		this.plan_id = plan_id;
+	}
+
+	public String getDays_count() {
+		return days_count;
+	}
+
+	public void setDays_count(String days_count) {
+		this.days_count = days_count;
 	}
 
 }
