@@ -4,8 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.pro.dto.StayInfo;
+import com.pro.dto.CheckInInfo;
 import com.pro.mybatis.StaySelect;
 
 public class StaySel implements ControlQuery {
@@ -18,13 +19,18 @@ public class StaySel implements ControlQuery {
 
 	@Override
 	public String dataCon(HttpServletRequest re, HttpServletResponse rs) throws Exception {
-		StaySelect select = StaySelect.instance();
-		// Select.java안에 있는 openSession 메소드 호출
-		// Return type을 List로 맞춰준다.
-		List<StayInfo> list = select.dbSelect();
-		// servlet 페이지로 보내기 위해서list를 setAttribute 해준다.
-		// servlet 페이지에서는 getAttribute를 하면 된다.
-		re.setAttribute("list", list);
+		StaySelect staySelect = StaySelect.instance();
+		
+		HttpSession session = re.getSession();		
+		rs.setCharacterEncoding("UTF-8");
+		
+		String hostId = (String) session.getAttribute("id");
+		CheckInInfo checkInInfo = new CheckInInfo();
+		checkInInfo.setHostId(hostId);
+		
+		List<CheckInInfo> checkInlist = staySelect.dbSelect(checkInInfo);
+		
+		re.setAttribute("checkInlist", checkInlist);
 		return null;
 	}
 }

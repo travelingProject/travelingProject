@@ -19,8 +19,7 @@
 	href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"
 	rel="stylesheet" />
 <!-- jquery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- script -->
 <script src=js/header.js></script>
 <script src="js/host_header.js"></script>
@@ -29,7 +28,7 @@
 	<header>
 		<nav id="menu_nav">
 			<h1 id="logo">
-				<a href="host_index.jsp"><img src="images/logo.png" alt="" /></a>
+				<a href="host_index.condb?comm=hostData"><img src="images/logo.png" alt="" /></a>
 			</h1>
 			<ul class="lnb">
 				<li>숙소 관리</li>

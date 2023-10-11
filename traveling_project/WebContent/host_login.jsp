@@ -21,7 +21,7 @@
 				session.setAttribute("id", hostId);
 				session.setAttribute("pw", hostPw);
 				session.setAttribute("name", name);
-				response.sendRedirect("host_index.jsp");
+				response.sendRedirect("hostLogin.condb?comm=hostData");
 			} else {
 				response.sendRedirect("host_login_fail.html");
 			}

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
 	String host_id = request.getParameter("host_id");
@@ -14,8 +13,7 @@
 			throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 		}
 		sta = con.createStatement();
-		ResultSet rs = sta
-				.executeQuery("SELECT host_id FROM project.host_info WHERE host_id = '" + host_id + "';");
+		ResultSet rs = sta.executeQuery("SELECT host_id FROM project.host_info WHERE host_id = '" + host_id + "';");
 		if (rs.next()) {
 			result = "true";
 		}
@@ -31,5 +29,5 @@
 
 		}
 	}
-	out.print(result);	
+	out.print(result);
 %>

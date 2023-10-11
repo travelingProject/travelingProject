@@ -37,6 +37,7 @@ table {
 th {
 	border: 1px solid #ccc;
 	background: #7ac5ff;
+	padding:3px;
 }
 
 td {

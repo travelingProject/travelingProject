@@ -1,5 +1,5 @@
 #video {
-  width: 100%;
+  width: 1903px;
   height: 1080px;
   margin: 0px auto;
   position: relative;
@@ -17,7 +17,7 @@
 }
 
 main {
-  width: 1700px;
+  width: 1903px;
   margin: 0 auto;
 }
 
@@ -30,20 +30,20 @@ section {
   justify-content: space-between;
 }
 
-/* 호텔 추천 */
+/* �샇�뀛 異붿쿇 */
 .hotel_recommend {
   width: 1200px;
   margin: 5% auto;
 }
 
-/* 제목 */
+/* �젣紐� */
 .hotel_recommend h2 {
   display: inline-block;
   margin: 20px 10px;
   width: 110px;
 }
 
-/* 슬라이더 화살표 */
+/* �뒳�씪�씠�뜑 �솕�궡�몴 */
 .rec_slider > button {
   opacity: 0.5;
   position: absolute;
@@ -72,7 +72,7 @@ section {
   opacity: 0.1;
 }
 
-/* 글씨 */
+/* 湲��뵪 */
 .hotel_recommend .slider div p,
 .hotel_recommend .slider div h3 {
   margin: 10px;
@@ -112,7 +112,7 @@ section {
   width: 157px;
 }
 
-/* 바깥 슬라이더 */
+/* 諛붽묑 �뒳�씪�씠�뜑 */
 .hotel_recommend > .rec_slider > .slick-list > .slick-track > .slick-slide {
   border: 1px solid rgb(179, 179, 179);
   margin: 0 10px;
@@ -130,7 +130,7 @@ section {
   justify-content: space-between;
 }
 
-/* 바깥 슬라이더  dots */
+/* 諛붽묑 �뒳�씪�씠�뜑  dots */
 .rec_slider > .slick-dots {
   position: absolute;
   bottom: -25px;
@@ -157,7 +157,7 @@ section {
   opacity: 1;
 }
 
-/* 이미지 슬라이더 */
+/* �씠誘몄� �뒳�씪�씠�뜑 */
 .image_slider > button {
   position: absolute;
   top: 50%;
@@ -184,7 +184,7 @@ section {
   right: 5%;
 }
 
-/* 이미지 슬라이더 dots */
+/* �씠誘몄� �뒳�씪�씠�뜑 dots */
 .hotel_recommend > .rec_slider > .slick-list > .slick-track > .slick-slide .slick-dots li button {
   opacity: 0;
   text-indent: -9999px;
@@ -211,7 +211,7 @@ section {
   opacity: 1;
 }
 
-/* 리뷰 모두 보기 */
+/* 由щ럭 紐⑤몢 蹂닿린 */
 .hotel_recommend > .show_review {
   margin: 30px 0;
   display: block;
@@ -236,7 +236,7 @@ section {
   background-image: url(../images/arrow_down_hover.png);
 }
 
-/* 국내 인기 여행지  */
+/* 援��궡 �씤湲� �뿬�뻾吏�  */
 .korea_popular_region {
   margin: 100px 0;
 }
@@ -277,7 +277,7 @@ section {
   transition:all 0.3s ease 0s;  
 }
 
-/* 내 근처 숙소 */
+/* �궡 洹쇱쿂 �닕�냼 */
 
 .accomodation_near_me {
   position: relative;
@@ -285,7 +285,7 @@ section {
   margin: 0 auto;
 }
 
-/* 이미지 슬라이더 dots */
+/* �씠誘몄� �뒳�씪�씠�뜑 dots */
 .accomodation_near_me .image_slider ul.slick-dots {
   position:absolute;  
   bottom:10px;
@@ -352,7 +352,7 @@ section {
   border-radius: 10px;
 }
 
-/* slider 버튼 */
+/* slider 踰꾪듉 */
 .accomodation_near_me .swiper-button-prev,
 .accomodation_near_me .swiper-button-next {
   left: -60px;
@@ -378,7 +378,7 @@ section {
   opacity: 1;
 }
 
-/* 글씨 */
+/* 湲��뵪 */
 .accomodation_near_me .slider div h3,
 .accomodation_near_me .slider div p {
   width: auto;
@@ -398,13 +398,13 @@ section {
   width: 100%;
 }
 
-/* 인기 숙소 */
+/* �씤湲� �닕�냼 */
 .popular_accomodation{
   width:1200px;  
   margin:100px auto 0;
 }
 
-/* 제목 */
+/* �젣紐� */
 .popular_accomodation h2 {
   display: inline-block;
   margin: 20px 10px;
@@ -432,7 +432,7 @@ section {
   margin: 10px;
 }
 
-/* 슬라이더 화살표 */
+/* �뒳�씪�씠�뜑 �솕�궡�몴 */
 .pop_slider > button {
   opacity: 0.5;
   position: absolute;
@@ -461,7 +461,7 @@ section {
   opacity: 0.1;
 }
 
-/* 글씨 */
+/* 湲��뵪 */
 .popular_accomodation .slider div p,
 .popular_accomodation .slider div h3 {
   margin: 10px;
@@ -486,7 +486,7 @@ section {
   width: 157px;
 }
 
-/* 바깥 슬라이더 */
+/* 諛붽묑 �뒳�씪�씠�뜑 */
 .popular_accomodation > .pop_slider > .slick-list > .slick-track > .slick-slide {
   border: 1px solid rgb(179, 179, 179);
   margin: 0 10px;
@@ -504,7 +504,7 @@ section {
   justify-content: space-between;
 }
 
-/* 바깥 슬라이더  dots */
+/* 諛붽묑 �뒳�씪�씠�뜑  dots */
 .pop_slider > .slick-dots {
   position: absolute;
   bottom: -25px;
@@ -531,7 +531,7 @@ section {
   opacity: 1;
 }
 
-/* 이미지 슬라이더 dots */
+/* �씠誘몄� �뒳�씪�씠�뜑 dots */
 .popular_accomodation > .pop_slider > .slick-list > .slick-track > .slick-slide .slick-dots li button {
   opacity: 0;
   text-indent: -9999px;
@@ -558,7 +558,7 @@ section {
   opacity: 1;
 }
 
-/* 리뷰 모두 보기 */
+/* 由щ럭 紐⑤몢 蹂닿린 */
 .popular_accomodation > .show_review {
   margin: 30px 0;
   display: block;
@@ -583,7 +583,7 @@ section {
   background-image: url(../images/arrow_down_hover.png);
 }
 
-/* 이벤트 */
+/* �씠踰ㅽ듃 */
 
 .event h2{
   display:block;

@@ -23,14 +23,13 @@ public class ServletFile extends HttpServlet {
 		try {
 			if (comm.equals("myplan")) {
 				inter = SelMyPlanInfo.instance();
-				inter.dataCon(req, res);
-				
+				inter.dataCon(req, res);				
 				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp"); // Dispatcher는 forward 메소드와 함께 사용
 				dispatcher.forward(req, res);
-			} else if (comm.equals("sel")) {
+			} else if (comm.equals("hostData")) {
 				inter = StaySel.instance();
 				inter.dataCon(req, res);
-				RequestDispatcher dispatcher = req.getRequestDispatcher("print.jsp");
+				RequestDispatcher dispatcher = req.getRequestDispatcher("host_index.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("ins")) {
 				inter = StayIns.instance();
