@@ -1,0 +1,16 @@
+td input[type="button"]{
+	width:30px;
+	border-radius:100%;
+	font-size:20px;
+	background:#fff;
+}
+
+.people_num{
+	font-size:20px;
+	margin:0 5px;
+}
+
+#file_delete_all{
+	border-radius:5px;
+	background:#1aa3ff;	
+}

@@ -96,15 +96,15 @@
 						<td>
 							<p style="line-height:1">
 								<textarea name="contents" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea>
-							</p>							
+							</p>
 						</td>
 					</tr>	
 				</table>
 				<input type="submit" id='add_btn' value="등록하기">
 			</form>
-		</section>
-		<script src="js/add_accomodation.js"></script>
+		</section>		
 	</main>
 	<%@ include file='footer.jsp'%>
+	<script src="js/add_accomodation.js"></script>
 </body>
 </html>
