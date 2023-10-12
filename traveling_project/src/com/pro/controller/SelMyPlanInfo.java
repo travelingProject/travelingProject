@@ -11,7 +11,7 @@ import com.pro.mybatis.SelMyPlan;
 
 public class SelMyPlanInfo implements ControlQuery {
 	
-	static SelMyPlanInfo sel = new SelMyPlanInfo(); // ½Ì±ÛÅæ ¹æ½ÄÀ¸·Î °´Ã¼ »ı¼º
+	static SelMyPlanInfo sel = new SelMyPlanInfo(); // ì‹±ê¸€í†¤ ë°©ì‹ìœ¼ë¡œ ê°ì²´ ìƒì„±
 	public static SelMyPlanInfo instance() {
 		return sel;
 	}
@@ -20,9 +20,9 @@ public class SelMyPlanInfo implements ControlQuery {
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		SelMyPlan selinfo = SelMyPlan.instance();
 		
-		// ¼¼¼Ç °¡Á®¿À±â
+		// ì„¸ì…˜ ê°€ì ¸ì˜¤ê¸°
         HttpSession session = req.getSession();
-        // ¼¼¼Ç¿¡¼­ »ç¿ëÀÚ ID °¡Á®¿À±â
+        // ì„¸ì…˜ì—ì„œ ì‚¬ìš©ì ID ê°€ì ¸ì˜¤ê¸°
         String user_id = (String) session.getAttribute("id");
         MyPlanner mp = new MyPlanner();
         mp.setUser_id(user_id);

@@ -15,7 +15,7 @@ public class ServletFile extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		ControlQuery inter = null; // interface의 형태로 주머니(?)를 만들어 줌. interface는 객체를 만들 수 없다
+		ControlQuery inter = null;
 
 		req.setCharacterEncoding("utf-8");
 		String comm = req.getParameter("comm");
@@ -24,7 +24,7 @@ public class ServletFile extends HttpServlet {
 			if (comm.equals("myplan")) {
 				inter = SelMyPlanInfo.instance();
 				inter.dataCon(req, res);				
-				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp"); // Dispatcher는 forward 메소드와 함께 사용
+				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("hostData")) {
 				inter = StaySel.instance();

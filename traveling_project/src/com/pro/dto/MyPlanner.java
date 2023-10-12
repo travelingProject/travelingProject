@@ -1,7 +1,7 @@
 package com.pro.dto;
 
 public class MyPlanner {
-	// ³» ÀÏÁ¤ ÆäÀÌÁö¿¡ Ãâ·ÂÇÒ °ª
+	// ë‚´ ì¼ì • í˜ì´ì§€ì— ì¶œë ¥í•  ê°’
 	private String plan_id, user_id, stay_name, location, check_in_date, check_out_date, modified_date, days_count;
 
 	public String getStay_name() {
