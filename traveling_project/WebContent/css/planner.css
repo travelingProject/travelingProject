@@ -1,226 +1,221 @@
 /* 내 일정 인덱스 */
-
 #planner_wrap h2 {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 #planner_wrap article {
-    max-width: 950px;
+	max-width: 950px;
 }
 
-.notice_help > u {
+.notice_help>u {
 	font-size: 14px;
 	color: #777777;
 }
 
 #planner_category {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 2px solid #000;
-    overflow: hidden;
-    border-bottom: 1px solid #444447;
-    margin-top: 21px;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 2px solid #000;
+	overflow: hidden;
+	border-bottom: 1px solid #444447;
+	margin-top: 21px;
 }
 
 ul #planner_category {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
-#planner_category > li {
-    font-size: 14px;
-    color: #000;
-    text-align: center;
+#planner_category>li {
+	font-size: 14px;
+	color: #000;
+	text-align: center;
 }
 
-#planner_category > li:nth-of-type(1) {
-    width: 25%;
-    min-width: 237.5px;
+#planner_category>li:nth-of-type(1) {
+	width: 25%;
+	min-width: 237.5px;
 }
 
-#planner_category > li:nth-of-type(2) {
-    width: 25%;
-    min-width: 237.5px;
+#planner_category>li:nth-of-type(2) {
+	width: 25%;
+	min-width: 237.5px;
 }
 
-#planner_category > li:nth-of-type(3) {
-    width: 20%;
-    min-width: 190px;
+#planner_category>li:nth-of-type(3) {
+	width: 20%;
+	min-width: 190px;
 }
 
-#planner_category > li:nth-of-type(4) {
-    width: 15%;
-    min-width: 142.5px;
+#planner_category>li:nth-of-type(4) {
+	width: 15%;
+	min-width: 142.5px;
 }
 
-#planner_category > li:nth-of-type(5) {
-    width: 15%;
-    min-width: 142.5px;
+#planner_category>li:nth-of-type(5) {
+	width: 15%;
+	min-width: 142.5px;
 }
 
 .planner_list {
-    width: 100%;
-    height: 145px;
-    border-bottom: 1px solid #d8d8d8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	width: 100%;
+	height: 145px;
+	border-bottom: 1px solid #d8d8d8;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.planner_list > li {
-    text-align: center;
-    font-size: 14px;
-    color: #000;
+.planner_list>li {
+	text-align: center;
+	font-size: 14px;
+	color: #000;
 }
 
 .planner_list h6 {
-    font-size: 18px;
-    color: #000;
+	font-size: 18px;
+	color: #000;
 }
 
-.planner_list > li:nth-of-type(1) {
-    width: 25%;
-    min-width: 237.5px;
-    color: #777;
+.planner_list>li:nth-of-type(1) {
+	width: 25%;
+	min-width: 237.5px;
+	color: #777;
 }
 
-.planner_list > li:nth-of-type(2) {
-    width: 25%;
-    min-width: 237.5px;
+.planner_list>li:nth-of-type(2) {
+	width: 25%;
+	min-width: 237.5px;
 }
 
-.planner_list > li:nth-of-type(3) {
-    width: 20%;
-    min-width: 190px;
+.planner_list>li:nth-of-type(3) {
+	width: 20%;
+	min-width: 190px;
 }
 
-.planner_list > li:nth-of-type(4) {
-    width: 15%;
-    min-width: 142.5px;
+.planner_list>li:nth-of-type(4) {
+	width: 15%;
+	min-width: 142.5px;
 }
 
 .planner_list li a img {
-    width: 30px;
-    height: 30px;
+	width: 30px;
+	height: 30px;
 }
 
-.planner_list > li:nth-of-type(5) {
-    width: 15%;
-    min-width: 142.5px;
+.planner_list>li:nth-of-type(5) {
+	width: 15%;
+	min-width: 142.5px;
 }
 
-.show_detail,
-.amend_plan {
-    font-size: 13px;
-    border: none;
-    background-color: white;
-    color: #777;
-    cursor: pointer;
+.show_detail, .amend_plan {
+	font-size: 13px;
+	border: none;
+	background-color: white;
+	color: #777;
+	cursor: pointer;
 }
 
 /* 상세보기 인덱스 */
-
 #planner_header {
-    margin-left: 70px;
-    margin-top: 50px;
+	margin-left: 70px;
+	margin-top: 50px;
 }
 
 .main {
-    display: flex;
-    margin: 30px 0px 0px 70px;
+	display: flex;
+	margin: 30px 0px 0px 70px;
 }
 
 .tabs li {
-    padding: 15px 15px;
-    text-align: center;
-    border: 0.5px solid white;
-    font-size: 13px;
-    border-top-left-radius: 18%;
-    border-bottom-left-radius: 18%;
-    cursor: pointer;
+	padding: 15px 15px;
+	text-align: center;
+	border: 0.5px solid white;
+	font-size: 13px;
+	border-top-left-radius: 18%;
+	border-bottom-left-radius: 18%;
+	cursor: pointer;
 }
 
 .click_days {
-    background-color: rgb(103, 104, 104);
-    color: white;
+	background-color: rgb(103, 104, 104);
+	color: white;
 }
 
 .clicked {
-    background-color: #71a3ee;
-    color: white;
+	background-color: #71a3ee;
+	color: white;
 }
 
-
 .contents {
-    width: 800px;
-    border: 0.5px solid black;
+	width: 800px;
+	border: 0.5px solid black;
 }
 
 .days_title {
-    padding: 20px;
+	padding: 20px;
 }
 
 .days_sub {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px 0 40px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px 0 40px;
 }
 
-.days_sub > form {
-    flex: 1;
+.days_sub>form {
+	flex: 1;
 }
 
-.days_sub > span {
-    background-color: #a1a1a1;
-    border: 0.5px solid black;
-    margin-right: 10px;
-    border-radius: 10%;
-    padding: 5px 10px;
-    cursor: pointer;
+.days_sub>span {
+	background-color: #a1a1a1;
+	border: 0.5px solid black;
+	margin-right: 10px;
+	border-radius: 10%;
+	padding: 5px 10px;
+	cursor: pointer;
 }
 
 .days_contents {
-    margin: 10px 20px 20px;
-    border: 0.5px solid black;
-    font-size: 14px;
+	margin: 10px 20px 20px;
+	border: 0.5px solid black;
+	font-size: 14px;
 }
 
 #first_content {
-    padding: 20px;
+	padding: 20px;
 }
 
-.days_contents > div > form {
-    padding: 10px 20px;
+.days_contents>div>form {
+	padding: 10px 20px;
 }
 
-.content > form {
-    display: flex;
+.content>form {
+	display: flex;
 }
 
 .content_time {
-    display: flex;
-    margin: 10px;
-    text-align: center;
+	display: flex;
+	margin: 10px;
+	text-align: center;
 }
 
 .content_act {
-    margin: 11px;
+	margin: 11px;
 }
 
 .days_selected {
-    display: none;
+	display: none;
 }
 
 .show {
-    display: block;
+	display: block;
 }
 
 .category_list {
-    margin: 10px 20px 20px;
+	margin: 10px 20px 20px;
 }
-
 
 /* 모달 래퍼 */
 .planner_modal_wrap {
@@ -244,65 +239,64 @@ ul #planner_category {
 	border-radius: 8px;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 	max-width: 1000px;
-    height: 830px;
+	height: 830px;
 	margin: 45px auto;
 	padding: 20px;
 	border: 1px solid #888;
 }
 
-#pm_header > p {
+#pm_header>p {
 	font-size: 26px;
 	font-weight: bold;
 	margin-bottom: 7px;
 }
 
-.tab_cont > p {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
+.tab_cont>p {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
 }
 
-#pm_header > span {
+#pm_header>span {
 	font-size: 16px;
 }
 
 .schedule_detail {
-    margin: 10px 0;
+	margin: 10px 0;
 }
 
-.schedule_detail > span {
-    display: block;
-    content: "";
-    position: absolute;
-    border-bottom: 1px solid #ccc;
-    margin-left: -30px;
-    width: 100%;
+.schedule_detail>span {
+	display: block;
+	content: "";
+	position: absolute;
+	border-bottom: 1px solid #ccc;
+	margin-left: -30px;
+	width: 100%;
 }
 
-.schedule_detail > input {
-    border: 1px solid #ccc;
+.schedule_detail>input {
+	border: 1px solid #ccc;
 }
 
 .pst, .pet {
-    color: #136BF0;
-    font-size: 15px;
-    border-radius: 5px;
-    padding: 5px;
+	color: #136BF0;
+	font-size: 15px;
+	border-radius: 5px;
+	padding: 5px;
 }
 
 .pcon {
-    font-size: 18px;
-    margin: 10px 0;
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    padding: 10px;
+	font-size: 18px;
+	margin: 10px 0;
+	width: 100%;
+	height: 40px;
+	border-radius: 5px;
+	padding: 10px;
 }
 
 /* 저장, 취소 버튼은 default 숨김상태 */
-#modi_save_btn,
-#modi_can_btn {
-    display: none;
+#modi_save_btn, #modi_can_btn {
+	display: none;
 }
 
 /* 닫기 버튼 */
@@ -346,61 +340,46 @@ ul #planner_category {
 
 /* tab */
 .planner_tab {
-    position: relative;
-    margin-top: 40px;
+	position: relative;
+	margin-top: 40px;
 }
 
 .planner_tab .tab_list {
-    display: flex;
+	display: flex;
 }
 
 .planner_tab .tab_list li {
-    margin-right: 3px;
-    padding: 5px 10px;
-    border-radius: 10px;
+	margin-right: 3px;
+	padding: 5px 10px;
+	border-radius: 10px;
 }
 
 .planner_tab .tab_list .tab_btn {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .planner_tab .tab_list .tab_cont {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 40px;
-    width: 906px;
-    height: 555px;
-    padding: 30px;
-    background-color: #F7F8F9;
-    border-radius: 10px;
-    overflow: auto;
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 40px;
+	width: 906px;
+	height: 555px;
+	padding: 30px;
+	background-color: #F7F8F9;
+	border-radius: 10px;
+	overflow: auto;
 }
 
 .planner_tab .tab_list li.is_on {
-    background-color: #1aa3ff;
+	background-color: #1aa3ff;
 }
 
 .planner_tab .tab_list li.is_on .tab_btn {
-    color: #fff;
-    font-weight: bold;
+	color: #fff;
+	font-weight: bold;
 }
 
 .planner_tab .tab_list li.is_on .tab_cont {
-    display: block;
-}
-
-.plist_numb {
-	width: 24px;
-	height: 24px;
-	vertical-align: top;
-	display: inline-block;
-}
-
-.one {
-	background: url("../images/numb_one.png") no-repeat center/contain;
-}
-
-.two {
-	background: url("../images/numb_two.png") no-repeat center/contain;
+	display: block;
 }

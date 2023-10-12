@@ -26,15 +26,6 @@ $(document).ready(function() {
 		}
 	});
 
-	// 탭 버튼
-	$("ul.tab_list li").click(function() {
-		var activeTab = $(this).attr("data-tab");
-		$("ul.tab_list li").removeClass("is_on");
-		$(".tab_cont").removeClass("is_on");
-		$(this).addClass("is_on");
-		$("#" + activeTab).addClass("is_on");
-	});
-
 });
 
 // 상세보기 버튼 클릭
@@ -45,14 +36,35 @@ function detail_plan(event) {
 	// 클릭한 작성하기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
 	var $reservationInfo = $button.closest("ul.planner_list");
 	
-	var $countDays = $button.closest("li.planner_trip_date");
-	
-	var days = $countDays.data("days_count");
-	
-	console.log(days);
+	var countDays = parseInt($reservationInfo.find(".planner_trip_date").data("days_count"), 10);
 
 	// data-plan_id 속성 값을 가져옴
 	var planId = $button.data("plan_id");
+	
+	$.ajax({
+		url: "planner_modal.jsp",
+		data: {
+			countDays : countDays,
+			planId : planId
+		},
+		success: function(data) {
+			$("#date_tabs").empty();
+			
+			$(".tab_list").append(data);
+			
+			$(".tb").addClass("tab_btn")
+			$(".tc").addClass("tab_cont")
+			
+			// 탭 버튼
+			$("ul.tab_list li").click(function() {
+				var activeTab = $(this).attr("data-tab"); // ex) day1
+				$("ul.tab_list li").removeClass("is_on");
+				$(".tab_cont").removeClass("is_on");
+				$(this).addClass("is_on");
+				$("#" + activeTab).addClass("is_on");
+			});
+		}
+	});
 	// ul 요소 내에서 이미 가져온 데이터를 읽음
 	var stayName = $reservationInfo.find(".p_stay_name").text();
 	var chkDate = $reservationInfo.find(".planner_trip_date").text();

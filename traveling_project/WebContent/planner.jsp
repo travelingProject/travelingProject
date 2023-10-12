@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/planner.css">
+    <link rel="stylesheet" href="css/planner_modal.css">
     <script src="js/planner.js"></script>
     <script src="js/header.js"></script>
   </head>
@@ -106,6 +107,7 @@
 									<input type="button" id="can_btn" name="can_btn" value="종료">
 									<input type="button" id="modi_can_btn" name="can_btn" value="취소">
 								</div>
+							</div>
 						</form>
 					</div>
 				</div>
