@@ -39,7 +39,7 @@
 			<ul class="lnb_menu">
 				<li>
 					<a href="add_stay.jsp">숙소 등록하기</a>
-					<a href="#">객실 등록하기</a>
+					<a href="add_room.jsp">객실 등록하기</a>
 					<a href="#">숙소  수정하기</a>
 					<a href="#">객실 수정하기</a>
 				</li>
