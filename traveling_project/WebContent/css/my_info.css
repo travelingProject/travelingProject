@@ -176,7 +176,19 @@ ul .index_category {
 }
 
 .r_location {
-	font-weight: normal;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-block;
+    color: #9d9d9d;
+    font-weight: 600;
+}
+
+.detail_reservation {
+	font-size: 13px;
+    border: none;
+    background-color: white;
+    color: #777;
+    cursor: pointer;
 }
 
 .reserv_can {

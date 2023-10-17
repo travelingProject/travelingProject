@@ -45,7 +45,7 @@
 		</a></li>
 		<li class='r_chk_date'><%=chkIn%> ~ <%=chkOut%></li>
 		<li class='r_people'><%=people%></li>
-		<li><a href='#'>상세보기</a></li>
+		<li><a href='#' class='detail_reservation'>상세보기</a></li>
 		<%
 			if (hasReview) {
 		%>

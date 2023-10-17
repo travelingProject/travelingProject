@@ -53,7 +53,7 @@
 				</ul>
 				<ul id="member_coupon">
 					<li class="content_img"><figure id="coupon_img"></figure></li>
-					<li style="padding-top: 22px"><a href="#" id="ncoupon"></a></li>
+					<li style="padding-top: 18px"><a href="#" id="ncoupon">2개</a></li>
 					<!-- 회원이 보유한 쿠폰 개수 추출, 쿠폰 화면 이동 가능 -->
 					<li class="content_text_last">보유 쿠폰</li>
 				</ul>

@@ -118,103 +118,13 @@ ul #planner_category {
 	cursor: pointer;
 }
 
-/* 상세보기 인덱스 */
-#planner_header {
-	margin-left: 70px;
-	margin-top: 50px;
-}
-
-.main {
-	display: flex;
-	margin: 30px 0px 0px 70px;
-}
-
-.tabs li {
-	padding: 15px 15px;
-	text-align: center;
-	border: 0.5px solid white;
-	font-size: 13px;
-	border-top-left-radius: 18%;
-	border-bottom-left-radius: 18%;
-	cursor: pointer;
-}
-
-.click_days {
-	background-color: rgb(103, 104, 104);
-	color: white;
-}
-
-.clicked {
-	background-color: #71a3ee;
-	color: white;
-}
-
-.contents {
-	width: 800px;
-	border: 0.5px solid black;
-}
-
-.days_title {
-	padding: 20px;
-}
-
-.days_sub {
-	display: flex;
-	justify-content: space-between;
-	padding: 0 10px 0 40px;
-}
-
-.days_sub>form {
-	flex: 1;
-}
-
-.days_sub>span {
-	background-color: #a1a1a1;
-	border: 0.5px solid black;
-	margin-right: 10px;
-	border-radius: 10%;
-	padding: 5px 10px;
-	cursor: pointer;
-}
-
-.days_contents {
-	margin: 10px 20px 20px;
-	border: 0.5px solid black;
-	font-size: 14px;
-}
-
-#first_content {
-	padding: 20px;
-}
-
-.days_contents>div>form {
-	padding: 10px 20px;
-}
-
-.content>form {
-	display: flex;
-}
-
-.content_time {
-	display: flex;
-	margin: 10px;
-	text-align: center;
-}
-
-.content_act {
-	margin: 11px;
-}
-
-.days_selected {
-	display: none;
-}
-
-.show {
-	display: block;
-}
-
-.category_list {
-	margin: 10px 20px 20px;
+.planner_stay_info a > span {
+	margin: 0;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-block;
+    color: #9d9d9d;
+    font-weight: 600;
 }
 
 /* 모달 래퍼 */
@@ -354,7 +264,7 @@ ul #planner_category {
 	border-radius: 10px;
 }
 
-.planner_tab .tab_list .tab_btn {
+a.tab_btn {
 	font-size: 20px;
 }
 

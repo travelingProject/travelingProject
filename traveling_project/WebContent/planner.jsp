@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="css/member.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/planner.css">
     <script src="js/planner.js"></script>
     <script src="js/header.js"></script>
+    <link rel="stylesheet" href="css/planner.css">
   </head>
 <%@ page import="java.util.List" %>
 <%@ page import="com.pro.dto.MyPlanner" %>
@@ -97,30 +97,7 @@
 							<div id="pm_contents">
 								<div class="planner_tab">
 									<ul class="tab_list" id="date_tabs">
-										<%
-											for (int i = 0; i < selList.size(); i++) {
-												int j = i + 1;
-												if (j == 1) {
-										%>
-										<li class="is_on" data-tab="day<%=j%>"><a href="#day<%=j%>" class="tab_btn"><%=j%>일차</a>
-											<div id="day<%=j%>" class="tab_cont">
-												<p><%=j%>일차
-												</p>
-												<div class="schedule"></div>
-											</div></li>
-										<%
-											} else {
-										%>
-										<li data-tab="day<%=j%>"><a href="#day<%=j%>" class="tab_btn"><%=j%>일차</a>
-											<div id="day<%=j%>" class="tab_cont">
-												<p><%=j%>일차
-												</p>
-												<div class="schedule"></div>
-											</div></li>
-										<%
-											}
-											}
-										%>
+										<!-- 비동기 방식으로 n일차 탭 생성 -->
 									</ul>
 								</div>
 								<div id="pm_btn">
