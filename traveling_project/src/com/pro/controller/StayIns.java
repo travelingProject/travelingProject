@@ -32,7 +32,7 @@ public class StayIns implements ControlQuery{
 		stayInfo.setDetailAddr(rq.getParameter("detail_addr"));
 		stayInfo.setExtraAddr(rq.getParameter("reference_addr"));
 		stayInfo.setHostPhone(rq.getParameter("host_phone"));
-		stayInfo.setImage1(rq.getParameter("stay_image"));		
+		stayInfo.setImage1(rq.getParameter("stay_image"));	
 		stayInfo.setContents(rq.getParameter("contents"));
 		insert.dbInsert(stayInfo);
 		// TODO Auto-generated method stub

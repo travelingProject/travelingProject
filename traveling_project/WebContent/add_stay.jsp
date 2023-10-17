@@ -84,7 +84,7 @@
 						<th>숙소 이미지</th>
 						<td>							
 							<input type="file" id="btnAtt" name="stay_image" multiple="multiple"/>
-							<label for="btnAtt">이미지 업로드</label>							
+							<label for="btnAtt">이미지 업로드</label>					
 							<input type="button" id="file_delete_all" value="이미지 전체 삭제" onclick="deleteAllFiles()"/>
 							<p id="file_error_text" class="error_text"></p>
 							<div id="att_zone">이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.</div>
