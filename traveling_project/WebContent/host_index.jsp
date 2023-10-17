@@ -34,7 +34,7 @@
 						out.println(name + " 님, 안녕하세요!");
 					%>
 				</h2>
-				<a id="add_accomodation_btn" href="add_accomodation.jsp">숙소 등록하기</a>
+				<a id="add_accomodation_btn" href="add_stay.jsp">숙소 등록하기</a>
 			</div>
 			<span id="underline"></span>
 			<div>

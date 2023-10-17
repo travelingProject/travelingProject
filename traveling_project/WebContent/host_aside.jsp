@@ -11,9 +11,9 @@
 	<aside>
 		<ul>
 			<li>숙소 관리</li>
-			<li><a href="add_accomodation.jsp">숙소 등록하기</a></li>
+			<li><a href="add_stay.jsp">숙소 등록하기</a></li>
 			<li><a href="add_room.jsp">객실 등록하기</a></li>
-			<li><a href="accomodation_info.jsp">숙소 정보</a></li>
+			<li><a href="stay_info.jsp">숙소 정보</a></li>
 			<li><a href="#">객실 정보</a></li>
 		</ul>
 		<ul>

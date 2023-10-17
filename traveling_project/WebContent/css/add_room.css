@@ -17,7 +17,7 @@ td input[type="button"]{
 
 table h3{
 	text-align:left;
-	font-size:24px;
+	font-size:16px;
 	margin:10px 0;	
 }
 
@@ -26,12 +26,12 @@ table td > div{
 	justify-content:space-between;
 	padding:3px 0;
 	margin:5px 0;
-	border-bottom:1px solid #ccc;
-	font-size:20px;
+	border-bottom:1px solid #ccc;	
 }
 
 table h4{
 	font-weight:normal;
+	font-size:14px;
 }
 
 table td > div > div label{

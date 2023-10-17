@@ -18,10 +18,7 @@ kakao.maps.event.addListener(map, "center_changed", function () {
   var latlng = map.getCenter();
 
   var latitude = latlng.getLat();
-  var longitude = latlng.getLng();
-  
-  console.log(latitude);
-  console.log(longitude);
+  var longitude = latlng.getLng();  
 
   document.getElementById("latitudeInput").value = latitude;
   document.getElementById("longitudeInput").value = longitude;
@@ -98,14 +95,13 @@ function sample5_execDaumPostcode() {
 }
 
 var sel_files = [];
-
+var selectedFiles;
+var attZone;
 /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
 (imageView = function imageView(att_zone, btn) {
-  var attZone = document.getElementById(att_zone);
+  attZone = document.getElementById(att_zone);
   var btnAtt = document.getElementById(btn);
-  var errorText = document.getElementById('file_error_text');
-  var minFiles = 3;
-  var maxFiles = 5;  
+  var errorText = document.getElementById('file_error_text');  
 
   // 이미지와 체크 박스를 감싸고 있는 div 속성
   var div_style = "display:inline-block;position:relative;" + "width:18%;height:120px;margin:1%;border:1px solid #ccc;z-index:1";
@@ -116,58 +112,27 @@ var sel_files = [];
     "width:20px;height:20px;position:absolute;right:5px;bottom:5px;font-size:20px;line-height:1;border:0;border-radius:100%;" +
     "z-index:999;background-color:rgba(255,255,255,.7);color:#f00";
   
-  btnAtt.onchange = function (e) {
-	var selectedFiles = e.target.files.length;
-	console.log(selectedFiles);
-	if(selectedFiles < minFiles){		
-		errorText.style.display = "block";
-		errorText.textContent = "이미지는 최소 3장 이상 등록해주세요."
-	} else if(selectedFiles > maxFiles){
-		errorText.style.display = "block";
-		errorText.textContent = "이미지는 최대 5장까지 등록할 수 있습니다."
-	}
-    var files = e.target.files;
-    var fileArr = Array.prototype.slice.call(files);
-    for (f of fileArr) {
-      imageLoader(f);
-    }
-  };  
+  btnAtt.addEventListener("change",function(e){
+	  	var files = e.target.files;
+		selectedFiles = e.target.files.length;
+		attZone = document.getElementById("att_zone");
+		
+		if(selectedFiles < 3){						
+			attZone.innerText = "이미지는 최소 3장 이상 등록해주세요.";
+			attZone.style.color = "red";
+		} else if (selectedFiles > 5){				
+			attZone.innerText = "이미지는 최대 5장까지 등록할 수 있습니다.";
+			attZone.style.color = "red";
+		} else{
+			attZone.innerText = "";
+			var fileArr = Array.prototype.slice.call(files);
+		    for (f of fileArr) {
+		      imageLoader(f);
+		    }		
+		}	      
+  });
 
-  // 탐색기에서 드래그앤 드롭 사용
-  attZone.addEventListener(
-    "dragenter",
-    function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    },
-    false
-  );
-
-  attZone.addEventListener(
-    "dragover",
-    function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    },
-    false
-  );
-
-  attZone.addEventListener(
-    "drop",
-    function (e) {
-      var files = {};
-      e.preventDefault();
-      e.stopPropagation();
-      var dt = e.dataTransfer;
-      files = dt.files;
-      for (f of files) {
-        imageLoader(f);
-      }
-    },
-    false
-  );
-
-  /* 첨부된 이미리즐을 배열에 넣고 미리보기 */
+    /* 첨부된 이미리즐을 배열에 넣고 미리보기 */
   imageLoader = function (file) {
     sel_files.push(file);
     var reader = new FileReader();
@@ -188,12 +153,17 @@ var sel_files = [];
 
     var btn = document.createElement("input");
     btn.setAttribute("type", "button");
+    btn.setAttribute("class", "remove_btn");
     btn.setAttribute("value", "-");
     btn.setAttribute("delFile", file.name);
     btn.setAttribute("style", chk_style);
     btn.onclick = function (ev) {
+      selectedFiles--;
+      if(selectedFiles == 0){
+    	  attZone.innerText = "이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.";
+      }
       var ele = ev.srcElement;
-      var delFile = ele.getAttribute("delFile");
+      var delFile = ele.getAttribute("delFile");      
       for (var i = 0; i < sel_files.length; i++) {
         if (delFile == sel_files[i].name) {
           sel_files.splice(i, 1);
@@ -215,10 +185,13 @@ var sel_files = [];
   };
 })("att_zone", "btnAtt");
 
-//"전체 삭제" 버튼을 클릭했을 때 모든 파일 미리보기와 선택된 파일을 삭제하는 함수
+// "전체 삭제" 버튼을 클릭했을 때 모든 파일 미리보기와 선택된 파일을 삭제하는 함수
 function deleteAllFiles() {
   // 모든 파일 미리보기를 포함하는 div 요소들을 가져옵니다.
   var fileDivs = document.querySelectorAll("#att_zone > div");
+  attZone = document.getElementById("att_zone");
+  attZone.innerText = "이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.";
+  attZone.style.color = "#999";
 
   // 각 파일 미리보기와 선택된 파일을 삭제합니다.
   for (var i = 0; i < fileDivs.length; i++) {
@@ -288,6 +261,6 @@ $(document).ready(function () {
 	  });
 	  $('#file_delete_all').click(function(){
 		  $('#btnAtt').val('');
-	  })
+	  })	  
 	});
 

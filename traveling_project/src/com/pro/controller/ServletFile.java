@@ -31,10 +31,13 @@ public class ServletFile extends HttpServlet {
 				inter.dataCon(req, res);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("host_index.jsp");
 				dispatcher.forward(req, res);
-			} else if (comm.equals("ins")) {
+			} else if (comm.equals("stay_ins")) {
 				inter = StayIns.instance();
 				inter.dataCon(req, res);
-				res.sendRedirect("add_accomodation_result.jsp");
+				res.sendRedirect("add_stay_result.jsp");
+			} else if (comm.equals("room_ins")) {
+				inter = RoomIns.instance();
+				inter.dataCon(req, res);
 			}
 
 		} catch (Exception e) {

@@ -9,7 +9,7 @@
 <!-- css -->
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/header.css" />
-<link rel="stylesheet" href="css/add_accomodation.css" />
+<link rel="stylesheet" href="css/add_stay.css" />
 <link rel="stylesheet" href="css/host_common.css" />
 <link rel="stylesheet" href="css/footer.css" />
 <!-- favicon -->
@@ -36,9 +36,8 @@
 			<h2>숙소 등록하기</h2>
 			<%				
 				String hostId = (String) session.getAttribute("id");				
-				out.println("<form action='insert.condb?comm=ins&name=" + hostId +  "' method='post'>");
+				out.println("<form action='insert.condb?comm=stay_ins&name=" + hostId +  "' method='post'>");
 			%>
-<!-- 			<form action="insert.condb?comm=ins&name=name" method="post"> -->
 				<table>
 					<tr>
 						<th>숙소 이름</th>
@@ -84,11 +83,11 @@
 					<tr>
 						<th>숙소 이미지</th>
 						<td>							
-							<input type="file" id="btnAtt" name="stay_image" multiple="multiple" onchange="readURL(this);"/>
+							<input type="file" id="btnAtt" name="stay_image" multiple="multiple"/>
 							<label for="btnAtt">이미지 업로드</label>							
 							<input type="button" id="file_delete_all" value="이미지 전체 삭제" onclick="deleteAllFiles()"/>
 							<p id="file_error_text" class="error_text"></p>
-							<div id="att_zone" data-placeholder="파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요"></div>							
+							<div id="att_zone">이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.</div>
 						</td>
 					</tr>
 					<tr>
@@ -105,6 +104,6 @@
 		</section>		
 	</main>
 	<%@ include file='footer.jsp'%>
-	<script src="js/add_accomodation.js"></script>
+	<script src="js/add_stay.js"></script>
 </body>
 </html>

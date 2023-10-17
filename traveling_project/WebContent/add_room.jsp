@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- css -->
 <link rel="stylesheet" href="css/host_common.css" />
-<link rel="stylesheet" href="css/add_accomodation.css" />
+<link rel="stylesheet" href="css/add_stay.css" />
 <link rel="stylesheet" href="css/add_room.css" />
 
 <!-- favicon -->
