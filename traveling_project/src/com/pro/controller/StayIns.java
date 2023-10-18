@@ -13,10 +13,10 @@ public class StayIns implements ControlQuery{
 
 	public static StayIns instance() {
 		return dbi;
-	}
+	}	
 
 	@Override
-	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
+	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {		
 		HttpSession session = rq.getSession();
 		rs.setCharacterEncoding("UTF-8");
 		StayInsert insert = new StayInsert();
@@ -32,7 +32,11 @@ public class StayIns implements ControlQuery{
 		stayInfo.setDetailAddr(rq.getParameter("detail_addr"));
 		stayInfo.setExtraAddr(rq.getParameter("reference_addr"));
 		stayInfo.setHostPhone(rq.getParameter("host_phone"));
-		stayInfo.setImage1(rq.getParameter("stay_image"));	
+		stayInfo.setImage1(rq.getParameter("stay_image1"));	
+		stayInfo.setImage1(rq.getParameter("stay_image2"));	
+		stayInfo.setImage1(rq.getParameter("stay_image3"));	
+		stayInfo.setImage1(rq.getParameter("stay_image4"));	
+		stayInfo.setImage1(rq.getParameter("stay_image5"));	
 		stayInfo.setContents(rq.getParameter("contents"));
 		insert.dbInsert(stayInfo);
 		// TODO Auto-generated method stub

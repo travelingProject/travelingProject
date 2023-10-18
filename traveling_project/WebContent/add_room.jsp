@@ -75,12 +75,9 @@
 								<label for="btnAtt">이미지 업로드</label>
 								<input type="button" id="file_delete_all" value="이미지 전체 삭제" onclick="deleteAllFiles()"/>
 								<p id="file_error_text" class="error_text"></p>
-								<div id="att_zone" data-placeholder="파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요"></div>	
+								<div id="att_zone">이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.</div>
 							</td>
 						</tr>						
-						<tr>
-														
-						</tr>
 					</tbody>					
 				</table>
 				<input type="submit" value="등록하기">
