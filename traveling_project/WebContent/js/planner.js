@@ -26,15 +26,6 @@ $(document).ready(function() {
 			history.pushState(null, null, window.location.href.split('#')[0]); // 모달창을 닫으면 url에 남아있던 브라우저 기록을 지워줌
 		}
 	});
-	
-	// 탭 버튼
-	$("ul.tab_list li").click(function() {
-		var activeTab = $(this).attr("data-tab"); // ex) day1
-		$("ul.tab_list li").removeClass("is_on");
-		$(".tab_cont").removeClass("is_on");
-		$(this).addClass("is_on");
-		$("#" + activeTab).addClass("is_on");
-	});
 
 });
 
@@ -64,9 +55,6 @@ function detail_plan(event) {
 			$("#date_tabs").empty();
 			
 			$(".tab_list").append(data);
-
-			$(".tb").addClass("tab_btn")
-			$(".tc").addClass("tab_cont")
 
 			// 탭 버튼
 			$("ul.tab_list li").click(function() {

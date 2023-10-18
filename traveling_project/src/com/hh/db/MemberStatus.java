@@ -5,12 +5,12 @@ public class MemberStatus {
 	// 합산 가격을 통해 멤버십 등급 추출
 	public String userGrade(int sum) {
 		String grade = null;
-		if (sum >= 1000000) {
+		if (sum >= 3000000) { // 결제금액 300만원 이상
 			grade = "VIP";
-		} else if (sum >= 500000) {
+		} else if (sum >= 1000000) { // 100만원 이상
 			grade = "GOLD";
 		} else {
-			grade = "SILVER";
+			grade = "SILVER"; // 기본 등급
 		}
 		return grade;
 	}

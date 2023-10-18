@@ -6,6 +6,7 @@ $(document).ready(function() {
 			$(".review_modal_wrap").hide();
 			$("body").css("overflow", "auto");
 			$("#review_form")[0].reset();
+			$(".file_list").empty();
 		}
 	});
 	
@@ -15,6 +16,7 @@ $(document).ready(function() {
 			$(".review_modal_wrap").hide();
 			$("body").css("overflow", "auto");
 			$("#review_form")[0].reset();
+			$(".file_list").empty();
 		}
 	});
 	
@@ -58,7 +60,7 @@ function modal(event) {
 }
 
 // 이미지 업로드 관련
-var fileNo = 0;3
+var fileNo = 0;
 var filesArr = new Array();
 
 //첨부파일 추가

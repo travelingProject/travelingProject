@@ -10,7 +10,11 @@
 <li class="is_on" data-tab="day<%=j%>"><a href="#day<%=j%>" class="tab_btn"><%=j%>일차</a>
 	<div id="day<%=j%>" class="tab_cont">
 		<p><%=j%>일차	</p>
-		<div class="schedule"></div>
+		<div class="schedule">
+			<ul class="sch_item">
+				<li>윤스날</li>
+			</ul>
+		</div>
 	</div>
 </li>
 <%
@@ -19,7 +23,9 @@
 <li data-tab="day<%=j%>"><a href="#day<%=j%>" class="tab_btn"><%=j%>일차</a>
 	<div id="day<%=j%>" class="tab_cont">
 		<p><%=j%>일차</p>
-		<div class="schedule"></div>
+		<div class="schedule">
+			
+		</div>
 	</div>
 </li>
 <%
