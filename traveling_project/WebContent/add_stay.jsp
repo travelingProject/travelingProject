@@ -36,7 +36,7 @@
 			<h2>숙소 등록하기</h2>
 			<%				
 				String hostId = (String) session.getAttribute("id");				
-				out.println("<form action='insert.condb?comm=stay_ins&name=" + hostId +  "' method='post'>");
+				out.println("<form action='insert.condb?comm=stay_ins&name=" + hostId +  "' method='post' enctype='multipart/form-data'>");
 			%>			
 				<table>
 					<tr>
@@ -94,7 +94,7 @@
 						<th>숙소 상세 정보</th>
 						<td>
 							<p style="line-height:1">
-								<textarea name="contents" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea>
+								<textarea name="content" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea>
 							</p>
 						</td>
 					</tr>

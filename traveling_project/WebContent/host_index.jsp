@@ -77,9 +77,9 @@
 										"<td>" + df.format(checkInInfo.get(i).getPrice()) + "</td>" +  
 										"<td>" + checkInInfo.get(i).getCheckInDate() + "</td>" +  
 										"<td>" + checkInInfo.get(i).getCheckOutDate() + "</td>" + 
-										"<td>" + checkInInfo.get(i).getCheckInTime() + "</td>" + 
+										"<td>" + checkInInfo.get(i).getCheckInTime() + "</td>" +
 										"<td>" + checkInInfo.get(i).getCheckOutTime() + "</td>" +
-										"<td>" + checkInInfo.get(i).getPaymentTime() + "</td>" +							
+										"<td>" + checkInInfo.get(i).getPaymentTime() + "</td>" +
 									"</tr>");																							
 					}
 					out.println("</tbody>");

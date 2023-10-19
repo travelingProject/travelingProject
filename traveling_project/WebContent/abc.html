@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form id="fileUpLoadForm" action="fileUpload" method="post" enctype="multipart/form-data">
+		<input type="file" id="fileUpload" name="fileUpload"><br><br>
+		<input type="file" id="fileUpload2" name="fileUpload2"><br><br>
+		<input type="button" value="버튼 한개 씩 전송" onClick="fileSumbit();">
+	</form>
+	
+	<form id="multiUpload" action="" method="post" enctype="multipart/form-data">
+		<input multiple="multiple" type="file" id="file" name="file"><br><br>
+		<input type="button" value="버튼 한개만 전송" onClick="fileSubmit2();">
+	</form>
+</body>
+</html>

@@ -44,15 +44,15 @@
 	<insert id="stayInfoInsert" parameterType="com.pro.dto.StayInfo">
 		INSERT INTO stay_info(
 		host_id, stay_name, location, post_code, road_addr, jibun_addr,
-		detail_addr, extra_addr, latitude, longitude, host_phone, image1,
-		image2, image3, image4, image5, contents
+		detail_addr, reference_addr, latitude, longitude, host_phone, image1,
+		image2, image3, image4, image5, content
 		)
 		VALUES (
 		#{hostId}, #{stayName},
 		SUBSTRING_INDEX(#{roadAddr}, ' ', 2),
-		#{postCode}, #{roadAddr}, #{jibunAddr}, #{detailAddr}, #{extraAddr},
+		#{postCode}, #{roadAddr}, #{jibunAddr}, #{detailAddr}, #{referenceAddr},
 		#{lat}, #{lngt}, #{hostPhone}, #{image1}, #{image2}, #{image3}, #{image4},
-		#{image5}, #{contents}
+		#{image5}, #{content}
 		);
 	</insert>
 

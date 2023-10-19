@@ -1,8 +1,8 @@
 package com.pro.dto;
 
 public class StayInfo {
-	String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, extraAddr, lat, lngt, hostPhone, image1, image2,
-			image3, image4, image5, contents;
+	String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, referenceAddr, lat, lngt, hostPhone, image1, image2,
+			image3, image4, image5, content;
 
 	public String getHostId() {
 		return hostId;
@@ -52,12 +52,12 @@ public class StayInfo {
 		this.detailAddr = detailAddr;
 	}
 
-	public String getExtraAddr() {
-		return extraAddr;
+	public String getReferenceAddr() {
+		return referenceAddr;
 	}
 
-	public void setExtraAddr(String extraAddr) {
-		this.extraAddr = extraAddr;
+	public void setReferenceAddr(String referenceAddr) {
+		this.referenceAddr = referenceAddr;
 	}
 
 	public String getLat() {
@@ -124,11 +124,11 @@ public class StayInfo {
 		this.image5 = image5;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getContent() {
+		return content;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setContent(String content) {
+		this.content = content;
 	}
 }
