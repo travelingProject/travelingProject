@@ -68,9 +68,15 @@
                   <h6 class="p_stay_name"><%= selList.get(i).getStay_name() %></h6>
                 </a>
               </li>
-              <li class="planner_trip_date" data-days_count="<%=selList.get(i).getDays_count() %>"><%= selList.get(i).getCheck_in_date() %> ~ <%= selList.get(i).getCheck_out_date() %></li>
-              <li><button id="show_btn" class="show_detail" onclick="detail_plan(event)" data-plan_id="<%= selList.get(i).getPlan_id() %>">상세보기</button></li>
-              <li><a href="#"><img src="./images/share.png" alt=""></a></li>
+              <li class="planner_trip_date" data-days_count="<%=selList.get(i).getDays_count() %>">
+              	<%= selList.get(i).getCheck_in_date() %> ~ <%= selList.get(i).getCheck_out_date() %>
+              </li>
+              <li>
+              	<button id="show_btn" class="show_detail" onclick="detail_plan(event)" data-plan_id="<%= selList.get(i).getPlan_id() %>">상세보기</button>
+              </li>
+              <li>
+              	<a href="#"><img src="./images/share.png" alt=""></a>
+              </li>
               <li>
                 <span class="planner_update_date"><%= selList.get(i).getModified_date() %></span>
               </li>
@@ -102,6 +108,7 @@
 								</div>
 								<div id="pm_btn">
 									<input type="button" id="modi_btn" value="수정">
+									<input type="button" id="add_schedule" value="일정 추가">
 									<input type="submit" id="modi_save_btn" value="저장">
 									<input type="button" id="can_btn" name="can_btn" value="종료">
 									<input type="button" id="modi_can_btn" name="can_btn" value="취소">
