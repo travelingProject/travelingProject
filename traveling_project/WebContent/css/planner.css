@@ -184,26 +184,6 @@ ul #planner_category {
 	width: 100%;
 }
 
-.schedule_detail>input {
-	border: 1px solid #ccc;
-}
-
-.pst, .pet {
-	color: #136BF0;
-	font-size: 15px;
-	border-radius: 5px;
-	padding: 5px;
-}
-
-.pcon {
-	font-size: 18px;
-	margin: 10px 0;
-	width: 100%;
-	height: 40px;
-	border-radius: 5px;
-	padding: 10px;
-}
-
 /* 저장, 취소 버튼은 default 숨김상태 */
 #modi_save_btn, #modi_can_btn {
 	display: none;
@@ -292,4 +272,39 @@ a.tab_btn {
 
 .planner_tab .tab_list li.is_on .tab_cont {
 	display: block;
+}
+
+/* 상세 일정 */
+.pst, .pet {
+    width: 120px;
+	height: 32px;
+	font-weight: bold;
+	border: 0;
+	border-radius: 10px;
+	padding: 0 10px;
+	background-color: rgb(233, 233, 233);
+	margin-bottom: 15px;
+}
+
+.pcon {
+	width: 800px;
+	height: 40px;
+	font-size: 18px;
+	border: 0;
+	border-radius: 10px;
+	outline: none;
+	padding: 0 10px;
+	background-color: rgb(233, 233, 233);
+	margin-left: 40px;
+}
+
+.schedule div {
+	margin-top: 8px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #d8d8d8;
+}
+
+.ndate {
+	font-size: 14px;
+	font-weight: normal;
 }

@@ -23,8 +23,30 @@ $(document).ready(function() {
 		if (confirm("저장되지 않은 정보는 삭제됩니다. 종료하시겠습니까?")) {
 			$(".planner_modal_wrap").hide();
 			$('body').css('overflow', 'auto');
+			$("#date_tabs").empty();
 			history.pushState(null, null, window.location.href.split('#')[0]); // 모달창을 닫으면 url에 남아있던 브라우저 기록을 지워줌
 		}
+	});
+	
+	//추가하기 버튼 클릭 시
+	$("#add_schedule").click(function() {
+		// 이미 추가된 일정 항목 수 가져오기
+		var addedSchedules = $(".schedule").length;
+
+	    // 최대 10개까지 추가 가능
+	    if (addedSchedules >= 10) {
+	        alert("최대 10개까지 추가할 수 있습니다.");
+	        return;
+	    }
+	    // 일정 항목 추가
+	    var newSchedule = '<div>' +
+	    '<img src="images/number/numb_' + (addedSchedules + 1) + '_1.png" alt="" width="36px" height="36px">' +
+	    '<input type="time" class="pst"> ~ <input type="time" class="pet"><br>' +
+	    '<input type="text" class="pcon" maxlength="100" placeholder="내용은 100자 이내로 입력해주세요.">' +
+	    '</div>';
+
+
+	    $(".sch1").append(newSchedule);
 	});
 
 });
@@ -41,30 +63,49 @@ function detail_plan(event) {
 	var planId = $button.data("plan_id");
 	
 	var countDays = parseInt($reservationInfo.find(".planner_trip_date").data("days_count"), 10);
+	
+	// .planner_trip_date 클래스를 가진 요소의 텍스트 가져오기
+	var tripDateText = $reservationInfo.find(".planner_trip_date").text();
 
-	// data-plan_id 속성 값을 가져옴
-	var planId = $button.data("plan_id");
+	// "체크인 날짜 ~ 체크아웃 날짜" 형식의 텍스트를 공백 문자(~)로 분리
+	var dateParts = tripDateText.split("~");
 
-	$.ajax({
-		url: "planner_modal.jsp",
-		data: {
-			countDays : countDays,
-			planId : planId
-		},
-		success: function(data) {
-			$("#date_tabs").empty();
-			
-			$(".tab_list").append(data);
+	// 체크인 날짜 추출하고 공백을 제거
+	var checkInDateStr = dateParts[0].trim();
 
-			// 탭 버튼
-			$("ul.tab_list li").click(function() {
-				var activeTab = $(this).attr("data-tab"); // ex) day1
-				$("ul.tab_list li").removeClass("is_on");
-				$(".tab_cont").removeClass("is_on");
-				$(this).addClass("is_on");
-				$("#" + activeTab).addClass("is_on");
-			});
+	// 체크인 날짜를 JavaScript Date 객체로 변환
+	var checkInDate = new Date(checkInDateStr);
+
+	// 체크인 날짜를 사용하여 탭을 동적으로 생성하고 체크인 날짜를 추가
+	var tabnum = "";
+	for (var i = 0; i < countDays; i++) {
+	    var j = i + 1;
+	    tabnum = "<li class='tabDay' data-tab='day" + j + "'>"
+	        + "<a href='#day" + j + "' class='tab_btn'>" + j + "일차</a>"
+	        + "<div id='day" + j + "' class='tab_cont'>"
+	        + "<p>" + j + "일차 <span class='ndate'>" + formatCheckinDate(checkInDate) + "</span></p>"
+	        + "<div class='schedule sch" + j + "'></div></div>";
+	    $(".tab_list").append(tabnum);
+	    if (j == 1) {
+			$(".tabDay").addClass("is_on");
 		}
+	    // 하루씩 늘리기
+	    checkInDate.setDate(checkInDate.getDate() + 1);
+	}
+
+	function formatCheckinDate(date) {
+	    // 날짜를 "yyyy-MM-dd" 형식으로 포맷팅
+	    return date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
+	}
+
+	
+	// 탭 버튼
+	$("ul.tab_list li").click(function() {
+		var activeTab = $(this).attr("data-tab"); // ex) day1
+		$("ul.tab_list li").removeClass("is_on");
+		$(".tab_cont").removeClass("is_on");
+		$(this).addClass("is_on");
+		$("#" + activeTab).addClass("is_on");
 	});
 
 	// ul 요소 내에서 이미 가져온 데이터를 읽음
