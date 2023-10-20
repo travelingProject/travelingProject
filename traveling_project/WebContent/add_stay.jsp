@@ -99,6 +99,7 @@
 						</td>
 					</tr>
 					<tr>
+					
 						<th>숙소 상세 정보</th>
 						<td>
 							<p style="line-height:1">
