@@ -65,22 +65,6 @@ public class StayIns implements ControlQuery {
 			String image1 = (String) files.nextElement();
 			imagename1 = multi.getFilesystemName(image1);
 			origimageename1 = multi.getOriginalFileName(image1);
-
-//			String image2 = (String) files.nextElement();
-//			imagename2 = multi.getFilesystemName(image2);
-//			origimageename2 = multi.getOriginalFileName(image2);
-//
-//			String image3 = (String) files.nextElement();
-//			imagename3 = multi.getFilesystemName(image3);
-//			origimageename3 = multi.getOriginalFileName(image3);
-//
-//			String image4 = (String) files.nextElement();
-//			imagename4 = multi.getFilesystemName(image4);
-//			origimageename4 = multi.getOriginalFileName(image4);
-//			
-//			String image5 = (String) files.nextElement();
-//			imagename4 = multi.getFilesystemName(image4);
-//			origimageename5 = multi.getOriginalFileName(image4);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

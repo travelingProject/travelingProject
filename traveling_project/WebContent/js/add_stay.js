@@ -16,7 +16,7 @@ kakao.maps.event.addListener(map, "center_changed", function () {
   var latitude = latlng.getLat();
   var longitude = latlng.getLng();
   document.getElementById("latitudeInput").value = latitude;
-  document.getElementById("longitudeInput").value = longitude;  
+  document.getElementById("longitudeInput").value = longitude;
 });
 // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -85,6 +85,20 @@ function sample5_execDaumPostcode() {
   }).open();
 }
 
+/*function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var previewLabel = document.querySelector(".image_label");      
+      previewLabel.style.backgroundImage = `url(${e.target.result})`;
+      previewLabel.style.backgroundSize = "cover"; // 이미지 크기 조절
+      previewLabel.innerText = "";
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById("preview").src = "";
+  }
+}*/
 var sel_files = [];
 var selectedFiles;
 var attZone;
@@ -92,7 +106,7 @@ var attZone;
 (imageView = function imageView(att_zone, btn) {
   attZone = document.getElementById(att_zone);
   var btnAtt = document.getElementById(btn);
-  var errorText = document.getElementById('file_error_text');  
+  var errorText = document.getElementById("file_error_text");
 
   // 이미지와 체크 박스를 감싸고 있는 div 속성
   var div_style = "display:inline-block;position:relative;" + "width:18%;height:120px;margin:1%;border:1px solid #ccc;z-index:1";
@@ -102,28 +116,28 @@ var attZone;
   var chk_style =
     "width:20px;height:20px;position:absolute;right:5px;bottom:5px;font-size:20px;line-height:1;border:0;border-radius:100%;" +
     "z-index:999;background-color:rgba(255,255,255,.7);color:#f00";
-  
-  btnAtt.addEventListener("change",function(e){
-	  	var files = e.target.files;
-		selectedFiles = e.target.files.length;
-		attZone = document.getElementById("att_zone");
-		
-		if(selectedFiles < 3){						
-			attZone.innerText = "이미지는 최소 3장 이상 등록해주세요.";
-			attZone.style.color = "red";
-		} else if (selectedFiles > 5){				
-			attZone.innerText = "이미지는 최대 5장까지 등록할 수 있습니다.";
-			attZone.style.color = "red";
-		} else{
-			attZone.innerText = "";
-			var fileArr = Array.prototype.slice.call(files);
-		    for (f of fileArr) {
-		      imageLoader(f);
-		    }		
-		}	      
-  });
 
-    /* 첨부된 이미리즐을 배열에 넣고 미리보기 */
+/*  btnAtt.addEventListener("change", function (e) {
+    var files = e.target.files;
+    selectedFiles = e.target.files.length;
+    attZone = document.getElementById("att_zone");
+
+    if (selectedFiles < 3) {
+      attZone.innerText = "이미지는 최소 3장 이상 등록해주세요.";
+      attZone.style.color = "red";
+    } else if (selectedFiles > 5) {
+      attZone.innerText = "이미지는 최대 5장까지 등록할 수 있습니다.";
+      attZone.style.color = "red";
+    } else {
+      attZone.innerText = "";
+      var fileArr = Array.prototype.slice.call(files);
+      for (f of fileArr) {
+        imageLoader(f);
+      }
+    }
+  });*/
+
+  /* 첨부된 이미리즐을 배열에 넣고 미리보기 */
   imageLoader = function (file) {
     sel_files.push(file);
     var reader = new FileReader();
@@ -150,11 +164,11 @@ var attZone;
     btn.setAttribute("style", chk_style);
     btn.onclick = function (ev) {
       selectedFiles--;
-      if(selectedFiles == 0){
-    	  attZone.innerText = "이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.";
+      if (selectedFiles == 0) {
+        attZone.innerText = "이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.";
       }
       var ele = ev.srcElement;
-      var delFile = ele.getAttribute("delFile");      
+      var delFile = ele.getAttribute("delFile");
       for (var i = 0; i < sel_files.length; i++) {
         if (delFile == sel_files[i].name) {
           sel_files.splice(i, 1);
@@ -208,50 +222,52 @@ function deleteAllFiles() {
 
 // 유효성 검사 jquery
 $(document).ready(function () {
-	  $("#stay_name").blur(function () {
-	    if ($("#stay_name").val() == "") {
-	      $("#stay_name").css("border", "2px solid red");
-	      $("#stay_name_text").css("display", "block");
-	    } else {
-	      $("#stay_name").css("border", "1px solid #ccc");
-	      $("#stay_name_text").css("display", "none");
-	    }
-	  });
+  $("#stay_name").blur(function () {
+    if ($("#stay_name").val() == "") {
+      $("#stay_name").css("border", "2px solid red");
+      $("#stay_name_text").css("display", "block");
+    } else {
+      $("#stay_name").css("border", "1px solid #ccc");
+      $("#stay_name_text").css("display", "none");
+    }
+  });
 
-	  $("#addr_search").click(function () {
-	    $("#sample5_address").css("border", "1px solid #ccc");
-	    $("#addr_text").css("display", "none");
-	  });
+  $("#addr_search").click(function () {
+    $("#sample5_address").css("border", "1px solid #ccc");
+    $("#addr_text").css("display", "none");
+  });
 
-	  $("#host_phone").blur(function () {
-		  const phoneJ = /^01[016789]\d{3,4}\d{5}$/;
-		  const phoneValue = $("#host_phone").val();
-		  if (!phoneJ.test(phoneValue)) {    
-	      $("#host_phone").css("border", "2px solid red");
-	      $("#phone_text").css("display", "block");
-	    } else {
-	      $("#host_phone").css("border", "1px solid #ccc");
-	      $("#phone_text").css("display", "none");
-	    }
-	  });
+  $("#host_phone").blur(function () {
+    const phoneJ = /^01[016789]\d{3,4}\d{5}$/;
+    const phoneValue = $("#host_phone").val();
+    if (!phoneJ.test(phoneValue)) {
+      $("#host_phone").css("border", "2px solid red");
+      $("#phone_text").css("display", "block");
+    } else {
+      $("#host_phone").css("border", "1px solid #ccc");
+      $("#phone_text").css("display", "none");
+    }
+  });
 
-	  $("#add_btn").click(function (e) {
-	    if ($("#stay_name").val() == "") {
-	      e.preventDefault();
-	      $("#stay_name").css("border", "2px solid red");
-	      $("#stay_name_text").css("display", "block");
-	    } else if ($("#sample5_address").val() == "") {
-	      e.preventDefault();
-	      $("#sample5_address").css("border", "2px solid red");
-	      $("#addr_text").css("display", "block");
-	    } else if ($("#host_phone").val() == "") {
-	      e.preventDefault();
-	      $("#host_phone").css("border", "2px solid red");
-	      $("#phone_text").css("display", "block");
-	    }
-	  });
-	  $('#file_delete_all').click(function(){
-		  $('#btnAtt').val('');
-	  })	  
-	});
-
+  $("#add_btn").click(function (e) {
+    if ($("#stay_name").val() == "") {
+      e.preventDefault();
+      $("#stay_name").css("border", "2px solid red");
+      $("#stay_name_text").css("display", "block");
+    } else if ($("#sample5_address").val() == "") {
+      e.preventDefault();
+      $("#sample5_address").css("border", "2px solid red");
+      $("#addr_text").css("display", "block");
+    } else if ($("#host_phone").val() == "") {
+      e.preventDefault();
+      $("#host_phone").css("border", "2px solid red");
+      $("#phone_text").css("display", "block");
+    }
+  });
+  $("#file_delete_all").click(function () {
+    $("#btnAtt").val("");
+  });
+  $('#image1').change(function(){
+	  alert('hello');
+  })
+});

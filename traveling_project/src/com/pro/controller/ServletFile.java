@@ -17,13 +17,12 @@ public class ServletFile extends HttpServlet {
 
 		ControlQuery inter = null;
 
-		req.setCharacterEncoding("utf-8");
+		req.setCharacterEncoding("UTF-8");
 		String comm = req.getParameter("comm");
-
 		try {
 			if (comm.equals("myplan")) {
 				inter = SelMyPlanInfo.instance();
-				inter.dataCon(req, res);				
+				inter.dataCon(req, res);			
 				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("hostData")) {

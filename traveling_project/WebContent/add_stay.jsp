@@ -83,11 +83,19 @@
 					<tr>
 						<th>숙소 이미지</th>
 						<td>							
-							<input type="file" id="btnAtt" name="stay_image" multiple="multiple"/>
-							<label for="btnAtt">이미지 업로드</label>					
-							<input type="button" id="file_delete_all" value="이미지 전체 삭제" onclick="deleteAllFiles()"/>
-							<p id="file_error_text" class="error_text"></p>
-							<div id="att_zone">이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.</div>
+							<p id="image_text">숙소 이미지는 최소 3장에서 최대 5장까지 등록해주세요.</p>
+							<div id="att_zone">
+								<label class="image_label" for="image1"">이미지를 드래그하세요.</label>
+								<input type="file" class="images" id="image1" name="image1">
+								<label class="image_label" for="image2">이미지를 드래그하세요.</label>
+								<input type="file" class="images" id="image2" name="image2" onchange="readURL(this)">
+								<label class="image_label" for="image3">이미지를 드래그하세요.</label>
+								<input type="file" class="images" id="image3" name="image3" onchange="readURL(this)">
+								<label class="image_label" for="image4">이미지를 드래그하세요.</label>
+								<input type="file" class="images" id="image4" name="image4" onchange="readURL(this)">
+								<label class="image_label" for="image5">이미지를 드래그하세요.</label>
+								<input type="file" class="images" id="image5" name="image5" onchange="readURL(this)">
+							</div>
 						</td>
 					</tr>
 					<tr>
@@ -395,7 +403,7 @@
 			</form>
 		</section>		
 	</main>
-	<%@ include file='footer.jsp'%>
+	<%@ include file='footer.jsp'%>	
 	<script src="js/add_stay.js"></script>
 </body>
 </html>

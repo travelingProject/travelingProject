@@ -21,7 +21,7 @@ public class StaySel implements ControlQuery {
 	public String dataCon(HttpServletRequest re, HttpServletResponse rs) throws Exception {
 		StaySelect staySelect = StaySelect.instance();
 		
-		HttpSession session = re.getSession();		
+		HttpSession session = re.getSession();
 		rs.setCharacterEncoding("UTF-8");
 		
 		String hostId = (String) session.getAttribute("id");
