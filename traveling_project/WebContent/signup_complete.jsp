@@ -22,7 +22,7 @@
     <title>가입 완료</title>
   </head>
   <body>
-    <%@ include file="login_header.jsp"%>
+    <%@ include file="header.jsp"%>
     <main>
       <ul id="step">
         <li>01.회원 선택</li>
@@ -36,7 +36,7 @@
       </div>
       <div id="btn">
         <a href="login_select.jsp"><input type="button" id="login" value="로그인하기"></a>
-        <a href="index.html"><input type="button" id="main" value="메인 화면"></a>
+        <a href="index.jsp"><input type="button" id="main" value="메인 화면"></a>
       </div>      
     </main>
     <%@ include file="footer.jsp"%>

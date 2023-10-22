@@ -8,7 +8,7 @@ $(document).ready(function () {
   // 이름 정규식
   const nameJ = /^[가-힣]{2,6}$/;
   // 이메일 검사 정규식
-  const emailJ = /^[a-zA-Z0-9]+$/;
+  const emailJ = /^[a-zA-Z0-9\-_]+$/;
   // 휴대폰 번호 정규식
   const phoneJ = /^01[016789]\d{3,4}\d{5}$/;
   // 사업자 등록번호 정규식
@@ -44,8 +44,7 @@ $(document).ready(function () {
             $('#id').css('border', '1px solid #999');
           } else {
             $('#id_text').html('특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.');
-            $('#id').css('border', '2px solid red');
-            $('#id').css('border', '2px solid red');
+            $('#id').css('border', '2px solid red');            
           }
         }
       },
