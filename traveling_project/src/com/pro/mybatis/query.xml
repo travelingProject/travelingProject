@@ -4,56 +4,117 @@
 
 <mapper namespace="query_ex">
 
-	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner" parameterType="com.pro.dto.MyPlanner">
+	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner"
+		parameterType="com.pro.dto.MyPlanner">
 		SELECT s.stay_name, s.location,
 		date_format(r.check_in_date, '%Y.%m.%d') AS check_in_date,
 		date_format(r.check_out_date, '%Y.%m.%d') AS check_out_date,
 		date_format(p.modified_date, '%Y.%m.%d') AS modified_date,
 		(datediff(r.check_out_date, r.check_in_date) + 1) AS days_count,
 		p.plan_id FROM planner p
-		JOIN reservation r ON p.reservation_id = r.reservation_id
+		JOIN reservation r ON p.reservation_id =
+		r.reservation_id
 		JOIN room_info ro ON r.room_id = ro.room_id
-		JOIN stay_info s ON ro.stay_id = s.stay_id
+		JOIN
+		stay_info s ON ro.stay_id = s.stay_id
 		WHERE r.user_id = #{user_id};
 	</select>
-	
-	<select id="checkInInfoSelect" resultType="com.pro.dto.CheckInInfo" parameterType="com.pro.dto.CheckInInfo">
+
+	<select id="checkInInfoSelect"
+		resultType="com.pro.dto.CheckInInfo"
+		parameterType="com.pro.dto.CheckInInfo">
 		SELECT
 		hi.host_id as hostId,
-		r.reservation_id as reservationId,
+		r.reservation_id as
+		reservationId,
 		u.name as userName,
-		r.room_id as roomId, 
+		r.room_id as roomId,
 		ro.room_name as roomName,
 		r.check_in_date as checkInDate,
-		r.check_out_date as checkOutDate,
-        CAST(r.check_in_time as CHAR) as checkInTime,
-		CAST(r.check_out_time as CHAR) as checkOutTime,
+		r.check_out_date as
+		checkOutDate,
+		CAST(r.check_in_time as CHAR) as checkInTime,
+		CAST(r.check_out_time as CHAR) as
+		checkOutTime,
 		r.people as people,
 		r.price as price,
-		CAST(r.payment_time as CHAR) as paymentTime		
+		CAST(r.payment_time
+		as CHAR) as paymentTime
 		FROM reservation r
 		JOIN user_info u ON r.user_id = u.user_id
-		JOIN room_info ro ON r.room_id = ro.room_id
-		JOIN stay_info si ON ro.stay_id = si.stay_id
+		JOIN room_info
+		ro ON r.room_id = ro.room_id
+		JOIN stay_info si ON ro.stay_id =
+		si.stay_id
 		JOIN host_info hi ON si.host_id = hi.host_id
-		WHERE hi.host_id = #{hostId}
+		WHERE hi.host_id
+		= #{hostId}
 		AND r.check_in_date = curdate()
 		AND r.status = '예약 확정';
 	</select>
 
-	<insert id="stayInfoInsert" parameterType="com.pro.dto.StayInfo">
+	<insert id="stayInfoInsert" parameterType="com.pro.dto.StayInfo" useGeneratedKeys="true" keyProperty="stay_id">		
 		INSERT INTO stay_info(
 		host_id, stay_name, location, post_code, road_addr, jibun_addr,
 		detail_addr, reference_addr, latitude, longitude, host_phone, image1,
 		image2, image3, image4, image5, content
 		)
 		VALUES (
-		#{hostId}, #{stayName},
+		#{hostId},
+		#{stayName},
 		SUBSTRING_INDEX(#{roadAddr}, ' ', 2),
-		#{postCode}, #{roadAddr}, #{jibunAddr}, #{detailAddr}, #{referenceAddr},
-		#{lat}, #{lngt}, #{hostPhone}, #{image1}, #{image2}, #{image3}, #{image4},
+		#{postCode},
+		#{roadAddr}, #{jibunAddr}, #{detailAddr}, #{referenceAddr},
+		#{lat},
+		#{lngt}, #{hostPhone}, #{image1}, #{image2}, #{image3}, #{image4},
 		#{image5}, #{content}
 		);
-	</insert>
 
+		SET @last_stay_id = LAST_INSERT_ID();
+
+		INSERT INTO bathroom
+		values(
+		@last_stay_id,#{tub},#{bathSupplies},#{hairDryer}
+		);
+
+		INSERT INTO bedrooms_and_laundry_facilities
+		values(
+		@last_stay_id,#{towel},#{bedding},#{washingMachine},#{dryingMachine}
+		);
+
+		INSERT INTO entertainment
+		values(
+		@last_stay_id,#{pool},#{arcadeGame},#{gym},#{tv},#{boardGame}
+		);
+
+		INSERT INTO air_conditioning_and_heating
+		values(
+		@last_stay_id,#{airConditioner},#{fan},#{heatingSystem}
+		);
+
+		INSERT INTO safety
+		values(
+		@last_stay_id,#{carbonMonoxideAlarm},#{fireExtinguisher},#{aidKit},#{fireAlarm}
+		);
+
+		INSERT INTO internet_and_workspace
+		values(
+		@last_stay_id,#{workspace},#{wirelessInternet}
+		);
+
+		INSERT INTO kitchen_and_dinningRoom
+		values(
+		@last_stay_id,#{barbecueTool},#{basicCookware},#{diningTable},#{cutlery},#{refrigerator},#{microwave},#{electricRiceCooker},#{gasStoveOrInduction}
+		);
+
+		INSERT INTO parking
+		values(
+		@last_stay_id,#{tub},#{electricVehicleChargingFacilities},#{parkingLot}
+		);
+
+		INSERT INTO services
+		values(
+		@last_stay_id,#{breakfast},#{cleanService},#{luggageStorage}
+		);		
+	</insert>
 </mapper>

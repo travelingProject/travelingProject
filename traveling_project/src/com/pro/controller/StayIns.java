@@ -13,9 +13,9 @@ import com.pro.dto.StayInfo;
 import com.pro.mybatis.StayInsert;
 
 public class StayIns implements ControlQuery {
-
+	
 	static StayIns dbi = new StayIns();
-
+	
 	public static StayIns instance() {
 		return dbi;
 	}
@@ -65,7 +65,7 @@ public class StayIns implements ControlQuery {
 		String airConditioner = "";
 		String fan = "";
 		String heatingSystem = "";
-		String carbonMonoxide = "";
+		String carbonMonoxideAlarm = "";
 		String fireExtinguisher = "";
 		String aidKit = "";
 		String fireAlarm = "";
@@ -73,13 +73,13 @@ public class StayIns implements ControlQuery {
 		String wirelessInternet = "";
 		String barbecueTool = "";
 		String basicCookware = "";
-		String dinningTable = "";
+		String diningTable = "";
 		String cutlery = "";
 		String refrigerator = "";
 		String microwave = "";
 		String electricRiceCooker = "";
 		String gasStoveOrInduction = "";
-		String electricVehicle = "";
+		String electricVehicleChargingFacilities = "";
 		String parkingLot = "";
 
 		try {
@@ -115,7 +115,7 @@ public class StayIns implements ControlQuery {
 			airConditioner = multi.getParameter("air_conditioner");
 			fan = multi.getParameter("fan");
 			heatingSystem = multi.getParameter("heating_system");
-			carbonMonoxide = multi.getParameter("carbon_monoxide");
+			carbonMonoxideAlarm = multi.getParameter("carbon_monoxide");
 			fireExtinguisher = multi.getParameter("fire_extinguisher");
 			aidKit = multi.getParameter("aid_kit");
 			fireAlarm = multi.getParameter("fire_alarm");
@@ -123,13 +123,13 @@ public class StayIns implements ControlQuery {
 			wirelessInternet = multi.getParameter("wireless_internet");
 			barbecueTool = multi.getParameter("barbecue_tool");
 			basicCookware = multi.getParameter("basic_cookware");
-			dinningTable = multi.getParameter("dinning_table");
+			diningTable = multi.getParameter("dinning_table");
 			cutlery = multi.getParameter("cutlery");
 			refrigerator = multi.getParameter("refrigerator");
 			microwave = multi.getParameter("microwave");
 			electricRiceCooker = multi.getParameter("elecTric_rice_cooker");
 			gasStoveOrInduction = multi.getParameter("gas_stove_or_induction");
-			electricVehicle = multi.getParameter("electric_vehicle");
+			electricVehicleChargingFacilities = multi.getParameter("electric_vehicle");
 			parkingLot = multi.getParameter("parking_lot");	
 
 			// 이미지 업로드
@@ -193,7 +193,7 @@ public class StayIns implements ControlQuery {
 		stayInfo.setAirConditioner(airConditioner);
 		stayInfo.setFan(fan);
 		stayInfo.setHeatingSystem(heatingSystem);
-		stayInfo.setCarbonMonoxide(carbonMonoxide);
+		stayInfo.setCarbonMonoxideAlarm(carbonMonoxideAlarm);
 		stayInfo.setFireExtinguisher(fireExtinguisher);
 		stayInfo.setAidKit(aidKit);
 		stayInfo.setFireAlarm(fireAlarm);
@@ -201,18 +201,17 @@ public class StayIns implements ControlQuery {
 		stayInfo.setWirelessInternet(wirelessInternet);
 		stayInfo.setBarbecueTool(barbecueTool);
 		stayInfo.setBasicCookware(basicCookware);
-		stayInfo.setDinningTable(dinningTable);
+		stayInfo.setDiningTable(diningTable);
 		stayInfo.setCutlery(cutlery);
 		stayInfo.setRefrigerator(refrigerator);
 		stayInfo.setMicrowave(microwave);
 		stayInfo.setElectricRiceCooker(electricRiceCooker);
 		stayInfo.setGasStoveOrInduction(gasStoveOrInduction);
-		stayInfo.setElectricVehicle(electricVehicle);
+		stayInfo.setElectricVehicleChargingFacilities(electricVehicleChargingFacilities);
 		stayInfo.setParkingLot(parkingLot);
 		stayInfo.setContent(content);
 		insert.dbInsert(stayInfo);
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

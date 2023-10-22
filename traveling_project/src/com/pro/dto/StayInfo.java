@@ -1,11 +1,44 @@
 package com.pro.dto;
 
 public class StayInfo {
-	String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, referenceAddr, lat, lngt, hostPhone, image1,
+	private int stayId;
+	private String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, referenceAddr, lat, lngt, hostPhone, image1,
 			image2, image3, image4, image5, content, tub, bathSupplies, hairDryer, towel, bedding, washingMachine,
-			dryingMachine, pool, arcadeGame, gym, tv, boardGame, airConditioner, fan, heatingSystem, carbonMonoxide,
-			fireExtinguisher, aidKit, fireAlarm, workspace, wirelessInternet, barbecueTool, basicCookware, dinningTable,
-			cutlery, refrigerator, microwave, electricRiceCooker, gasStoveOrInduction, electricVehicle, parkingLot;
+			dryingMachine, pool, arcadeGame, gym, tv, boardGame, airConditioner, fan, heatingSystem, carbonMonoxideAlarm,
+			fireExtinguisher, aidKit, fireAlarm, workspace, wirelessInternet, barbecueTool, basicCookware, diningTable,
+			cutlery, refrigerator, microwave, electricRiceCooker, gasStoveOrInduction, electricVehicleChargingFacilities, parkingLot, breakfast, cleanService,luggageStorage;    
+
+    public int getStayId() {
+        return stayId;
+    }
+
+    public void setStayId(int stayId) {
+        this.stayId = stayId;
+    }
+
+	public String getBreakfast() {
+		return breakfast;
+	}
+
+	public void setBreakfast(String breakfast) {
+		this.breakfast = breakfast;
+	}
+
+	public String getCleanService() {
+		return cleanService;
+	}
+
+	public void setCleanService(String cleanService) {
+		this.cleanService = cleanService;
+	}
+
+	public String getLuggageStorage() {
+		return luggageStorage;
+	}
+
+	public void setLuggageStorage(String luggageStorage) {
+		this.luggageStorage = luggageStorage;
+	}
 
 	public String getHostId() {
 		return hostId;
@@ -255,12 +288,12 @@ public class StayInfo {
 		this.heatingSystem = heatingSystem;
 	}
 
-	public String getCarbonMonoxide() {
-		return carbonMonoxide;
+	public String getCarbonMonoxideAlarm() {
+		return carbonMonoxideAlarm;
 	}
 
-	public void setCarbonMonoxide(String carbonMonoxide) {
-		this.carbonMonoxide = carbonMonoxide;
+	public void setCarbonMonoxideAlarm(String carbonMonoxideAlarm) {
+		this.carbonMonoxideAlarm = carbonMonoxideAlarm;
 	}
 
 	public String getFireExtinguisher() {
@@ -319,12 +352,12 @@ public class StayInfo {
 		this.basicCookware = basicCookware;
 	}
 
-	public String getDinningTable() {
-		return dinningTable;
+	public String getDiningTable() {
+		return diningTable;
 	}
 
-	public void setDinningTable(String dinningTable) {
-		this.dinningTable = dinningTable;
+	public void setDiningTable(String diningTable) {
+		this.diningTable = diningTable;
 	}
 
 	public String getCutlery() {
@@ -355,8 +388,8 @@ public class StayInfo {
 		return electricRiceCooker;
 	}
 
-	public void setElectricRiceCooker(String elecTricRiceCooker) {
-		this.electricRiceCooker = elecTricRiceCooker;
+	public void setElectricRiceCooker(String electricRiceCooker) {
+		this.electricRiceCooker = electricRiceCooker;
 	}
 
 	public String getGasStoveOrInduction() {
@@ -367,12 +400,12 @@ public class StayInfo {
 		this.gasStoveOrInduction = gasStoveOrInduction;
 	}
 
-	public String getElectricVehicle() {
-		return electricVehicle;
+	public String getElectricVehicleChargingFacilities() {
+		return electricVehicleChargingFacilities;
 	}
 
-	public void setElectricVehicle(String electricVehicle) {
-		this.electricVehicle = electricVehicle;
+	public void setElectricVehicleChargingFacilities(String electricVehicleChargingFacilities) {
+		this.electricVehicleChargingFacilities = electricVehicleChargingFacilities;
 	}
 
 	public String getParkingLot() {
@@ -382,5 +415,6 @@ public class StayInfo {
 	public void setParkingLot(String parkingLot) {
 		this.parkingLot = parkingLot;
 	}
+
 	
 }

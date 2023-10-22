@@ -14,9 +14,9 @@ public class StayInsert {
 	
 	SqlSessionFactory f = DBCon.getSqlSession();
 	
-	public void dbInsert(StayInfo user){
+	public void dbInsert(StayInfo stayInfo){
 		SqlSession s = f.openSession();
-		s.insert("stayInfoInsert", user);
+		s.insert("stayInfoInsert", stayInfo);        
 		s.commit();
 		s.close();
 	}
