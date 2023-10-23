@@ -138,12 +138,7 @@ $(document).ready(function () {
       $("#host_phone").css("border", "2px solid red");
       $("#phone_text").css("display", "block");
     }
-  });
-  
-  $(window).scroll(function() {
-	  const currentScrollTop = $(window).scrollTop();
-	  console.log("현재 scrollTop 정보:", currentScrollTop);
-	});
+  });  
   
 //Function to handle image input change
   function handleImageChange(input, label, removeBtn) {
@@ -185,9 +180,7 @@ $(document).ready(function () {
     removeBtn.click(function () {
       handleImageRemoval(fileInput, fileLabel, removeBtn);
     });
-  }
-
-
+  };
 });
 
 

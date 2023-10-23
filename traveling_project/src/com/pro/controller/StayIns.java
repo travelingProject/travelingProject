@@ -22,7 +22,7 @@ public class StayIns implements ControlQuery {
 
 	@Override
 	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
-		HttpSession session = rq.getSession();
+		HttpSession session = rq.getSession();		
 		String uploadPath = rq.getRealPath("/stay_images");
 		int size = 10 * 1024 * 1024;
 		String hostId = (String) session.getAttribute("id");
@@ -43,11 +43,11 @@ public class StayIns implements ControlQuery {
 		String imagename3 = "";
 		String imagename4 = "";
 		String imagename5 = "";
-		String origimageename1 = "";
-		String origimageename2 = "";
-		String origimageename3 = "";
-		String origimageename4 = "";
-		String origimageename5 = "";
+		String origimagename1 = "";
+		String origimagename2 = "";
+		String origimagename3 = "";
+		String origimagename4 = "";
+		String origimagename5 = "";
 		
 		// 편의 시설
 		String tub = "";
@@ -81,11 +81,14 @@ public class StayIns implements ControlQuery {
 		String gasStoveOrInduction = "";
 		String electricVehicleChargingFacilities = "";
 		String parkingLot = "";
+		String breakfast = "";
+		String cleanService = "";
+		String luggageStorage = "";
 
 		try {
 			MultipartRequest multi = new MultipartRequest(rq, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
 			Enumeration files = multi.getFileNames();
-			stayName = multi.getParameter("name");
+			stayName = multi.getParameter("stay_name");			
 			latitude = multi.getParameter("latitude");
 			longitude = multi.getParameter("longitude");
 			postCode = multi.getParameter("post_code");
@@ -123,41 +126,45 @@ public class StayIns implements ControlQuery {
 			wirelessInternet = multi.getParameter("wireless_internet");
 			barbecueTool = multi.getParameter("barbecue_tool");
 			basicCookware = multi.getParameter("basic_cookware");
-			diningTable = multi.getParameter("dinning_table");
+			diningTable = multi.getParameter("dining_table");
 			cutlery = multi.getParameter("cutlery");
 			refrigerator = multi.getParameter("refrigerator");
 			microwave = multi.getParameter("microwave");
-			electricRiceCooker = multi.getParameter("elecTric_rice_cooker");
+			electricRiceCooker = multi.getParameter("electric_rice_cooker");
 			gasStoveOrInduction = multi.getParameter("gas_stove_or_induction");
-			electricVehicleChargingFacilities = multi.getParameter("electric_vehicle");
+			electricVehicleChargingFacilities = multi.getParameter("electric_vehicle_charging_facilities");
 			parkingLot = multi.getParameter("parking_lot");	
+			breakfast = multi.getParameter("breakfast");
+			cleanService = multi.getParameter("clean_service");
+			luggageStorage = multi.getParameter("luggage_storage");
 
 			// 이미지 업로드
 			String image1 = (String) files.nextElement();
 			imagename1 = multi.getFilesystemName(image1);
-			origimageename1 = multi.getOriginalFileName(image1);
+			origimagename1 = multi.getOriginalFileName(image1);
 
 			String image2 = (String) files.nextElement();
 			imagename2 = multi.getFilesystemName(image2);
-			origimageename2 = multi.getOriginalFileName(image2);
+			origimagename2 = multi.getOriginalFileName(image2);
 
 			String image3 = (String) files.nextElement();
 			imagename3 = multi.getFilesystemName(image3);
-			origimageename3 = multi.getOriginalFileName(image3);
+			origimagename3 = multi.getOriginalFileName(image3);
 
 			String image4 = (String) files.nextElement();
 			imagename4 = multi.getFilesystemName(image4);
-			origimageename4 = multi.getOriginalFileName(image4);
+			origimagename4 = multi.getOriginalFileName(image4);
 
 			String image5 = (String) files.nextElement();
 			imagename5 = multi.getFilesystemName(image5);
-			origimageename5 = multi.getOriginalFileName(image5);
+			origimagename5 = multi.getOriginalFileName(image5);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
-
+		}
+		
 		rs.setCharacterEncoding("UTF-8");
-		StayInsert insert = new StayInsert();
+		StayInsert stayInsert = new StayInsert();
+		StayIdSel stayId = new StayIdSel();
 		StayInfo stayInfo = new StayInfo();
 		stayInfo.setHostId(hostId);
 		stayInfo.setStayName(stayName);
@@ -209,9 +216,11 @@ public class StayIns implements ControlQuery {
 		stayInfo.setGasStoveOrInduction(gasStoveOrInduction);
 		stayInfo.setElectricVehicleChargingFacilities(electricVehicleChargingFacilities);
 		stayInfo.setParkingLot(parkingLot);
-		stayInfo.setContent(content);
-		insert.dbInsert(stayInfo);
-		// TODO Auto-generated method stub
+		stayInfo.setContent(content);		
+		stayInfo.setBreakfast(breakfast);
+		stayInfo.setCleanService(cleanService);
+		stayInfo.setLuggageStorage(luggageStorage);
+		stayInsert.dbInsert(stayInfo);
 		return null;
 	}
 }

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="query_ex">
+
+	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner"
+		parameterType="com.pro.dto.MyPlanner">
+		SELECT s.stay_name, s.location,
+		date_format(r.check_in_date, '%Y.%m.%d') AS check_in_date,
+		date_format(r.check_out_date, '%Y.%m.%d') AS check_out_date,
+		date_format(p.modified_date, '%Y.%m.%d') AS modified_date,
+		(datediff(r.check_out_date, r.check_in_date) + 1) AS days_count,
+		p.plan_id FROM planner p
+		JOIN reservation r ON p.reservation_id =
+		r.reservation_id
+		JOIN room_info ro ON r.room_id = ro.room_id
+		JOIN
+		stay_info s ON ro.stay_id = s.stay_id
+		WHERE r.user_id = #{user_id};
+	</select>
+
+	<select id="checkInInfoSelect"
+		resultType="com.pro.dto.CheckInInfo"
+		parameterType="com.pro.dto.CheckInInfo">
+		SELECT
+		hi.host_id as hostId,
+		r.reservation_id as
+		reservationId,
+		u.name as userName,
+		r.room_id as roomId,
+		ro.room_name as
+		roomName,
+		r.check_in_date as checkInDate,
+		r.check_out_date as
+		checkOutDate,
+		CAST(r.check_in_time as CHAR) as checkInTime,
+		CAST(r.check_out_time as CHAR) as
+		checkOutTime,
+		r.people as people,
+		r.price as price,
+		CAST(r.payment_time
+		as CHAR) as paymentTime
+		FROM
+		reservation r
+		JOIN user_info u ON r.user_id = u.user_id
+		JOIN room_info
+		ro ON r.room_id = ro.room_id
+		JOIN stay_info si ON ro.stay_id =
+		si.stay_id
+		JOIN host_info hi ON si.host_id = hi.host_id
+		WHERE hi.host_id
+		= #{hostId}
+		AND r.check_in_date = curdate()
+		AND r.status = '예약 확정';
+	</select>
+
+	<insert id="stayInfoInsert" parameterType="com.pro.dto.StayInfo">
+		INSERT INTO stay_info(
+		host_id, stay_name, location, post_code,
+		road_addr,
+		jibun_addr,
+		detail_addr, reference_addr, latitude, longitude,
+		host_phone, image1,
+		image2, image3, image4, image5, content,
+		tub, bath_supplies,
+		hair_dryer,
+		towel, bedding, washing_machine, drying_machine,
+		pool,
+		arcade_game, gym, tv,board_game,
+		air_conditioner, fan, heating_system,
+		carbon_monoxide_alarm, fire_extinguisher, aid_kit, fire_alarm,
+		workspace,wireless_internet,
+		barbecue_tool,basic_cookware,
+		dining_table, cutlery, refrigerator, microwave, electric_rice_cooker,
+		gas_stove_or_induction,
+		electric_vehicle_charging_facilities,
+		parking_lot,
+		breakfast, clean_service, luggage_storage
+		)
+		VALUES (
+		#{hostId},
+		#{stayName},
+		SUBSTRING_INDEX(#{roadAddr}, ' ', 2),
+		#{postCode},
+		#{roadAddr}, #{jibunAddr}, #{detailAddr},
+		#{referenceAddr},
+		#{lat},
+		#{lngt}, #{hostPhone}, #{image1}, #{image2},
+		#{image3}, #{image4},
+		#{image5}, #{content},
+		#{tub}, #{bathSupplies},
+		#{hairDryer},
+		#{towel}, #{bedding}, #{washingMachine},
+		#{dryingMachine},
+		#{pool}, #{arcadeGame}, #{gym}, #{tv},#{boardGame},
+		#{airConditioner}, #{fan}, #{heatingSystem},
+		#{carbonMonoxideAlarm},
+		#{fireExtinguisher}, #{aidKit}, #{fireAlarm},
+		#{workspace},#{wirelessInternet},
+		#{barbecueTool},#{basicCookware},
+		#{diningTable}, #{cutlery}, #{refrigerator}, #{microwave},
+		#{electricRiceCooker}, #{gasStoveOrInduction},
+		#{electricVehicleChargingFacilities}, #{parkingLot},
+		#{breakfast},
+		#{cleanService}, #{luggageStorage}
+		);
+	</insert>
+
+	<select id="stayIdSelect" resultType="com.pro.dto.StayInfo" parameterType="com.pro.dto.StayInfo">
+		SELECT stay_id FROM stay_info where host_id = #{host_id};
+	</select>
+
+	<insert id="roomInfoInsert" parameterType="com.pro.dto.RoomInfo">
+INSERT INTO room_info
+		(stay_id, room_name, content, price, standard_people, maximum_people,
+		image1, image2, image3, image4, image5,
+		image6, image7, image8, image9,
+		image10)
+		VALUES(
+		#{stayId},#{roomName},#{content},#{price},#{stdPeople},#{maxPeople},
+        #{image1},#{image2},#{image3},#{image4},#{image5},#{image6},#{image7},#{image8},#{image9},#{image10}
+		);
+	</insert>
+</mapper>

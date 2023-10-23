@@ -37,8 +37,8 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("room_ins")) {
 				inter = RoomIns.instance();
 				inter.dataCon(req, res);
+				res.sendRedirect("add_room_result.jsp");
 			}
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

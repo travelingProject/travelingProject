@@ -6,9 +6,9 @@ public class StayInfo {
 			image2, image3, image4, image5, content, tub, bathSupplies, hairDryer, towel, bedding, washingMachine,
 			dryingMachine, pool, arcadeGame, gym, tv, boardGame, airConditioner, fan, heatingSystem, carbonMonoxideAlarm,
 			fireExtinguisher, aidKit, fireAlarm, workspace, wirelessInternet, barbecueTool, basicCookware, diningTable,
-			cutlery, refrigerator, microwave, electricRiceCooker, gasStoveOrInduction, electricVehicleChargingFacilities, parkingLot, breakfast, cleanService,luggageStorage;    
+			cutlery, refrigerator, microwave, electricRiceCooker, gasStoveOrInduction, electricVehicleChargingFacilities, parkingLot, breakfast, cleanService,luggageStorage;
 
-    public int getStayId() {
+	public int getStayId() {
         return stayId;
     }
 

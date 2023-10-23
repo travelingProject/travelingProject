@@ -44,7 +44,7 @@
 						<th>숙소 이름</th>
 						<td>
 							<input type="text" id="stay_name" name="stay_name" placeholder="숙소 이름을 입력하세요." />
-							<p id="stay_name_text" class="error_text">숙소 이름을 입력해주세요.</p>						
+							<p id="stay_name_text" class="error_text">숙소 이름을 입력해주세요.</p>				
 						</td>						
 					</tr>
 					<tr>
@@ -90,7 +90,7 @@
 									<label id="image_label1" class="image_label" for="image1">이미지를 선택해주세요.</label>									
 									<input type="button" id="remove_btn1" class="remove_btn" value="-" style="display:none">
 									<input type="file" class="images" id="image1" name="image1" accept="image/png,image/jpeg,image/gif">
-								</div>								
+								</div>			
 								<div>
 									<label id="image_label2" class="image_label" for="image2">이미지를 선택해주세요.</label>
 									<input type="button" id="remove_btn2" class="remove_btn" value="-" style="display:none">
@@ -280,7 +280,7 @@
 								<div>										
 									<input type="radio" id="fire_extinguisher_checked" name="fire_extinguisher" value="yes">
 									<label for="fire_extinguisher_checked"></label>										
-									<input type="radio" id="fire_extinguisher_not_checked" name=""fire_extinguisher"" value="no">
+									<input type="radio" id="fire_extinguisher_not_checked" name="fire_extinguisher" value="no">
 									<label for="fire_extinguisher_not_checked"></label>
 								</div>
 							</div>
@@ -411,6 +411,34 @@
 									<label for="parking_lot_checked"></label>										
 									<input type="radio" id="parking_lot_not_checked" name="parking_lot" value="no">
 									<label for="parking_lot_not_checked"></label>
+								</div>
+							</div>
+							<h3>서비스</h3>
+							<div>
+								<h4>아침 식사</h4>
+								<div>										
+									<input type="radio" id="breakfast_checked" name="breakfast" value="yes">
+									<label for="breakfast_checked"></label>										
+									<input type="radio" id="breakfast_not_checked" name="breakfast" value="no">
+									<label for="breakfast_not_checked"></label>
+								</div>
+							</div>
+							<div>
+								<h4>청소 서비스</h4>
+								<div>										
+									<input type="radio" id="clean_serivce_checked" name="clean_service" value="yes">
+									<label for="clean_serivce_checked"></label>										
+									<input type="radio" id="clean_serivce_not_checked" name="clean_service" value="no">
+									<label for="clean_serivce_not_checked"></label>
+								</div>
+							</div>
+							<div>
+								<h4>짐 보관</h4>
+								<div>										
+									<input type="radio" id="luggage_storage_checked" name="luggage_storage" value="yes">
+									<label for="luggage_storage_checked"></label>										
+									<input type="radio" id="luggage_storage_not_checked" name="luggage_storage" value="no">
+									<label for="luggage_storage_not_checked"></label>
 								</div>
 							</div>
 						</td>

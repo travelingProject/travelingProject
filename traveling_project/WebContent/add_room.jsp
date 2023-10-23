@@ -31,31 +31,31 @@
 		<%@ include file="host_aside.jsp"%>
 		<section>
 			<h2>객실 등록하기</h2>
-			<form action="add_room.condb?comm=room_ins" method="post">
+			<form action="add_room.condb?comm=room_ins" method="post" enctype="multipart/form-data">
 				<table>
 					<tbody>
 						<tr>
 							<th>객실 이름</th>
-							<td><input type="text" placeholder="객실 이름을 입력해주세요."></td>
+							<td><input type="text" name="room_name" placeholder="객실 이름을 입력해주세요."></td>
 						</tr>
 						<tr>
 							<th>객실 설명</th>
 							<td>
 								<p style="line-height: 1">
-									<textarea name="contents" placeholder="객실에 대한 상세한 정보를 입력해주세요."></textarea>
+									<textarea name="content" placeholder="객실에 대한 상세한 정보를 입력해주세요."></textarea>
 								</p>
 							</td>
 						</tr>
 						<tr>
 							<th>객실 가격</th>
-							<td><input type="text" placeholder="객실 가격을 입력해주세요."></td>
+							<td><input type="text" name="price" placeholder="객실 가격을 입력해주세요."></td>
 						</tr>
 						<tr>
 							<th>기준 인원</th>
 							<td>
 								<input type="hidden" name="std_people" id="std_people_input" value="1" />
 								<input type="button" id="std_decrease_btn" value="-" />
-								<span id="std_people_number"  class="people_num">1</span>
+								<span id="std_people_number"  class="people_num">1</span>								
 								<input type="button" id="std_increase_btn" value="+" />
 							</td>							
 						</tr>
@@ -69,18 +69,66 @@
 							</td>							
 						</tr>
 						<tr>
-							<th>객실 이미지</th>
-							<td>							
-								<input type="file" id="btnAtt" name="stay_image" multiple="multiple" onchange="readURL(this);"/>
-								<label for="btnAtt">이미지 업로드</label>
-								<input type="button" id="file_delete_all" value="이미지 전체 삭제" onclick="deleteAllFiles()"/>
-								<p id="file_error_text" class="error_text"></p>
-								<div id="att_zone">이미지는 최소 3장 최대 5장까지 선택할 수 있습니다.</div>
-							</td>
-						</tr>						
+						<th>객실 이미지</th>
+						<td>							
+							<p id="image_text">객실 이미지는 최소 5장에서 최대 10장까지 등록해주세요.</p>
+							<div id="att_zone">
+								<div>
+									<label id="image_label1" class="image_label" for="image1">이미지를 선택해주세요.</label>									
+									<input type="button" id="remove_btn1" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image1" name="image1" accept="image/png,image/jpeg,image/gif">
+								</div>			
+								<div>
+									<label id="image_label2" class="image_label" for="image2">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn2" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image2" name="image2" accept="image/png,image/jpeg,image/gif">		
+								</div>								
+								<div>
+									<label id="image_label3" class="image_label" for="image3">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn3" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image3" name="image3" accept="image/png,image/jpeg,image/gif">								
+								</div>								
+								<div>
+									<label id="image_label4" class="image_label" for="image4">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn4" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image4" name="image4" accept="image/png,image/jpeg,image/gif">									
+								</div>								
+								<div>
+									<label id="image_label5" class="image_label" for="image5">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn5" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image5" name="image5" accept="image/png,image/jpeg,image/gif">												
+								</div>								
+								<div>
+									<label id="image_label6" class="image_label" for="image6">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn6" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image6" name="image6" accept="image/png,image/jpeg,image/gif">												
+								</div>								
+								<div>
+									<label id="image_label7" class="image_label" for="image7">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn7" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image7" name="image7" accept="image/png,image/jpeg,image/gif">												
+								</div>								
+								<div>
+									<label id="image_label8" class="image_label" for="image8">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn8" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image8" name="image8" accept="image/png,image/jpeg,image/gif">												
+								</div>								
+								<div>
+									<label id="image_label9" class="image_label" for="image9">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn9" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image9" name="image9" accept="image/png,image/jpeg,image/gif">												
+								</div>								
+								<div>
+									<label id="image_label10" class="image_label" for="image10">이미지를 선택해주세요.</label>
+									<input type="button" id="remove_btn10" class="remove_btn" value="-" style="display:none">
+									<input type="file" class="images" id="image10" name="image10" accept="image/png,image/jpeg,image/gif">												
+								</div>								
+							</div>
+						</td>
+					</tr>						
 					</tbody>					
 				</table>
-				<input type="submit" value="등록하기">
+				<input id="add_room_btn" type="submit" value="등록하기">
 			</form>
 		</section>
 	</main>

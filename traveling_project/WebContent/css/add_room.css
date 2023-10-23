@@ -15,5 +15,12 @@ td input[type="button"]{
 	background:#1aa3ff;	
 }
 #att_zone{
-	display:block;
+	flex-wrap:wrap;
+}
+#att_zone > div{
+	width:20%;
+}
+
+#att_zone > div:nth-child(5) ~ div{	
+	margin-top:10px;
 }
