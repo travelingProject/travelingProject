@@ -1,11 +1,9 @@
 package com.pro.controller;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.pro.dto.RoomInfo;
+import com.pro.dto.StayInfo;
 import com.pro.mybatis.DBCon;
 
 public class StayIdSelect {
@@ -17,11 +15,11 @@ public class StayIdSelect {
 
 	SqlSessionFactory f = DBCon.getSqlSession();
 
-	public List<RoomInfo> dbSelect(RoomInfo roomInfo) {
+	public int dbSelect(StayInfo stayInfo) {
 		SqlSession s = f.openSession();		
-		List<RoomInfo> stayId = s.selectList("stayIdSelect",roomInfo);
-		System.out.println(stayId);
-		s.close();		
+		int stayId = s.selectOne("stayIdSelect",stayInfo);
+		System.out.println("stayId :" + stayId);
+		s.close();
 		return stayId;
 	}
 }
