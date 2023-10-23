@@ -28,26 +28,31 @@ $(document).ready(function() {
 		}
 	});
 	
-	//추가하기 버튼 클릭 시
+	// 변수를 사용하여 현재 추가할 day를 추적
+	var currentDay = 1;
+
+	// "일정 추가하기" 버튼 클릭 이벤트 핸들러
 	$("#add_schedule").click(function() {
-		// 이미 추가된 일정 항목 수 가져오기
-		var addedSchedules = $(".schedule").length;
+	    // 현재 선택된 탭을 가져옴
+	    var activeTab = $(".tabDay.is_on");
 
-	    // 최대 10개까지 추가 가능
-	    if (addedSchedules >= 10) {
+	    // 현재 선택된 탭에 대한 일정을 추가
+	    addScheduleToActiveTab(activeTab, currentDay);
+
+	    // 현재 day를 증가
+	    currentDay++;
+
+	    // 최대 10개까지 추가 가능하도록 제한
+	    if (currentDay > 10) {
 	        alert("최대 10개까지 추가할 수 있습니다.");
-	        return;
+	        $("#add_schedule").prop("disabled", true); // 상세 일정이 10개에 도달하면 버튼을 비활성화 시켜줌
+	        $("#add_schedule").css({
+	        	"cursor" : "auto",
+	        	"background-color" : "#E9E9E9"
+	        });
 	    }
-	    // 일정 항목 추가
-	    var newSchedule = '<div>' +
-	    '<img src="images/number/numb_' + (addedSchedules + 1) + '_1.png" alt="" width="36px" height="36px">' +
-	    '<input type="time" class="pst"> ~ <input type="time" class="pet"><br>' +
-	    '<input type="text" class="pcon" maxlength="100" placeholder="내용은 100자 이내로 입력해주세요.">' +
-	    '</div>';
-
-
-	    $(".sch1").append(newSchedule);
 	});
+
 
 });
 
@@ -97,7 +102,6 @@ function detail_plan(event) {
 	    // 날짜를 "yyyy-MM-dd" 형식으로 포맷팅
 	    return date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
 	}
-
 	
 	// 탭 버튼
 	$("ul.tab_list li").click(function() {
@@ -121,3 +125,24 @@ function detail_plan(event) {
 	$('.planner_modal_wrap').show();
 	$('body').css('overflow', 'hidden');
 }
+
+// 일정 추가하기 버튼 - 함수
+function addScheduleToActiveTab(activeTab, currentDay) {
+    activeTab = $(activeTab); // JavaScript DOM 요소를 jQuery 객체로 변환
+
+    // 선택된 탭에 대한 일정을 추가
+    var tabId = activeTab.attr("data-tab");
+    var tabNumber = currentDay;
+
+    // 이미지 파일 이름 생성
+    var imageFileName = tabNumber + "_" + tabId;
+
+    var newSchedule = '<div>' +
+        '<img src="images/number/' + imageFileName + '.png" alt="" width="36px" height="36px">' +
+        '<input type="time" class="pst"> ~ <input type="time" class="pet"><br>' +
+        '<input type="text" class="pcon" maxlength="100" placeholder="내용은 100자 이내로 입력해주세요.">' +
+        '</div>';
+
+    $("#" + tabId).find(".schedule").append(newSchedule);
+}
+
