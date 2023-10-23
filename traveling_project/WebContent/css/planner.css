@@ -164,7 +164,6 @@ ul #planner_category {
 .tab_cont>p {
 	font-size: 20px;
 	font-weight: bold;
-	text-align: center;
 }
 
 #pm_header>span {
@@ -307,4 +306,24 @@ a.tab_btn {
 .ndate {
 	font-size: 14px;
 	font-weight: normal;
+}
+
+.days_btn {
+	display: flex;
+	justify-content: end;
+}
+
+.days_btn button {
+	display: none;
+	padding: 5px 10px;
+	margin: 0 10px;
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.days_btn button:hover {
+	background-color: #0056b3;
 }

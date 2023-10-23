@@ -108,7 +108,7 @@
 								</div>
 								<div id="pm_btn">
 									<input type="button" id="modi_btn" value="수정">
-									<input type="button" id="add_schedule" value="일정 추가">
+									<!-- <input type="button" id="add_schedule" value="일정 추가"> -->
 									<input type="submit" id="modi_save_btn" value="저장">
 									<input type="button" id="can_btn" name="can_btn" value="종료">
 									<input type="button" id="modi_can_btn" name="can_btn" value="취소">
