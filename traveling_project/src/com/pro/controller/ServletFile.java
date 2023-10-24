@@ -44,13 +44,22 @@ public class ServletFile extends HttpServlet {
 				System.out.println("result is " + result);
 				boolean abc = result.equals("0");
 				System.out.println(abc);
-				if(result.equals("0")) {
+				if (result.equals("0")) {
 					req.setAttribute("result", false);
-				} else{
+				} else {
 					req.setAttribute("result", true);
-				}				
+				}
 				RequestDispatcher dispatcher = req.getRequestDispatcher("stay_sel_result.jsp");
-				dispatcher.forward(req,res);
+				dispatcher.forward(req, res);
+			} else if (comm.equals("plan_sel")) {
+				inter = PlanSel.instance();
+				inter.dataCon(req, res);
+			} else if (comm.equals("delPlan")) {
+				inter = PlanDel.instance();
+				inter.dataCon(req, res);
+			} else if (comm.equals("insPlan")) {
+				inter = PlanIns.instance();
+				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

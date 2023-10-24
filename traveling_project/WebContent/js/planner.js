@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	// 전역 변수로 데이터 복사본을 보관할 객체를 생성
+	var originalData = {};
 
 	// 수정 버튼 클릭 시
 	$("#modi_btn").click(function() {
@@ -7,9 +10,7 @@ $(document).ready(function() {
 		$("#modi_save_btn").show();
 		$("#modi_can_btn").show();
 		$(".days_btn button").show();
-		$(".pst").prop("disabled", false);
-		$(".pet").prop("disabled", false);
-		$(".pcon").prop("disabled", false);
+		$(".dsch input").prop("disabled", false);
 	});
 
 	// 수정 -> 취소 버튼 클릭 시
@@ -20,9 +21,7 @@ $(document).ready(function() {
 			$("#modi_save_btn").hide();
 			$("#modi_can_btn").hide();
 			$(".days_btn button").hide();
-			$(".pst").prop("disabled", true);
-    		$(".pet").prop("disabled", true);
-    		$(".pcon").prop("disabled", true);
+			$(".dsch input").prop("disabled", true);
 		}
 	});
 
@@ -38,6 +37,59 @@ $(document).ready(function() {
 			$("#date_tabs").empty();
 			history.pushState(null, null, window.location.href.split('#')[0]); // 모달창을 닫으면 url에 남아있던 브라우저 기록을 지워줌
 		}
+	});
+	
+	// 저장 버튼 클릭 시
+	$("#modi_save_btn").click(function() {
+		if (confirm("저장하시겠습니까?")) {
+		$("#modi_btn").show();
+		$("#can_btn").show();
+		$("#modi_save_btn").hide();
+		$("#modi_can_btn").hide();
+		$(".days_btn button").hide();
+		$(".dsch input").prop("disabled", true);
+		// INSERT 할 때 필요한 plan_id 값을 가져옴
+        var pid = $("#pid_hidden").val();
+        
+		$.ajax({
+			url: "delete_plan.condb?comm=delPlan",
+			method: "POST",
+			data: {
+				pid : pid
+			},
+			success: function(res) {
+				console.log("삭제 성공" + res);
+				/* 비동기 방식으로 데이터 처리할 예정 */
+				$(".dsch").each(function() {
+			        var schedule = $(this);
+
+			        // 특정 .dsch 요소 안에서 필드 값을 가져옵니다.
+			        var pdate = schedule.find(".pdate").val();
+			        var pst = schedule.find(".pst").val();
+			        var pet = schedule.find(".pet").val();
+			        var pcon = schedule.find(".pcon").val();
+			        
+			        $.ajax({
+			        	url: "insert_plan.condb?comm=insPlan",
+			        	method: "POST",
+			        	data: {
+			        		pid : pid,
+			        		pdate : pdate,
+			        		pst : pst,
+			        		pet : pet,
+			        		pcon : pcon
+			        	},
+			        	success: function(res) {
+			        		console.log("입력 성공" + res);
+			        	}
+			        });  
+			    });
+			}
+		});
+		alert("저장되었습니다.");
+
+		}
+		
 	});
 	
 	// 이벤트 위임을 사용하여 "추가하기" 버튼 클릭 이벤트 처리
@@ -57,14 +109,46 @@ $(document).ready(function() {
 
         addScheduleToActiveTab(activeTab, currentDay);
     });
+    
+    // 체크박스로 삭제
+    $(".tab_list").on("click", ".del_schedule", function () {
+        // 삭제할 스케줄 요소를 모두 선택
+        var schedulesToDelete = $(".tabDay.is_on").find(".delete_box:checked").closest(".dsch");
+
+        // 선택한 스케줄 삭제
+        schedulesToDelete.remove();
+        
+        // 스케줄 번호를 다시 업데이트
+        var tabId = $(".tabDay.is_on").attr("data-tab");
+
+        // 남은 항목들을 재배열
+        var tabNumber = 1;
+        
+        // 이미지 파일 이름 생성
+        var imageFileName = tabNumber + "_" + tabId;
+        
+        $("#" + tabId).find(".dsch").each(function() {
+        	// 클래스 이름 숫자 변경
+        	var schedule = $(this);
+            var currentClass = schedule.attr("class");
+            var newClass = currentClass.replace(/detail_sch\d+/, "detail_sch" + tabNumber);
+            schedule.attr("class", newClass);
+            // 이미지 파일 변경
+            var imgTag = $(this).find("img");
+            var imageFileName = tabNumber + "_" + tabId;
+            imgTag.attr("src", "images/number/" + imageFileName + ".png");
+            tabNumber++;
+        });
+    });
+
 });
 
 // 상세보기 버튼 클릭
 function detail_plan(event) {
-	// 클릭한 작성하기 버튼 요소를 선택
+	// 클릭한 상세보기 버튼 요소를 선택
 	var $button = $(event.target);
 
-	// 클릭한 작성하기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
+	// 클릭한 상세보기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
 	var $reservationInfo = $button.closest("ul.planner_list");
 
 	// data-plan_id 속성 값을 가져옴
@@ -90,6 +174,7 @@ function detail_plan(event) {
 
 	// 체크인 날짜를 사용하여 탭을 동적으로 생성하고 체크인 날짜를 추가
 	var tabnum = "";
+	var newSchedule = "";
 	for (var i = 0; i < countDays; i++) {
 	    var j = i + 1;
 	    tabnum = "<li class='tabDay' data-tab='day" + j + "'>"
@@ -103,6 +188,48 @@ function detail_plan(event) {
 	    if (j == 1) {
 			$(".tabDay").addClass("is_on");
 		}
+	    
+	    // 클로저를 사용하여 현재 반복 변수 'j'를 보존
+	    (function (currentTab) {
+	        // AJAX 요청을 수행
+	        $.ajax({
+	            url: "planner.condb?comm=plan_sel",
+	            method: "POST",
+	            data: {
+	                planId: planId,
+	                planDate: formatCheckinDate(checkInDate)
+	            },
+	            success: function (response) {
+	                response = $(response);
+
+	                for (var x = 0; x < response.size(); x++) {
+	                    var a = 1;
+	                    var pdate = response.find("#ajax_pdate" + x).html();
+	                    var pst = response.find("#ajax_pst" + x).html();
+	                    var pet = response.find("#ajax_pet" + x).html();
+	                    var pcont = response.find("#ajax_pcont" + x).html();
+
+	                    var newSchedule = '<div class="dsch detail_sch' + (x + 1) + '">' +
+	                    	'<input type="hidden" class="pdate" value="' + pdate + '">' +
+	                        '<img src="images/number/' + (x + 1) + '_day' + currentTab + '.png" alt="" width="36px" height="36px">' +
+	                        '<input type="time" class="pst" value="' + pst + '"> ~ <input type="time" class="pet" value ="' + pet + '"><br>' +
+	                        '<input type="checkbox" class="delete_box" name="delete_box">' +
+	                        '<input type="text" class="pcon" maxlength="100" value="' + pcont + '">' +
+	                        '</div>';
+
+	                    $(".schedule.sch" + currentTab).append(newSchedule);
+
+	                }
+
+	                $(".dsch input").prop("disabled", true);
+	            },
+	            error: function (jqXHR, textStatus, errorThrown) {
+	                // 에러 처리
+	                console.error("AJAX 오류:", textStatus, errorThrown);
+	            }
+	        });
+	    })(j); // 클로저로 'j' 변수 보존
+	    
 	    // 하루씩 늘리기
 	    checkInDate.setDate(checkInDate.getDate() + 1);
 	}
@@ -150,49 +277,6 @@ function detail_plan(event) {
 	$('.planner_modal_wrap').show();
 	$('body').css('overflow', 'hidden');
 	
-	// AJAX 요청을 수행
-    $.ajax({
-        url: "planner.condb?comm=plan_sel", // 서버 URL을 여기에 입력
-        method: "GET",
-        data: {
-        	planId: planId,
-        	checkInDateStr : checkInDateStr
-        	},
-        success: function(response) {
-        	response = $(response);
-        	
-        	if (response.size() == 0) {
-        		var noneSch = "<div>" +
-        		"<p>수정 버튼을 눌러 일정을 추가해주세요.</p>" +
-        		"</div>";
-        		$(".schedule").append(noneSch);
-        	} else {
-	    		for (var i = 0; i < response.size(); i++) {
-	    			var pdate = response.find("#ajax_pdate" + i).html();
-	    			var pst = response.find("#ajax_pst" + i).html();
-	    			var pet = response.find("#ajax_pet" + i).html();
-	    			var pcont = response.find("#ajax_pcont" + i).html();
-	    			
-	    			var newSchedule = '<div>' +
-	    	        '<img src="images/number/' + (i+1) + '_day1.png" alt="" width="36px" height="36px">' +
-	    	        '<input type="time" class="pst" value="' + pst + '"> ~ <input type="time" class="pet" value ="' + pet + '"><br>' +
-	    	        '<input type="text" class="pcon" maxlength="100" value="' + pcont + '">' +
-	    	        '</div>';
-	    			
-	    			$(".schedule").append(newSchedule);
-	    		}
-	    		
-	    		$(".pst").prop("disabled", true);
-	    		$(".pet").prop("disabled", true);
-	    		$(".pcon").prop("disabled", true);
-	        }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // 에러 처리
-            console.error("AJAX 오류:", textStatus, errorThrown);
-        }
-    });
-	
 }
 
 // 일정 추가하기 버튼 - 함수
@@ -201,17 +285,19 @@ function addScheduleToActiveTab(activeTab, currentDay) {
 
     // 선택된 탭에 대한 일정을 추가
     var tabId = activeTab.attr("data-tab");
+    var pdate = activeTab.find(".ndate").html();
     var tabNumber = currentDay;
 
     // 이미지 파일 이름 생성
     var imageFileName = tabNumber + "_" + tabId;
 
-    var newSchedule = '<div>' +
+    var newSchedule = '<div class="dsch detail_sch' + tabNumber + '">' +
+    	'<input type="hidden" class="pdate" value="' + pdate  + '">' +
         '<img src="images/number/' + imageFileName + '.png" alt="" width="36px" height="36px">' +
         '<input type="time" class="pst"> ~ <input type="time" class="pet"><br>' +
+        '<input type="checkbox" class="delete_box" name="delete_box">' +
         '<input type="text" class="pcon" maxlength="100" placeholder="내용은 100자 이내로 입력해주세요.">' +
         '</div>';
 
     $("#" + tabId).find(".schedule").append(newSchedule);
 }
-

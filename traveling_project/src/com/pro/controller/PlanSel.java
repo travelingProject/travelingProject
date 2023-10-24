@@ -22,7 +22,8 @@ public class PlanSel implements ControlQuery {
 		PlanSelect planSel = PlanSelect.instance();
 		
 		int pid = new Integer(req.getParameter("planId"));
-		String chk = req.getParameter("checkInDateStr");
+		String chk = req.getParameter("planDate");
+
 		DetailPlan dp = new DetailPlan();
 		dp.setPlan_id(pid);
 		dp.setCheck_in_date(chk);

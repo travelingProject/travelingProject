@@ -294,7 +294,6 @@ a.tab_btn {
 	outline: none;
 	padding: 0 10px;
 	background-color: rgb(233, 233, 233);
-	margin-left: 40px;
 }
 
 .schedule div {
@@ -326,4 +325,12 @@ a.tab_btn {
 
 .days_btn button:hover {
 	background-color: #0056b3;
+}
+
+.delete_box {
+	margin: 0 8px;
+}
+
+.dsch img {
+	vertical-align: middle;
 }

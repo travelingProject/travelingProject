@@ -18,10 +18,18 @@
 		stay_info s ON ro.stay_id = s.stay_id
 		WHERE r.user_id = #{user_id};
 	</select>
-	
+
 	<select id="planSelect" resultType="com.pro.dto.DetailPlan" parameterType="com.pro.dto.DetailPlan">
-		SELECT * FROM detail_plan WHERE plan_id = #{plan_id} AND plan_date = #{check_in_date} ORDER BY plan_date, plan_start_time, plan_end_time;
+		SELECT * FROM detail_plan WHERE plan_id = #{plan_id} AND plan_date = #{check_in_date} ORDER BY plan_start_time, plan_end_time;
 	</select>
+	
+	<insert id="planInsert" parameterType="com.pro.dto.DetailPlan">
+		INSERT INTO detail_plan VALUES (#{plan_id}, #{plan_date}, #{plan_start_time}, #{plan_end_time}, #{plan_content});
+	</insert>
+	
+	<delete id="planDelete" parameterType="com.pro.dto.DetailPlan">
+		DELETE FROM detail_plan WHERE plan_id = #{plan_id};
+	</delete>
 
 	<select id="checkInInfoSelect"
 		resultType="com.pro.dto.CheckInInfo"
