@@ -60,6 +60,9 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("insPlan")) {
 				inter = PlanIns.instance();
 				inter.dataCon(req, res);
+			} else if (comm.equals("upPlan")) {
+				inter = PlanUp.instance();
+				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

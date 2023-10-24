@@ -30,6 +30,10 @@
 	<delete id="planDelete" parameterType="com.pro.dto.DetailPlan">
 		DELETE FROM detail_plan WHERE plan_id = #{plan_id};
 	</delete>
+	
+	<update id="planUpdate" parameterType="com.pro.dto.DetailPlan">
+		UPDATE planner SET modified_date = now() WHERE plan_id = #{plan_id};
+	</update>
 
 	<select id="checkInInfoSelect"
 		resultType="com.pro.dto.CheckInInfo"
