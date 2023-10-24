@@ -1,28 +1,23 @@
 package com.pro.mybatis;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.pro.dto.CheckInInfo;
+import com.pro.dto.StayInfo;
 
 public class StaySelect {
-	static StaySelect mo = new StaySelect();
+	static StaySelect staySelect = new StaySelect();
 
 	public static StaySelect instance() {
-		return mo;
+		return staySelect;
 	}
 
 	SqlSessionFactory f = DBCon.getSqlSession();
 
-	public List<CheckInInfo> dbSelect(CheckInInfo checkInInfo) {
+	public void staySelect(StayInfo stayInfo) {
 		SqlSession s = f.openSession();
-		
-		List<CheckInInfo> checkInList = s.selectList("checkInInfoSelect", checkInInfo);
-		
+		s.selectOne("stayInfoInsert", stayInfo);
+		s.commit();
 		s.close();
-		
-		return checkInList;
 	}
 }

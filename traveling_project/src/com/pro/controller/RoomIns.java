@@ -12,7 +12,7 @@ import com.pro.dto.RoomInfo;
 import com.pro.mybatis.RoomInsert;
 
 public class RoomIns implements ControlQuery {
-	static RoomIns roomIns = new RoomIns(); // 싱글톤 방식으로 객체 생성
+	static RoomIns roomIns = new RoomIns();
 
 	public static RoomIns instance() {
 		return roomIns;
@@ -22,6 +22,7 @@ public class RoomIns implements ControlQuery {
 	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = rq.getSession();
+		String hostId = (String) session.getAttribute("host_id");		
 		String uploadPath = rq.getRealPath("/room_images");
 		int size = 10 * 1024 * 1024;		
 		String roomName = "";
@@ -116,14 +117,8 @@ public class RoomIns implements ControlQuery {
 		rs.setCharacterEncoding("UTF-8");
 		RoomInsert roomInsert = new RoomInsert();
 		StayIdSel stayIdSel = new StayIdSel();
-		RoomInfo roomInfo = new RoomInfo();
-		stayIdSel.dataCon(rq, rs);
-		int stayId = (int) rq.getAttribute("stayId");
-		try {
-			System.out.println(stayId);	
-		} catch (Exception e) {
-			System.out.println(e);
-		}		
+		int stayId = stayIdSel.selStayId(hostId);
+		RoomInfo roomInfo = new RoomInfo();					
 		roomInfo.setStayId(stayId);
 		roomInfo.setRoomName(roomName);
 		roomInfo.setContent(content);
@@ -139,7 +134,7 @@ public class RoomIns implements ControlQuery {
 		roomInfo.setImage7(imagename7);
 		roomInfo.setImage8(imagename8);
 		roomInfo.setImage9(imagename9);
-		roomInfo.setImage10(imagename10);	
+		roomInfo.setImage10(imagename10);
 		roomInsert.dbInsert(roomInfo);
 		return null;
 	}

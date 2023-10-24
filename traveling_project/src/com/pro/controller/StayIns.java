@@ -22,10 +22,10 @@ public class StayIns implements ControlQuery {
 
 	@Override
 	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
-		HttpSession session = rq.getSession();		
+		HttpSession session = rq.getSession();
+		String hostId = (String) session.getAttribute("host_id");
 		String uploadPath = rq.getRealPath("/stay_images");
-		int size = 10 * 1024 * 1024;
-		String hostId = (String) session.getAttribute("id");
+		int size = 10 * 1024 * 1024;		
 		String stayName = "";
 		String latitude = "";
 		String longitude = "";
@@ -164,8 +164,9 @@ public class StayIns implements ControlQuery {
 		
 		rs.setCharacterEncoding("UTF-8");
 		StayInsert stayInsert = new StayInsert();
-		StayIdSel stayId = new StayIdSel();
-		StayInfo stayInfo = new StayInfo();
+		StayIdSel stayIdSel = new StayIdSel();
+		
+		StayInfo stayInfo = new StayInfo();		
 		stayInfo.setHostId(hostId);
 		stayInfo.setStayName(stayName);
 		stayInfo.setLat(latitude);
@@ -220,6 +221,7 @@ public class StayIns implements ControlQuery {
 		stayInfo.setBreakfast(breakfast);
 		stayInfo.setCleanService(cleanService);
 		stayInfo.setLuggageStorage(luggageStorage);
+		
 		stayInsert.dbInsert(stayInfo);
 		return null;
 	}

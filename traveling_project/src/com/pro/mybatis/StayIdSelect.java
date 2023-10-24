@@ -1,10 +1,9 @@
-package com.pro.controller;
+package com.pro.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pro.dto.StayInfo;
-import com.pro.mybatis.DBCon;
 
 public class StayIdSelect {
 	static StayIdSelect mo = new StayIdSelect();
@@ -15,10 +14,11 @@ public class StayIdSelect {
 
 	SqlSessionFactory f = DBCon.getSqlSession();
 
-	public int dbSelect(StayInfo stayInfo) {
+	public int dbSelect(String hostId) {		
 		SqlSession s = f.openSession();		
-		int stayId = s.selectOne("stayIdSelect",stayInfo);
-		System.out.println("stayId :" + stayId);
+		int stayId = s.selectOne("stayIdCount" , hostId);
+		System.out.println("hostId is " + hostId);
+		System.out.println("count is " + stayId);
 		s.close();
 		return stayId;
 	}

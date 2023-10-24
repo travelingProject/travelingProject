@@ -79,6 +79,7 @@ textarea {
 	height: 300px;
 	border: 1px solid #ccc;
 	padding: 10px;
+	resize:none;	
 }
 
 textarea:focus {
@@ -165,7 +166,7 @@ table td h3 {
 	margin: 10px 0;
 }
 
-table td>div {
+table td > div {
 	display: flex;
 	justify-content: space-between;
 	padding: 3px 0;

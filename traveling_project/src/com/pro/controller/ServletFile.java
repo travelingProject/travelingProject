@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.StayIns;
-import com.pro.controller.StaySel;
+import com.pro.controller.RezSel;
 
 public class ServletFile extends HttpServlet {
 	@Override
@@ -26,7 +26,7 @@ public class ServletFile extends HttpServlet {
 				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("hostData")) {
-				inter = StaySel.instance();
+				inter = RezSel.instance();
 				inter.dataCon(req, res);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("host_index.jsp");
 				dispatcher.forward(req, res);
@@ -38,6 +38,19 @@ public class ServletFile extends HttpServlet {
 				inter = RoomIns.instance();
 				inter.dataCon(req, res);
 				res.sendRedirect("add_room_result.jsp");
+			} else if (comm.equals("stay_sel")) {
+				inter = StaySel.instance();
+				String result = inter.dataCon(req, res);
+				System.out.println("result is " + result);
+				boolean abc = result.equals("0");
+				System.out.println(abc);
+				if(result.equals("0")) {
+					req.setAttribute("result", false);
+				} else{
+					req.setAttribute("result", true);
+				}				
+				RequestDispatcher dispatcher = req.getRequestDispatcher("stay_sel_result.jsp");
+				dispatcher.forward(req,res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

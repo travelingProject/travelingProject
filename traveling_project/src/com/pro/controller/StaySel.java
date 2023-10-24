@@ -1,36 +1,27 @@
 package com.pro.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.pro.dto.CheckInInfo;
+import com.pro.mybatis.StayIdSelect;
 import com.pro.mybatis.StaySelect;
 
-public class StaySel implements ControlQuery {
-
-	static StaySel dbs = new StaySel();
+public class StaySel implements ControlQuery{
+	static StaySel selStay = new StaySel();
 
 	public static StaySel instance() {
-		return dbs;
+		return selStay;
 	}
 
 	@Override
-	public String dataCon(HttpServletRequest re, HttpServletResponse rs) throws Exception {
-		StaySelect staySelect = StaySelect.instance();
-		
-		HttpSession session = re.getSession();
-		rs.setCharacterEncoding("UTF-8");
-		
-		String hostId = (String) session.getAttribute("id");
-		CheckInInfo checkInInfo = new CheckInInfo();
-		checkInInfo.setHostId(hostId);
-		
-		List<CheckInInfo> checkInlist = staySelect.dbSelect(checkInInfo);
-		
-		re.setAttribute("checkInlist", checkInlist);
-		return null;
+	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		// TODO Auto-generated method stub
+		HttpSession session = req.getSession();
+		String hostId = (String) session.getAttribute("host_id");		
+		StayIdSelect stayIdSelect = new StayIdSelect();
+		String stayId =  Integer.toString(stayIdSelect.dbSelect(hostId));
+		System.out.println("StaySel stayId = " + stayId);
+		return stayId;
 	}
 }

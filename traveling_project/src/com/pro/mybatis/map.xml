@@ -103,14 +103,18 @@
 		#{breakfast},
 		#{cleanService}, #{luggageStorage}
 		);
-	</insert>
+	</insert>	
 
-	<select id="stayIdSelect" resultType="com.pro.StayInfo" parameterType="com.pro.StayInfo">
-		SELECT stay_id FROM stay_info where host_id = #{host_id};
+	<select id="stayIdSelect" resultType="int" parameterType="String">
+		SELECT stay_id FROM stay_info where host_id = #{hostId};
+	</select>
+	
+	<select id="stayIdCount" resultType="int" parameterType="String">
+		SELECT count(stay_id) FROM stay_info where host_id = #{hostId};
 	</select>
 
 	<insert id="roomInfoInsert" parameterType="com.pro.dto.RoomInfo">
-INSERT INTO room_info
+		INSERT INTO room_info
 		(stay_id, room_name, content, price, standard_people, maximum_people,
 		image1, image2, image3, image4, image5,
 		image6, image7, image8, image9,
@@ -119,5 +123,5 @@ INSERT INTO room_info
 		#{stayId},#{roomName},#{content},#{price},#{stdPeople},#{maxPeople},
         #{image1},#{image2},#{image3},#{image4},#{image5},#{image6},#{image7},#{image8},#{image9},#{image10}
 		);
-	</insert>
+	</insert>	
 </mapper>

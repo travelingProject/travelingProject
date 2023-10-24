@@ -2,6 +2,10 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.pro.dto.CheckInInfo"%>
 <%@ page import="java.text.DecimalFormat" %>
+<%
+	String hostId = (String) session.getAttribute("host_id");
+	String name = (String) session.getAttribute("name");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,14 +31,14 @@
 	<main>
 		<%@ include file="host_aside.jsp"%>
 		<section>
+		<input type="hidden" id="host_id" value="<%= hostId %>">		
 			<div>
 				<h2>
-					<%
-						String name = (String) session.getAttribute("name");
-						out.println(name + " 님, 안녕하세요!");
+					<%						
+						out.println(name + " 님, 안녕하세요!");						
 					%>
 				</h2>
-				<a id="add_accomodation_btn" href="add_stay.jsp">숙소 등록하기</a>
+				<input type="button" id="add_accomodation_btn" value="숙소 등록하기">	
 			</div>
 			<span id="underline"></span>
 			<div>

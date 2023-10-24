@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
-	String id = request.getParameter("id");
+	String id = request.getParameter("host_id");
 	String pw = request.getParameter("pw");
 	Connection conn = null;
 	Statement stmt = null;
@@ -18,7 +18,7 @@
 			String hostPw = rs.getString("pw");
 			String name = rs.getString("name");
 			if (id.equals(hostId) && pw.equals(hostPw)) {
-				session.setAttribute("id", hostId);
+				session.setAttribute("host_id", hostId);
 				session.setAttribute("pw", hostPw);
 				session.setAttribute("name", name);
 				response.sendRedirect("hostLogin.condb?comm=hostData");

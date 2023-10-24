@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String hostId = (String) session.getAttribute("host_id"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- css -->
 <link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/header.css" />
 <link rel="stylesheet" href="css/add_stay.css" />
 <link rel="stylesheet" href="css/host_common.css" />
-<link rel="stylesheet" href="css/footer.css" />
 <!-- favicon -->
 <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
 <!-- font -->
@@ -34,11 +33,8 @@
 		<%@ include file="host_aside.jsp"%>
 		<section>	
 			<h2>숙소 등록하기</h2>
-			<%				
-				String hostId = (String) session.getAttribute("id");				
-				out.println("<form action='insert.condb?comm=stay_ins&name=" + hostId +  "' method='post' enctype='multipart/form-data'>");
-			%>	
-			<form action="abc.jsp" method="get">		
+			<% out.println("<form action='insert.condb?comm=stay_ins&name=" + hostId +  "' method='post' enctype='multipart/form-data'>"); %>			
+			<form action="insert.condb?comm=stay_ins&name=<%= hostId %>" method="post" enctype="multipart/form-data">					
 				<table>
 					<tr>
 						<th>숙소 이름</th>
@@ -114,13 +110,10 @@
 							</div>
 						</td>
 					</tr>
-					<tr>
-					
+					<tr>					
 						<th>숙소 상세 정보</th>
-						<td>
-							<p style="line-height:1">
-								<textarea name="content" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea>
-							</p>
+						<td>						
+							<p style="line-height:1"><textarea name="content" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea></p>
 						</td>
 					</tr>
 					<tr>

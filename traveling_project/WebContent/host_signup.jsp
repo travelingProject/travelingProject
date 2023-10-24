@@ -3,7 +3,7 @@
 <%@ page import="java.sql.*"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String id = request.getParameter("id");
+	String hostId = request.getParameter("host_id");
 	String pw = request.getParameter("pw");
 	String name = request.getParameter("name");
 	String news_agency = request.getParameter("news_agency");
@@ -35,7 +35,7 @@
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 		stmt = conn.createStatement();
  		stmt.executeUpdate("insert into host_info values ('"
-		        + id + "', '"
+		        + hostId + "', '"
 		        + pw + "', '"
 		        + name + "', '"
 		        + news_agency + "', '"

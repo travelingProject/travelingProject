@@ -1,17 +1,11 @@
 package com.pro.dto;
 
 public class RoomInfo {
-	String hostId, roomName, content, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
+	String roomName, content, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
 	int stayId, price, stdPeople, maxPeople;
 	public int getStayId() {
 		return stayId;
-	}
-	public String getHostId() {
-		return hostId;
-	}
-	public void setHostId(String hostId) {
-		this.hostId = hostId;
-	}
+	}	
 	public void setStayId(int stayId) {
 		this.stayId = stayId;
 	}
