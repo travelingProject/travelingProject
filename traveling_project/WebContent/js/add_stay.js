@@ -138,9 +138,8 @@ $(document).ready(function () {
       $("#host_phone").css("border", "2px solid red");
       $("#phone_text").css("display", "block");
     }
-  });  
-  
-//Function to handle image input change
+  }); 
+
   function handleImageChange(input, label, removeBtn) {
     const file = input.files[0];
     if (file) {
@@ -159,15 +158,13 @@ $(document).ready(function () {
     }
   }
 
-  // Function to handle image removal
   function handleImageRemoval(input, label, removeBtn) {
     input.val(''); // Clear the file input
     label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px'); // Reset the label background
     label.text('이미지를 선택해주세요.');
     removeBtn.hide(); // Hide the "Remove Image" button
   }
-
-  // Attach event handlers for all images and remove buttons
+ 
   for (let i = 1; i <= 5; i++) {
     const fileInput = $(`#image${i}`);
     const fileLabel = $(`#image_label${i}`);

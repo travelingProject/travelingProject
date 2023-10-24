@@ -54,10 +54,9 @@
         }
       }
 
-      // Function to handle image removal
       function handleImageRemoval(input, label, removeBtn) {
         input.val(''); // Clear the file input
-        label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px'); // Reset the label background
+        label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
         label.text('이미지를 선택해주세요.');
         removeBtn.hide(); // Hide the "Remove Image" button
       }

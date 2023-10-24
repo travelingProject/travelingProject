@@ -40,10 +40,7 @@ public class ServletFile extends HttpServlet {
 				res.sendRedirect("add_room_result.jsp");
 			} else if (comm.equals("stay_sel")) {
 				inter = StaySel.instance();
-				String result = inter.dataCon(req, res);
-				System.out.println("result is " + result);
-				boolean abc = result.equals("0");
-				System.out.println(abc);
+				String result = inter.dataCon(req, res);								
 				if (result.equals("0")) {
 					req.setAttribute("result", false);
 				} else {
