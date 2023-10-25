@@ -328,9 +328,10 @@ a.tab_btn {
 }
 
 .delete_box {
-	margin: 0 8px;
+	margin: 0 16px;
 }
 
 .dsch img {
 	vertical-align: middle;
+	margin-right: 10px;
 }

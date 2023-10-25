@@ -81,7 +81,19 @@ $(document).ready(function() {
 			        	},
 			        	success: function(res) {
 			        		console.log("입력 성공" + res);
-			        	}
+			        		
+			        		// 삭제 및 삽입 작업이 성공한 후에 업데이트 작업 수행
+		                    $.ajax({
+		                        url: "update_plan.condb?comm=upPlan",
+		                        method: "POST",
+		                        data: {
+		                            pid: pid
+		                        },
+		                        success: function (updateResult) {
+		                            console.log("업데이트 성공: " + updateResult);
+		                        }
+		                    });
+		                }
 			        });  
 			    });
 			}

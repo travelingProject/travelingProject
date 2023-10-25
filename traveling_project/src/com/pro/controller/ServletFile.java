@@ -40,7 +40,16 @@ public class ServletFile extends HttpServlet {
 				res.sendRedirect("add_room_result.jsp");
 			} else if (comm.equals("stay_sel")) {
 				inter = StaySel.instance();
+<<<<<<< HEAD
 				inter.dataCon(req, res);								
+=======
+				String result = inter.dataCon(req, res);								
+				if (result.equals("0")) {
+					req.setAttribute("result", false);
+				} else {
+					req.setAttribute("result", true);
+				}
+>>>>>>> branch 'master' of https://github.com/travelingProject/travelingProject.git
 				RequestDispatcher dispatcher = req.getRequestDispatcher("stay_sel_result.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("plan_sel")) {
@@ -51,6 +60,9 @@ public class ServletFile extends HttpServlet {
 				inter.dataCon(req, res);
 			} else if (comm.equals("insPlan")) {
 				inter = PlanIns.instance();
+				inter.dataCon(req, res);
+			} else if (comm.equals("upPlan")) {
+				inter = PlanUp.instance();
 				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {

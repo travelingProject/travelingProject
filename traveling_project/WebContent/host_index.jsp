@@ -35,7 +35,7 @@
 			<div>
 				<h2>
 					<%						
-						out.println(name + " 님, 안녕하세요!");						
+						out.println(name + " 님, 안녕하세요!");				
 					%>
 				</h2>
 				<input type="button" id="add_accomodation_btn" value="숙소 등록하기">	
