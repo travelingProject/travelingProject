@@ -15,7 +15,7 @@ td input[type="button"]{
 	background:#1aa3ff;	
 }
 #att_zone{
-	flex-wrap:wrap;
+	flex-wrap:wrap;	
 }
 #att_zone > div{
 	width:20%;
@@ -23,4 +23,8 @@ td input[type="button"]{
 
 #att_zone > div:nth-child(5) ~ div{	
 	margin-top:10px;
+}
+
+#content_error_text{
+	margin-bottom: 10px;
 }

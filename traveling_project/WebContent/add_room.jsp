@@ -36,19 +36,26 @@
 					<tbody>
 						<tr>
 							<th>객실 이름</th>
-							<td><input type="text" name="room_name" placeholder="객실 이름을 입력해주세요."></td>
+							<td>								
+								<input type="text" id="room_name" name="room_name" placeholder="객실 이름을 입력해주세요.">
+								<p id="room_name_error_text" class='error_text'>객실 이름을 입력해주세요.</p>
+							</td>
 						</tr>
 						<tr>
 							<th>객실 설명</th>
 							<td>
 								<p style="line-height: 1">
-									<textarea name="content" placeholder="객실에 대한 상세한 정보를 입력해주세요."></textarea>
-								</p>
+									<p id="content_error_text" class='error_text'>객실 설명을 입력해주세요.</p>
+									<textarea id="content" name="content" placeholder="객실에 대한 상세한 정보를 입력해주세요."></textarea>
+								</p>								
 							</td>
 						</tr>
 						<tr>
 							<th>객실 가격</th>
-							<td><input type="text" name="price" placeholder="객실 가격을 입력해주세요."></td>
+							<td>							
+								<input type="number" id="price" name="price" placeholder="객실 가격을 입력해주세요.">
+								<p id="price_error_text" class='error_text'>객실 가격을 입력해주세요.</p>
+							</td>
 						</tr>
 						<tr>
 							<th>기준 인원</th>
@@ -61,7 +68,7 @@
 						</tr>
 						<tr>
 							<th>최대 인원</th>
-							<td>
+							<td  id="max_people_td">
 							    <input type="hidden" name="max_people" id="max_people_input" value="1" />
 								<input type="button" id="max_decrease_btn" value="-" />
 								<span id="max_people_number" class="people_num">1</span>
@@ -69,8 +76,8 @@
 							</td>							
 						</tr>
 						<tr>
-						<th>객실 이미지</th>
-						<td>							
+						<th id="image_th">객실 이미지</th>
+						<td id="image_td">							
 							<p id="image_text">객실 이미지는 최소 5장에서 최대 10장까지 등록해주세요.</p>
 							<div id="att_zone">
 								<div>

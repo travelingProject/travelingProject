@@ -13,9 +13,9 @@ import com.pro.dto.StayInfo;
 import com.pro.mybatis.StayInsert;
 
 public class StayIns implements ControlQuery {
-	
+
 	static StayIns dbi = new StayIns();
-	
+
 	public static StayIns instance() {
 		return dbi;
 	}
@@ -23,9 +23,11 @@ public class StayIns implements ControlQuery {
 	@Override
 	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
 		HttpSession session = rq.getSession();
+		StayInfo stayInfo = new StayInfo();
+		StayInsert stayInsert = new StayInsert();
 		String hostId = (String) session.getAttribute("host_id");
 		String uploadPath = rq.getRealPath("/stay_images");
-		int size = 10 * 1024 * 1024;		
+		int size = 10 * 1024 * 1024;
 		String stayName = "";
 		String latitude = "";
 		String longitude = "";
@@ -36,7 +38,7 @@ public class StayIns implements ControlQuery {
 		String referenceAddr = "";
 		String hostPhone = "";
 		String content = "";
-		
+
 		// 이미지
 		String imagename1 = "";
 		String imagename2 = "";
@@ -48,7 +50,7 @@ public class StayIns implements ControlQuery {
 		String origimagename3 = "";
 		String origimagename4 = "";
 		String origimagename5 = "";
-		
+
 		// 편의 시설
 		String tub = "";
 		String bathSupplies = "";
@@ -88,7 +90,7 @@ public class StayIns implements ControlQuery {
 		try {
 			MultipartRequest multi = new MultipartRequest(rq, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
 			Enumeration files = multi.getFileNames();
-			stayName = multi.getParameter("stay_name");			
+			stayName = multi.getParameter("stay_name");
 			latitude = multi.getParameter("latitude");
 			longitude = multi.getParameter("longitude");
 			postCode = multi.getParameter("post_code");
@@ -133,40 +135,36 @@ public class StayIns implements ControlQuery {
 			electricRiceCooker = multi.getParameter("electric_rice_cooker");
 			gasStoveOrInduction = multi.getParameter("gas_stove_or_induction");
 			electricVehicleChargingFacilities = multi.getParameter("electric_vehicle_charging_facilities");
-			parkingLot = multi.getParameter("parking_lot");	
+			parkingLot = multi.getParameter("parking_lot");
 			breakfast = multi.getParameter("breakfast");
 			cleanService = multi.getParameter("clean_service");
 			luggageStorage = multi.getParameter("luggage_storage");
 
 			// 이미지 업로드
-			String image1 = (String) files.nextElement();
-			imagename1 = multi.getFilesystemName(image1);
-			origimagename1 = multi.getOriginalFileName(image1);
+			String[] fieldNames = { "image1", "image2", "image3", "image4", "image5" };
 
-			String image2 = (String) files.nextElement();
-			imagename2 = multi.getFilesystemName(image2);
-			origimagename2 = multi.getOriginalFileName(image2);
+			for (int i = 0; i < fieldNames.length; i++) {
+				String fieldName = fieldNames[i];
+				String imageName = multi.getFilesystemName(fieldName);
 
-			String image3 = (String) files.nextElement();
-			imagename3 = multi.getFilesystemName(image3);
-			origimagename3 = multi.getOriginalFileName(image3);
-
-			String image4 = (String) files.nextElement();
-			imagename4 = multi.getFilesystemName(image4);
-			origimagename4 = multi.getOriginalFileName(image4);
-
-			String image5 = (String) files.nextElement();
-			imagename5 = multi.getFilesystemName(image5);
-			origimagename5 = multi.getOriginalFileName(image5);
+				// 이미지를 stayInfo 객체에 설정
+				if (i == 0) {
+					stayInfo.setImage1(imageName);
+				} else if (i == 1) {
+					stayInfo.setImage2(imageName);
+				} else if (i == 2) {
+					stayInfo.setImage3(imageName);
+				} else if (i == 3) {
+					stayInfo.setImage4(imageName);
+				} else if (i == 4) {
+					stayInfo.setImage5(imageName);
+				}
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		rs.setCharacterEncoding("UTF-8");
-		StayInsert stayInsert = new StayInsert();
-		StayIdSel stayIdSel = new StayIdSel();
-		
-		StayInfo stayInfo = new StayInfo();		
 		stayInfo.setHostId(hostId);
 		stayInfo.setStayName(stayName);
 		stayInfo.setLat(latitude);
@@ -177,14 +175,7 @@ public class StayIns implements ControlQuery {
 		stayInfo.setDetailAddr(detailAddr);
 		stayInfo.setReferenceAddr(referenceAddr);
 		stayInfo.setHostPhone(hostPhone);
-		
-		// 이미지
-		stayInfo.setImage1(imagename1);
-		stayInfo.setImage2(imagename2);
-		stayInfo.setImage3(imagename3);
-		stayInfo.setImage4(imagename4);
-		stayInfo.setImage5(imagename5);
-		
+
 		// 편의 시설
 		stayInfo.setTub(tub);
 		stayInfo.setBathSupplies(bathSupplies);
@@ -217,11 +208,10 @@ public class StayIns implements ControlQuery {
 		stayInfo.setGasStoveOrInduction(gasStoveOrInduction);
 		stayInfo.setElectricVehicleChargingFacilities(electricVehicleChargingFacilities);
 		stayInfo.setParkingLot(parkingLot);
-		stayInfo.setContent(content);		
+		stayInfo.setContent(content);
 		stayInfo.setBreakfast(breakfast);
 		stayInfo.setCleanService(cleanService);
 		stayInfo.setLuggageStorage(luggageStorage);
-		
 		stayInsert.dbInsert(stayInfo);
 		return null;
 	}

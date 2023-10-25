@@ -67,7 +67,7 @@ public class RoomIns implements ControlQuery {
 			imagename7 = multi.getParameter("image7");
 			imagename8 = multi.getParameter("image8");
 			imagename9 = multi.getParameter("image9");
-			imagename10 = multi.getParameter("imag10");
+			imagename10 = multi.getParameter("image10");
 
 			// 이미지 업로드
 			String image1 = (String) files.nextElement();

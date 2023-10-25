@@ -71,7 +71,7 @@
 					</thead>
 					<%
 						// 예약 대기
-						if (rwArr.size() != 0) {
+						/* if (rwArr.size() != 0) { */
 							for (int i = 0; i < rwArr.size(); i++) {
 								out.println("<tr>");
 								out.println("<td>" + rwArr.get(i).getReservationId() + "</td>");
@@ -167,12 +167,13 @@
 								out.println("<td>-</td>");
 								out.println("</tr>");
 							}
-							out.println("</table>");
-						} else{
-							out.println("</table>");
+							%>
+							</table>
+							<%			
+						if(rwArr.size() == 0 && rcArr.size() == 0 && rRArr.size() == 0 && rCancArr.size() == 0){							
 							out.println("<p style='height:466px; line-height:466px; color:#000;'>예약 정보가 없습니다.</p>");
 						}
-					%>				
+					%>
 			</div>
 		</section>		
 		<div id="background_overlay"></div>
