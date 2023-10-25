@@ -77,9 +77,9 @@
 										<div class="file_list"></div>
 									</div>
 								</div>
-								<div class="star-rating space-x-4 mx-auto">
+								<div class="star-rating">
 									<input type="radio" id="5-stars" name="rating" value="5.0" />
-									<label for="5-stars" class="star pr-4">★</label>
+									<label for="5-stars" class="star">★</label>
 									<input type="radio" id="4-stars" name="rating" value="4.0" />
 									<label for="4-stars" class="star">★</label>
 									<input type="radio" id="3-stars" name="rating" value="3.0" />

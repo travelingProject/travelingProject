@@ -4,6 +4,7 @@
 	<jsp:useBean id="obj" class="com.hh.db.ReviewObj" />
 <%
 	request.setCharacterEncoding("UTF-8");
+
 	obj.setReservation_id(Integer.parseInt(request.getParameter("rid")));
     obj.setRtitle(request.getParameter("rtitle"));
     obj.setRcontent(request.getParameter("rcontent"));

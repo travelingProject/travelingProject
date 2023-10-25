@@ -1,7 +1,4 @@
 $(document).ready(function() {
-	
-	// 전역 변수로 데이터 복사본을 보관할 객체를 생성
-	var originalData = {};
 
 	// 수정 버튼 클릭 시
 	$("#modi_btn").click(function() {
@@ -11,6 +8,15 @@ $(document).ready(function() {
 		$("#modi_can_btn").show();
 		$(".days_btn button").show();
 		$(".dsch input").prop("disabled", false);
+		
+		// 수정하기 버튼을 눌렀을 때 DB에서 추출해온 입력 필드에 indb 클래스 부여
+		$(".dsch").each(function () {
+			$(this).addClass("indb");
+			
+			if($(this).hasClass("nonetext")) {
+				$(this).remove();
+			}
+		});
 	});
 
 	// 수정 -> 취소 버튼 클릭 시
@@ -22,6 +28,13 @@ $(document).ready(function() {
 			$("#modi_can_btn").hide();
 			$(".days_btn button").hide();
 			$(".dsch input").prop("disabled", true);
+			
+			// 저장하지 않은 값은 indb 클래스가 없는 상태이기 때문에 hasClass로 조건문을 활용해 indb 클래스 없는 입력 필드는 삭제
+			$(".dsch").each(function () {
+				if(!$(this).hasClass("indb")) {
+					$(this).remove();
+				}
+			});
 		}
 	});
 
@@ -58,7 +71,6 @@ $(document).ready(function() {
 				pid : pid
 			},
 			success: function(res) {
-				console.log("삭제 성공" + res);
 				/* 비동기 방식으로 데이터 처리할 예정 */
 				$(".dsch").each(function() {
 			        var schedule = $(this);
@@ -80,8 +92,6 @@ $(document).ready(function() {
 			        		pcon : pcon
 			        	},
 			        	success: function(res) {
-			        		console.log("입력 성공" + res);
-			        		
 			        		// 삭제 및 삽입 작업이 성공한 후에 업데이트 작업 수행
 		                    $.ajax({
 		                        url: "update_plan.condb?comm=upPlan",
@@ -90,7 +100,7 @@ $(document).ready(function() {
 		                            pid: pid
 		                        },
 		                        success: function (updateResult) {
-		                            console.log("업데이트 성공: " + updateResult);
+
 		                        }
 		                    });
 		                }
@@ -213,6 +223,14 @@ function detail_plan(event) {
 	            },
 	            success: function (response) {
 	                response = $(response);
+	                
+	                if (response.size() == 0) {
+	                	var nonSchedule = 
+	                		`<div class='dsch nonetext'>
+	                			<p>등록된 상세 일정이 없습니다. 수정 버튼을 눌러 일정을 추가해보세요.</p>
+	                		</div>`
+	                	$(".schedule.sch" + currentTab).append(nonSchedule);
+	                }
 
 	                for (var x = 0; x < response.size(); x++) {
 	                    var a = 1;
