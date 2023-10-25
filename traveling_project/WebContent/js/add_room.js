@@ -53,13 +53,8 @@ $(document).ready(function() {
         }
     }
 
-<<<<<<< HEAD
     function handleImageRemoval(input, label, removeBtn) {
         input.val('');
-=======
-      function handleImageRemoval(input, label, removeBtn) {
-        input.val(''); // Clear the file input
->>>>>>> branch 'master' of https://github.com/travelingProject/travelingProject.git
         label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
         label.text('이미지를 선택해주세요.');
         removeBtn.hide();
@@ -130,12 +125,12 @@ $(document).ready(function() {
             $("#max_people_th").css("border-bottomt", "2px solid red");
         }
     });
-    
+
     $('#room_name').focus(function() {
         $(this).css('border', '2px solid #1aa3ff');
         $('#room_name_error_text').hide();
     });
-    
+
     $('#room_name').blur(function() {
         $(this).css('border', '1px solid #ccc');
         $('#room_name_error_text').hide();
@@ -145,27 +140,27 @@ $(document).ready(function() {
         $('#content_error_text').hide();
         $(this).css('border', '2px solid #1aa3ff');
     });
-    
+
     $('#content').blur(function() {
         $('#content_error_text').hide();
         $(this).css('border', '1px solid #ccc');
     });
-    
+
     $('#content').focus(function() {
         $('#content_error_text').hide();
         $(this).css('border', '2px solid #1aa3ff');
     });
-    
+
     $('#content').blur(function() {
         $('#content_error_text').hide();
         $(this).css('border', '1px solid #cc');
     });
-    
+
     $('#price').focus(function(){
         $('#price_error_text').hide();
         $(this).css('border','2px solid #1aa3ff');
     });
-    
+
     $('#price').blur(function(){
         $('#price_error_text').hide();
         $(this).css('border','1px solid #ccc');
