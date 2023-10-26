@@ -23,10 +23,10 @@ public class StaySel implements ControlQuery{
 		String stayId =  Integer.toString(stayIdSelect.dbSelect(hostId));
 		System.out.println("StaySel stayId = " + stayId);		
 		if(stayId.equals("0")) {
-			req.setAttribute("result", false);
-		} else if(stayId.equals("1")) {
-			req.setAttribute("result", true);
+			req.setAttribute("result", "false");
+		} else {
+			req.setAttribute("result", "true");
 		}
-		return null;
+		return stayId;
 	}
 }

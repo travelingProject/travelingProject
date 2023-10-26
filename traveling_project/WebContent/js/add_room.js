@@ -84,8 +84,7 @@ $(document).ready(function() {
         const priceVal = $('#price').val();
         const stdPeopleVal = $('#std_people_input').val();
         const maxPeopleVal = $('#max_people_input').val();
-        var emptyFields = 0;
-        console.log(emptyFields);
+        let emptyFields = 0;        
         $('input[type="file"]').each(function() {
             if ($(this).val() === '') {
                 emptyFields++;

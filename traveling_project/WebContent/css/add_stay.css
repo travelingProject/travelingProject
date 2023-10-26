@@ -161,7 +161,7 @@ table tr td #att_zone div label:hover {
 }
 
 input[type="file"] {
-	/* display: none; */
+	display:none;
 }
 
 table td h3 {
@@ -209,4 +209,13 @@ input[type="radio"]:first-of-type:checked+label {
 
 input[type="radio"]:last-of-type:checked+label {
 	background: url(../images/cancel_filled.png) no-repeat center/contain;
+}
+.border_change{
+	border:2px solid red !important;
+}
+.textarea_change{
+	border:2px solid red;
+}
+.textarea_change::placeholder{
+	color:red;
 }

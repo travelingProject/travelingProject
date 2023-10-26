@@ -1,62 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.pro.index.IndexDAO" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.pro.dto.PopStayInfo" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Connection" %>
+<% 
+
+Connection con = null;
+Statement stmt = null;
+ResultSet rs = null;
+
+HashMap<Integer, PopStayInfo> popStays = new HashMap<Integer, PopStayInfo>();
+int rowCount = 0;
+try {
+	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_jsp", "root", "xhddlf336!");
+	stmt = con.createStatement(); 
+	rs = stmt.executeQuery(
+			"SELECT s.stay_name, s.road_addr, MIN(r.price) AS lowest_price, rev.review_content"
+			+ "FROM stay_info"
+			+ "JOIN room_info r ON s.stay_id = r.stay_id"
+			+ "JOIN reservation res ON r.room_id = res.room_id"
+			+ "JOIN review_info rev ON res.reservation_id = rev.reservation_id"
+			+ "GROUP BY s.stay_name, s.road_addr, rev.review_content;");
+	while (rs.next()) {
+		rowCount++;
+		PopStayInfo popStayInfo = new PopStayInfo();				
+		for (int i = 0; i < rowCount; i++) {
+			popStayInfo.setStayName(rs.getString("stay_name"));
+			popStayInfo.setStayAddr(rs.getString("road_addr"));
+			popStayInfo.setPrice(rs.getInt("price"));
+			popStayInfo.setReviewContent(rs.getString("review_content"));
+			popStays.put(i, popStayInfo);
+			System.out.println(popStays.get(i));
+		}
+	}
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	stmt.close();
+	rs.close();
+	con.close();	
+}
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- css -->
-<link rel="stylesheet" href="css/reset.css" />
-<link rel="stylesheet" href="css/header.css" />
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/footer.css" />
-<!-- favicon -->
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
-<!-- font -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-<!-- slider -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<!-- script -->
-<script src="js/header.js"></script>
-<script src="js/main.js"></script>
-<title>Traveling</title>
+	<%@ include file="header.jsp"%>
 </head>
-<body>
-	<header>
-		<nav id="menu_nav">
-			<h1 id="logo">
-				<a href="user_index.jsp"><img src="images/logo.png" alt="" /></a>
-			</h1>
-			<form action="reservation.jsp" id="accomodation_search">
-				<input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" /> <input type="date" name="check_in_date" id="check_in_date" data-placeholder="체크인" required aria-required="true" /> <input type="date" name="check_out_date" id="check_out_date" data-placeholder="체크 아웃" required aria-required="true" /> <input type="number" name="people_num" id="people_num" required placeholder="인원 수를 입력해주세요." max="32" min="1" /> <input id="search_btn" type="submit" value="검색하기" />
-			</form>
-			<div class="right_menu">
-				<a href="#" class="ir_pm">내 정보</a> <a href="#" class="ir_pm">언어 선택</a> <a href="#" class="ir_pm">고객 센터</a>
-			</div>
-			<ul id="my_info">
-				<li><a href="login_select.jsp">로그인</a></li>
-				<li><a href="signup_select.jsp">회원 가입</a></li>
-			</ul>
-		</nav>
-	</header>
-	<!-- slider -->
+<body>	
 	<section id="video">
 		<video autoplay loop muted>
 			<source src="video/Banner.mp4" type="video/mp4" width="100%" />
 		</video>
-	</section>
-	<!-- 숙소 검색 -->
+	</section>	
 	<main>
 		<!-- 호텔 추천 -->
 		<section class="hotel_recommend">
-			<h2>호텔 추천</h2>
+			<h2>숙소 추천</h2>
 			<a href="reservation.html"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider rec_slider">
 				<div>
@@ -401,25 +406,6 @@
 		</section>
 	</main>
 	<div class="go_top"></div>
-	<footer>
-		<div class="footerInner">
-			<ul>
-				<li><a href="#"><b>회사소개</b></a> |</li>
-				<li><a href="#">개인정보처리방침</a> |</li>
-				<li><a href="#">서비스 이용약관</a> |</li>
-				<li><a href="#">고객문의</a></li>
-			</ul>
-			<p>
-				법인명: (주) Traveling 대표자: 이준섭 사업자등록번호 123-45-12345 통신판매업: 제2023-서울서초-1234호 <br /> 주소 : 서울특별시 서초구 테혜란로 92, 7층(역삼동, 케이지타워) 대표전화 : 02-1234-5678 (가맹문의 : 02-1234-5678) <br /> COPYRIGHT (C) KG F&B. All Rights Reserved.
-			</p>
-			<ul class="sns">
-				<li><a href="#" class="ir_pm">facebook</a></li>
-				<li><a href="#" class="ir_pm">twitter</a></li>
-				<li><a href="#" class="ir_pm">blog</a></li>
-				<li><a href="#" class="ir_pm">instagram</a></li>
-				<li><a href="#" class="ir_pm">youtube</a></li>
-			</ul>
-		</div>
-	</footer>
+	<%@ include file="footer.jsp"%>
 </body>
 </html>

@@ -30,7 +30,7 @@ h2 {
 	font-size: 34px;
 }
 
-#add_accomodation_btn {
+.add_stay_btn {
 	display: inline-block;
 	width: 170px;
 	height: 40px;

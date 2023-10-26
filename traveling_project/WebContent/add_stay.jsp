@@ -48,20 +48,20 @@
 						<td>
 							<input type="hidden" name="latitude" id="latitudeInput">
     						<input type="hidden" name="longitude" id="longitudeInput">
-							<input type="text" id="sample4_postcode" name="post_code" readonly="readonly" placeholder="우편번호" />
+							<input type="text" id="sample4_postcode" class="addr" name="post_code" readonly="readonly" placeholder="우편번호" />
 							<input type="button" id="addr_search" onclick="sample5_execDaumPostcode()" value="주소 검색" />							
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="road_addr" id="sample4_roadAddress" placeholder="도로명주소" readonly="readonly" />
-                  			<input type="text" name="jibun_addr" id="sample4_jibunAddress" placeholder="지번주소" readonly="readonly" />
+							<input type="text" name="road_addr" id="sample4_roadAddress" class="addr" placeholder="도로명주소" readonly="readonly" />
+                  			<input type="text" name="jibun_addr" id="sample4_jibunAddress" class="addr" placeholder="지번주소" readonly="readonly" />
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="text" id="sample4_detailAddress" name="detail_addr" placeholder="상세주소" />
-                  			<input type="text" id="sample4_extraAddress" name="reference_addr" placeholder="참고항목" readonly="readonly" />
+							<input type="text" id="sample4_detailAddress" class="addr" name="detail_addr" placeholder="상세주소" />
+                  			<input type="text" id="sample4_extraAddress" class="addr" name="reference_addr" placeholder="참고항목" />
                   			<p id="addr_text" class="error_text">주소를 입력해주세요.</p>
 						</td>
 					</tr>
@@ -79,7 +79,7 @@
 					</tr>
 					<tr>
 						<th>숙소 이미지</th>
-						<td>							
+						<td id="image_td">							
 							<p id="image_text">숙소 이미지는 최소 3장에서 최대 5장까지 등록해주세요.</p>
 							<div id="att_zone">
 								<div>
@@ -112,7 +112,7 @@
 					</tr>
 					<tr>					
 						<th>숙소 상세 정보</th>
-						<td>						
+						<td>							
 							<p style="line-height:1"><textarea name="content" placeholder="숙소에 대한 상세한 정보를 입력해주세요."></textarea></p>
 						</td>
 					</tr>

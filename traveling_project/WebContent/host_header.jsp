@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	/* String hostId = (String) session.getAttribute("host_id");
+	String name = (String) session.getAttribute("name"); */	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,10 +25,12 @@
 <!-- jquery -->
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- script -->
-<script src=js/header.js></script>
+<script src="js/header.js"></script>
 <script src="js/host_header.js"></script>
+<script src="js/host_index.js"></script>
 </head>
 <body>
+	<%-- <input type="hidden" id="host_id" value="<%= hostId %>"> --%>
 	<header>
 		<nav id="menu_nav">
 			<h1 id="logo">
@@ -38,7 +44,7 @@
 			</ul>
 			<ul class="lnb_menu">
 				<li>
-					<a href="add_stay.jsp">숙소 등록하기</a>
+					<input type="button" class="add_stay_btn" value="숙소 등록하기">				
 					<a href="add_room.jsp">객실 등록하기</a>
 					<a href="#">숙소  수정하기</a>
 					<a href="#">객실 수정하기</a>
@@ -70,5 +76,11 @@
 			</ul>
 		</nav>
 	</header>
+		<div class="modal" id="myModal">
+   		<div class="modal-content">
+        	<span class="close" id="closeModal"></span>
+        	<p>하나의 계정당 한개의 숙소만 등록 가능합니다.</p>
+    	</div>
+	</div>
 </body>
 </html>

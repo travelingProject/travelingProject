@@ -4,7 +4,7 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%
 	String hostId = (String) session.getAttribute("host_id");
-	String name = (String) session.getAttribute("name");
+	String name = (String) session.getAttribute("name");	
 %>
 <!DOCTYPE html>
 <html>
@@ -23,22 +23,25 @@
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- script -->
-<script src="js/host_index.js"></script>
 <title>호스트 페이지</title>
 </head>
 <body>
 	<%@ include file="host_header.jsp"%>
+	<%
+		hostId = (String) session.getAttribute("hostId");
+		name = (String) session.getAttribute("name");
+	%>
 	<main>
 		<%@ include file="host_aside.jsp"%>
 		<section>
-		<input type="hidden" id="host_id" value="<%= hostId %>">		
+		<input type="hidden" id="host_id" value="<%= hostId %>">
 			<div>
 				<h2>
 					<%						
 						out.println(name + " 님, 안녕하세요!");				
 					%>
 				</h2>
-				<input type="button" id="add_accomodation_btn" value="숙소 등록하기">	
+				<input type="button" class="add_stay_btn" value="숙소 등록하기">	
 			</div>
 			<span id="underline"></span>
 			<div>

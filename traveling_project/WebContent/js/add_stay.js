@@ -87,56 +87,102 @@ function sample5_execDaumPostcode() {
 
 // 유효성 검사 jquery
 $(document).ready(function () {
+    
+    $(window).scroll(function(){
+        console.log($(window).scrollTop());
+    });
+    
+  // 숙소 이름 blur
   $("#stay_name").blur(function () {
     if ($("#stay_name").val() == "") {
-      $("#stay_name").css("border", "2px solid red");
+      $("#stay_name").addClass('border_change');
       $("#stay_name_text").css("display", "block");
     } else {
-      $("#stay_name").css("border", "1px solid #ccc");
+      $("#stay_name").removeClass('border_change');
       $("#stay_name_text").css("display", "none");
     }
   });
 
+  // 주소 검색 클릭
   $("#addr_search").click(function () {
-	  $("#sample4_postcode").css("border", "1px solid #ccc");
-      $("#sample4_roadAddress").css("border", "1px solid #ccc");
-      $("#sample4_jibunAddress").css("border", "1px solid #ccc");
-      $("#sample4_detailAddress").css("border", "1px solid #ccc");
-      $("#sample4_extraAddress").css("border", "1px solid #ccc");
+    $('.addr').removeClass('border_change')
     $("#addr_text").hide();
   });
-
+  
+  // 상세 주소 blur
+  $('#sample4_detailAddress').blur(function(){
+      $(this).removeClass('border_change');
+      $('#addr_text').hide();
+  })
+  
+  // 연락받을 전화번호 blur
   $("#host_phone").blur(function () {
     const phoneJ = /^01[016789]\d{3,4}\d{5}$/;
     const phoneValue = $("#host_phone").val();
     if (!phoneJ.test(phoneValue)) {
-      $("#host_phone").css("border", "2px solid red");
+      $("#host_phone").addClass('border_change');
       $("#phone_text").css("display", "block");
     } else {
-      $("#host_phone").css("border", "1px solid #ccc");
+      $("#host_phone").removeClass('border_change');
       $("#phone_text").css("display", "none");
     }
   });
-
+  
+  //이미지 라벨 클릭
+  $('.image_label').click(function(){
+    $('#image_text').css('color','#1aa3ff');
+    $('#image_text').css('font-weight','normal');
+    $('#image_td').removeClass('border_change');
+  });
+  
+  // 숙소 상세 정보 focus
+  $('textarea').focus(function(){      
+      $('textarea').removeClass('textarea_change');
+  })
+  
+  // 등록하기 버튼 클릭
   $("#add_btn").click(function (e) {
-    if ($("#stay_name").val() == "") {
+    const stayNameVal = $('#stay_name').val();
+    const postcodeVal = $('#sample4_postcode').val();
+    const detailAddrVal = $('#sample4_detailAddress').val();
+    const phoneVal = $('#host_phone').val();
+    let emptyFields = 0;
+    $('input[type="file"]').each(function() {
+        if ($(this).val() === '') {
+            emptyFields++;
+        }
+    });      
+    if (stayNameVal == "") {
       e.preventDefault();
       $('html, body').animate({ scrollTop: 0 }, 'fast');
-      $("#stay_name").css("border", "2px solid red");
+      $("#stay_name").addClass('border_change');
       $("#stay_name_text").css("display", "block");
-    } else if ($("#sample4_postcode").val() == "") {
+    } else if (postcodeVal == "") {
       e.preventDefault();
-      $('html, body').animate({ scrollTop: 222 }, 'fast');
-      $("#sample4_postcode").css("border", "2px solid red");
-      $("#sample4_roadAddress").css("border", "2px solid red");
-      $("#sample4_jibunAddress").css("border", "2px solid red");
-      $("#sample4_detailAddress").css("border", "2px solid red");
-      $("#sample4_extraAddress").css("border", "2px solid red");
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+      $('.addr').addClass('border_change')      
       $("#addr_text").css("display", "block");
-    } else if ($("#host_phone").val() == "") {
+    } else if(detailAddrVal == ""){
       e.preventDefault();
-      $("#host_phone").css("border", "2px solid red");
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+      $("#sample4_detailAddress").addClass('border_change');
+      $('#addr_text').css("display","block");
+      $('#addr_text').text("상세 주소를 입력해주세요.");
+    } else if (phoneVal == "") {
+      e.preventDefault();
+      $('html, body').animate({ scrollTop: 200 }, 'fast');
+      $("#host_phone").addClass('border_change')
       $("#phone_text").css("display", "block");
+    } else if (emptyFields >= 3){
+      e.preventDefault();
+      $('html, body').animate({ scrollTop: 600 }, 'fast');
+      $('#image_text').css('color','red');
+      $('#image_text').css('font-weight','bold');
+      $('#image_td').addClass('border_change')
+    } else if ($('textarea').val() == ""){
+      e.preventDefault();
+      $('html, body').animate({ scrollTop: 860 }, 'fast');      
+      $('textarea').addClass('textarea_change');
     }
   }); 
 
@@ -152,17 +198,17 @@ $(document).ready(function () {
       };
       reader.readAsDataURL(file);
     } else {
-      label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px'); // Reset the label background
+      label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
       label.text('이미지를 선택해주세요.');
-      removeBtn.hide(); // Hide the "Remove Image" button
+      removeBtn.hide();
     }
   }
 
   function handleImageRemoval(input, label, removeBtn) {
-    input.val(''); // Clear the file input
-    label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px'); // Reset the label background
+    input.val('');
+    label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
     label.text('이미지를 선택해주세요.');
-    removeBtn.hide(); // Hide the "Remove Image" button
+    removeBtn.hide();
   }
  
   for (let i = 1; i <= 5; i++) {

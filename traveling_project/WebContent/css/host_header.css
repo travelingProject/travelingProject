@@ -24,6 +24,7 @@
 	justify-content: space-around;
 	background: #fff;
 	border-radius: 0 0 20px 20px;
+	overflow:hidden;	
 }
 
 .lnb li, .lnb_menu li {
@@ -35,13 +36,19 @@
 	cursor: default;
 }
 
-.lnb_menu li a {
+.lnb_menu li a,
+.lnb_menu li input{
+	width:100%;
 	display: block;
 	height: 50px;
 	line-height: 50px;
+	background:#fff;
+	border:0;
+	font-size:18px;
 }
 
-.lnb_menu li a:hover {
+.lnb_menu li a:hover,
+.lnb_menu li input:hover {
 	color: #1aa3ff;
 }
 
@@ -60,4 +67,40 @@ ul#my_info li:last-child a:after {
 ul#my_info li:hover a:after {
 	transform: scaleX(1);
 	transform-origin: 0% 50%;
+}
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index:100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;    
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width:400px;
+    height:100px;
+    line-height:100px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;    
+    cursor: pointer;
+    width:20px;
+    height:20px;
+    background:url(../images/close.png) no-repeat center/contain;    
 }
