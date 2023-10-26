@@ -59,11 +59,10 @@ function modal(event) {
     $("body").css("overflow", "hidden");
 }
 
-// 이미지 업로드 관련
+/*// 이미지 업로드 관련
 var fileNo = 0;
 var filesArr = new Array();
 
-//첨부파일 추가
 function addFile(obj) {
     var maxFileCnt = 5; // 첨부파일 최대 개수
     var attFileCnt = $(".file_list .filebox").length; // 기존 추가된 첨부파일 개수
@@ -102,30 +101,30 @@ function addFile(obj) {
         obj.files = dataTransfer.files;
     }
     // 초기화
-    $(obj).val("");
+//    $(obj).val("");
 }
 
-/* 첨부파일 검증 */
-function validation(obj){
-   const fileTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
-   if (obj.name.length > 100) {
-       alert("파일명이 100자 이상인 파일은 제외되었습니다.");
-       return false;
-   } else if (obj.size > (100 * 1024 * 1024)) {
-       alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
-       return false;
-   } else if (obj.name.lastIndexOf('.') == -1) {
-       alert("확장자가 없는 파일은 제외되었습니다.");
-       return false;
-   } else if (!fileTypes.includes(obj.type)) {
-       alert("첨부가 불가능한 파일은 제외되었습니다.");
-       return false;
-   } else {
-       return true;
-   }
+ 첨부파일 검증 
+function validation(obj) {
+    const fileTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/bmp', 'image/tif'];
+    if (obj.name.length > 100) {
+        alert("파일명이 100자 이상인 파일은 제외되었습니다.");
+        return false;
+    } else if (obj.size > (100 * 1024 * 1024)) {
+        alert("최대 파일 용량인 100MB를 초과한 파일은 제외되었습니다.");
+        return false;
+    } else if (obj.name.lastIndexOf('.') == -1) {
+        alert("확장자가 없는 파일은 제외되었습니다.");
+        return false;
+    } else if (!fileTypes.includes(obj.type)) {
+        alert("첨부가 불가능한 파일은 제외되었습니다.");
+        return false;
+    } else {
+        return true;
+    }
 }
 
-//첨부파일 삭제
+
 function deleteFile(num) {
     // 파일 삭제 대상을 마크합니다.
     filesArr[num].is_delete = true;
@@ -148,4 +147,5 @@ function deleteFile(num) {
 
     // 파일 입력 필드의 파일 목록을 업데이트합니다.
     inputField.files = dataTransfer.files;
-}
+}*/
+

@@ -21,7 +21,7 @@ public class ControlDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
-					"xhddlf336!");
+					"0509");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -226,7 +226,8 @@ public class ControlDB {
 		try {
 			condb();
 			rs = sta.executeQuery(
-					"SELECT r.reservation_id, si.stay_name, si.location, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, DATE_FORMAT(rv.review_time, '%Y.%m.%d') AS review_time " 
+					"SELECT r.reservation_id, si.stay_name, si.location, DATE_FORMAT(r.check_in_date, '%Y.%m.%d') AS check_in_date, "
+					+ "DATE_FORMAT(r.check_out_date, '%Y.%m.%d') AS check_out_date, DATE_FORMAT(rv.review_time, '%Y.%m.%d') AS review_time " 
 					+ "FROM reservation AS r "
 					+ "JOIN room_info AS ri ON r.room_id = ri.room_id "
 					+ "JOIN stay_info AS si ON ri.stay_id = si.stay_id "

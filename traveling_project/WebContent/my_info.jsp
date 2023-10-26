@@ -72,9 +72,33 @@
 										<textarea id="rcontent" name="rcontent" placeholder="리뷰를 작성해주세요."></textarea>
 									</div>
 									<div class="review_image">
-										<label for="rimg">이미지 업로드</label>
-										<input type="file" id="rimg" name="rimg" class="img_upload" onchange="addFile(this);" accept="image/*" multiple>
-										<div class="file_list"></div>
+										<div class="file_list">
+											<div>
+												<label id="r_image_label1" class="r_image_label" for="r_image1">이미지를 선택해주세요.</label>									
+												<input type="button" id="review_remove_btn1" class="r_remove_btn" value="-" style="display:none">
+												<input type="file" class="r_images" id="r_image1" name="r_image1" accept="image/png,image/jpeg,image/gif">
+											</div>			
+											<div>
+												<label id="r_image_label2" class="r_image_label" for="r_image2">이미지를 선택해주세요.</label>
+												<input type="button" id="review_remove_btn2" class="r_remove_btn" value="-" style="display:none">
+												<input type="file" class="r_images" id="r_image2" name="r_image2" accept="image/png,image/jpeg,image/gif">		
+											</div>								
+											<div>
+												<label id="r_image_label3" class="r_image_label" for="r_image3">이미지를 선택해주세요.</label>
+												<input type="button" id="review_remove_btn3" class="r_remove_btn" value="-" style="display:none">
+												<input type="file" class="r_images" id="r_image3" name="r_image3" accept="image/png,image/jpeg,image/gif">								
+											</div>								
+											<div>
+												<label id="r_image_label4" class="r_image_label" for="r_image4">이미지를 선택해주세요.</label>
+												<input type="button" id="review_remove_btn4" class="r_remove_btn" value="-" style="display:none">
+												<input type="file" class="r_images" id="r_image4" name="r_image4" accept="image/png,image/jpeg,image/gif">									
+											</div>								
+											<div>
+												<label id="r_image_label5" class="r_image_label" for="r_image5">이미지를 선택해주세요.</label>
+												<input type="button" id="review_remove_btn5" class="r_remove_btn" value="-" style="display:none">
+												<input type="file" class="r_images" id="r_image5" name="r_image5" accept="image/png,image/jpeg,image/gif">												
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="star-rating">
