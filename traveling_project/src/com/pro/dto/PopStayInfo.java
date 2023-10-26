@@ -1,8 +1,7 @@
 package com.pro.dto;
 
 public class PopStayInfo {
-	String stayName,stayAddr,reviewContent;
-	int price;
+	String stayName,stayAddr,reviewContent,price;	
 	public String getStayName() {
 		return stayName;
 	}
@@ -21,10 +20,10 @@ public class PopStayInfo {
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
 	}
-	public int getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 }

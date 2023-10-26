@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.pro.index.IndexDAO" %>
-<%@ page import="java.util.HashMap" %>
 <%@ page import="com.pro.dto.PopStayInfo" %>
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.Connection" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.text.NumberFormat" %>	
+
+<%
+	IndexDAO indexDAO = new IndexDAO(); 
+	HashMap<Integer, PopStayInfo> popStays = indexDAO.selectPopStays();	
+/* 	for(int i = 0; i < popStays.size(); i++){
+		out.println(popStays.get(i).getStayName());		
+		out.println(popStays.get(i).getStayAddr());		
+		out.println(popStays.get(i).getPrice());		
+		out.println(popStays.get(i).getReviewContent());		
+	} */
+	/* out.println(popStays.size()); */
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +38,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image1.webp" alt="" /> <img src="images/hotel_rec_image2.webp" alt="" />
 						</div>
-						<h3>페어필드 바이 메리어트 서울</h3>
-						<p>서울특별시 영등포구 경인로 870</p>
-						<p>₩ 320,000~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(0).getStayName() %></h3>
+						<p><%=popStays.get(0).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(0).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(0).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -40,10 +49,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image3.webp" alt="" /> <img src="images/hotel_rec_image4.webp" alt="" />
 						</div>
-						<h3>토요코인 서울 영등포</h3>
-						<p>서울특별시 영등포구 신길로 293</p>
-						<p>₩ 61,455~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(1).getStayName() %></h3>
+						<p><%=popStays.get(1).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(1).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(1).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -51,10 +60,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image5.webp" alt="" /> <img src="images/hotel_rec_image6.webp" alt="" />
 						</div>
-						<h3>나인트리 프리미어 호텔 인사동</h3>
-						<p>서울특별시 종로구 인사동길 49</p>
-						<p>₩ 130,727</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(2).getStayName() %></h3>
+						<p><%=popStays.get(2).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(2).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(2).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -62,10 +71,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image7.webp" alt="" /> <img src="images/hotel_rec_image8.webp" alt="" />
 						</div>
-						<h3>더 퍼스트 스테이</h3>
-						<p>서울특별시 강서구 마곡동로 4길 23</p>
-						<p>₩ 78,727~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(3).getStayName() %></h3>
+						<p><%=popStays.get(3).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(3).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(3).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -73,10 +82,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image1.webp" alt="" /> <img src="images/hotel_rec_image2.webp" alt="" />
 						</div>
-						<h3>호텔 리베라</h3>
-						<p>서울특별시 강남구 영동대로 737</p>
-						<p>₩ 95,455~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(4).getStayName() %></h3>
+						<p><%=popStays.get(4).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(4).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(4).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -84,10 +93,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image3.webp" alt="" /> <img src="images/hotel_rec_image4.webp" alt="" />
 						</div>
-						<h3>서울 가든 호텔</h3>
-						<p>서울특별시 마포구 마포대로 58</p>
-						<p>₩ 92,000~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(5).getStayName() %></h3>
+						<p><%=popStays.get(5).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(5).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(5).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -95,10 +104,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image5.webp" alt="" /> <img src="images/hotel_rec_image6.webp" alt="" />
 						</div>
-						<h3>토요코인 서울 강남</h3>
-						<p>서울특별시 강남구 강남대로 323</p>
-						<p>₩ 82,364~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(6).getStayName() %></h3>
+						<p><%=popStays.get(6).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(6).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(6).getReviewContent() %>"</div>
 					</a>
 				</div>
 				<div>
@@ -106,10 +115,10 @@
 						<div class="image_slider">
 							<img src="images/hotel_rec_image7.webp" alt="" /> <img src="images/hotel_rec_image8.webp" alt="" />
 						</div>
-						<h3>파크 하비오 호텔</h3>
-						<p>서울특별시 송파구 송파대로 111</p>
-						<p>₩ 94,000~</p>
-						<div class="rec_review review">"혼자 조용히 쉬고싶어서 예약했어요. 예전에 친구가 묵었을 때 놀러간 적이 있는데 좋았던 기억이 있어서 다시 방문했습니다. 두시반 경에 도착했는데 흔쾌히 체크인 해주셔서 정말 감사했고 마침 조식 프로모션 기간이라 무료로 바우처를 받아서 그것도 정말 감사했어요. 조식은 3층에서 먹을 수 있는데 종류가 아주 다양하진 않았지만 다 맛있었어요. 이 호텔은 위치가 아주 좋아요. 대중교통편도 좋고 주변이 큰 상권이라 볼거리 먹을거리가 넘쳐나요 객실은 좁은 편이지만 창이 커서 답답하지 않고 길에서 들리는 소음을 제외하고는 조용한 편이에요. 침구도 편해서 푹 잤습니다. 아쉬운 점은 요금인데 재작년말에 6만원 정도였는데 1.5배 이상 인상이 되었네요ㅠ 그래도 재방문 의사 충분히 있습니다! 아 그리고 체크아웃이 12시라 여유있어서 그것도 만족이에요"</div>
+						<h3><%=popStays.get(7).getStayName() %></h3>
+						<p><%=popStays.get(7).getStayAddr() %></p>
+						<p>₩ <%=popStays.get(7).getPrice() %> ~</p>
+						<div class="rec_review review">"<%=popStays.get(7).getReviewContent() %>"</div>
 					</a>
 				</div>
 			</div>
