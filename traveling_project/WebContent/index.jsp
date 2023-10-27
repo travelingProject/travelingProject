@@ -13,12 +13,13 @@
 		out.println(popStays.get(i).getPrice());		
 		out.println(popStays.get(i).getReviewContent());		
 	} */
-	/* out.println(popStays.size()); */
+	out.println(popStays.size());
 %>
 
 <!DOCTYPE html>
 <html>
-<head>
+<head>	
+    <!-- favicon -->    
 	<%@ include file="header.jsp"%>
 </head>
 <body>	
@@ -33,7 +34,7 @@
 			<h2>숙소 추천</h2>
 			<a href="reservation.html"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider rec_slider">
-				<div>
+				<%-- <div>
 					<a href="#">
 						<div class="image_slider">
 							<img src="images/hotel_rec_image1.webp" alt="" /> <img src="images/hotel_rec_image2.webp" alt="" />
@@ -120,7 +121,7 @@
 						<p>₩ <%=popStays.get(7).getPrice() %> ~</p>
 						<div class="rec_review review">"<%=popStays.get(7).getReviewContent() %>"</div>
 					</a>
-				</div>
+				</div> --%>
 			</div>
 			<span id="rec_show_review" class="show_review">리뷰 모두 보기</span> <span class="arrow ir_pm">left_arrow</span> <span class="arrow ir_pm">right_arrow</span>
 		</section>
