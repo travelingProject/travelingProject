@@ -72,7 +72,7 @@
 										<textarea id="rcontent" name="rcontent" placeholder="리뷰를 작성해주세요."></textarea>
 									</div>
 									<div class="review_image">
-										<div class="file_list">
+										<div id="file_list">
 											<div>
 												<label id="r_image_label1" class="r_image_label" for="r_image1">이미지를 선택해주세요.</label>									
 												<input type="button" id="review_remove_btn1" class="r_remove_btn" value="-" style="display:none">
