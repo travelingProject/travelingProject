@@ -47,9 +47,11 @@ public class ControlDB {
 		try {
 			condb();
 			sta.executeUpdate(
-					"INSERT INTO review_info (reservation_id, review_title, review_content, rating, review_time) VALUES ("
+					"INSERT INTO review_info VALUES ("
 							+ obj.getReservation_id() + ", '" + obj.getRtitle() + "', '" + obj.getRcontent() + "', "
-							+ obj.getRating() + ", now());");
+							+ obj.getRating() + ", now(), '" + obj.getImage_path01() + "', '" + obj.getImage_path02()
+							+ "', '" + obj.getImage_path03() + "', '" + obj.getImage_path04() + "', '" + obj.getImage_path05()
+							+ "');");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -262,6 +264,11 @@ public class ControlDB {
 				riv.setRtitle(rs.getString("review_title"));
 				riv.setRcontent(rs.getString("review_content"));
 				riv.setRating(rs.getDouble("rating"));
+				riv.setImage_path01(rs.getString("image_path01"));
+				riv.setImage_path02(rs.getString("image_path02"));
+				riv.setImage_path03(rs.getString("image_path03"));
+				riv.setImage_path04(rs.getString("image_path04"));
+				riv.setImage_path05(rs.getString("image_path05"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -278,7 +285,9 @@ public class ControlDB {
 			sta.executeUpdate("UPDATE review_info SET review_title = '" + obj.getRtitle()
 							+ "', review_content = '" + obj.getRcontent()
 							+ "', rating = " + obj.getRating()
-							+ ", review_time = now() WHERE reservation_id = " + obj.getReservation_id() + ";");
+							+ ", review_time = now(), image_path01 = '" + obj.getImage_path01() + "', image_path02 = '" + obj.getImage_path02()
+							+ "', image_path03 = '" + obj.getImage_path03() + "', image_path04 = '" + obj.getImage_path04() + "', image_path05 = '" + obj.getImage_path05()
+							+ "' WHERE reservation_id = " + obj.getReservation_id() + ";");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -51,7 +51,7 @@ function replace(event) {
 		success : function(data) {
 			var rtitle = $(data).find("#riv_title").text();
 			var rcontent = $(data).find("#riv_content").text();
-			var rating = $(data).find("#riv_rating").text();
+			var rating = $(data).find("#riv_rating").text();		
 			
 			// 클릭한 작성하기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
 			var $reservationInfo = $button.closest("ul.index_list");
@@ -66,6 +66,31 @@ function replace(event) {
 			$("#rm_header span").text(chkDate);
 			$("#rtitle").val(rtitle);
 			$("#rcontent").val(rcontent);
+			
+			for (var i = 1; i <= 5; i++) {
+				var rimg = $(data).find("#riv_img" + i).attr("src");
+				var $imageLabel = $("#r_image_label" + i);
+				var $imageInput = $("#r_image" + i);
+				var $removeButton = $("#review_remove_btn" + i);
+				
+				if (rimg != "/traveling_project/images/review/null") {
+					
+					// 이미지 파일 경로 가져오기
+					var imagePath = rimg; // 예: rimg1, rimg2, ...
+					
+					// 이미지 파일 경로가 있는 경우 label 태그의 배경 이미지로 표시
+					if (imagePath) {
+						$imageLabel.css("background-image", "url(" + imagePath + ")");
+						$imageLabel.css("background-size", "contain");
+						$imageLabel.text(""); // 이미지 선택 안내 텍스트를 지웁니다.
+						$removeButton.show(); // Remove 버튼 표시
+					}
+				} else {
+			    	$imageLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+			    	$imageLabel.text('이미지를 선택해주세요.');
+			    	$removeButton.hide();
+				}
+			}
 			
 			// rating 변수에 따라 라디오 버튼 선택
 			switch (rating) {

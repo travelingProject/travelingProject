@@ -53,7 +53,7 @@
 					<div class="review_modal_wrap">
 						<div id="review_modal_index">
 							<button class="close_btn">&times;</button>
-							<form action="review_insert.jsp" id="review_form" method="post">
+							<form action="review_insert.jsp" id="review_form" method="post" enctype="multipart/form-data">
 								<!-- 리뷰 form -->
 								<input type="hidden" name="rid" id="rid_hidden" value="">
 								<div id="rm_header">
@@ -72,6 +72,7 @@
 										<textarea id="rcontent" name="rcontent" placeholder="리뷰를 작성해주세요."></textarea>
 									</div>
 									<div class="review_image">
+										<label for="file_list" id="r_file_la">파일</label>
 										<div id="file_list">
 											<div>
 												<label id="r_image_label1" class="r_image_label" for="r_image1">이미지를 선택해주세요.</label>									

@@ -21,7 +21,7 @@ public class IndexDAO {
 		int rowCount = 0;
 		
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "xhddlf336!");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "0509");
 			stmt = con.createStatement();
 			rs = stmt.executeQuery("SELECT s.stay_name, s.road_addr, MIN(r.price) AS price, rev.review_content "
 					+ "FROM stay_info s "

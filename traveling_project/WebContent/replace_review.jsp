@@ -23,6 +23,22 @@
 	<div>
 		<p id="riv_rating"><%=riv.getRating()%></p>
 	</div>
+	
+	<div>
+		<img id="riv_img1" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path01() %>" alt="Image 1">
+	</div>
+	<div>
+		<img id="riv_img2" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path02() %>" alt="Image 2">
+	</div>
+	<div>
+		<img id="riv_img3" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path03() %>" alt="Image 3">
+	</div>
+	<div>
+		<img id="riv_img4" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path04() %>" alt="Image 4">
+	</div>
+	<div>
+		<img id="riv_img5" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path05() %>" alt="Image 5">
+	</div>
 
 </body>
 </html>
