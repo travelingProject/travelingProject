@@ -6,7 +6,7 @@ $(document).ready(function() {
 			$(".review_modal_wrap").hide();
 			$("body").css("overflow", "auto");
 			$("#review_form")[0].reset();
-			$(".file_list").empty();
+			resetFileInputs();
 		}
 	});
 	
@@ -16,9 +16,37 @@ $(document).ready(function() {
 			$(".review_modal_wrap").hide();
 			$("body").css("overflow", "auto");
 			$("#review_form")[0].reset();
-			$(".file_list").empty();
+			resetFileInputs();
 		}
 	});
+	
+	// 파일 입력 필드 초기화 함수
+	function resetFileInputs() {
+	    for (let i = 1; i <= 5; i++) {
+	        const fileInput = $(`#r_image${i}`);
+	        const fileLabel = $(`#r_image_label${i}`);
+	        const removeBtn = $(`#review_remove_btn${i}`);
+
+	        fileInput.val(''); // 파일 입력 필드 초기화
+	        fileLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+	        fileLabel.text('이미지를 선택해주세요.');
+	        removeBtn.hide();
+	    }
+	}
+	
+	  for (let i = 1; i <= 5; i++) {
+	    const fileInput = $(`#r_image${i}`);
+	    const fileLabel = $(`#r_image_label${i}`);
+	    const removeBtn = $(`#review_remove_btn${i}`);
+	
+	    fileInput.change(function () {
+	      handleImageChange(fileInput[0], fileLabel, removeBtn);
+	    });
+	
+	    removeBtn.click(function () {
+	      handleImageRemoval(fileInput, fileLabel, removeBtn);
+	    });
+	  };
 	
 	function handleImageChange(input, label, removeBtn) {
 	    const file = input.files[0];
@@ -44,20 +72,6 @@ $(document).ready(function() {
 	    label.text('이미지를 선택해주세요.');
 	    removeBtn.hide();
 	  }
-	 
-	  for (let i = 1; i <= 5; i++) {
-	    const fileInput = $(`#r_image${i}`);
-	    const fileLabel = $(`#r_image_label${i}`);
-	    const removeBtn = $(`#review_remove_btn${i}`);
-
-	    fileInput.change(function () {
-	      handleImageChange(fileInput[0], fileLabel, removeBtn);
-	    });
-
-	    removeBtn.click(function () {
-	      handleImageRemoval(fileInput, fileLabel, removeBtn);
-	    });
-	  };
 	
 	// 제목, 내용, 별점이 입력되지 않았으면 submit 안되도록
 	$("#review_form").submit(function(event) {

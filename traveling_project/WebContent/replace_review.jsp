@@ -25,19 +25,19 @@
 	</div>
 	
 	<div>
-		<img id="riv_img1" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path01() %>" alt="Image 1">
+		<img id="riv_img1" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path01() %>" alt="<%= riv.getImage_path01() %>">
 	</div>
 	<div>
-		<img id="riv_img2" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path02() %>" alt="Image 2">
+		<img id="riv_img2" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path02() %>" alt="<%= riv.getImage_path02() %>">
 	</div>
 	<div>
-		<img id="riv_img3" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path03() %>" alt="Image 3">
+		<img id="riv_img3" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path03() %>" alt="<%= riv.getImage_path03() %>">
 	</div>
 	<div>
-		<img id="riv_img4" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path04() %>" alt="Image 4">
+		<img id="riv_img4" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path04() %>" alt="<%= riv.getImage_path04() %>">
 	</div>
 	<div>
-		<img id="riv_img5" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path05() %>" alt="Image 5">
+		<img id="riv_img5" src="<%= request.getContextPath() %>/images/review/<%= riv.getImage_path05() %>" alt="<%= riv.getImage_path05() %>">
 	</div>
 
 </body>

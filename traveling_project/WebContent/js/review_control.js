@@ -6,6 +6,20 @@ $(document).ready(function() {
 			$("#review_list").html(data);
 		}
 	});
+	
+	$(".r_images").change(function () {
+		  var fileInput = $(this);
+		  var hiddenInput = $("#" + fileInput.attr("id") + "_h"); // 해당 file 입력 필드에 대응하는 hidden 필드
+		  var file = fileInput[0].files[0];
+
+		  if (file) {
+		    // 파일이 선택되었을 때, 파일 경로를 hidden 필드에 저장
+		    hiddenInput.val(file.name); // 파일 이름을 저장할 수 있습니다.
+		  } else {
+		    // 파일을 선택하지 않았을 때, hidden 필드 초기화
+		    hiddenInput.val("");
+		  }
+		});
 });
 
 // 리뷰 삭제하기 버튼 함수
@@ -73,22 +87,20 @@ function replace(event) {
 				var $imageInput = $("#r_image" + i);
 				var $removeButton = $("#review_remove_btn" + i);
 				
-				if (rimg != "/traveling_project/images/review/null") {
-					
-					// 이미지 파일 경로 가져오기
-					var imagePath = rimg; // 예: rimg1, rimg2, ...
-					
-					// 이미지 파일 경로가 있는 경우 label 태그의 배경 이미지로 표시
-					if (imagePath) {
-						$imageLabel.css("background-image", "url(" + imagePath + ")");
-						$imageLabel.css("background-size", "contain");
-						$imageLabel.text(""); // 이미지 선택 안내 텍스트를 지웁니다.
-						$removeButton.show(); // Remove 버튼 표시
-					}
-				} else {
-			    	$imageLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+				console.log(rimg);
+				
+				// 이미지 파일 경로 가져오기
+				var imagePath = rimg; // 예: rimg1, rimg2, ...
+				
+				if (imagePath === "/traveling_project/images/review/null") {
+					$imageLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
 			    	$imageLabel.text('이미지를 선택해주세요.');
 			    	$removeButton.hide();
+				} else {
+					$imageLabel.css("background-image", "url(" + imagePath + ")");
+					$imageLabel.css("background-size", "contain");
+					$imageLabel.text(""); // 이미지 선택 안내 텍스트를 지웁니다.
+					$removeButton.show(); // Remove 버튼 표시
 				}
 			}
 			

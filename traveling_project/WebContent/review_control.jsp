@@ -51,7 +51,7 @@
 					<div class="review_modal_wrap">
 						<div id="review_modal_index">
 							<button class="close_btn">&times;</button>
-							<form action="review_update.jsp" id="review_form" method="post">
+							<form action="review_update.jsp" id="review_form" method="post" enctype="multipart/form-data">
 								<!-- 리뷰 form -->
 								<input type="hidden" name="rid" id="rid_hidden" value="">
 								<div id="rm_header">
@@ -71,31 +71,31 @@
 									</div>
 									<div class="review_image">
 										<label for="file_list" id="r_file_la">파일</label>
-										<div id="file_list">
+										<div id="file_list" class="file_list">
 											<div>
-												<label id="r_image_label1" class="r_image_label" for="r_image1">이미지를 선택해주세요.</label>									
+												<label id="r_image_label1" class="r_image_label" for="r_image1">이미지를 선택해주세요.</label>						
 												<input type="button" id="review_remove_btn1" class="r_remove_btn" value="-" style="display:none">
 												<input type="file" class="r_images" id="r_image1" name="r_image1" accept="image/png,image/jpeg,image/gif">
-											</div>			
+											</div>
 											<div>
 												<label id="r_image_label2" class="r_image_label" for="r_image2">이미지를 선택해주세요.</label>
 												<input type="button" id="review_remove_btn2" class="r_remove_btn" value="-" style="display:none">
-												<input type="file" class="r_images" id="r_image2" name="r_image2" accept="image/png,image/jpeg,image/gif">		
-											</div>								
+												<input type="file" class="r_images" id="r_image2" name="r_image2" accept="image/png,image/jpeg,image/gif">
+											</div>
 											<div>
 												<label id="r_image_label3" class="r_image_label" for="r_image3">이미지를 선택해주세요.</label>
 												<input type="button" id="review_remove_btn3" class="r_remove_btn" value="-" style="display:none">
-												<input type="file" class="r_images" id="r_image3" name="r_image3" accept="image/png,image/jpeg,image/gif">								
-											</div>								
+												<input type="file" class="r_images" id="r_image3" name="r_image3" accept="image/png,image/jpeg,image/gif">
+											</div>
 											<div>
 												<label id="r_image_label4" class="r_image_label" for="r_image4">이미지를 선택해주세요.</label>
 												<input type="button" id="review_remove_btn4" class="r_remove_btn" value="-" style="display:none">
-												<input type="file" class="r_images" id="r_image4" name="r_image4" accept="image/png,image/jpeg,image/gif">									
-											</div>								
+												<input type="file" class="r_images" id="r_image4" name="r_image4" accept="image/png,image/jpeg,image/gif">
+											</div>
 											<div>
 												<label id="r_image_label5" class="r_image_label" for="r_image5">이미지를 선택해주세요.</label>
 												<input type="button" id="review_remove_btn5" class="r_remove_btn" value="-" style="display:none">
-												<input type="file" class="r_images" id="r_image5" name="r_image5" accept="image/png,image/jpeg,image/gif">												
+												<input type="file" class="r_images" id="r_image5" name="r_image5" accept="image/png,image/jpeg,image/gif">
 											</div>
 										</div>
 									</div>

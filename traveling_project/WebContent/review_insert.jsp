@@ -42,7 +42,7 @@
 		imagename2 = multi.getParameter("r_image2");
 		imagename3 = multi.getParameter("r_image3");
 		imagename4 = multi.getParameter("r_image4");
-		imagename5 = multi.getParameter("r_image5");
+		imagename5 = multi.getParameter("r_image5");	
 
 		// 이미지 업로드
 		String[] fieldNames = { "r_image1", "r_image2", "r_image3", "r_image4", "r_image5" };

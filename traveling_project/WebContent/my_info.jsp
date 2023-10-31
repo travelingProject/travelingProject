@@ -73,7 +73,7 @@
 									</div>
 									<div class="review_image">
 										<label for="file_list" id="r_file_la">파일</label>
-										<div id="file_list">
+										<div id="file_list" class="file_list">
 											<div>
 												<label id="r_image_label1" class="r_image_label" for="r_image1">이미지를 선택해주세요.</label>									
 												<input type="button" id="review_remove_btn1" class="r_remove_btn" value="-" style="display:none">

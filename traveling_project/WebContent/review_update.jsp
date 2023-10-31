@@ -48,21 +48,38 @@
 		String[] fieldNames = { "r_image1", "r_image2", "r_image3", "r_image4", "r_image5" };
 
 		for (int i = 0; i < fieldNames.length; i++) {
-			String fieldName = fieldNames[i];
-			String imageName = multi.getFilesystemName(fieldName);
+		    String fieldName = fieldNames[i];
+		    String newImageName = multi.getFilesystemName(fieldName);
 
-			if (i == 0) {
-				obj.setImage_path01(imageName);
-			} else if (i == 1) {
-				obj.setImage_path02(imageName);
-			} else if (i == 2) {
-				obj.setImage_path03(imageName);
-			} else if (i == 3) {
-				obj.setImage_path04(imageName);
-			} else if (i == 4) {
-				obj.setImage_path05(imageName);
-			}
+		    if (newImageName != null) {
+		        // 이미지 파일이 업로드되었을 때만 새 이미지 파일명을 저장
+		        if (i == 0) {
+		            obj.setImage_path01(newImageName);
+		        } else if (i == 1) {
+		            obj.setImage_path02(newImageName);
+		        } else if (i == 2) {
+		            obj.setImage_path03(newImageName);
+		        } else if (i == 3) {
+		            obj.setImage_path04(newImageName);
+		        } else if (i == 4) {
+		            obj.setImage_path05(newImageName);
+		        }
+		    } else {
+		        // 이미지 파일이 업로드되지 않았을 때, 기존 이미지 파일명을 유지
+		        if (i == 0) {
+		            obj.setImage_path01(imagename1);
+		        } else if (i == 1) {
+		            obj.setImage_path02(imagename2);
+		        } else if (i == 2) {
+		            obj.setImage_path03(imagename3);
+		        } else if (i == 3) {
+		            obj.setImage_path04(imagename4);
+		        } else if (i == 4) {
+		            obj.setImage_path05(imagename5);
+		        }
+		    }
 		}
+
 		
 		obj.setReservation_id(rid);
 		obj.setRtitle(rtitle);
