@@ -1,28 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="com.pro.index.IndexDAO" %>
 <%@ page import="com.pro.dto.PopStayInfo" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="java.text.NumberFormat" %>	
-
 <%
 	IndexDAO indexDAO = new IndexDAO(); 
+	String path = request.getContextPath();		
 	HashMap<Integer, PopStayInfo> popStays = indexDAO.selectPopStays();	
-/* 	for(int i = 0; i < popStays.size(); i++){
-		out.println(popStays.get(i).getStayName());		
-		out.println(popStays.get(i).getStayAddr());		
-		out.println(popStays.get(i).getPrice());		
-		out.println(popStays.get(i).getReviewContent());		
-	} */
-	out.println(popStays.size());
 %>
-
 <!DOCTYPE html>
 <html>
 <head>	
-    <!-- favicon -->    
-	<%@ include file="header.jsp"%>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
+	<%@ include file="header.jsp"%>	
 </head>
-<body>	
+<body>
 	<section id="video">
 		<video autoplay loop muted>
 			<source src="video/Banner.mp4" type="video/mp4" width="100%" />
@@ -34,10 +27,11 @@
 			<h2>숙소 추천</h2>
 			<a href="reservation.html"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider rec_slider">
-				<%-- <div>
+				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image1.webp" alt="" /> <img src="images/hotel_rec_image2.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(0).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(0).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(0).getStayName() %></h3>
 						<p><%=popStays.get(0).getStayAddr() %></p>
@@ -48,7 +42,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image3.webp" alt="" /> <img src="images/hotel_rec_image4.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(1).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(1).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(1).getStayName() %></h3>
 						<p><%=popStays.get(1).getStayAddr() %></p>
@@ -59,7 +54,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image5.webp" alt="" /> <img src="images/hotel_rec_image6.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(2).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(2).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(2).getStayName() %></h3>
 						<p><%=popStays.get(2).getStayAddr() %></p>
@@ -70,7 +66,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image7.webp" alt="" /> <img src="images/hotel_rec_image8.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(3).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(3).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(3).getStayName() %></h3>
 						<p><%=popStays.get(3).getStayAddr() %></p>
@@ -81,7 +78,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image1.webp" alt="" /> <img src="images/hotel_rec_image2.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(4).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(4).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(4).getStayName() %></h3>
 						<p><%=popStays.get(4).getStayAddr() %></p>
@@ -92,7 +90,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image3.webp" alt="" /> <img src="images/hotel_rec_image4.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(5).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(5).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(5).getStayName() %></h3>
 						<p><%=popStays.get(5).getStayAddr() %></p>
@@ -103,7 +102,8 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image5.webp" alt="" /> <img src="images/hotel_rec_image6.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(6).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(6).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(6).getStayName() %></h3>
 						<p><%=popStays.get(6).getStayAddr() %></p>
@@ -114,14 +114,15 @@
 				<div>
 					<a href="#">
 						<div class="image_slider">
-							<img src="images/hotel_rec_image7.webp" alt="" /> <img src="images/hotel_rec_image8.webp" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(7).getImage1() %>" alt="" />
+							<img src="<%=path %>/stay_images/<%=popStays.get(7).getImage2() %>" alt="" />
 						</div>
 						<h3><%=popStays.get(7).getStayName() %></h3>
 						<p><%=popStays.get(7).getStayAddr() %></p>
 						<p>₩ <%=popStays.get(7).getPrice() %> ~</p>
 						<div class="rec_review review">"<%=popStays.get(7).getReviewContent() %>"</div>
 					</a>
-				</div> --%>
+				</div>
 			</div>
 			<span id="rec_show_review" class="show_review">리뷰 모두 보기</span> <span class="arrow ir_pm">left_arrow</span> <span class="arrow ir_pm">right_arrow</span>
 		</section>
@@ -135,13 +136,15 @@
 					</div>
 					<h2>제주</h2>
 					<p>숙소 4,878개</p>
-				</a> <a href="#">
+				</a>
+				<a href="#">
 					<div>
 						<img src="images/seoul.jpg" alt="" />
 					</div>
 					<h2>서울</h2>
 					<p>숙소 5,923개</p>
-				</a> <a href="#">
+				</a>
+				<a href="#">
 					<div>
 						<img src="images/busan.jpg" alt="" />
 					</div>

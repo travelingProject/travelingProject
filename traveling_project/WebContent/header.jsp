@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />    
-    <!-- favicon -->
-    <!-- <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
