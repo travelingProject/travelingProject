@@ -44,7 +44,7 @@
 		</a></li>
 		<li class="r_chk_date"><%=chkIn %> ~ <%=chkOut %></li>
 		<!-- 예약 테이블의 체크인 ~ 체크아웃 날짜 -->
-		<li><button class="replace_review_btn" onclick="replace(event)" data-reservation_id="<%=rid%>">수정하기</button></li>
+		<li><button class="replace_review_btn" onclick="replace(event)" data-reservation_id="<%=rid%>">상세보기</button></li>
 		<li><button class="remove_review_btn" onclick="delete_review(event)" data-reservation_id="<%=rid%>">삭제하기</button></li>
 		<li><%=rtime %></li>
 		<!-- 리뷰 테이블 최종수정일 -->

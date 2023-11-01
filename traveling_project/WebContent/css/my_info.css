@@ -1,6 +1,5 @@
 .index_wrap h2 {
 	font-size: 20px;
-	margin-bottom: 45px;
 }
 
 .index_wrap article {
@@ -16,6 +15,7 @@
 	border-top: 2px solid #000;
 	overflow: hidden;
 	border-bottom: 1px solid #444447;
+	margin-top: 21px;
 }
 
 ul .index_category {
@@ -196,4 +196,9 @@ ul .index_category {
     background-color: #ccc;
     font-weight: bold;
     color: red;
+}
+
+.notice_help>u {
+	font-size: 14px;
+	color: #777777;
 }

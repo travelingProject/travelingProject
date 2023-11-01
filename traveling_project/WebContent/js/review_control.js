@@ -7,19 +7,88 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".r_images").change(function () {
-		  var fileInput = $(this);
-		  var hiddenInput = $("#" + fileInput.attr("id") + "_h"); // 해당 file 입력 필드에 대응하는 hidden 필드
-		  var file = fileInput[0].files[0];
+	let initialValues = {};
 
-		  if (file) {
-		    // 파일이 선택되었을 때, 파일 경로를 hidden 필드에 저장
-		    hiddenInput.val(file.name); // 파일 이름을 저장할 수 있습니다.
-		  } else {
-		    // 파일을 선택하지 않았을 때, hidden 필드 초기화
-		    hiddenInput.val("");
-		  }
-		});
+	  // 초기 상태 저장
+	  function saveInitialValues() {
+	    initialValues.rtitle = $("#rtitle").val();
+	    initialValues.rcontent = $("#rcontent").val();
+
+	    $("input.r_images").each(function(i) {
+	      initialValues[`r_image${i + 1}`] = $(this).val();
+	    });
+
+	    initialValues.rating = $("input[name='rating']:checked").val();
+	    
+	    // 초기 상태에서 이미지 URL을 저장
+	    initialValues.imageURLs = [];
+	    $(".r_image_label").each(function() {
+	      initialValues.imageURLs.push($(this).css('background-image'));
+	    });
+	  }
+	
+	// 수정 버튼 클릭 시
+	$("#r_modi_btn").click(function() {
+		// 입력 필드를 수정 가능하게 만들고 수정 버튼을 비활성화
+		$("#r_modi_btn").hide();
+		$("#r_can_btn").hide();
+		$("#r_modi_save_btn").show();
+		$("#r_modi_can_btn").show();
+		$("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", false);
+		saveInitialValues();
+	});
+	
+	// 모달 닫기 오른쪽 위 X
+	$(".close_btn, #r_can_btn").click(function() {
+		if (confirm("저장되지 않은 정보는 복원할 수 없습니다. 종료하시겠습니까?")) {
+			$("#r_modi_btn").show();
+			$("#r_can_btn").show();
+			$("#r_modi_save_btn").hide();
+			$("#r_modi_can_btn").hide();
+			$(".review_modal_wrap").hide();
+			$("body").css("overflow", "auto");
+		}
+	});
+	
+	// 취소 버튼
+	$("#r_modi_can_btn").click(function() {
+		if (confirm("저장되지 않은 정보는 복원할 수 없습니다. 취소하시겠습니까?")) {
+			$("#r_modi_btn").show();
+			$("#r_can_btn").show();
+			$("#r_modi_save_btn").hide();
+			$("#r_modi_can_btn").hide();
+			// 초기 상태로 복원
+		    $("#rtitle").val(initialValues.rtitle);
+		    $("#rcontent").val(initialValues.rcontent);
+
+		    $("input.r_images").each(function(i) {
+		      $(this).val(initialValues[`r_image${i + 1}`]);
+		    });
+		    
+		    // 라벨의 배경 이미지 초기 상태로 복원
+		    $(".r_image_label").each(function(i) {
+		      $(this).css('background-image', initialValues.imageURLs[i]);
+		    });
+
+		    $("input[name='rating'][value='" + initialValues.rating + "']").prop("checked", true);
+		    $("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", true);
+		    
+		}
+	});
+	
+	// 제목, 내용, 별점이 입력되지 않았으면 submit 안되도록
+  	$("#review_form").submit(function(event) {
+  		// 제목, 내용, 별점 값 가져오기
+  		var rtitle = $("#rtitle").val();
+  		var rcontent = $("#rcontent").val();
+  		var rating = $("input[name='rating']:checked").val();
+
+  		// 제목, 내용, 별점이 비어있는 경우 제출 방지
+  		if (rtitle === "" || rcontent === "" || rating === undefined) {
+  			alert("제목, 내용, 별점을 모두 입력해주세요.");
+  			event.preventDefault(); // 폼 제출 방지
+  		}
+  	});	
 });
 
 // 리뷰 삭제하기 버튼 함수
@@ -49,7 +118,7 @@ function delete_review(event) {
 	}
 }
 
-// 리뷰 수정하기 버튼 함수
+// 리뷰 상세보기 버튼 함수
 function replace(event) {
 	// 클릭한 작성하기 버튼 요소를 선택
 	var $button = $(event.target);	
@@ -87,12 +156,10 @@ function replace(event) {
 				var $imageInput = $("#r_image" + i);
 				var $removeButton = $("#review_remove_btn" + i);
 				
-				console.log(rimg);
-				
 				// 이미지 파일 경로 가져오기
 				var imagePath = rimg; // 예: rimg1, rimg2, ...
 				
-				if (imagePath === "/traveling_project/images/review/null") {
+				if (imagePath == "/traveling_project/images/review/null") {
 					$imageLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
 			    	$imageLabel.text('이미지를 선택해주세요.');
 			    	$removeButton.hide();
@@ -127,8 +194,22 @@ function replace(event) {
 			}
 		
 			// 모달 열기
+			checkImageFields();
 			$(".review_modal_wrap").show();
-			$("body").css("overflow", "hidden");			
+			$("body").css("overflow", "hidden");
+			$("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", true);
 		}
 	});
+}
+
+//모달창이 열릴 때 이미지 파일 확인
+function checkImageFields() {
+  for (var i = 1; i <= 5; i++) {
+    var $imageInput = $("#r_image" + i);
+    if ($imageInput[0].files.length === 0) {
+      // 이미지 파일 필드에 파일이 없는 경우
+      // 이미지 파일 필드를 서버로 전송하지 않음
+      $imageInput.removeAttr("name");
+    }
+  }
 }

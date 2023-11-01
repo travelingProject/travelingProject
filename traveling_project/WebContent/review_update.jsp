@@ -53,6 +53,7 @@
 
 		    if (newImageName != null) {
 		        // 이미지 파일이 업로드되었을 때만 새 이미지 파일명을 저장
+		        // 나머지 이미지 파일 필드도 동일한 방식으로 처리
 		        if (i == 0) {
 		            obj.setImage_path01(newImageName);
 		        } else if (i == 1) {
@@ -64,22 +65,26 @@
 		        } else if (i == 4) {
 		            obj.setImage_path05(newImageName);
 		        }
-		    } else {
-		        // 이미지 파일이 업로드되지 않았을 때, 기존 이미지 파일명을 유지
-		        if (i == 0) {
-		            obj.setImage_path01(imagename1);
-		        } else if (i == 1) {
-		            obj.setImage_path02(imagename2);
-		        } else if (i == 2) {
-		            obj.setImage_path03(imagename3);
-		        } else if (i == 3) {
-		            obj.setImage_path04(imagename4);
-		        } else if (i == 4) {
-		            obj.setImage_path05(imagename5);
-		        }
 		    }
 		}
 
+		// 이미지 파일이 업로드되지 않았을 때는 기존 이미지 파일 경로를 유지
+		// 나머지 이미지 파일 필드도 동일한 방식으로 처리
+		if (imagename1 != null && imagename1.isEmpty() == false) {
+		    obj.setImage_path01(imagename1);
+		}
+		if (imagename2 != null && imagename2.isEmpty() == false) {
+		    obj.setImage_path02(imagename2);
+		}
+		if (imagename3 != null && imagename3.isEmpty() == false) {
+		    obj.setImage_path03(imagename3);
+		}
+		if (imagename4 != null && imagename4.isEmpty() == false) {
+		    obj.setImage_path04(imagename4);
+		}
+		if (imagename5 != null && imagename5.isEmpty() == false) {
+		    obj.setImage_path05(imagename5);
+		}
 		
 		obj.setReservation_id(rid);
 		obj.setRtitle(rtitle);

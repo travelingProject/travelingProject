@@ -38,10 +38,11 @@
 			<div id="reservation_wrap" class="index_wrap">
 				<article>
 					<h2>리뷰관리</h2>
+					<span class="notice_help"><u>#상세보기를 눌러 리뷰를 수정할 수 있습니다.</u></span>
 					<ul id="reservation_category" class="index_category">
 						<li>숙소 이름</li>
 						<li>일정</li>
-						<li>수정하기</li>
+						<li>상세보기</li>
 						<li>삭제하기</li>
 						<li>최근수정일</li>
 					</ul>
@@ -113,8 +114,12 @@
 									<label for="1-star" class="star">★</label>
 								</div>
 								<div id="rm_btn">
-									<input type="submit" id="submit_btn" value="저장">
-									<input type="button" id="can_btn" name="can_btn" value="취소">
+<!-- 									<input type="submit" id="submit_btn" value="저장"> -->
+<!-- 									<input type="button" id="can_btn" name="can_btn" value="취소"> -->
+									<input type="button" id="r_modi_btn" value="수정">
+									<input type="submit" id="r_modi_save_btn" value="저장">
+									<input type="button" id="r_can_btn" name="can_btn" value="종료">
+									<input type="button" id="r_modi_can_btn" name="can_btn" value="취소">
 								</div>
 							</form>
 						</div>
