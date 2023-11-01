@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 	</header>
-		<div class="modal" id="myModal">
+		<div class="main_modal" id="myModal">
    		<div class="modal-content">
         	<span class="close" id="closeModal"></span>
         	<p>하나의 계정당 한개의 숙소만 등록 가능합니다.</p>

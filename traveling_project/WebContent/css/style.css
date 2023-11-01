@@ -29,6 +29,7 @@ section {
 .slider {
 	display: flex;
 	justify-content: space-between;
+	user-select:none;
 }
 
 /* 호텔 추천 */
@@ -40,8 +41,7 @@ section {
 /* 제목 */
 .hotel_recommend h2 {
 	display: inline-block;
-	margin: 20px 10px;
-	width: 110px;
+	margin: 20px 10px;	
 }
 
 /* 슬라이더 화살표 */
@@ -219,21 +219,8 @@ section {
 	cursor: pointer;
 }
 
-.hotel_recommend>.after_style:after {
-	content: "";
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-	background: url(../images/arrow_down.png) no-repeat center/contain;
-	position: absolute;
-}
-
 .hotel_recommend>.show_review:hover {
 	color: #1200ff;
-}
-
-.hotel_recommend>.after_style:hover:after {
-	background-image: url(../images/arrow_down_hover.png);
 }
 
 /* 국내 인기 여행지  */
@@ -319,8 +306,7 @@ section {
 }
 
 .accomodation_near_me .swiper>h2 {
-	display: inline-block;
-	width: 140px;
+	display: inline-block;	
 	margin: 0 0 20px;
 }
 
@@ -401,8 +387,7 @@ section {
 /* 제목 */
 .popular_accomodation h2 {
 	display: inline-block;
-	margin: 20px 10px;
-	width: 110px;
+	margin: 20px 10px;	
 }
 
 .popular_accomodation .slider {
@@ -558,21 +543,8 @@ section {
 	cursor: pointer;
 }
 
-.popular_accomodation>.after_style:after {
-	content: "";
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-	background: url(../images/arrow_down.png) no-repeat center/contain;
-	position: absolute;
-}
-
 .popular_accomodation>.after_style:hover {
 	color: #1200ff;
-}
-
-.popular_accomodation>.after_style:hover:after {
-	background-image: url(../images/arrow_down_hover.png);
 }
 
 /* 이벤트 */

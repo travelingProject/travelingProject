@@ -45,6 +45,8 @@
 	background:#fff;
 	border:0;
 	font-size:18px;
+	font-weight:bold;
+	cursor:pointer;
 }
 
 .lnb_menu li a:hover,
@@ -70,7 +72,7 @@ ul#my_info li:hover a:after {
 }
 
 /* 모달 스타일 */
-.modal {
+.main_modal {
     display: none;
     position: fixed;
     z-index:100;

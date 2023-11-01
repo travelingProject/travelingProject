@@ -27,14 +27,10 @@ public class ReservationAcception {
 	public void close() {
 		try {
 			stmt.close();
-		} catch (Exception e){
-			System.out.println(e);
-		}
-		try {
 			conn.close();
 		} catch (Exception e){
 			System.out.println(e);
-		}
+		}		
 	}
 	
 	// 예약 상태가 예약 대기중인 예약 정보 추출

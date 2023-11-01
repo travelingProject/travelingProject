@@ -19,6 +19,7 @@ $(document).ready(function () {
       infinite: true,
       slidesToShow: 4,
       slidesToScroll: 1,
+      draggable: false
     });
   
     $('.image_slider').slick({
@@ -26,6 +27,7 @@ $(document).ready(function () {
       slidesToShow: 1,
       slidesToScroll: 1,
       dots: true,
+      draggable:false
     });
   
     $('.event .event_slider').slick({
@@ -77,6 +79,7 @@ $(document).ready(function () {
     new Swiper('.mySwiper.banner', {
       spaceBetween: 20,
       slidesPerView: 5,
+      touchRatio: 0,
       pagination: {
         el: '.swiper-pagination',
         type: 'progressbar',
