@@ -127,7 +127,7 @@
 		</section>
 
 		<!-- 인기 숙소 -->
-		<section class="popular_accomodation">
+ 		<section class="popular_accomodation">
 			<h2>가격이 저렴한 숙소</h2>
 			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider pop_slider">

@@ -32,10 +32,13 @@
       	<div id="fee">
       		<h3>1박당 요금</h3>
       		<div>
-      			<div id="dot1" class="draggable"></div>
-      			<div></div>
-      			<div></div>
-      			<div id="dot2" class="draggable"></div>
+      			<input type="range" id="input_left" min="1" max="101" value="1" step="10"/>
+      			<input type="range" id="input_right" min="1" max="101" value="101" step="10"/>
+      			<div class="track">
+      				<div class="range"></div>      			
+      				<div id="left_thumb" class="thumb"></div>      			
+      				<div id="right_thumb" class="thumb"></div>
+      			</div>      			
       		</div>
       	</div>      	
       </aside>
@@ -188,6 +191,6 @@
       </section>      
     </main>
     <div class="go_top"></div>
-    <%@ include file="footer.jsp"%>
+    <%@ include file="footer.jsp"%>    
   </body>
 </html>

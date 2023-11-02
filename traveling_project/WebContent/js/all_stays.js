@@ -1,48 +1,42 @@
 $(document).ready(function() {
-    let isDragging = false;
-    let offsetX = 0;
-    let targetBox = null;
+	const inputLeft = $('#input_left');
+	const inputRight = $('#input_right');
+	
+	const thumbLeft = $('#left_thumb');
+	const thumbRight = $('#right_thumb');
+	
+	const range = $('.range');
+	
+	const setLeftValue = (e) => {
+        const _this = e.target;
+        const { value, min, max } = _this;
 
-    $('.draggable').on('mousedown', function(e) {
-        isDragging = true;
-        offsetX = e.clientX - $(this).offset().left;
-        targetBox = $(this);
-        e.stopPropagation();
-    });
-
-    $(document).on('mousemove', function(e) {
-        if (isDragging && targetBox) {
-            let x = e.clientX - offsetX;            
-            console.log(x);
-            if (targetBox.attr('id') === 'dot1' && x <= 22) {
-                x = 22;
-            }
-
-            if (targetBox.attr('id') === 'dot2' && x >= 295) {
-                x = 295;
-            }
-
-            const dot1Right = $('#dot1').position().left + $('#dot1').width();
-            const dot2Left = $('#dot2').position().left;
-
-            if (targetBox.attr('id') === 'dot1' && x + targetBox.width() >= dot2Left) {
-                return;
-            }
-
-            if (targetBox.attr('id') === 'dot2' && x <= dot1Right) {
-                return;
-            }
-
-            targetBox.css({
-                'left': `${x-20}px`
-            });
+        if (+inputRight.val() - +value < 10) {
+          _this.value = +inputRight.value - 10;
         }
-        e.stopPropagation();
-    });
 
-    $(document).on('mouseup', function(e) {
-        isDragging = false;
-        targetBox = null;
-        e.stopPropagation();
-    });
+        const percent = ((+_this.value - +min) / (+max - +min)) * 100;
+
+        $(thumbLeft).css('left', `${percent}%`);
+        $(range).css('left', `${percent}%`);
+	};
+	
+    const setRightValue = (e) => {
+        const _this = e.target;
+        const { value, min, max } = _this;
+
+        if (+value - +inputLeft.val() < 10) {
+          _this.value = +inputLeft.val() + 10;
+        }
+
+        const percent = ((+_this.value - +min) / (+max - +min)) * 100;
+
+        $(thumbRight).css('right', `${100 - percent}%`);
+        $(range).css('right', `${100 - percent}%`);
+      };
+      
+      if (inputLeft && inputRight) {
+    	  $(inputLeft).on('input', setLeftValue);
+    	  $(inputRight).on('input', setRightValue);
+    	}
 });

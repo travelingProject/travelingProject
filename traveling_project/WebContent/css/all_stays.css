@@ -8,89 +8,97 @@ aside {
 	margin-top: 20px;
 	width: 340px;
 	height: 1000px;
-	border: 1px solid #000;	
-	padding:20px;
+	border: 1px solid #000;
+	padding: 20px;
 }
 
-#map{
-	width:300px;
-	height:150px;	
-	background:url(../images/map_image.svg)no-repeat center/cover;
-	position:relative;
+#map {
+	width: 300px;
+	height: 150px;
+	background: url(../images/map_image.svg) no-repeat center/cover;
+	position: relative;
+	cursor: pointer;
+}
+
+#map:hover p {
+	color: #5392f9;
+}
+
+#map span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50px;
+	height: 50px;
+	background: url(../images/map_pin.svg) no-repeat center/contain;
+}
+
+#map p {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 105px;
+	user-select: none;
+}
+
+#fee {
+	margin-top: 20px;
+}
+
+#fee>div {	
+	position: relative;
+}
+
+input[type="range"] {
+	width: 100%;
+	top: -10px;
+	left: 0;
+	position: absolute;
+	border: none;
+	pointer-events: none;
+	z-index: 10;
+	appearance: none;	
 	cursor:pointer;
-}
-
-#map:hover p{
-	color:#
-}
-
-#map span{
-	position:absolute;
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	width:50px;
-	height:50px;	
-	background:url(../images/map_pin.svg)no-repeat center/contain;	
-}
-
-#map p{
-	text-align:center;
-	font-size:20px;
-	font-weight:bold;
-	padding-top:105px;
-	user-select:none;
-}
-
-#fee{
-	margin-top:20px;
-}
-
-#fee>div{
-	height:50px;
 	border:1px solid #000;
-	position:relative;
+	opacity: 0.5;
 }
 
-#fee>div>div:first-child,
-#fee>div>div:last-child{
-	width:20px;
-	height:20px;
-	border-radius:100%;
-	border:1px solid #5392f9;
-	position:absolute;
-	top:15px;
-	background:#fff;
-	cursor:pointer;
-	z-index:3;
+input[type="range"]::-webkit-slider-thumb {
+	pointer-events: all;	
+	appearance: none;
+	background-color: red;
+	width: 3rem;
+	height: 1.5rem;	
 }
 
-#fee>div>div:last-child{
-	left:275px;	
+.track {
+	position: relative;
+	width: 100%;
+	height: 0.5rem;
+	margin-top: 10px;
+	background-color: #bdc3c7;
+	border-radius: 0.5rem;
 }
 
-#fee>div>div:nth-child(2),
-#fee>div>div:nth-child(3){
-	position:absolute;
-	top:53%;
-	left:50%;
-	transform:translate(-50%,-50%);
-	width:98%;
-	height:10px;	
-	background:#5392f9;
-	border-radius:5px;
+.range {
+	position: absolute;
+	top: 0;
+	bottom:0;
+	left: 0;
+	right:0;	
+	background-color: #2c3e50;
+	border-radius: 0.5rem;
 }
 
-#fee>div>div:nth-child(2){
-	z-index:1;
-}
-
-#fee>div>div:nth-child(3){
-	background:#f5f5f5;	
-}
-
-aside h3{
-		
+.thumb {
+	position: absolute;
+	top: 0;
+	transform: translateY(-0.25rem);
+	width: 1rem;
+	height: 1rem;
+	background-color: black;
+	border-radius: 50%;
 }
 
 #accomodation_info {
@@ -101,8 +109,16 @@ aside h3{
 	justify-content: space-between;
 }
 
+#left_thumb {
+	left: 0;
+}
+
+#right_thumb {
+	right: 0;
+}
+
 #accomodation_info .accomodation {
-	width: 320px;	
+	width: 320px;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	overflow: hidden;
@@ -128,8 +144,7 @@ aside h3{
 	font-size: 16px;
 }
 
-#accomodation_info .accomodation h2, #accomodation_info .accomodation span,
-	#accomodation_info .accomodation p {
+#accomodation_info .accomodation h2, #accomodation_info .accomodation span, #accomodation_info .accomodation p {
 	margin: 5px 0;
 	padding: 0 10px;
 }
