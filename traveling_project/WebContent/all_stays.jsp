@@ -9,7 +9,7 @@
     <!-- css -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/reservation.css" />
+    <link rel="stylesheet" href="css/all_stays.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,15 +17,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- script -->
-    <script src="js/header.js"></script>
-    <script src="js/reservation.js"></script>
+    <!-- script -->    
+    <script src="js/all_stays.js"></script>
     <title>예약하기</title>
   </head>
   <body>
     <%@ include file="header.jsp"%>
-    <main>
-      <section id="accomodation_info">
+    <main class="clearfix">
+      <aside>
+      	<div id="map">
+      		<span></span>
+      		<p>지도에서 숙소 보기</p>
+      	</div>
+      	<div id="fee">
+      		<h3>1박당 요금</h3>
+      		<div>
+      			<div id="dot1" class="draggable"></div>
+      			<div></div>
+      			<div></div>
+      			<div id="dot2" class="draggable"></div>
+      		</div>
+      	</div>      	
+      </aside>
+      <section id="accomodation_info" class="clearfix">
         <div class="accomodation">
           <a href="#">
             <div>
@@ -171,11 +185,7 @@
           </a>
         </div>
         <span>더보기</span>
-      </section>
-      <aside id="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.6158644730954!2d126.90658407636018!3d37.51697722696768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9f42459b69d3%3A0x47d827bc05d70773!2z7Y6Y7Ja07ZWE65OcIOuwlOydtCDrqZTrpqzslrTtirgg7ISc7Jq4!5e0!3m2!1sko!2skr!4v1693735672558!5m2!1sko!2skr" width="680" 
-        height="810" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </aside>
+      </section>      
     </main>
     <div class="go_top"></div>
     <%@ include file="footer.jsp"%>

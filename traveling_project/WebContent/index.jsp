@@ -27,7 +27,7 @@
 		<!-- 호텔 추천 -->
 		<section class="hotel_recommend">
 			<h2>가장 인기가 많은 숙소</h2>
-			<a href="reservation.html"><img src="images/view_all.png" alt="" /></a>
+			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider rec_slider">
 				<%
 				        for (int i = 0; i < 8; i++) {            
@@ -102,7 +102,7 @@
 		<section class="accomodation_near_me">
 			<div class="swiper mySwiper banner">
 				<h2>가장 평점이 높은 숙소</h2>
-				<a href="reservation.html"><img src="images/view_all.png" alt="" /></a>
+				<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 				<div class="slider swiper-wrapper">
 				<% for(int i = 0; i < 9; i++){ %>
 					<div class="swiper-slide banner">
@@ -128,8 +128,8 @@
 
 		<!-- 인기 숙소 -->
 		<section class="popular_accomodation">
-			<h2>가격대가 낮은 숙소</h2>
-			<a href="reservation.html"><img src="images/view_all.png" alt="" /></a>
+			<h2>가격이 저렴한 숙소</h2>
+			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider pop_slider">
 				<%for(int i = 0; i < 8; i++) {%>
 				<div>
