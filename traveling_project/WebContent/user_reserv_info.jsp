@@ -58,12 +58,12 @@
 		</li>
 		<%
 			} else {
-				if (stat.equals("예약 취소") || stat.equals("예약 거부")) {
+				if (stat.equals("예약 취소") || stat.equals("예약 거부") || stat.equals("예약 대기")) {
 		%>
 		<li>
 			<div class="review-container">
 				<button class='review_modal reserv_can' data-reservation_id="<%=rid%>" disabled>작성불가</button>
-				<p id="tooltipText<%=rid%>" class="tooltip-text">예약이 취소되거나 거부된 경우 작성할 수 없습니다</p>
+				<p id="tooltipText<%=rid%>" class="tooltip-text">예약이 확정되지 않았거나 취소/거부 된 경우 작성할 수 없습니다</p>
 			</div>
 		</li>
 		<%

@@ -173,7 +173,7 @@ input[type="file"] {
     font-weight: bold;
 }
 
-.file_list div label:hover {
+.file_list > div > label:hover {
 	background-image: url(../images/image_hover.png);
 	color: #000;
 	font-weight: bold;

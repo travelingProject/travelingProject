@@ -29,13 +29,18 @@ $(document).ready(function() {
 	
 	// 수정 버튼 클릭 시
 	$("#r_modi_btn").click(function() {
-		// 입력 필드를 수정 가능하게 만들고 수정 버튼을 비활성화
-		$("#r_modi_btn").hide();
-		$("#r_can_btn").hide();
-		$("#r_modi_save_btn").show();
-		$("#r_modi_can_btn").show();
-		$("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", false);
-		saveInitialValues();
+		if (confirm("수정 버튼을 누르면 이미지를 새로 등록해야 합니다. 수정하시겠습니까?")) {
+			// 입력 필드를 수정 가능하게 만들고 수정 버튼을 비활성화
+			$("#r_modi_btn").hide();
+			$("#r_can_btn").hide();
+			$("#r_modi_save_btn").show();
+			$("#r_modi_can_btn").show();
+			$("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", false);
+			saveInitialValues();
+			$(".r_images").val("");
+			$(".r_image_label").css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+			$(".r_image_label").text('이미지를 선택해주세요.');
+		}
 	});
 	
 	// 모달 닫기 오른쪽 위 X
@@ -60,35 +65,21 @@ $(document).ready(function() {
 			// 초기 상태로 복원
 		    $("#rtitle").val(initialValues.rtitle);
 		    $("#rcontent").val(initialValues.rcontent);
-
-		    $("input.r_images").each(function(i) {
-		      $(this).val(initialValues[`r_image${i + 1}`]);
-		    });
-		    
-		    // 라벨의 배경 이미지 초기 상태로 복원
-		    $(".r_image_label").each(function(i) {
-		      $(this).css('background-image', initialValues.imageURLs[i]);
-		    });
-
 		    $("input[name='rating'][value='" + initialValues.rating + "']").prop("checked", true);
 		    $("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", true);
 		    
+		    $(".r_images").val('');
+		    $(".r_image_label").css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+		    $(".r_image_label").text('이미지를 선택해주세요.');
+		    
+		    $(".r_images").val('');
+		    $(".r_image_label").each(function(i) {
+		        $(this).css('background-image', initialValues.imageURLs[i]);
+		        $(this).text('');
+		      });
+		    $(".r_remove_btn").hide();
 		}
 	});
-	
-	// 제목, 내용, 별점이 입력되지 않았으면 submit 안되도록
-  	$("#review_form").submit(function(event) {
-  		// 제목, 내용, 별점 값 가져오기
-  		var rtitle = $("#rtitle").val();
-  		var rcontent = $("#rcontent").val();
-  		var rating = $("input[name='rating']:checked").val();
-
-  		// 제목, 내용, 별점이 비어있는 경우 제출 방지
-  		if (rtitle === "" || rcontent === "" || rating === undefined) {
-  			alert("제목, 내용, 별점을 모두 입력해주세요.");
-  			event.preventDefault(); // 폼 제출 방지
-  		}
-  	});	
 });
 
 // 리뷰 삭제하기 버튼 함수
@@ -161,13 +152,13 @@ function replace(event) {
 				
 				if (imagePath == "/traveling_project/images/review/null") {
 					$imageLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
-			    	$imageLabel.text('이미지를 선택해주세요.');
+			    	$imageLabel.text('');
 			    	$removeButton.hide();
 				} else {
 					$imageLabel.css("background-image", "url(" + imagePath + ")");
 					$imageLabel.css("background-size", "contain");
 					$imageLabel.text(""); // 이미지 선택 안내 텍스트를 지웁니다.
-					$removeButton.show(); // Remove 버튼 표시
+					$removeButton.hide(); // Remove 버튼 표시
 				}
 			}
 			
@@ -194,22 +185,9 @@ function replace(event) {
 			}
 		
 			// 모달 열기
-			checkImageFields();
 			$(".review_modal_wrap").show();
 			$("body").css("overflow", "hidden");
 			$("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", true);
 		}
 	});
-}
-
-//모달창이 열릴 때 이미지 파일 확인
-function checkImageFields() {
-  for (var i = 1; i <= 5; i++) {
-    var $imageInput = $("#r_image" + i);
-    if ($imageInput[0].files.length === 0) {
-      // 이미지 파일 필드에 파일이 없는 경우
-      // 이미지 파일 필드를 서버로 전송하지 않음
-      $imageInput.removeAttr("name");
-    }
-  }
 }
