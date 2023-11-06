@@ -4,7 +4,8 @@
 
 <mapper namespace="query_ex">
 
-	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner" parameterType="com.pro.dto.MyPlanner">
+	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner"
+		parameterType="com.pro.dto.MyPlanner">
 		SELECT s.stay_name, s.location,
 		date_format(r.check_in_date, '%Y.%m.%d') AS check_in_date,
 		date_format(r.check_out_date, '%Y.%m.%d') AS check_out_date,
@@ -19,20 +20,26 @@
 		WHERE r.user_id = #{user_id};
 	</select>
 
-	<select id="planSelect" resultType="com.pro.dto.DetailPlan" parameterType="com.pro.dto.DetailPlan">
-		SELECT * FROM detail_plan WHERE plan_id = #{plan_id} AND plan_date = #{check_in_date} ORDER BY plan_start_time, plan_end_time;
+	<select id="planSelect" resultType="com.pro.dto.DetailPlan"
+		parameterType="com.pro.dto.DetailPlan">
+		SELECT * FROM detail_plan WHERE plan_id = #{plan_id} AND
+		plan_date = #{check_in_date} ORDER BY plan_start_time, plan_end_time;
 	</select>
-	
+
 	<insert id="planInsert" parameterType="com.pro.dto.DetailPlan">
-		INSERT INTO detail_plan VALUES (#{plan_id}, #{plan_date}, #{plan_start_time}, #{plan_end_time}, #{plan_content});
+		INSERT INTO detail_plan
+		VALUES (#{plan_id}, #{plan_date}, #{plan_start_time},
+		#{plan_end_time}, #{plan_content});
 	</insert>
-	
+
 	<delete id="planDelete" parameterType="com.pro.dto.DetailPlan">
-		DELETE FROM detail_plan WHERE plan_id = #{plan_id};
+		DELETE FROM detail_plan
+		WHERE plan_id = #{plan_id};
 	</delete>
-	
+
 	<update id="planUpdate" parameterType="com.pro.dto.DetailPlan">
-		UPDATE planner SET modified_date = now() WHERE plan_id = #{plan_id};
+		UPDATE planner SET
+		modified_date = now() WHERE plan_id = #{plan_id};
 	</update>
 
 	<select id="checkInInfoSelect"
@@ -40,17 +47,20 @@
 		parameterType="com.pro.dto.CheckInInfo">
 		SELECT
 		hi.host_id AS hostId,
-		r.reservation_id AS	reservationId,
+		r.reservation_id AS
+		reservationId,
 		u.name as userName,
 		r.room_id as roomId,
-		ro.room_name AS	roomName,
+		ro.room_name AS
+		roomName,
 		r.check_in_date AS checkInDate,
-		r.check_out_date AS	checkOutDate,
+		r.check_out_date AS
+		checkOutDate,
 		CAST(r.check_in_time as CHAR) AS checkInTime,
 		CAST(r.check_out_time as CHAR) AS checkOutTime,
 		r.people AS people,
 		r.price AS price,
-		CAST(r.payment_time	AS CHAR) AS paymentTime
+		CAST(r.payment_time AS CHAR) AS paymentTime
 		FROM
 		reservation r
 		JOIN user_info u ON r.user_id = u.user_id
@@ -115,14 +125,16 @@
 		#{breakfast},
 		#{cleanService}, #{luggageStorage}
 		);
-	</insert>	
+	</insert>
 
-	<select id="stayIdSelect" resultType="int" parameterType="String">
+	<select id="stayIdSelect" resultType="int"
+		parameterType="String">
 		SELECT stay_id FROM stay_info where host_id = #{hostId};
 	</select>
-	
+
 	<select id="stayIdCount" resultType="int" parameterType="String">
-		SELECT count(stay_id) FROM stay_info where host_id = #{hostId};
+		SELECT
+		count(stay_id) FROM stay_info where host_id = #{hostId};
 	</select>
 
 	<insert id="roomInfoInsert" parameterType="com.pro.dto.RoomInfo">
@@ -133,7 +145,25 @@
 		image10)
 		VALUES(
 		#{stayId},#{roomName},#{content},#{price},#{stdPeople},#{maxPeople},
-        #{image1},#{image2},#{image3},#{image4},#{image5},#{image6},#{image7},#{image8},#{image9},#{image10}
+		#{image1},#{image2},#{image3},#{image4},#{image5},#{image6},#{image7},#{image8},#{image9},#{image10}
 		);
-	</insert>	
+	</insert>
+
+	<select id="filterStaySelect" parameterType="map" resultType="com.pro.dto.FilterStayInfo">
+		SELECT
+		si.stay_name AS stay_name,
+		si.road_addr AS road_addr,
+		si.image1 AS image1,
+		MIN(ri.price) AS min_room_price,
+		ROUND(AVG(rev.rating), 2) AS avg_rating, 
+		count(rev.rating) as rating_count
+		FROM stay_info si
+		JOIN room_info ri ON si.stay_id = ri.stay_id
+		LEFT JOIN reservation res ON ri.room_id = res.room_id
+		LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id
+		GROUP BY si.stay_id, si.stay_name, si.road_addr, si.image1
+		HAVING min_room_price BETWEEN #{minPrice} AND #{maxPrice}
+		ORDER BY min_room_price ASC, avg_rating DESC
+		;
+	</select>
 </mapper>

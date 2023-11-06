@@ -21,7 +21,7 @@ public class StaySel implements ControlQuery{
 		String hostId = (String) session.getAttribute("host_id");		
 		StayIdSelect stayIdSelect = new StayIdSelect();
 		String stayId =  Integer.toString(stayIdSelect.dbSelect(hostId));
-		System.out.println("StaySel stayId = " + stayId);		
+		System.out.println("StaySel stayId = " + stayId);
 		if(stayId.equals("0")) {
 			req.setAttribute("result", "false");
 		} else {

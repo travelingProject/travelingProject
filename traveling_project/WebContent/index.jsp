@@ -111,9 +111,9 @@
  							<div class="image_slider">
  								<img src="<%=path %>/stay_images/<%=bestReviewStays.get(i).getImage1() %>" alt="이미지1" />
  								<img src="<%=path %>/stay_images/<%=bestReviewStays.get(i).getImage2() %>" alt="이미지1" />
- 							</div> -->
- 							<h3><%=bestReviewStays.get(i).getStayName() %></h3> --%>
- 							<p><%=bestReviewStays.get(i).getStayAddr() %></p> --%>
+ 							</div>
+ 							<h3><%=bestReviewStays.get(i).getStayName() %></h3>
+ 							<p><%=bestReviewStays.get(i).getStayAddr() %></p>
  							<p>₩ <%=bestReviewStays.get(i).getPrice() %>~</p>
  						</a>
  					</div>
@@ -138,9 +138,9 @@
  						<div class="image_slider">
  							<img src="images/pop_image1.jpg" alt="" /> <img src="images/pop_image2.jpg" alt="" />
  						</div>
- 						<h3><%=cheepStays.get(i).getStayName() %></h3> --%>
- 						<p><%=cheepStays.get(i).getStayAddr() %></p> --%>
- 						<p>₩ <%=cheepStays.get(i).getPrice() %>~</p> --%>
+ 						<h3><%=cheepStays.get(i).getStayName() %></h3>
+ 						<p><%=cheepStays.get(i).getStayAddr() %></p>
+ 						<p>₩ <%=cheepStays.get(i).getPrice() %>~</p>
  						<div class="review pop_review">"<%=cheepStays.get(i).getReviewContent() %>"</div>
  					</a>
  				</div>

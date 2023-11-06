@@ -49,8 +49,7 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " + 
-					"si.stay_id, " + 
+			rs = stmt.executeQuery("SELECT " +					 
 					"si.stay_name AS stay_name, " + 
 					"si.road_addr AS stay_addr, " + 
 					"si.image1 AS image1, " + 
@@ -91,8 +90,7 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " +
-				  "si.stay_id, " + 
+			rs = stmt.executeQuery("SELECT " +				   
 				  "si.stay_name AS stay_name, " + 
 				  "si.road_addr AS stay_addr, " +
 				  "si.image1 AS image1, " +
@@ -133,8 +131,7 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " + 
-					"si.stay_id, " + 
+			rs = stmt.executeQuery("SELECT " +					
 					"si.stay_name AS stay_name, " + 
 					"si.road_addr AS stay_addr, " + 
 					"si.image1 AS image1, " + 
@@ -157,7 +154,7 @@ public class IndexDAO{
 				popStayInfo.setImage1(rs.getString("image1"));
 				popStayInfo.setImage2(rs.getString("image2"));
 				popStayInfo.setPrice(formattedPrice);
-				popStayInfo.setReviewContent(rs.getString("review_content"));				
+				popStayInfo.setReviewContent(rs.getString("review_content"));			
 				cheepStays.put(rowCount, popStayInfo);
 				rowCount++;
 			}

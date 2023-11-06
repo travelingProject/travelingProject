@@ -62,9 +62,8 @@ public class ServletFile extends HttpServlet {
 				inter = PlanUp.instance();
 				inter.dataCon(req, res);
 			} else if (comm.equals("priceFilter")) {
-//				inter = FilterPrice.instance();
-				System.out.println(req.getParameter("minPrice"));
-				System.out.println(req.getParameter("maxPrice"));
+				inter = FilterPrice.instance();
+				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
