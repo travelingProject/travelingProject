@@ -46,7 +46,7 @@ public class ServletFile extends HttpServlet {
 					req.setAttribute("result", false);
 				} else {
 					req.setAttribute("result", true);
-				}			
+				}
 				RequestDispatcher dispatcher = req.getRequestDispatcher("stay_sel_result.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("plan_sel")) {
@@ -61,6 +61,10 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("upPlan")) {
 				inter = PlanUp.instance();
 				inter.dataCon(req, res);
+			} else if (comm.equals("priceFilter")) {
+//				inter = FilterPrice.instance();
+				System.out.println(req.getParameter("minPrice"));
+				System.out.println(req.getParameter("maxPrice"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

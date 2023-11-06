@@ -230,6 +230,54 @@
             <p>숙소 이름</p>
           </a>
         </div>
+        <div class="accomodation">
+          <a href="#">
+            <div>
+              <img src="images/accomodation_near_me_image12.jpg" alt="" />
+            </div>
+            <h2>야외풀 노천스파 오션뷰</h2>
+            <span>4.78(32)</span>
+            <p>경기/가평</p>
+            <p>₩ 320,000 ~</p>
+            <p>숙소 이름</p>
+          </a>
+        </div>
+        <div class="accomodation">
+          <a href="#">
+            <div>
+              <img src="images/accomodation_near_me_image12.jpg" alt="" />
+            </div>
+            <h2>야외풀 노천스파 오션뷰</h2>
+            <span>4.78(32)</span>
+            <p>경기/가평</p>
+            <p>₩ 320,000 ~</p>
+            <p>숙소 이름</p>
+          </a>
+        </div>
+        <div class="accomodation">
+          <a href="#">
+            <div>
+              <img src="images/accomodation_near_me_image12.jpg" alt="" />
+            </div>
+            <h2>야외풀 노천스파 오션뷰</h2>
+            <span>4.78(32)</span>
+            <p>경기/가평</p>
+            <p>₩ 320,000 ~</p>
+            <p>숙소 이름</p>
+          </a>
+        </div>
+        <div class="accomodation">
+          <a href="#">
+            <div>
+              <img src="images/accomodation_near_me_image12.jpg" alt="" />
+            </div>
+            <h2>야외풀 노천스파 오션뷰</h2>
+            <span>4.78(32)</span>
+            <p>경기/가평</p>
+            <p>₩ 320,000 ~</p>
+            <p>숙소 이름</p>
+          </a>
+        </div>
         <span>더보기</span>
       </section>      
     </main>

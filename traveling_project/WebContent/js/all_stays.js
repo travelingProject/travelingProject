@@ -53,10 +53,23 @@ $(document).ready(function(){
     
     $priceInput.on('blur', function() {
         // 콤마를 제거하고 정수로 변환
-        let value1 = removeCommas($priceInput.first().val());  
-        let value2 = removeCommas($priceInput.last().val());
-        console.log("value1 : " + value1 + ", value2 : " + value2);
-    });    
+        let minPrice = removeCommas($priceInput.first().val());  
+        let maxPrice = removeCommas($priceInput.last().val());
+        console.log("minPrice : " + minPrice + ", maxPrice : " + maxPrice);
+    });  
+    
+    $rangeInput.on('mouseup',function(){
+        let minPrice = $(".range-min").val();
+        let maxPrice = $(".range-max").val();
+        $.ajax({
+           url: 'priceFilter.condb?comm=priceFilter',
+           type:'POST',
+           data:{
+               'minPrice' : minPrice,
+               'maxPrice' : maxPrice
+           }
+        });        
+    })
     
     // input에 focus하면 전체 선택
     $priceInput.on('focus', function() {

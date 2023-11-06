@@ -154,6 +154,7 @@ input[type='range']::-moz-range-thumb {
 
 #filter {
 	user-select: none;
+	margin-top:30px;
 }
 
 #filter h3 {
@@ -174,6 +175,7 @@ input[type='range']::-moz-range-thumb {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	margin-top:0;
 }
 
 #left_thumb {
@@ -189,6 +191,7 @@ input[type='range']::-moz-range-thumb {
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	overflow: hidden;
+	margin-top:20px;
 }
 
 #accomodation_info .accomodation a>div {
