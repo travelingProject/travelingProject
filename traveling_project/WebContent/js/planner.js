@@ -165,38 +165,7 @@ $(document).ready(function() {
 
 });
 
-// 상세보기 버튼 클릭
-function detail_plan(event) {
-	// 클릭한 상세보기 버튼 요소를 선택
-	var $button = $(event.target);
-
-	// 클릭한 상세보기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
-	var $reservationInfo = $button.closest("ul.planner_list");
-
-	// data-plan_id 속성 값을 가져옴
-	var planId = $button.data("plan_id");
-	
-	// 모달 열기
-    $('.planner_modal_wrap').show();
-    $('body').css('overflow', 'hidden');
-    
-    var countDays = parseInt($reservationInfo.find(".planner_trip_date").data("days_count"), 10);
-	
-	// .planner_trip_date 클래스를 가진 요소의 텍스트 가져오기
-	var tripDateText = $reservationInfo.find(".planner_trip_date").text();
-
-	// "체크인 날짜 ~ 체크아웃 날짜" 형식의 텍스트를 공백 문자(~)로 분리
-	var dateParts = tripDateText.split("~");
-
-	// 체크인 날짜 추출하고 공백을 제거
-	var checkInDateStr = dateParts[0].trim();
-
-	// 체크인 날짜를 JavaScript Date 객체로 변환
-	var checkInDate = new Date(checkInDateStr);
-
-	// 체크인 날짜를 사용하여 탭을 동적으로 생성하고 체크인 날짜를 추가
-	var tabnum = "";
-	var newSchedule = "";
+function createDaysTabs(countDays, checkInDate, planId) {
 	for (var i = 0; i < countDays; i++) {
 	    var j = i + 1;
 	    tabnum = "<li class='tabDay' data-tab='day" + j + "'>"
@@ -263,11 +232,73 @@ function detail_plan(event) {
 	    // 하루씩 늘리기
 	    checkInDate.setDate(checkInDate.getDate() + 1);
 	}
+}
 
-	function formatCheckinDate(date) {
-	    // 날짜를 "yyyy-MM-dd" 형식으로 포맷팅
-	    return date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
-	}
+// 상세보기 버튼 클릭
+function detail_plan(event) {
+	// 클릭한 상세보기 버튼 요소를 선택
+	var $button = $(event.target);
+
+	// 클릭한 상세보기 버튼이 속한 ul 요소를 찾기 위해 가장 가까운 부모 ul을 선택
+	var $reservationInfo = $button.closest("ul.planner_list");
+
+	// data-plan_id 속성 값을 가져옴
+	var planId = $button.data("plan_id");
+	
+	// 모달 열기
+    $('.planner_modal_wrap').show();
+    $('body').css('overflow', 'hidden');
+    
+    var countDays = parseInt($reservationInfo.find(".planner_trip_date").data("days_count"), 10);
+	
+	// .planner_trip_date 클래스를 가진 요소의 텍스트 가져오기
+	var tripDateText = $reservationInfo.find(".planner_trip_date").text();
+
+	// "체크인 날짜 ~ 체크아웃 날짜" 형식의 텍스트를 공백 문자(~)로 분리
+	var dateParts = tripDateText.split("~");
+
+	// 체크인 날짜 추출하고 공백을 제거
+	var checkInDateStr = dateParts[0].trim();
+
+	// 체크인 날짜를 JavaScript Date 객체로 변환
+	var checkInDate = new Date(checkInDateStr);
+	
+	// '일자별 탭'을 생성하는 함수 호출
+    createDaysTabs(countDays, checkInDate, planId);
+    
+    // '지도로 보기' 탭 추가
+    var mapTab = "<li class='tabDay' data-tab='map_tab'>" +
+        "<a href='#map_tab' class='tab_btn'>지도</a>" +
+        "<div id='map_tab' class='tab_cont'>" +
+        "<div id='map' style='width:660px; height:500px'></div>" +
+        "</div></li>";
+    $(".tab_list").append(mapTab);
+    
+    // 지도 API
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+    //마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+
+    //마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+    position: markerPosition, 
+    image: markerImage // 마커이미지 설정 
+    });
+
+    //마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
 	
 	// 탭 버튼
 	$("ul.tab_list li").click(function() {
@@ -307,6 +338,10 @@ function detail_plan(event) {
 	$('.planner_modal_wrap').show();
 	$('body').css('overflow', 'hidden');
 	
+}
+function formatCheckinDate(date) {
+    // 날짜를 "yyyy-MM-dd" 형식으로 포맷팅
+    return date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
 }
 
 // 일정 추가하기 버튼 - 함수
