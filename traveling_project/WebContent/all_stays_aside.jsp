@@ -11,7 +11,7 @@
 	<aside>
 		<div id="map">
 			<span></span>
-			<p>지도에서 숙소 보기</p>
+			<p>지도 전체 보기</p>
 		</div>
 		<div id="fee">
 			<h3>1박당 요금</h3>

@@ -3,90 +3,86 @@ main {
 	margin: 80px auto;
 }
 
-#accomodation_info {
-	float: right;
-	width: 1340px;	
-	flex-wrap: wrap;	
-	margin-top:0;
+#accomodation_info {	
+	width: 500px;
+	float:left;
+	margin:0 20px;	
 }
 
 #accomodation_info .accomodation {
-	width: 320px;
+	width: 500px;
+	height:200px;
 	border: 1px solid #ccc;
 	border-radius: 10px;
 	overflow: hidden;	
 	float:left;
-	margin-top:20px;
-	margin:20px 0 0 10px;
+	margin-top:20px;	
 }
 
-#accomodation_info .accomodation:nth-of-type(4n+1) {
-  margin-left: 0;
+.accomodation_box{
+	display:flex;	
 }
 
-#accomodation_info .accomodation:last-of-type:after{
-	display:block;
-	width:100px;
-	height:100px;
-	background:#000;
-	content:'';
-	clear:both;
+.accomodation_box div:first-child{
+	width:200px;
+	height:200px;	
+	overflow:hidden;
+	position:relative;
 }
 
-#accomodation_info .accomodation a>div {
-	width: 320px;
-	overflow: hidden;
+.accomodation_box div:first-child img{
+	position:absolute;	
+	left:50%;	
+	transform:translateX(-50%);
+	transition: all 0.2s ease 0s;	
+	height:100%;
 }
 
-#accomodation_info .accomodation img {
-	transition: all 0.5s ease 0s;
-	width: 100%;
-}
-
-#accomodation_info .accomodation img:hover {
-	transform: scale(1.1, 1.1);
+#accomodation_info .accomodation img:hover {	
 	opacity: .7
 }
 
-#accomodation_info .accomodation h2 {
-	display: inline-block;
-	font-size: 16px;
+.accomodation_box div:last-child{
+	width:300px;
 }
 
 #accomodation_info .accomodation h2, #accomodation_info .accomodation span,
 	#accomodation_info .accomodation p {
-	margin: 5px 0;
+	margin: 17px 0;
 	padding: 0 10px;
+	font-size:18px;	
 }
 
-#accomodation_info .accomodation span {
-	position: relative;
-	float: right;
+#accomodation_info .accomodation_box div:last-child p:first-of-type{
+	position: relative;	
+	padding-left:35px;	
 }
 
-#accomodation_info .accomodation span:before {
+.accomodation_box div:last-child p:first-of-type:before{
 	display: block;
 	content: '';
 	width: 21px;
 	height: 21px;
 	background: url(../images/star.png) no-repeat center/contain;
 	position: absolute;
-	left: -15px;
+	top:2px;
+	left: 10px;
 }
 
-#accomodation_info .accomodation p:first-of-type {
-	display: inline-block;
+#mapper{
+	margin:0;
+	width:1005px;
+	height:954px;
+	position:fixed;
+	right:0px;
+	background:red;	
 }
 
-#accomodation_info .accomodation p:nth-of-type(2) {
-	font-weight:bold;
+#more{
+	clear:both;
 }
 
-#accomodation_info .accomodation p:last-of-type {
-	margin-bottom: 10px;
-}
-
-#more {
+#more_btn {
 	border: 1px solid #ccc;
 	width: 80px;
 	height: 30px;
@@ -99,7 +95,7 @@ main {
 	margin: 30px auto 0;
 }
 
-#more:hover {
+#more_btn:hover {
 	background: #000;
 	color: #fff;
 }

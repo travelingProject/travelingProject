@@ -19,7 +19,7 @@ public class PopStayDAO {
 	
 	public List<FilterStayInfo> dbSelect() {
 		SqlSession s = f.openSession();
-		List<FilterStayInfo> stayList = s.selectList("popStaySelect");						
+		List<FilterStayInfo> stayList = s.selectList("popStaySelect");		
 		s.close();
 		return stayList;
 	}

@@ -36,23 +36,32 @@
 	      <%
 	      	for(int i = 0; i < stayList.size(); i++){
 	      %>
-	      <div class="accomodation">
+      	<div class="accomodation">
 	      	<a href="#">
-	      		<div>
-	      			<img src="images/accomodation_near_me_image1.jpg" alt="" />
-	      		</div>
-	      		<h2>야외풀 노천스파 오션뷰</h2>
-	            <span>4.78(32)</span>
-	            <p>경기/가평</p>
-	            <p>₩ 320,000 ~</p>
+	      		<div class="accomodation_box">
+		      		<div>
+		      			<img src="images/accomodation_near_me_image1.jpg" alt="" />
+		      		</div>
+		      		<div>
+		      			<h2>야외풀 노천스파 오션뷰</h2>
+		            	<p>4.78(32)</p>
+		            	<p>경기/가평</p>
+		            	<p>₩ 320,000 ~</p>
+		      		</div>
+	      		</div>	      			      		
 	      	</a>
-	      </div>
-	      
+	      </div>	      
 	      <%
 	      	}
-	      %>      	
+	      %>
+	      <!-- <div id="more">
+	      	<span id="more_btn">더보기</span>
+	      </div> -->
       </section>
-      <span id="more">더보기</span>      
+      <section id="mapper">
+      
+      </section>
+            
     </main>
     <div class="go_top"></div>
     <%@ include file="footer.jsp"%>    
