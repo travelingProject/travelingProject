@@ -35,8 +35,9 @@ public class IndexDAO{
 	// close
 	public void close() {		
 		try {			
+			rs.close();
 			stmt.close();
-			con.close();			
+			con.close();
 		} catch(Exception e) {
 			System.out.println(e);
 		}
@@ -49,20 +50,21 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " +					 
+			rs = stmt.executeQuery("SELECT " + 
 					"si.stay_name AS stay_name, " + 
 					"si.road_addr AS stay_addr, " + 
 					"si.image1 AS image1, " + 
 					"si.image2 AS image2, " + 
-					"MIN(ri.price) AS min_room_price, " +
+					"MIN(ri.price) AS min_room_price, " + 
 					"MAX(rev.review_time) AS latest_review_time, " + 
-					"SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content " + 
+					"SUBSTRING_INDEX(GROUP_CONCAT(rev.review_content ORDER BY rev.review_time DESC), ',', 1) AS review_content, " + 
+					"COUNT(res.room_id) AS room_count " + 
 					"FROM stay_info si " + 
 					"JOIN room_info ri ON si.stay_id = ri.stay_id " + 
 					"LEFT JOIN reservation res ON ri.room_id = res.room_id " + 
 					"LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id " + 
-					"GROUP BY si.stay_id, si.stay_name, si.road_addr, si.image1, si.image2 " + 
-					"ORDER BY latest_review_time DESC;");
+					"GROUP BY si.stay_id, si.stay_name, si.road_addr, si.image1, si.image2 "  + 
+					"ORDER BY room_count DESC;");
 			while (rs.next()) {				
 				String formattedPrice = nf.format(rs.getInt("min_room_price"));
 				PopStayInfo popStayInfo = new PopStayInfo();
@@ -83,7 +85,7 @@ public class IndexDAO{
 		return popStays;
 	}
 	
-	// 리뷰 가장 많은 숙소 정보 출력
+	// 리뷰 평점 높은 순서대로 숙소 정보 출력
 	public HashMap<Integer, PopStayInfo> selectBestReviewStays(){
 		HashMap<Integer, PopStayInfo> bestReviewStays = new HashMap<Integer, PopStayInfo>();
 		nf.setGroupingUsed(true);

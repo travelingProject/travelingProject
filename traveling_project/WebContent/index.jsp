@@ -28,7 +28,7 @@
 		<!-- 호텔 추천 -->
 		<section class="hotel_recommend">
 			<h2>가장 인기가 많은 숙소</h2>
-			<a href="all_stays.jsp"><img src="images/view_all.png" alt="" /></a>
+			<a href="pop_stays.condb?comm=pop_stays"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider rec_slider">
 				<%
 				        for (int i = 0; i < 8; i++) {            

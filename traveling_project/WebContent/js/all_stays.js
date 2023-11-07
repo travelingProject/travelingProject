@@ -61,6 +61,8 @@ $(document).ready(function(){
     $rangeInput.on('mouseup',function(){
         let minPrice = $(".range-min").val();
         let maxPrice = $(".range-max").val();
+        console.log(minPrice);
+        console.log(maxPrice);
         $.ajax({
            url: 'priceFilter.condb?comm=priceFilter',
            type:'POST',

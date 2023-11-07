@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.StayIns;
+import com.pro.service.PopStayService;
 import com.pro.controller.RezSel;
 
 public class ServletFile extends HttpServlet {
@@ -61,7 +62,10 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("upPlan")) {
 				inter = PlanUp.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("priceFilter")) {
+			} else if(comm.equals("pop_stays")) {				
+				inter = PopStayService.instance();
+				inter.dataCon(req, res);
+			} else if (comm.equals("priceFilter")) {				
 				inter = FilterPrice.instance();
 				inter.dataCon(req, res);
 			}
