@@ -8,15 +8,6 @@ $(document).ready(function() {
 		$("#modi_can_btn").show();
 		$(".days_btn button").show();
 		$(".dsch input").prop("disabled", false);
-		
-		// 수정하기 버튼을 눌렀을 때 DB에서 추출해온 입력 필드에 indb 클래스 부여
-		$(".dsch").each(function () {
-			$(this).addClass("indb");
-			
-			if($(this).hasClass("nonetext")) {
-				$(this).remove();
-			}
-		});
 	});
 
 	// 수정 -> 취소 버튼 클릭 시
@@ -28,13 +19,6 @@ $(document).ready(function() {
 			$("#modi_can_btn").hide();
 			$(".days_btn button").hide();
 			$(".dsch input").prop("disabled", true);
-			
-			// 저장하지 않은 값은 indb 클래스가 없는 상태이기 때문에 hasClass로 조건문을 활용해 indb 클래스 없는 입력 필드는 삭제
-			$(".dsch").each(function () {
-				if(!$(this).hasClass("indb")) {
-					$(this).remove();
-				}
-			});
 		}
 	});
 
@@ -244,10 +228,6 @@ function detail_plan(event) {
 
 	// data-plan_id 속성 값을 가져옴
 	var planId = $button.data("plan_id");
-	
-	// 모달 열기
-    $('.planner_modal_wrap').show();
-    $('body').css('overflow', 'hidden');
     
     var countDays = parseInt($reservationInfo.find(".planner_trip_date").data("days_count"), 10);
 	
@@ -273,40 +253,21 @@ function detail_plan(event) {
         "<div id='map' style='width:660px; height:500px'></div>" +
         "</div></li>";
     $(".tab_list").append(mapTab);
-    
-    // 지도 API
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
-    };
-
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-      
-    //마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-
-    //마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-    position: markerPosition, 
-    image: markerImage // 마커이미지 설정 
-    });
-
-    //마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
 	
 	// 탭 버튼
 	$("ul.tab_list li").click(function() {
 		var activeTab = $(this).attr("data-tab"); // ex) day1
+		var isMapLoaded = false;
 		$("ul.tab_list li").removeClass("is_on");
 		$(".tab_cont").removeClass("is_on");
 		$(this).addClass("is_on");
 		$("#" + activeTab).addClass("is_on");
+		
+		// 지도 탭이 클릭되었을 때 loadmap 함수 호출
+		if(activeTab === 'map_tab' && !isMapLoaded) {
+			loadmap();
+			isMapLoaded = true;
+		}
 		
 		// 버튼 활성화 여부 설정
         var activeTabSchedules = $("#" + activeTab).find(".schedule > div").length;
@@ -339,6 +300,7 @@ function detail_plan(event) {
 	$('body').css('overflow', 'hidden');
 	
 }
+
 function formatCheckinDate(date) {
     // 날짜를 "yyyy-MM-dd" 형식으로 포맷팅
     return date.getFullYear() + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
@@ -360,9 +322,38 @@ function addScheduleToActiveTab(activeTab, currentDay) {
     	'<input type="hidden" class="pdate" value="' + pdate  + '">' +
         '<img src="images/number/' + imageFileName + '.png" alt="" width="36px" height="36px">' +
         '<input type="time" class="pst"> ~ <input type="time" class="pet"><br>' +
+        '<button type="button" class="add_place">장소 추가</button>' +
         '<input type="checkbox" class="delete_box" name="delete_box">' +
         '<input type="text" class="pcon" maxlength="100" placeholder="내용은 100자 이내로 입력해주세요.">' +
         '</div>';
 
     $("#" + tabId).find(".schedule").append(newSchedule);
+}
+
+function loadmap() {
+	// 지도 API
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
+        level: 6 // 지도의 확대 레벨
+    };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
+    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+    //마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
+
+    //마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+    position: markerPosition, 
+    image: markerImage // 마커이미지 설정 
+    });
+
+    //마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
 }

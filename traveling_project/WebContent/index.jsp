@@ -37,7 +37,7 @@
  			        <a href="#">
  			            <div class="image_slider">
  			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage1() %>" alt="이미지1" /> 
- 			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" /> 
+ 			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" />
  			            </div>
  			            <h3><%=popStays.get(i).getStayName() %></h3>
 			            <p><%=popStays.get(i).getStayAddr() %></p>
