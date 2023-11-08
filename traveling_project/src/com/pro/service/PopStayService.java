@@ -10,7 +10,7 @@ import com.pro.controller.ControlQuery;
 import com.pro.dao.PopStayDAO;
 import com.pro.dto.FilterStayInfo;
 
-public class PopStayService implements ControlQuery{
+public class PopStayService implements ControlQuery {
 	static PopStayService ps = new PopStayService();
 
 	public static PopStayService instance() {
@@ -26,5 +26,5 @@ public class PopStayService implements ControlQuery{
 		RequestDispatcher dispatcher = req.getRequestDispatcher("all_stays.jsp");
 		dispatcher.forward(req, res);
 		return null;
-	}	
+	}
 }

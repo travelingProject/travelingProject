@@ -65,7 +65,7 @@ public class ServletFile extends HttpServlet {
 			} else if(comm.equals("pop_stays")) {				
 				inter = PopStayService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("priceFilter")) {				
+			} else if (comm.equals("priceFilter")) {
 				inter = FilterPrice.instance();
 				inter.dataCon(req, res);
 			}

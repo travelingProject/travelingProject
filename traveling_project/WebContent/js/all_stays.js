@@ -69,6 +69,9 @@ $(document).ready(function(){
            data:{
                'minPrice' : minPrice,
                'maxPrice' : maxPrice
+           },
+           success: function(data) {
+               console.log(data); // 전체 리스트 출력
            }
         });        
     })

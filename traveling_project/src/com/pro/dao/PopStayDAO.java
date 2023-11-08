@@ -14,12 +14,12 @@ public class PopStayDAO {
 	public static PopStayDAO instance() {
 		return ps;
 	}
-	
+
 	SqlSessionFactory f = DBCon.getSqlSession();
-	
+
 	public List<FilterStayInfo> dbSelect() {
 		SqlSession s = f.openSession();
-		List<FilterStayInfo> stayList = s.selectList("popStaySelect");		
+		List<FilterStayInfo> stayList = s.selectList("popStaySelect");
 		s.close();
 		return stayList;
 	}

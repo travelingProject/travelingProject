@@ -2,17 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.pro.dto.FilterStayInfo" %>
+<%@ page import="java.text.NumberFormat" %>
 <%
 	List<FilterStayInfo> stayList = (List<FilterStayInfo>) request.getAttribute("stayList");
-	for(int i = 0; i < stayList.size(); i++) {
-		System.out.println(stayList.get(i).getStay_name());
-		System.out.println(stayList.get(i).getAvg_rating());
-		System.out.println(stayList.get(i).getRoad_addr());
-		System.out.println(stayList.get(i).getRating_count());			
-		System.out.println(stayList.get(i).getMin_room_price());			
-		System.out.println("--------------------------------");
-	}
-		
+	List<FilterStayInfo> filterList = (List<FilterStayInfo>) request.getAttribute("filterList");	
+	String path = request.getContextPath();
+	NumberFormat nf = NumberFormat.getInstance();	
 %>
 <!DOCTYPE html>
 <html>
@@ -33,20 +28,21 @@
     <main class="clearfix">
     <%@ include file="all_stays_aside.jsp" %>
       <section id="accomodation_info" class="clearfix">
-	      <%
+      	<div id="accomodation_info_box">
+	      <%	      
 	      	for(int i = 0; i < stayList.size(); i++){
 	      %>
       	<div class="accomodation">
 	      	<a href="#">
 	      		<div class="accomodation_box">
 		      		<div>
-		      			<img src="images/accomodation_near_me_image1.jpg" alt="" />
+		      			<img src="<%=path %>/stay_images/<%=stayList.get(i).getImage1() %>" alt="이미지1" />
 		      		</div>
 		      		<div>
-		      			<h2>야외풀 노천스파 오션뷰</h2>
-		            	<p>4.78(32)</p>
-		            	<p>경기/가평</p>
-		            	<p>₩ 320,000 ~</p>
+		      			<h2><%= stayList.get(i).getStay_name() %></h2>
+		            	<p><%=stayList.get(i).getAvg_rating() + " (" + stayList.get(i).getRating_count() + ")" %></p>
+		            	<p><%= stayList.get(i).getStay_name() %></p>
+		            	<p>₩ <%= nf.format(stayList.get(i).getMin_room_price()) %> ~</p>
 		      		</div>
 	      		</div>	      			      		
 	      	</a>
@@ -54,13 +50,9 @@
 	      <%
 	      	}
 	      %>
-	      <!-- <div id="more">
-	      	<span id="more_btn">더보기</span>
-	      </div> -->
-      </section>
-      <section id="mapper">
-      
-      </section>
+	     </div>	      
+	     <div id="mapper"></div>
+      </section>      
             
     </main>
     <div class="go_top"></div>
