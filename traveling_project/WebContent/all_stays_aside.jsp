@@ -38,35 +38,31 @@
 	 </div>
 	 <div id="filter">	      	
 	 	<h3>평점</h3>
-	 	<input id="rating5" type="checkbox" name="rating"> <label for="rating5">★ 4.5 ~ ★ 5.0</label> <br>
-	 	<input id="rating4.5" type="checkbox" name="rating"> <label for="rating4.5">★ 4.0 ~ ★ 4.5</label> <br>
-	 	<input id="rating4" type="checkbox" name="rating"> <label for="rating4">★ 3.5 ~ ★ 4.0</label> <br>
-	 	<input id="rating3.5" type="checkbox" name="rating"> <label for="rating3.5">★ 3.0 ~ ★ 3.5</label> <br>
-	 	<input id="rating3" type="checkbox" name="rating"> <label for="rating3">★ 3.0 이하</label> <br>	      	
-	 	<hr>
-	 	<h3>무료 서비스</h3>
-	 	<input type="checkbox"> 무료 주차 <br>
-	 	<input type="checkbox"> 무료 인터넷 <br>
-	 	<input type="checkbox"> 무료 취소 <br>
-	 	<hr>
+	 	<input id="rating4" class="rating" type="checkbox" name="rating4" value="4"> <label for="rating4">★ 4.0 ~ ★ 5.0</label> <br>
+	 	<input id="rating3" class="rating" type="checkbox" name="rating3" value="3"> <label for="rating3">★ 3.0 ~ ★ 4.0</label> <br>
+	 	<input id="rating2" class="rating" type="checkbox" name="rating2" value="2"> <label for="rating2">★ 2.0 ~ ★ 3.0</label> <br>
+	 	<input id="rating1" class="rating" type="checkbox" name="rating1" value="1"> <label for="rating1">★ 1.0 ~ ★ 2.0</label> <br>	 	      	
+	 	<hr>	 	
 	 	<h3>편의 시설</h3>
-	 	<input type="checkbox"> 욕조 <br>
-	 	<input type="checkbox"> 세탁기 <br>
-	 	<input type="checkbox"> 건조기 <br>
-	 	<input type="checkbox"> 에어컨 <br>
-	 	<input type="checkbox"> 선풍기 <br>
-	 	<input type="checkbox"> 난방 <br>
-	 	<input type="checkbox"> 수영장 <br>
-	 	<input type="checkbox"> 오락실 게임 <br>
-	 	<input type="checkbox"> 헬스장 <br>
-	 	<input type="checkbox"> 보드게임 <br>
-	 	<input type="checkbox"> 바베큐 <br>
-	 	<input type="checkbox"> 기본 조리도구 <br>
+	 	<input type="checkbox" id="parking" class="options" value="yes"> <label for="parking">주차</label>  <br> 
+	 	<input type="checkbox" id="wireless_internet" class="options" value="yes"> <label for="wireless_internet">무료 인터넷</label> <br>
+	 	<input type="checkbox" id="tub" class="options" value="yes"><label for="tub"> 욕조</label> <br>
+	 	<input type="checkbox" id="washing_machine" class="options" value="yes"><label for="washing_machine"> 세탁기</label> <br>
+	 	<input type="checkbox" id="drying_machine" class="options" value="yes"><label for="drying_machine"> 건조기</label><br>
+	 	<input type="checkbox" id="air_conditioner" class="options" value="yes"><label for="air_conditioner"> 에어컨</label><br>
+	 	<input type="checkbox" id="fan" class="options" value="yes"><label for="fan"> 선풍기</label><br>
+	 	<input type="checkbox" id="heating_system" class="options" value="yes"><label for="heating_system"> 난방</label> <br>
+	 	<input type="checkbox" id="pool" class="options" value="yes"><label for="pool"> 수영장</label><br>
+	 	<input type="checkbox" id="arcade_game" class="options" value="yes"><label for="arcade_game"> 오락실 게임</label><br>
+	 	<input type="checkbox" id="gym" class="options" value="yes"><label for="gym"> 헬스장</label><br>
+	 	<input type="checkbox" id="board_game" class="options" value="yes"><label for="board_game"> 보드게임</label><br>
+	 	<input type="checkbox" id="barbeque_tool" class="options" value="yes"><label for="barbeque_tool"> 바베큐</label><br>
+	 	<input type="checkbox" id="basic_cookware" class="options" value="yes"><label for="basic_cookware"> 기본 조리도구</label><br>
 	 	<hr>
 	 	<h3>서비스</h3>
-	 	<input type="checkbox"> 아침 식사 <br>
-	 	<input type="checkbox"> 청소 서비스 <br>
-	 	<input type="checkbox"> 짐 보관 <br>
+	 	<input type="checkbox" id="breakfast" class="options" value="yes"><label for="breakfast"> 아침 식사</label> <br>
+	 	<input type="checkbox" id="clean_service" class="options" value="yes"><label for="clean_service"> 청소 서비스</label><br>
+	 	<input type="checkbox" id="luggage_storage" class="options" value="yes"><label for="luggage_storage"> 짐 보관</label><br>
 	 </div>
 	</aside>
 </body>

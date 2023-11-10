@@ -1,4 +1,4 @@
-package com.pro.controller;
+package com.pro.service;
 
 import java.util.Enumeration;
 
@@ -9,14 +9,15 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.pro.controller.ControlQuery;
+import com.pro.dao.StayInsertDAO;
 import com.pro.dto.StayInfo;
-import com.pro.mybatis.StayInsert;
 
-public class StayIns implements ControlQuery {
+public class StayInsertService implements ControlQuery {
 
-	static StayIns dbi = new StayIns();
+	static StayInsertService dbi = new StayInsertService();
 
-	public static StayIns instance() {
+	public static StayInsertService instance() {
 		return dbi;
 	}
 
@@ -24,7 +25,7 @@ public class StayIns implements ControlQuery {
 	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
 		HttpSession session = rq.getSession();
 		StayInfo stayInfo = new StayInfo();
-		StayInsert stayInsert = new StayInsert();
+		StayInsertDAO stayInsert = new StayInsertDAO();
 		String hostId = (String) session.getAttribute("host_id");
 		String uploadPath = rq.getRealPath("/stay_images");
 		int size = 10 * 1024 * 1024;

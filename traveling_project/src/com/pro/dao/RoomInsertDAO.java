@@ -1,14 +1,15 @@
-package com.pro.mybatis;
+package com.pro.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pro.dto.RoomInfo;
+import com.pro.mybatis.DBCon;
 
-public class RoomInsert {
-	static RoomInsert mo = new RoomInsert();
+public class RoomInsertDAO {
+	static RoomInsertDAO mo = new RoomInsertDAO();
 	
-	public static RoomInsert instance() {
+	public static RoomInsertDAO instance() {
 		return mo;
 	}
 	

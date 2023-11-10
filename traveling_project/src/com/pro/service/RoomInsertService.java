@@ -1,4 +1,4 @@
-package com.pro.controller;
+package com.pro.service;
 
 import java.util.Enumeration;
 
@@ -8,13 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.pro.controller.ControlQuery;
+import com.pro.dao.RoomInsertDAO;
 import com.pro.dto.RoomInfo;
-import com.pro.mybatis.RoomInsert;
 
-public class RoomIns implements ControlQuery {
-	static RoomIns roomIns = new RoomIns();
+public class RoomInsertService implements ControlQuery {
+	static RoomInsertService roomIns = new RoomInsertService();
 
-	public static RoomIns instance() {
+	public static RoomInsertService instance() {
 		return roomIns;
 	}
 
@@ -115,8 +116,8 @@ public class RoomIns implements ControlQuery {
 		}
 
 		rs.setCharacterEncoding("UTF-8");
-		RoomInsert roomInsert = new RoomInsert();
-		StayIdSel stayIdSel = new StayIdSel();
+		RoomInsertDAO roomInsert = new RoomInsertDAO();
+		StayIdSelectService stayIdSel = new StayIdSelectService();
 		int stayId = stayIdSel.selStayId(hostId);
 		RoomInfo roomInfo = new RoomInfo();					
 		roomInfo.setStayId(stayId);

@@ -23,7 +23,7 @@
 	href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap"
 	rel="stylesheet" />
 <!-- jquery -->
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+rk dkslq
 <!-- script -->
 <script src="js/header.js"></script>
 <script src="js/host_header.js"></script>

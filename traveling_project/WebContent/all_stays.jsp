@@ -36,13 +36,13 @@
 	      	<a href="#">
 	      		<div class="accomodation_box">
 		      		<div>
-		      			<img src="<%=path %>/stay_images/<%=stayList.get(i).getImage1() %>" alt="이미지1" />
+		      			<img class="image" src="<%=path %>/stay_images/<%=stayList.get(i).getImage1() %>" alt="이미지1" />
 		      		</div>
 		      		<div>
-		      			<h2><%= stayList.get(i).getStay_name() %></h2>
-		            	<p><%=stayList.get(i).getAvg_rating() + " (" + stayList.get(i).getRating_count() + ")" %></p>
-		            	<p><%= stayList.get(i).getStay_name() %></p>
-		            	<p>₩ <%= nf.format(stayList.get(i).getMin_room_price()) %> ~</p>
+		      			<h2 class="stay-name"><%= stayList.get(i).getStay_name() %></h2>
+		            	<p class="avg-rating"><%=stayList.get(i).getAvg_rating() + " (" + stayList.get(i).getRating_count() + ")" %></p>
+		            	<p class="road-addr"><%= stayList.get(i).getRoad_addr() %></p>
+		            	<p class="room-price">₩ <%= nf.format(stayList.get(i).getMin_room_price()) %> ~</p>
 		      		</div>
 	      		</div>	      			      		
 	      	</a>

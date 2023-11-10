@@ -1,14 +1,15 @@
-package com.pro.mybatis;
+package com.pro.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pro.dto.StayInfo;
+import com.pro.mybatis.DBCon;
 
-public class StaySelect {
-	static StaySelect staySelect = new StaySelect();
+public class StaySelectDAO {
+	static StaySelectDAO staySelect = new StaySelectDAO();
 
-	public static StaySelect instance() {
+	public static StaySelectDAO instance() {
 		return staySelect;
 	}
 

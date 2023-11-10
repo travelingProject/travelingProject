@@ -1,4 +1,4 @@
-package com.pro.controller;
+package com.pro.service;
 
 import java.util.List;
 
@@ -6,20 +6,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.pro.controller.ControlQuery;
+import com.pro.dao.ReservationSelectDAO;
 import com.pro.dto.CheckInInfo;
-import com.pro.mybatis.RezSelect;
 
-public class RezSel implements ControlQuery {
+public class ReservationSelectService implements ControlQuery {
 
-	static RezSel dbs = new RezSel();
+	static ReservationSelectService dbs = new ReservationSelectService();
 
-	public static RezSel instance() {
+	public static ReservationSelectService instance() {
 		return dbs;
 	}
 
 	@Override
 	public String dataCon(HttpServletRequest re, HttpServletResponse rs) throws Exception {
-		RezSelect rezSelect = RezSelect.instance();
+		ReservationSelectDAO rezSelect = ReservationSelectDAO.instance();
 		
 		HttpSession session = re.getSession();
 		rs.setCharacterEncoding("UTF-8");

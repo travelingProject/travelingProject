@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.pro.controller.StayIns;
+import com.pro.service.FilterPriceService;
 import com.pro.service.PopStayService;
-import com.pro.controller.RezSel;
+import com.pro.service.ReservationSelectService;
+import com.pro.service.RoomInsertService;
+import com.pro.service.StayInsertService;
+import com.pro.service.StaySelectService;
 
 public class ServletFile extends HttpServlet {
 	@Override
@@ -27,20 +30,20 @@ public class ServletFile extends HttpServlet {
 				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("hostData")) {
-				inter = RezSel.instance();
+				inter = ReservationSelectService.instance();
 				inter.dataCon(req, res);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("host_index.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("stay_ins")) {
-				inter = StayIns.instance();
+				inter = StayInsertService.instance();
 				inter.dataCon(req, res);
 				res.sendRedirect("add_stay_result.jsp");
 			} else if (comm.equals("room_ins")) {
-				inter = RoomIns.instance();
+				inter = RoomInsertService.instance();
 				inter.dataCon(req, res);
 				res.sendRedirect("add_room_result.jsp");
 			} else if (comm.equals("stay_sel")) {
-				inter = StaySel.instance();
+				inter = StaySelectService.instance();
 				inter.dataCon(req, res);
 				String result = inter.dataCon(req, res);								
 				if (result.equals("0")) {
@@ -62,12 +65,16 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("upPlan")) {
 				inter = PlanUp.instance();
 				inter.dataCon(req, res);
-			} else if(comm.equals("pop_stays")) {				
+			} else if(comm.equals("pop_stays")) {
 				inter = PopStayService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("priceFilter")) {
-				inter = FilterPrice.instance();
+			} else if (comm.equals("priceFilter")) {				
+				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
+			} else if (comm.equals("optionFilter")) {
+				System.out.println(req.getParameter("rating"));
+//				inter = FilterRating.instance();
+//				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

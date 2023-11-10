@@ -1,8 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function(){    
     const $rangeInput = $('.range-input input'),
     $priceInput = $('.price-input input'),
     $range = $('.slider .progress');
-    let priceGap = 10000;
+    let priceGap = 10000;    
     
     // 숫자에 콤마를 추가하는 함수
     function numberWithCommas(x) {
@@ -51,18 +51,14 @@ $(document).ready(function(){
         }
     });
     
-    $priceInput.on('blur', function() {
-        // 콤마를 제거하고 정수로 변환
-        let minPrice = removeCommas($priceInput.first().val());  
-        let maxPrice = removeCommas($priceInput.last().val());
-        console.log("minPrice : " + minPrice + ", maxPrice : " + maxPrice);
-    });  
-    
-    $rangeInput.on('mouseup',function(){
+    $priceInput.on('blur', function() { 
+        let stayRequest = new XMLHttpRequest();        
         let minPrice = $(".range-min").val();
-        let maxPrice = $(".range-max").val();
-        console.log(minPrice);
-        console.log(maxPrice);
+        let maxPrice = $(".range-max").val();        
+        let stayName = $('.stay-name');
+        let avgRating = $('.avg-rating');
+        let roadAddr = $('.road-addr');
+        let roomPrice = $('.room-price');
         $.ajax({
            url: 'priceFilter.condb?comm=priceFilter',
            type:'POST',
@@ -71,7 +67,82 @@ $(document).ready(function(){
                'maxPrice' : maxPrice
            },
            success: function(data) {
-               console.log(data); // 전체 리스트 출력
+               var parsedData = JSON.parse(data); // JSON 문자열을 JavaScript 객체로 파싱
+               var accommodationBox = $('#accomodation_info_box');
+               accommodationBox.empty();
+
+               if (Array.isArray(parsedData.result)) {
+                   parsedData.result.forEach(function(item) {
+                       var formattedPrice = parseInt(item.price).toLocaleString();
+                       var accommodationHTML = 
+                       '<div class="accomodation">' +
+                           '<a href="#">' +
+                               '<div class="accomodation_box">' +
+                                   '<div>' +
+                                       '<img class="image" src="/traveling_project/stay_images/' + item.image + '" alt="이미지1" />' +
+                                   '</div>' +
+                                   '<div>' +
+                                       '<h2 class="stay-name">' + item.stayName + '</h2>' +
+                                       '<p class="avg-rating">' + item.avgRating + '</p>' +
+                                       '<p class="road-addr">' + item.roadAddr + '</p>' +
+                                       '<p class="room-price">₩ ' + formattedPrice  + ' ~</p>' +
+                                   '</div>' +
+                               '</div>' +             
+                           '</a>' +
+                       '</div>';
+                       accommodationBox.append(accommodationHTML);
+                   });
+               } else {
+                   console.log('파싱된 데이터의 \'result\' 프로퍼티가 배열 형태가 아닙니다.');
+               }
+           }
+        });        
+    });  
+    
+    $rangeInput.on('mouseup',function(){        
+        let stayRequest = new XMLHttpRequest();        
+        let minPrice = $(".range-min").val();
+        let maxPrice = $(".range-max").val();        
+        let stayName = $('.stay-name');
+        let avgRating = $('.avg-rating');
+        let roadAddr = $('.road-addr');
+        let roomPrice = $('.room-price');
+        $.ajax({
+           url: 'priceFilter.condb?comm=priceFilter',
+           type:'POST',
+           data:{
+               'minPrice' : minPrice,
+               'maxPrice' : maxPrice
+           },
+           success: function(data) {
+               var parsedData = JSON.parse(data); // JSON 문자열을 JavaScript 객체로 파싱
+               var accommodationBox = $('#accomodation_info_box');
+               accommodationBox.empty();
+
+               if (Array.isArray(parsedData.result)) {
+                   parsedData.result.forEach(function(item) {
+                       var formattedPrice = parseInt(item.price).toLocaleString();
+                       var accommodationHTML = 
+                       '<div class="accomodation">' +
+                           '<a href="#">' +
+                               '<div class="accomodation_box">' +
+                                   '<div>' +
+                                       '<img class="image" src="/traveling_project/stay_images/' + item.image + '" alt="이미지1" />' +
+                                   '</div>' +
+                                   '<div>' +
+                                       '<h2 class="stay-name">' + item.stayName + '</h2>' +
+                                       '<p class="avg-rating">' + item.avgRating + '</p>' +
+                                       '<p class="road-addr">' + item.roadAddr + '</p>' +
+                                       '<p class="room-price">₩ ' + formattedPrice  + ' ~</p>' +
+                                   '</div>' +
+                               '</div>' +             
+                           '</a>' +
+                       '</div>';
+                       accommodationBox.append(accommodationHTML);
+                   });
+               } else {
+                   console.log('파싱된 데이터의 \'result\' 프로퍼티가 배열 형태가 아닙니다.');
+               }
            }
         });        
     })
@@ -79,6 +150,29 @@ $(document).ready(function(){
     // input에 focus하면 전체 선택
     $priceInput.on('focus', function() {
         $(this).select();
-    });   
+    });
+    
+    $('.rating').on('change',function(){
+        let rating = $(this).val();
+        console.log(rating);
+        if(this.checked) {
+            $.ajax({
+                url:'optionFilter.condb?comm=optionFilter',
+                type:'POST',
+                data:{
+                    'rating':rating,                    
+                },
+                success:function(data){
+                    
+                }
+            })
+        }
+    })
+    
+    $('.options').on('change',function(){
+        if(this.checked) {
+            console.log($(this).val())
+        }
+    })
 
 });

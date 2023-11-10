@@ -1,16 +1,17 @@
-package com.pro.controller;
+package com.pro.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.pro.mybatis.StayIdSelect;
-import com.pro.mybatis.StaySelect;
+import com.pro.controller.ControlQuery;
+import com.pro.dao.StayIdSelectDAO;
+import com.pro.dao.StaySelectDAO;
 
-public class StaySel implements ControlQuery{
-	static StaySel selStay = new StaySel();
+public class StaySelectService implements ControlQuery{
+	static StaySelectService selStay = new StaySelectService();
 
-	public static StaySel instance() {
+	public static StaySelectService instance() {
 		return selStay;
 	}
 
@@ -19,7 +20,7 @@ public class StaySel implements ControlQuery{
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		String hostId = (String) session.getAttribute("host_id");		
-		StayIdSelect stayIdSelect = new StayIdSelect();
+		StayIdSelectDAO stayIdSelect = new StayIdSelectDAO();
 		String stayId =  Integer.toString(stayIdSelect.dbSelect(hostId));
 		System.out.println("StaySel stayId = " + stayId);
 		if(stayId.equals("0")) {

@@ -1,4 +1,4 @@
-package com.pro.mybatis;
+package com.pro.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,11 +11,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pro.dto.FilterStayInfo;
+import com.pro.mybatis.DBCon;
 
-public class FilterPriceSelect {
-	static FilterPriceSelect fps = new FilterPriceSelect();
+public class FilterPriceDAO {
+	static FilterPriceDAO fps = new FilterPriceDAO();
 
-	public static FilterPriceSelect instance() {
+	public static FilterPriceDAO instance() {
 		return fps;
 	}
 

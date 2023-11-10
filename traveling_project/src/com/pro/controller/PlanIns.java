@@ -35,5 +35,4 @@ public class PlanIns implements ControlQuery {
 		
 		return null;
 	}
-
 }
