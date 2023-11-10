@@ -31,8 +31,7 @@ public class PlanIns implements ControlQuery {
 		dp.setPlan_end_time(pet);
 		dp.setPlan_content(pcon);
 		
-		planIns.ins(dp);
-		
+		planIns.ins(dp);		
 		return null;
 	}
 }
