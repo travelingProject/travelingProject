@@ -1,9 +1,9 @@
 package com.pro.dto;
 
 public class FilterStayInfo {
-	String stay_name, road_addr, image1;
-	int stay_id, min_room_price,  rating_count;
-	double avg_rating;
+	String stay_name, road_addr, image1, parking;
+	int stay_id, min_room_price, rating_count;
+	double avg_rating, rating;
 	public String getStay_name() {
 		return stay_name;
 	}
@@ -21,6 +21,12 @@ public class FilterStayInfo {
 	}
 	public void setImage1(String image1) {
 		this.image1 = image1;
+	}
+	public String getParking() {
+		return parking;
+	}
+	public void setParking(String parking) {
+		this.parking = parking;
 	}
 	public int getStay_id() {
 		return stay_id;
@@ -46,6 +52,11 @@ public class FilterStayInfo {
 	public void setAvg_rating(double avg_rating) {
 		this.avg_rating = avg_rating;
 	}
-
+	public double getRating() {
+		return rating;
+	}
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
 	
 }

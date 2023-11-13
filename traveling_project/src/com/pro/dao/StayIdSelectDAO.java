@@ -17,9 +17,7 @@ public class StayIdSelectDAO {
 
 	public int dbSelect(String hostId) {		
 		SqlSession s = f.openSession();		
-		int stayId = s.selectOne("stayIdCount" , hostId);
-		System.out.println("hostId is " + hostId);
-		System.out.println("count is " + stayId);
+		int stayId = s.selectOne("stayIdCount" , hostId);		
 		s.close();
 		return stayId;
 	}

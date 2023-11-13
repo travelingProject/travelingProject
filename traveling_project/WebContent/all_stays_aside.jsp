@@ -37,11 +37,12 @@
 	  </div>		      
 	 </div>
 	 <div id="filter">	      	
-	 	<h3>평점</h3>
-	 	<input id="rating4" class="rating" type="checkbox" name="rating4" value="4"> <label for="rating4">★ 4.0 ~ ★ 5.0</label> <br>
-	 	<input id="rating3" class="rating" type="checkbox" name="rating3" value="3"> <label for="rating3">★ 3.0 ~ ★ 4.0</label> <br>
-	 	<input id="rating2" class="rating" type="checkbox" name="rating2" value="2"> <label for="rating2">★ 2.0 ~ ★ 3.0</label> <br>
-	 	<input id="rating1" class="rating" type="checkbox" name="rating1" value="1"> <label for="rating1">★ 1.0 ~ ★ 2.0</label> <br>	 	      	
+	 	<h3>고객 평점</h3>
+	 	<input id="rating_all" class="rating" type="radio" name="rating" value="0" checked> <label for="rating_all">전체 보기</label> <br>
+	 	<input id="rating1" class="rating" type="radio" name="rating" value="4.5"> <label for="rating1">★ 4.5 + </label> <br>
+	 	<input id="rating2" class="rating" type="radio" name="rating" value="4.0"> <label for="rating2">★ 4.0 + </label> <br>
+	 	<input id="rating3" class="rating" type="radio" name="rating" value="3.5"> <label for="rating3">★ 3.5 + </label> <br>
+	 	<input id="rating4" class="rating" type="radio" name="rating" value="3.0"> <label for="rating4">★ 3.0 + </label> <br>
 	 	<hr>	 	
 	 	<h3>편의 시설</h3>
 	 	<input type="checkbox" id="parking" class="options" value="yes"> <label for="parking">주차</label>  <br> 

@@ -64,17 +64,13 @@ public class ServletFile extends HttpServlet {
 				inter.dataCon(req, res);
 			} else if (comm.equals("upPlan")) {
 				inter = PlanUp.instance();
-				inter.dataCon(req, res);
+				inter.dataCon(req, res);   
 			} else if(comm.equals("pop_stays")) {
 				inter = PopStayService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("priceFilter")) {				
+			} else if (comm.equals("filter")) {				
 				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("optionFilter")) {
-				System.out.println(req.getParameter("rating"));
-//				inter = FilterRating.instance();
-//				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

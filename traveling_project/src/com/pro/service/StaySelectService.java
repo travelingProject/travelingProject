@@ -21,8 +21,7 @@ public class StaySelectService implements ControlQuery{
 		HttpSession session = req.getSession();
 		String hostId = (String) session.getAttribute("host_id");		
 		StayIdSelectDAO stayIdSelect = new StayIdSelectDAO();
-		String stayId =  Integer.toString(stayIdSelect.dbSelect(hostId));
-		System.out.println("StaySel stayId = " + stayId);
+		String stayId =  Integer.toString(stayIdSelect.dbSelect(hostId));		
 		if(stayId.equals("0")) {
 			req.setAttribute("result", "false");
 		} else {

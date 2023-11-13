@@ -32,8 +32,7 @@
 	<main>
 		<%@ include file="host_aside.jsp"%>
 		<section>	
-			<h2>숙소 등록하기</h2>
-			<% out.println("<form action='insert.condb?comm=stay_ins&name=" + hostId +  "' method='post' enctype='multipart/form-data'>"); %>			
+			<h2>숙소 등록하기</h2>			
 			<form action="insert.condb?comm=stay_ins&name=<%= hostId %>" method="post" enctype="multipart/form-data">					
 				<table>
 					<tr>
@@ -123,27 +122,27 @@
 							<div>
 								<h4>욕조</h4>
 								<div>										
-									<input type="radio" id="tub_check" name="tub" value="yes">
+									<input type="radio" id="tub_check" name="tub" value="1">
 									<label for="tub_check"></label>										
-									<input type="radio" id="tub_not_checked" name="tub" value="no">
+									<input type="radio" id="tub_not_checked" name="tub" value="0">
 									<label for="tub_not_checked"></label>
 								</div>									
 							</div>
 							<div>
 								<h4>샤워 용품</h4>
 								<div>										
-									<input type="radio" id="bath_supplies_checked" name="bath_supplies" value="yes">
+									<input type="radio" id="bath_supplies_checked" name="bath_supplies" value="1">
 									<label for="bath_supplies_checked"></label>										
-									<input type="radio" id="bath_supplies_not_checked" name="bath_supplies" value="no">
+									<input type="radio" id="bath_supplies_not_checked" name="bath_supplies" value="0">
 									<label for="bath_supplies_not_checked"></label>
 								</div>									
 							</div>
 							<div>
 								<h4>헤어 드라이어</h4>
 								<div>										
-									<input type="radio" id="hair_dryer_checked" name="hair_dryer" value="yes">
+									<input type="radio" id="hair_dryer_checked" name="hair_dryer" value="1">
 									<label for="hair_dryer_checked"></label>										
-									<input type="radio" id="hair_dryer_not_checked" name="hair_dryer" value="no">
+									<input type="radio" id="hair_dryer_not_checked" name="hair_dryer" value="0">
 									<label for="hair_dryer_not_checked"></label>
 								</div>
 							</div>
@@ -151,36 +150,36 @@
 							<div>
 								<h4>수건</h4>
 								<div>										
-									<input type="radio" id="towel_checked" name="towel" value="yes">
+									<input type="radio" id="towel_checked" name="towel" value="1">
 									<label for="towel_checked"></label>										
-									<input type="radio" id="towel_not_checked" name="towel" value="no">
+									<input type="radio" id="towel_not_checked" name="towel" value="0">
 									<label for="towel_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>침구류</h4>
 								<div>										
-									<input type="radio" id="bedding_checked" name="bedding" value="yes">
+									<input type="radio" id="bedding_checked" name="bedding" value="1">
 									<label for="bedding_checked"></label>										
-									<input type="radio" id="bedding_not_checked" name="bedding" value="no">
+									<input type="radio" id="bedding_not_checked" name="bedding" value="0">
 									<label for="bedding_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>세탁기</h4>
 								<div>										
-									<input type="radio" id="washing_machine_checked" name="washing_machine" value="yes">
+									<input type="radio" id="washing_machine_checked" name="washing_machine" value="1">
 									<label for="washing_machine_checked"></label>										
-									<input type="radio" id="washing_machine_not_checked" name="washing_machine" value="no">
+									<input type="radio" id="washing_machine_not_checked" name="washing_machine" value="0">
 									<label for="washing_machine_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>건조기</h4>
 								<div>										
-									<input type="radio" id="drying_machine_checked" name="drying_machine" value="yes">
+									<input type="radio" id="drying_machine_checked" name="drying_machine" value="1">
 									<label for="drying_machine_checked"></label>										
-									<input type="radio" id="drying_machine_not_checked" name="drying_machine" value="no">
+									<input type="radio" id="drying_machine_not_checked" name="drying_machine" value="0">
 									<label for="drying_machine_not_checked"></label>
 								</div>
 							</div>
@@ -188,45 +187,45 @@
 							<div>
 								<h4>수영장</h4>
 								<div>										
-									<input type="radio" id="pool_checked" name="pool" value="yes">
+									<input type="radio" id="pool_checked" name="pool" value="1">
 									<label for="pool_checked"></label>										
-									<input type="radio" id="pool_not_checked" name="pool" value="no">
+									<input type="radio" id="pool_not_checked" name="pool" value="0">
 									<label for="pool_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>오락실 게임</h4>
 								<div>										
-									<input type="radio" id="arcade_game_checked" name="arcade_game" value="yes">
+									<input type="radio" id="arcade_game_checked" name="arcade_game" value="1">
 									<label for="arcade_game_checked"></label>										
-									<input type="radio" id="arcade_game_not_checked" name="arcade_game" value="no">
+									<input type="radio" id="arcade_game_not_checked" name="arcade_game" value="0">
 									<label for="arcade_game_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>헬스장</h4>
 								<div>										
-									<input type="radio" id="gym_checked" name="gym" value="yes">
+									<input type="radio" id="gym_checked" name="gym" value="1">
 									<label for="gym_checked"></label>										
-									<input type="radio" id="gym_not_checked" name="gym" value="no">
+									<input type="radio" id="gym_not_checked" name="gym" value="0">
 									<label for="gym_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>TV</h4>
 								<div>										
-									<input type="radio" id="tv_checked" name="tv" value="yes">
+									<input type="radio" id="tv_checked" name="tv" value="1">
 									<label for="tv_checked"></label>										
-									<input type="radio" id="tv_not_checked" name="tv" value="no">
+									<input type="radio" id="tv_not_checked" name="tv" value="0">
 									<label for="tv_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>보드게임</h4>
 								<div>										
-									<input type="radio" id="board_game_checked" name="board_game" value="yes">
+									<input type="radio" id="board_game_checked" name="board_game" value="1">
 									<label for="board_game_checked"></label>										
-									<input type="radio" id="board_game_not_checked" name="board_game" value="no">
+									<input type="radio" id="board_game_not_checked" name="board_game" value="0">
 									<label for="board_game_not_checked"></label>
 								</div>
 							</div>
@@ -234,27 +233,27 @@
 							<div>
 								<h4>에어컨</h4>
 								<div>										
-									<input type="radio" id="air_conditioner_checked" name="air_conditioner" value="yes">
+									<input type="radio" id="air_conditioner_checked" name="air_conditioner" value="1">
 									<label for="air_conditioner_checked"></label>										
-									<input type="radio" id="air_conditioner_not_checked" name="air_conditioner" value="no">
+									<input type="radio" id="air_conditioner_not_checked" name="air_conditioner" value="0">
 									<label for="air_conditioner_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>선풍기</h4>
 								<div>										
-									<input type="radio" id="fan_checked" name="fan" value="yes">
+									<input type="radio" id="fan_checked" name="fan" value="1">
 									<label for="fan_checked"></label>										
-									<input type="radio" id="fan_not_checked" name="fan" value="no">
+									<input type="radio" id="fan_not_checked" name="fan" value="0">
 									<label for="fan_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>난방</h4>
 								<div>										
-									<input type="radio" id="heating_system_checked" name="heating_system" value="yes">
+									<input type="radio" id="heating_system_checked" name="heating_system" value="1">
 									<label for="heating_system_checked"></label>										
-									<input type="radio" id="heating_system_not_checked" name="heating_system" value="no">
+									<input type="radio" id="heating_system_not_checked" name="heating_system" value="0">
 									<label for="heating_system_not_checked"></label>
 								</div>
 							</div>
@@ -262,36 +261,36 @@
 							<div>
 								<h4>일산화탄소 경보기</h4>
 								<div>										
-									<input type="radio" id="carbon_monoxide_alarm_checked" name="carbon_monoxide" value="yes">
+									<input type="radio" id="carbon_monoxide_alarm_checked" name="carbon_monoxide" value="1">
 									<label for="carbon_monoxide_alarm_checked"></label>										
-									<input type="radio" id="carbon_monoxide_alarm_not_checked" name="carbon_monoxide" value="no">
+									<input type="radio" id="carbon_monoxide_alarm_not_checked" name="carbon_monoxide" value="0">
 									<label for="carbon_monoxide_alarm_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>소화기</h4>
 								<div>										
-									<input type="radio" id="fire_extinguisher_checked" name="fire_extinguisher" value="yes">
+									<input type="radio" id="fire_extinguisher_checked" name="fire_extinguisher" value="1">
 									<label for="fire_extinguisher_checked"></label>										
-									<input type="radio" id="fire_extinguisher_not_checked" name="fire_extinguisher" value="no">
+									<input type="radio" id="fire_extinguisher_not_checked" name="fire_extinguisher" value="0">
 									<label for="fire_extinguisher_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>구급 상자</h4>
 								<div>										
-									<input type="radio" id="aid_kit_checked" name="aid_kit" value="yes">
+									<input type="radio" id="aid_kit_checked" name="aid_kit" value="1">
 									<label for="aid_kit_checked"></label>										
-									<input type="radio" id="aid_kit_not_checked" name="aid_kit" value="no">
+									<input type="radio" id="aid_kit_not_checked" name="aid_kit" value="0">
 									<label for="aid_kit_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>화재 경보기</h4>
 								<div>										
-									<input type="radio" id="fire_alarm_checked" name="fire_alarm" value="yes">
+									<input type="radio" id="fire_alarm_checked" name="fire_alarm" value="1">
 									<label for="fire_alarm_checked"></label>										
-									<input type="radio" id="fire_alarm_not_checked" name="fire_alarm" value="no">
+									<input type="radio" id="fire_alarm_not_checked" name="fire_alarm" value="0">
 									<label for="fire_alarm_not_checked"></label>
 								</div>
 							</div>
@@ -299,18 +298,18 @@
 							<div>
 								<h4>업무 전용 공간</h4>
 								<div>										
-									<input type="radio" id="workspace_checked" name="workspace" value="yes">
+									<input type="radio" id="workspace_checked" name="workspace" value="1">
 									<label for="workspace_checked"></label>										
-									<input type="radio" id="workspace_not_checked" name="workspace" value="no">
+									<input type="radio" id="workspace_not_checked" name="workspace" value="0">
 									<label for="workspace_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>무선 인터넷</h4>
 								<div>										
-									<input type="radio" id="wireless_internet_checked" name="wireless_internet" value="yes">
+									<input type="radio" id="wireless_internet_checked" name="wireless_internet" value="1">
 									<label for="wireless_internet_checked"></label>										
-									<input type="radio" id="wireless_internet_not_checked" name="wireless_internet" value="no">
+									<input type="radio" id="wireless_internet_not_checked" name="wireless_internet" value="0">
 									<label for="wireless_internet_not_checked"></label>
 								</div>
 							</div>
@@ -318,72 +317,72 @@
 							<div>
 								<h4>바베큐 도구</h4>
 								<div>										
-									<input type="radio" id="barbecue_tool_checked" name="barbecue_tool" value="yes">
+									<input type="radio" id="barbecue_tool_checked" name="barbecue_tool" value="1">
 									<label for="barbecue_tool_checked"></label>										
-									<input type="radio" id="barbecue_tool_not_checked" name="barbecue_tool" value="no">
+									<input type="radio" id="barbecue_tool_not_checked" name="barbecue_tool" value="0">
 									<label for="barbecue_tool_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>기본 조리도구</h4>
 								<div>										
-									<input type="radio" id="basic_cookware_checked" name="basic_cookware" value="yes">
+									<input type="radio" id="basic_cookware_checked" name="basic_cookware" value="1">
 									<label for="basic_cookware_checked"></label>										
-									<input type="radio" id="basic_cookware_not_checked" name="basic_cookware" value="no">
+									<input type="radio" id="basic_cookware_not_checked" name="basic_cookware" value="0">
 									<label for="basic_cookware_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>식탁</h4>
 								<div>										
-									<input type="radio" id="dining_table_checked" name="dining_table" value="yes">
+									<input type="radio" id="dining_table_checked" name="dining_table" value="1">
 									<label for="dining_table_checked"></label>										
-									<input type="radio" id="dining_table_not_checked" name="dining_table" value="no">
+									<input type="radio" id="dining_table_not_checked" name="dining_table" value="0">
 									<label for="dining_table_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>식기류</h4>
 								<div>										
-									<input type="radio" id="cutlery_checked" name="cutlery" value="yes">
+									<input type="radio" id="cutlery_checked" name="cutlery" value="1">
 									<label for="cutlery_checked"></label>										
-									<input type="radio" id="cutlery_not_checked" name="cutlery" value="no">
+									<input type="radio" id="cutlery_not_checked" name="cutlery" value="0">
 									<label for="cutlery_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>냉장고</h4>
 								<div>										
-									<input type="radio" id="refrigerator_checked" name="refrigerator" value="yes">
+									<input type="radio" id="refrigerator_checked" name="refrigerator" value="1">
 									<label for="refrigerator_checked"></label>										
-									<input type="radio" id="refrigerator_not_checked" name="refrigerator" value="no">
+									<input type="radio" id="refrigerator_not_checked" name="refrigerator" value="0">
 									<label for="refrigerator_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>전자레인지</h4>
 								<div>										
-									<input type="radio" id="microwave_checked" name="microwave" value="yes">
+									<input type="radio" id="microwave_checked" name="microwave" value="1">
 									<label for="microwave_checked"></label>										
-									<input type="radio" id="microwave_not_checked" name="microwave" value="no">
+									<input type="radio" id="microwave_not_checked" name="microwave" value="0">
 									<label for="microwave_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>전기밥솥</h4>
 								<div>										
-									<input type="radio" id="electric_rice_cooker_checked" name="electric_rice_cooker" value="yes">
+									<input type="radio" id="electric_rice_cooker_checked" name="electric_rice_cooker" value=1>
 									<label for="electric_rice_cooker_checked"></label>										
-									<input type="radio" id="electric_rice_cooker_not_checked" name="electric_rice_cooker" value="no">
+									<input type="radio" id="electric_rice_cooker_not_checked" name="electric_rice_cooker" value="0">
 									<label for="electric_rice_cooker_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>가스레인지 또는 인덕션</h4>
 								<div>										
-									<input type="radio" id="gas_stove_or_induction_checked" name="gas_stove_or_induction" value="yes">
+									<input type="radio" id="gas_stove_or_induction_checked" name="gas_stove_or_induction" value="1">
 									<label for="gas_stove_or_induction_checked"></label>										
-									<input type="radio" id="gas_stove_or_induction_not_checked" name="gas_stove_or_induction" value="no">
+									<input type="radio" id="gas_stove_or_induction_not_checked" name="gas_stove_or_induction" value="0">
 									<label for="gas_stove_or_induction_not_checked"></label>
 								</div>
 							</div>
@@ -391,18 +390,18 @@
 							<div>
 								<h4>전기차 충전시설</h4>
 								<div>										
-									<input type="radio" id="electric_vehicle_charging_facilities_checked" name="electric_vehicle_charging_facilities" value="yes">
+									<input type="radio" id="electric_vehicle_charging_facilities_checked" name="electric_vehicle_charging_facilities" value="1">
 									<label for="electric_vehicle_charging_facilities_checked"></label>										
-									<input type="radio" id="electric_vehicle_charging_facilities_not_checked" name="electric_vehicle_charging_facilities" value="no">
+									<input type="radio" id="electric_vehicle_charging_facilities_not_checked" name="electric_vehicle_charging_facilities" value="0">
 									<label for="electric_vehicle_charging_facilities_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>주차장</h4>
 								<div>										
-									<input type="radio" id="parking_lot_checked" name="parking_lot" value="yes">
+									<input type="radio" id="parking_lot_checked" name="parking_lot" value="1">
 									<label for="parking_lot_checked"></label>										
-									<input type="radio" id="parking_lot_not_checked" name="parking_lot" value="no">
+									<input type="radio" id="parking_lot_not_checked" name="parking_lot" value="0">
 									<label for="parking_lot_not_checked"></label>
 								</div>
 							</div>
@@ -410,27 +409,27 @@
 							<div>
 								<h4>아침 식사</h4>
 								<div>										
-									<input type="radio" id="breakfast_checked" name="breakfast" value="yes">
+									<input type="radio" id="breakfast_checked" name="breakfast" value="1">
 									<label for="breakfast_checked"></label>										
-									<input type="radio" id="breakfast_not_checked" name="breakfast" value="no">
+									<input type="radio" id="breakfast_not_checked" name="breakfast" value="0">
 									<label for="breakfast_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>청소 서비스</h4>
 								<div>										
-									<input type="radio" id="clean_serivce_checked" name="clean_service" value="yes">
+									<input type="radio" id="clean_serivce_checked" name="clean_service" value="1">
 									<label for="clean_serivce_checked"></label>										
-									<input type="radio" id="clean_serivce_not_checked" name="clean_service" value="no">
+									<input type="radio" id="clean_serivce_not_checked" name="clean_service" value="0">
 									<label for="clean_serivce_not_checked"></label>
 								</div>
 							</div>
 							<div>
 								<h4>짐 보관</h4>
 								<div>										
-									<input type="radio" id="luggage_storage_checked" name="luggage_storage" value="yes">
+									<input type="radio" id="luggage_storage_checked" name="luggage_storage" value="1">
 									<label for="luggage_storage_checked"></label>										
-									<input type="radio" id="luggage_storage_not_checked" name="luggage_storage" value="no">
+									<input type="radio" id="luggage_storage_not_checked" name="luggage_storage" value="0">
 									<label for="luggage_storage_not_checked"></label>
 								</div>
 							</div>

@@ -23,8 +23,8 @@ public class FilterPriceService implements ControlQuery{
 		res.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html;charset=UTF-8");
 		FilterPriceDAO filterPriceSelect = new FilterPriceDAO();
-		List<FilterStayInfo> stayList = filterPriceSelect.dataCon(req,res);		
-		res.getWriter().write(getJSON(stayList));        
+		List<FilterStayInfo> stayList = filterPriceSelect.dataCon(req,res);
+		res.getWriter().write(getJSON(stayList));
 		return null;
 	}
 	

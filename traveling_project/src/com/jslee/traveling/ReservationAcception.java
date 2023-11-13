@@ -12,7 +12,6 @@ public class ReservationAcception {
 	ResultSet rs = null;
 	
 	// Connection
-	// db 비밀번호
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
