@@ -197,68 +197,54 @@ $(document).ready(function(){
         }
     })
     
+    
     $('.options').on('change', function() {
-        // 선택된 편의시설의 ID를 배열로 수집합니다.
         var selectedFacilities = $('.options:checked').map(function() {
-            return this.id; // 체크된 체크박스의 ID를 가져옵니다.
-        }).get(); // 배열로 변환합니다.
-        
+            return this.id;
+        }).get();        
         console.log(selectedFacilities);
-
-        // 기타 필터 값을 가져옵니다.
         let minPrice = $(".range-min").val();
         let maxPrice = $(".range-max").val();
-        let rating = $('.rating:checked').val(); 
-
-        // Ajax 요청을 서버에 보냅니다.
+        let rating = $('.rating:checked').val();
+        let data = {key1 : 'value1', key2 : 'value2'};
         $.ajax({
-            url: 'facilitiesFilter.condb?comm=filter', // 서버의 URL을 입력합니다.
-            type: 'POST', // 요청 방식에 맞게 설정합니다.
+            url: 'facilitiesFilter.condb?comm=facilitiesFilter',
+            type: 'POST',
             dataType : 'json',
-            data: {
-                'facilities': selectedFacilities,
-                'minPrice': minPrice,
-                'maxPrice': maxPrice,
-                'rating': rating
-            },
+            data: JSON.stringify(data),
+            contentType: 'application/json',
             success: function(data) {
-                // 성공적으로 데이터를 받으면 페이지를 업데이트합니다.
-                updateAccommodationList(data); // 이 함수는 숙소 목록을 업데이트합니다.
+            	console.log(data);
+//                var accommodationBox = $('#accomodation_info_box');
+//                accommodationBox.empty(); // 숙소 목록을 비웁니다.
+//                if (Array.isArray(data.result)) {
+//                    data.result.forEach(function(item) {
+//                        var formattedPrice = parseInt(item.price).toLocaleString();
+//                        var accommodationHTML = 
+//                        '<div class="accomodation">' +
+//                            '<a href="#">' +
+//                                '<div class="accomodation_box">' +
+//                                    '<div>' +
+//                                        '<img class="image" src="/traveling_project/stay_images/' + item.image + '" alt="이미지1" />' +
+//                                    '</div>' +
+//                                    '<div>' +
+//                                        '<h2 class="stay-name">' + item.stayName + '</h2>' +
+//                                        '<p class="avg-rating">' + item.avgRating + '</p>' +
+//                                        '<p class="road-addr">' + item.roadAddr + '</p>' +
+//                                        '<p class="room-price">₩ ' + formattedPrice  + ' ~</p>' +
+//                                    '</div>' +
+//                                '</div>' +
+//                            '</a>' +
+//                        '</div>';
+//                        accommodationBox.append(accommodationHTML);
+//                    });
+//                } else {
+//                    console.log('파싱된 데이터의 \'result\' 프로퍼티가 배열 형태가 아닙니다.');
+//                }
             },
             error: function(xhr, status, error) {
-                // 에러 처리 로직
-                console.error("An error occurred: " + status + ", " + error);
+                console.log(error);
             }
         });
     });
-
-    function updateAccommodationList(data) {        
-        var accommodationBox = $('#accomodation_info_box');
-        accommodationBox.empty(); // 숙소 목록을 비웁니다.
-        if (Array.isArray(data.result)) {
-            data.result.forEach(function(item) {
-                var formattedPrice = parseInt(item.price).toLocaleString();
-                var accommodationHTML = 
-                '<div class="accomodation">' +
-                    '<a href="#">' +
-                        '<div class="accomodation_box">' +
-                            '<div>' +
-                                '<img class="image" src="/traveling_project/stay_images/' + item.image + '" alt="이미지1" />' +
-                            '</div>' +
-                            '<div>' +
-                                '<h2 class="stay-name">' + item.stayName + '</h2>' +
-                                '<p class="avg-rating">' + item.avgRating + '</p>' +
-                                '<p class="road-addr">' + item.roadAddr + '</p>' +
-                                '<p class="room-price">₩ ' + formattedPrice  + ' ~</p>' +
-                            '</div>' +
-                        '</div>' +
-                    '</a>' +
-                '</div>';
-                accommodationBox.append(accommodationHTML);
-            });
-        } else {
-            console.log('파싱된 데이터의 \'result\' 프로퍼티가 배열 형태가 아닙니다.');
-        }
-    }
-
 });

@@ -1,5 +1,6 @@
 package com.pro.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.pro.dto.MyObject;
 import com.pro.service.FilterPriceService;
 import com.pro.service.PopStayService;
 import com.pro.service.ReservationSelectService;
@@ -72,6 +75,21 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("filter")) {		        
 				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
+			} else if (comm.equals("facilitiesFilter")) {
+				StringBuilder sb = new StringBuilder();
+			    String line = null;
+			    BufferedReader reader = req.getReader();
+			    while ((line = reader.readLine()) != null) {
+			        sb.append(line);
+			    }
+			    String data = sb.toString();
+			    Gson gson = new Gson();
+			    MyObject obj = gson.fromJson(data, MyObject.class); // MyObject는 JSON을 매핑할 자바 클래스
+			    System.out.println(obj.toString());
+			    // 객체 전체 출력
+			    res.setContentType("application/json");
+			    res.setCharacterEncoding("UTF-8");
+			    res.getWriter().write(gson.toJson(obj));	
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
