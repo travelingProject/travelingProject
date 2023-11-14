@@ -12,6 +12,7 @@ public class ReservationAcception {
 	ResultSet rs = null;
 	
 	// Connection
+	// db 비밀번호
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -38,7 +39,7 @@ public class ReservationAcception {
 		try {
 			connect();
 			rs = stmt.executeQuery(
-					"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+					"SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
 					+ "FROM reservation r " 
 					+ "JOIN room_info ro ON ro.room_id = r.room_id "
 					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
@@ -49,8 +50,8 @@ public class ReservationAcception {
 			while(rs.next()) {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
-				rsInfo.setUserId(rs.getString("name"));
-				rsInfo.setRoomId(rs.getInt("room_id"));
+				rsInfo.setUserId(rs.getString("name"));				
+				rsInfo.setRoomName(rs.getString("room_name"));
 				rsInfo.setCheckInDate(rs.getString("check_in_date"));
 				rsInfo.setCheckOutDate(rs.getString("check_out_date"));
 				rsInfo.setCheckInTime(rs.getString("check_in_time"));
@@ -75,7 +76,7 @@ public class ReservationAcception {
 		try {
 			connect();
 			rs = stmt.executeQuery(
-					"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+					"SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
 					+ "FROM reservation r " 
 					+ "JOIN room_info ro ON ro.room_id = r.room_id "
 					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
@@ -87,7 +88,7 @@ public class ReservationAcception {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
 				rsInfo.setUserId(rs.getString("name"));
-				rsInfo.setRoomId(rs.getInt("room_id"));
+				rsInfo.setRoomName(rs.getString("room_name"));				
 				rsInfo.setCheckInDate(rs.getString("check_in_date"));
 				rsInfo.setCheckOutDate(rs.getString("check_out_date"));
 				rsInfo.setCheckInTime(rs.getString("check_in_time"));
@@ -110,7 +111,7 @@ public class ReservationAcception {
 		try {
 			connect();
 			rs = stmt.executeQuery(
-					"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+					"SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
 					+ "FROM reservation r " 
 					+ "JOIN room_info ro ON ro.room_id = r.room_id "
 					+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
@@ -122,7 +123,7 @@ public class ReservationAcception {
 				ReservationInfo rsInfo = new ReservationInfo();
 				rsInfo.setReservationId(rs.getInt("reservation_id"));
 				rsInfo.setUserId(rs.getString("name"));
-				rsInfo.setRoomId(rs.getInt("room_id"));
+				rsInfo.setRoomName(rs.getString("room_name"));
 				rsInfo.setCheckInDate(rs.getString("check_in_date"));
 				rsInfo.setCheckOutDate(rs.getString("check_out_date"));
 				rsInfo.setCheckInTime(rs.getString("check_in_time"));
@@ -145,7 +146,7 @@ public class ReservationAcception {
 			try {
 				connect();
 				rs = stmt.executeQuery(
-						"SELECT r.reservation_id,u.name,r.room_id,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
+						"SELECT r.reservation_id,u.name,ro.room_name,r.check_in_date,r.check_out_date,r.check_in_time,r.check_out_time,r.people,r.price,r.payment_time,r.status "
 						+ "FROM reservation r " 
 						+ "JOIN room_info ro ON ro.room_id = r.room_id "
 						+ "JOIN stay_info s ON s.stay_id = ro.stay_id "
@@ -157,7 +158,7 @@ public class ReservationAcception {
 					ReservationInfo rsInfo = new ReservationInfo();
 					rsInfo.setReservationId(rs.getInt("reservation_id"));
 					rsInfo.setUserId(rs.getString("name"));
-					rsInfo.setRoomId(rs.getInt("room_id"));
+					rsInfo.setRoomName(rs.getString("room_name"));
 					rsInfo.setCheckInDate(rs.getString("check_in_date"));
 					rsInfo.setCheckOutDate(rs.getString("check_out_date"));
 					rsInfo.setCheckInTime(rs.getString("check_in_time"));

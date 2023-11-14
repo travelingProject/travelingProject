@@ -199,7 +199,7 @@ $(document).ready(function(){
     
     $('.options').on('change',function(){
         if(this.checked) {
-            console.log($(this).val())
+            console.log("parking");
         }
     })
 

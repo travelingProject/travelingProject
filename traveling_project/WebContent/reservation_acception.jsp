@@ -57,7 +57,7 @@
 						<tr>
 							<th>예약 번호</th>
 							<th>예약자 성함</th>
-							<th>방 정보</th>
+							<th>객실 이름</th>
 							<th>체크인 날짜</th>
 							<th>체크 아웃 날짜</th>
 							<th>체크인 시간</th>
@@ -76,7 +76,7 @@
 								out.println("<tr>");
 								out.println("<td>" + rwArr.get(i).getReservationId() + "</td>");
 								out.println("<td>" + rwArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rwArr.get(i).getRoomId() + "</td>");
+								out.println("<td>" + rwArr.get(i).getRoomName() + "</td>");
 								out.println("<td>" + rwArr.get(i).getCheckInDate() + "</td>");
 								out.println("<td>" + rwArr.get(i).getCheckOutDate() + "</td>");
 								out.println("<td>" + rwArr.get(i).getCheckInTime() + "</td>");
@@ -121,7 +121,7 @@
 								out.println("<tr>");
 								out.println("<td>" + rcArr.get(i).getReservationId() + "</td>");
 								out.println("<td>" + rcArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rcArr.get(i).getRoomId() + "</td>");
+								out.println("<td>" + rcArr.get(i).getRoomName() + "</td>");
 								out.println("<td>" + rcArr.get(i).getCheckInDate() + "</td>");
 								out.println("<td>" + rcArr.get(i).getCheckOutDate() + "</td>");
 								out.println("<td>" + rcArr.get(i).getCheckInTime() + "</td>");
@@ -138,7 +138,7 @@
 								out.println("<tr>");
 								out.println("<td>" + rRArr.get(i).getReservationId() + "</td>");
 								out.println("<td>" + rRArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rRArr.get(i).getRoomId() + "</td>");
+								out.println("<td>" + rRArr.get(i).getRoomName() + "</td>");
 								out.println("<td>" + rRArr.get(i).getCheckInDate() + "</td>");
 								out.println("<td>" + rRArr.get(i).getCheckOutDate() + "</td>");
 								out.println("<td>" + rRArr.get(i).getCheckInTime() + "</td>");
@@ -155,7 +155,7 @@
 								out.println("<tr>");
 								out.println("<td>" + rCancArr.get(i).getReservationId() + "</td>");
 								out.println("<td>" + rCancArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getRoomId() + "</td>");
+								out.println("<td>" + rCancArr.get(i).getRoomName() + "</td>");
 								out.println("<td>" + rCancArr.get(i).getCheckInDate() + "</td>");
 								out.println("<td>" + rCancArr.get(i).getCheckOutDate() + "</td>");
 								out.println("<td>" + rCancArr.get(i).getCheckInTime() + "</td>");
@@ -171,7 +171,7 @@
 							</table>
 							<%			
 						if(rwArr.size() == 0 && rcArr.size() == 0 && rRArr.size() == 0 && rCancArr.size() == 0){							
-							out.println("<p style='height:466px; line-height:466px; color:#000;'>예약 정보가 없습니다.</p>");
+							out.println("<p style='height:466px; line-height:466px; color:#000; user-select:none;'>예약 정보가 없습니다.</p>");
 						}
 					%>
 			</div>

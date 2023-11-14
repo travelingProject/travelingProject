@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
   //모든 공백 체크 정규식
   const empJ = /\s/g;
   //아이디 정규식
@@ -120,37 +121,6 @@ $(document).ready(function () {
     } else {
       $('#phone').css('border', '1px solid #999');
       $('#phone_text').hide();
-    }
-  });
-
-  // 사업자 등록번호 유효성 검사
-  $('.business_num').blur(function () {
-    const businessNum1 = $('#business_num1').val();
-    const businessNum2 = $('#business_num2').val();
-    const businessNum3 = $('#business_num3').val();
-    if (!businessNumJ1.test(businessNum1)) {
-      $('#business_num_text').show();
-      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
-      $('#business_num1').css('border','2px solid red')
-    } else {
-      $('#business_num_text').hide();
-      $('#business_num1').css('border','1px solid #999')
-    }
-    if(!businessNumJ2.test(businessNum2)){
-      $('#business_num_text').show();
-      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
-      $('#business_num2').css('border','2px solid red')
-    } else{
-      $('#business_num_text').hide();
-      $('#business_num2').css('border','1px solid #999')
-    }
-    if(!businessNumJ3.test(businessNum3)){
-      $('#business_num_text').show();
-      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
-      $('#business_num3').css('border','2px solid red')
-    } else{
-      $('#business_num_text').hide();
-      $('#business_num3').css('border','1px solid #999')
     }
   });
 
@@ -318,32 +288,6 @@ $(document).ready(function () {
     } else {
       $('#phone').css('border', '1px solid #999');
       $('#phone_text').hide();
-    }
-
-    // 사업자 등록번호 체크
-    if (!businessNumJ1.test(businessNum1)) {
-      $('#business_num_text').show();
-      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
-      $('#business_num1').css('border','2px solid red');
-    } else {
-      $('#business_num_text').hide();
-      $('#business_num1').css('border','1px solid #999');
-    }
-    if(!businessNumJ2.test(businessNum2)){
-      $('#business_num_text').show();
-      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
-      $('#business_num2').css('border','2px solid red');
-    } else{
-      $('#business_num_text').hide();
-      $('#business_num1').css('border','1px solid #999');
-    }
-    if(!businessNumJ3.test(businessNum3)){
-      $('#business_num_text').show();
-      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
-      $('#business_num3').css('border','2px solid red');
-    } else{
-      $('#business_num_text').hide();
-      $('#business_num3').css('border','1px solid #999');
     }
 
     // 이메일 체크

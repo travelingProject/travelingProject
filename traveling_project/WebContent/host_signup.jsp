@@ -3,7 +3,7 @@
 <%@ page import="java.sql.*"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String hostId = request.getParameter("host_id");
+	String hostId = request.getParameter("host_id");	
 	String pw = request.getParameter("pw");
 	String name = request.getParameter("name");
 	String news_agency = request.getParameter("news_agency");
@@ -21,11 +21,10 @@
 	String road_addr = request.getParameter("road_addr");
 	String jibun_addr = request.getParameter("jibun_addr");
 	String detail_addr = request.getParameter("detail_addr");
-	String reference_addr = request.getParameter("reference_addr");
-	
+	String reference_addr = request.getParameter("reference_addr");	
 	String mail = email + "@" + email_addr;
 	String birth = birth_year + "-" + birth_month + "-" + birth_day;
-	String businessNum = businessNum1 + businessNum2 + businessNum3;	
+	String businessNum = businessNum1 + businessNum2 + businessNum3;
 	
 	Connection conn = null;
 	Statement stmt = null;
@@ -40,9 +39,9 @@
 		        + name + "', '"
 		        + news_agency + "', '"
 		        + phone + "', '"
-		        + businessNum + "','"
+		        + businessNum + "', '"
 		        + mail + "', '"
-		        + birth + "', '"		        
+		        + birth + "', '"
 		        + gender + "', '"
 		        + post_code + "', '"
 		        + road_addr + "', '"

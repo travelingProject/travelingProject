@@ -2,23 +2,34 @@ $(document).ready(function () {
 	
   //모든 공백 체크 정규식
   const empJ = /\s/g;
+  
   //아이디 정규식
   const idJ = /^[a-z0-9]{6,20}$/;
+  
   // 비밀번호 정규식
   const pwJ = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+  
   // 이름 정규식
   const nameJ = /^[가-힣]{2,6}$/;
+  
   // 이메일 검사 정규식
   const emailJ = /^[a-zA-Z0-9]+$/;
+  
   // 휴대폰 번호 정규식
   const phoneJ = /^01[016789]\d{3,4}\d{5}$/;
+  
   // 사업자 등록번호 정규식
   const businessNumJ1 = /^[0-9]{3}$/;
   const businessNumJ2 = /^[0-9]{2}$/;
   const businessNumJ3 = /^[0-9]{5}$/;
+  
+  // scrollTop 함수
+  function goTop() {
+    $(window).scrollTop(280);
+  }
 
   // 아이디 확인 함수
-  function id() {
+  $('#id').blur(function () {
     const host_id = $("#id").val();
     $("#id").css("border", "2px solid red");
     $.ajax({
@@ -27,9 +38,10 @@ $(document).ready(function () {
       data: {
         host_id: host_id,
       },
-      success: function (result) {
+      success: function (result) {        
         const data = result.trim();
-        if (data == "true") {
+        console.log(data);
+        if (data == "true") {            
           $("#id_text").html("중복된 아이디입니다. 다시 입력해주세요.");
           $("#id_text").css("color", "red");
           $("#id").css("border", "2px solid red");
@@ -45,206 +57,144 @@ $(document).ready(function () {
         }
       },
     });
-  }
-
-  // 비밀번호 함수
-  function password() {
-    const user_pw = $("#pw").val();
-    if (!pwJ.test(user_pw)) {
-      $("#pw_text").html("공백을 제외한 8~16자의 영문 대/소문자+숫자+특수문자 조합으로 입력해주세요.");
-      $("#pw_text").css("color", "red");
-      $("#pw").css("border", "2px solid red");
-    } else {
-      $("#pw").css("border", "2px solid #1aa3ff");
-      $("#pw_text").html("사용 가능한 비밀번호입니다.");
-      $("#pw_text").css("color", "#1aa3ff");
-    }
-  }
-
-  // 비밀번호 확인 함수
-  function pwCheck() {
-    const pw_check = $("#pw_check").val();
-    const user_pw = $("#pw").val();
-
-    if (pw_check == "") {
-      $("#pw_check_text").html("비밀번호를 확인해주세요.");
-      $("#pw_check").css("border", "2px solid red");
-    } else if (pw_check == user_pw) {
-      $("#pw_check_text").html("비밀번호가 동일합니다.");
-      $("#pw_check_text").css("color", "#1aa3ff");
-      $("#pw_check").css("border", "2px solid #1aa3ff");
-    } else {
-      $("#pw_check_text").html("비밀번호가 일치하지 않습니다.");
-      $("#pw_check_text").css("color", "red");
-      $("#pw_check").css("border", "2px solid red");
-    }
-  }
-
-  // 이름 확인 함수
-  function nameCheck() {
-    const user_name = $("#name").val();
-    if (!nameJ.test(user_name)) {
-      $("#name_text_td").css("display", "block");
-      $("#name_text").html("이름을 올바르게 입력해주세요.");
-      $("#name").css("border", "2px solid red");
-    } else {
-      $("#name_text_td").css("display", "none");
-      $("#name").css("border", "2px solid #1aa3ff");
-      $("#name_text").hide();
-    }
-  }
-
-  // 통신사 td 숨기기
-  $("#agency_text_td").hide();
-
-  $('#agency_td').click(function(){
-    $(this).children().first().css('border','0');
-  })
-
-  // 통신사 체크 유무 함수
-  function agencyCheck() {
-    const checkedAgency = $("input[name='news_agency']:checked");
-    if (checkedAgency.length === 0) {
-      $("#agency_text").html("통신사를 선택해주세요.");
-      $("#agency_text_td").show();
-    } else {
-      $("#agency_text_td").hide();
-    }
-  }
-
-  // 전화번호 확인 함수
-  function phoneCheck() {
-    const phoneValue = $("#phone").val();
-    if (!phoneJ.test(phoneValue)) {
-      $("#phone").css("border", "2px solid red");
-      $("#phone_text").show();
-      $("#phone_text").html('" - "를 제외한 전화번호 11자리를 입력해주세요');
-    } else {
-      $("#phone").css("border", "2px solid #1aa3ff");
-      $("#phone_text").hide();
-    }
-  }
-
-  // 이메일 확인 함수
-  function emailCheck() {
-    const emailValue = $("#email").val();
-    if (!emailJ.test(emailValue)) {
-      $("#email").css("border", "2px solid red");
-      $("#email_text").show();
-      $("#email_text").html("올바른 이메일 형식을 입력해주세요.");
-    } else {
-      $("#email_text").hide();
-      $("#email").css("border", "2px solid #1aa3ff");
-    }
-  }
-
-  $("#birth_year").blur(function(){
-    $(this).css("border","2px solid #1aa3ff");
-  })
-  $("#birth_month").blur(function(){
-    $(this).css("border","2px solid #1aa3ff");
-  })
-  $("#birth_day").blur(function(){
-    $(this).css("border","2px solid #1aa3ff");
-  })
-
-  // 생년월일 확인 함수
-  function birthCheck() {
-    const birthYear = $("#birth_year").val();
-    const birthMonth = $("#birth_month").val();
-    const birthDay = $("#birth_day").val();
-    if (!birthYear || !birthMonth || !birthDay) {
-      $("#birth_text").show();
-      $("#birth_text").html("생년월일을 선택해주세요.");
-    } else {
-      $("#birth_text").hide();
-    }
-  }
-
-  // 주소 확인 함수
-  function addrCheck() {
-    const postcode = $("#sample4_postcode").val();
-    const roadAddr = $("#sample4_roadAddress").val();
-    const jibunAddr = $("#sample4_jibunAddress").val();
-    const extraAddr = $("#sample4_extraAddress").val();
-    if (postcode == "" || roadAddr == "" || jibunAddr == "" || extraAddr == "") {
-      $("#addr_text").show();
-      $("#addr_text").html("주소를 입력해주세요.");
-    } else {
-      $("#addr_text").hide();
-    }
-  }
-
-  // 아이디 중복 처리 & 유효성 검사
-  $("#id").blur(function () {
-    id();
   });
 
   // 비밀번호 유효성 검사
-  $("#pw").blur(function () {
-    password();
-  });
-
-  // 비밀번호 확인
-  $("#pw_check").blur(function () {
-    pwCheck();
-  });
-
-  // 이름 유효성 검사
-  $("#name").blur(function () {
-    nameCheck();
-  });
-
-  // 통신사 확인
-  $("input[name='news_agency']").on("change", function () {
-    $("#agency_text_td").hide();
-  });
-
-  // 전화번호 유효성 검사
-  $("#phone").blur(function () {
-    phoneCheck();
-  });
-
-  // 사업자 등록번호 유효성 검사
-  $(".business_num").blur(function () {    
-    const businessNum1 = $("#business_num1").val();
-    const businessNum2 = $("#business_num2").val();
-    const businessNum3 = $("#business_num3").val();
-    if (!businessNumJ1.test(businessNum1) || !businessNumJ2.test(businessNum2) || !businessNumJ3.test(businessNum3)) {
-        $("#business_num_text").show();
-        $("#business_num_text").html("사업자 등록번호를 올바르게 입력해주세요.");
+  $('#pw').blur(function () {
+    const user_pw = $('#pw').val();
+    if (!pwJ.test(user_pw)) {
+      $('#pw_text').html('공백을 제외한 8~16자의 영문 대/소문자+숫자+특수문자 조합으로 입력해주세요.');
+      $('#pw_text').css('color', 'red');
+      $('#pw').css('border', '2px solid red');
     } else {
-        $("#business_num_text").hide();
-    }    
-  });
-
-  // 이메일 유효성 검사
-  $("#email").blur(function () {
-    emailCheck();
-  });
-
-  // 생년월일 경고 메시지
-  $("#birth_text").hide();
-
-  $("#email_address").blur(function () {
-    var selectedOption = $(this).val();
-    if (selectedOption) {
-      $(this).css("border", "2px solid #1aa3ff");
-    } else {
-      $(this).css("border", "");
+      $('#pw').css('border', '1px solid #999');
+      $('#pw_text').html('사용 가능한 비밀번호입니다.');
+      $('#pw_text').css('color', '#1aa3ff');
     }
   });
 
-  $("#addr_text").hide();
+  // 비밀번호 확인
+  $('#pw_check').blur(function () {
+    const pw_check = $('#pw_check').val();
+    const user_pw = $('#pw').val();
 
-  $("#post_search_btn").click(function(){
-    $("#addr_text").hide();
-    $("#sample4_postcode").css('border','1px solid #999');
-      $("#sample4_roadAddress").css('border','1px solid #999');
-      $("#sample4_jibunAddress").css('border','1px solid #999');
-      $("#sample4_detailAddress").css('border','1px solid #999');
-      $("#sample4_extraAddress").css('border','1px solid #999');
-  })
+    if (pw_check == '') {
+      $('#pw_check_text').html('비밀번호를 확인해주세요.');
+      $('#pw_check').css('border', '2px solid red');
+    } else if (pw_check == user_pw) {
+      $('#pw_check_text').html('비밀번호가 동일합니다.');
+      $('#pw_check_text').css('color', '#1aa3ff');
+      $('#pw_check').css('border', '1px solid #999');
+    } else {
+      $('#pw_check_text').html('비밀번호가 일치하지 않습니다.');
+      $('#pw_check_text').css('color', 'red');
+      $('#pw_check').css('border', '2px solid red');
+    }
+  });
+
+  // 이름 유효성 검사
+  $('#name').blur(function () {
+    const user_name = $('#name').val();
+    if (!nameJ.test(user_name)) {
+      $('#name_text_td').css('display', 'block');
+      $('#name_text').html('이름을 올바르게 입력해주세요.');
+      $('#name').css('border', '2px solid red');
+    } else {
+      $('#name_text_td').css('display', 'none');
+      $('#name').css('border', '1px solid #999');
+      $('#name_text').hide();
+    }
+  });
+
+  // 통신사 클릭시 빨간색 테두리, 경고문 사라짐
+  $('#agency_td div label').click(function () {
+    $(this).children().first().css('border', '0');
+    $('#agency_text').hide();
+    $('#agency_td div label').css('border', '1px solid #999');
+    $('#agency_td div label:eq(0)').css('border-right', '0');
+    $('#agency_td div label:eq(1)').css('border-right', '0');
+    $('#agency_td div label:eq(2)').css('border-right', '0');
+    $('#agency_td div label:eq(3)').css('border-right', '0');
+    $('#agency_td div label:eq(4)').css('border-right', '0');
+  });
+
+  // 전화번호 유효성 검사
+  $('#phone').blur(function () {
+    const phoneValue = $('#phone').val();
+    if (!phoneJ.test(phoneValue)) {
+      $('#phone').css('border', '2px solid red');
+      $('#phone_text').show();
+      $('#phone_text').html('" - "를 제외한 전화번호 11자리를 입력해주세요');
+    } else {
+      $('#phone').css('border', '1px solid #999');
+      $('#phone_text').hide();
+    }
+  });
+
+  // 사업자 등록번호 유효성 검사
+  $('.business_num').blur(function () {
+    const businessNum1 = $('#business_num1').val();
+    const businessNum2 = $('#business_num2').val();
+    const businessNum3 = $('#business_num3').val();
+    if (!businessNumJ1.test(businessNum1)) {
+      $('#business_num_text').show();
+      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
+      $('#business_num1').css('border','2px solid red')
+    } else {
+      $('#business_num_text').hide();
+      $('#business_num1').css('border','1px solid #999')
+    }
+    if(!businessNumJ2.test(businessNum2)){
+      $('#business_num_text').show();
+      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
+      $('#business_num2').css('border','2px solid red')
+    } else{
+      $('#business_num_text').hide();
+      $('#business_num2').css('border','1px solid #999')
+    }
+    if(!businessNumJ3.test(businessNum3)){
+      $('#business_num_text').show();
+      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
+      $('#business_num3').css('border','2px solid red')
+    } else{
+      $('#business_num_text').hide();
+      $('#business_num3').css('border','1px solid #999')
+    }
+  });
+
+  // 이메일 blur시 #1aa3ff 테두리 적용
+  $('#email_address').blur(function () {
+    var selectedOption = $(this).val();
+    if (selectedOption) {
+      $(this).css('border', '1px solid #999');
+    } else {
+      $(this).css('border', '');
+    }
+  });
+
+  // 생년월일 클릭시 테두리 적용
+  $('#birth_year').click(function () {
+    $(this).css('border', '1px solid #999');
+    $('#birth_text').hide();
+  });
+  $('#birth_month').click(function () {
+    $(this).css('border', '1px solid #999');
+    $('#birth_text').hide();
+  });
+  $('#birth_day').click(function () {
+    $(this).css('border', '1px solid #999');
+    $('#birth_text').hide();
+  });
+
+  // 주소 검색 버튼 클릭시 빨간색 테두리, 경고문 사라짐
+  $('#post_search_btn').click(function () {
+    $('#addr_text').hide();
+    $('#sample4_postcode').css('border', '1px solid #999');
+    $('#sample4_roadAddress').css('border', '1px solid #999');
+    $('#sample4_jibunAddress').css('border', '1px solid #999');
+    $('#sample4_detailAddress').css('border', '1px solid #999');
+    $('#sample4_extraAddress').css('border', '1px solid #999');
+  });
 
   // scrollTop 함수
   function goTop() {
@@ -252,46 +202,46 @@ $(document).ready(function () {
   }
 
   // 회원가입 버튼 클릭
-  $("#sign_up_btn").click(function (e) {    
-    const user_id = $("#id").val();
-    const user_pw = $("#pw").val();
-    const pw_check = $("#pw_check").val();
-    const user_name = $("#name").val();
+  $('#sign_up_btn').click(function (e) {
+    const user_id = $('#id').val();
+    const user_pw = $('#pw').val();
+    const pw_check = $('#pw_check').val();
+    const user_name = $('#name').val();
     const checkedAgency = $("input[name='news_agency']:checked");
-    const phoneValue = $("#phone").val();
-    const businessNumValue1 = $("#business_num1").val();
-    const businessNumValue2 = $("#business_num2").val();
-    const businessNumValue3 = $("#business_num3").val();
-    const emailValue = $("#email").val();
-    const birthYear = $("#birth_year").val();
-    const birthMonth = $("#birth_month").val();
-    const birthDay = $("#birth_day").val();
-    const postcode = $("#sample4_postcode").val();
-    const roadAddr = $("#sample4_roadAddress").val();
-    const jibunAddr = $("#sample4_jibunAddress").val();
-    const extraAddr = $("#sample4_extraAddress").val();
+    const phoneValue = $('#phone').val();
+    const emailValue = $('#email').val();
+    const birthYear = $('#birth_year').val();
+    const birthMonth = $('#birth_month').val();
+    const birthDay = $('#birth_day').val();
+    const postcode = $('#sample4_postcode').val();
+    const roadAddr = $('#sample4_roadAddress').val();
+    const jibunAddr = $('#sample4_jibunAddress').val();
+    const extraAddr = $('#sample4_extraAddress').val();
+    const businessNum1 = $('#business_num1').val();
+    const businessNum2 = $('#business_num2').val();
+    const businessNum3 = $('#business_num3').val();
 
     // 아이디 체크
-    $("#id").css("border", "2px solid red");
+    $('#id').css('border', '2px solid red');
     $.ajax({
-      type: "POST",
-      url: "check_id.jsp", // 중복 확인을 처리하는 JSP 페이지
+      type: 'POST',
+      url: 'check_id.jsp', // 중복 확인을 처리하는 JSP 페이지
       data: {
         user_id: user_id,
       },
       success: function (result) {
         const data = result.trim();
-        if (data == "true") {
-          $("#id_text").html("중복된 아이디입니다. 다시 입력해주세요.");
-          $("#id").css("border", "2px solid red");
-        } else if (data == "false") {
+        if (data == 'true') {
+          $('#id_text').html('중복된 아이디입니다. 다시 입력해주세요.');
+          $('#id').css('border', '2px solid red');
+        } else if (data == 'false') {
           if (idJ.test(user_id) && !empJ.test(user_id)) {
-            $("#id_text").css("color", "#1aa3ff");
-            $("#id_text").html("사용가능한 아이디 입니다.");
-            $("#id").css("border", "2px solid #1aa3ff");
-          } else{
-            $("#id_text").html("특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.");
-            $("#id").css("border", "2px solid red");
+            $('#id_text').css('color', '#1aa3ff');
+            $('#id_text').html('사용가능한 아이디 입니다.');
+            $('#id').css('border', '1px solid #999');
+          } else {
+            $('#id_text').html('특수문자를 제외한 8~20자의 영문과 숫자로 입력해주세요.');
+            $('#id').css('border', '2px solid red');
           }
         }
       },
@@ -299,32 +249,32 @@ $(document).ready(function () {
 
     // 비밀번호 체크
     if (!pwJ.test(user_pw)) {
-      $("#pw_text").html("공백을 제외한 8~16자의 영문 대/소문자+숫자+특수문자 조합으로 입력해주세요.");
-      $("#pw_text").css("color", "red");
-      $("#pw").css("border", "2px solid red");
+      $('#pw_text').html('공백을 제외한 8~16자의 영문 대/소문자+숫자+특수문자 조합으로 입력해주세요.');
+      $('#pw_text').css('color', 'red');
+      $('#pw').css('border', '2px solid red');
       e.preventDefault();
     } else {
-      $("#pw").css("border", "2px solid #1aa3ff");
-      $("#pw_text").html("사용 가능한 비밀번호입니다.");
-      $("#pw_text").css("color", "#1aa3ff");
+      $('#pw').css('border', '1px solid #999');
+      $('#pw_text').html('사용 가능한 비밀번호입니다.');
+      $('#pw_text').css('color', '#1aa3ff');
     }
 
     // 비밀번호 확인 체크
-    if (pw_check == "") {
+    if (pw_check == '') {
       e.preventDefault();
       goTop();
-      $("#pw_check_text").html("비밀번호를 확인해주세요.");
-      $("#pw_check").css("border", "2px solid red");
+      $('#pw_check_text').html('비밀번호를 확인해주세요.');
+      $('#pw_check').css('border', '2px solid red');
     } else if (pw_check == user_pw) {
-      $("#pw_check_text").html("비밀번호가 동일합니다.");
-      $("#pw_check_text").css("color", "#1aa3ff");
-      $("#pw_check").css("border", "2px solid #1aa3ff");
+      $('#pw_check_text').html('비밀번호가 동일합니다.');
+      $('#pw_check_text').css('color', '#1aa3ff');
+      $('#pw_check').css('border', '1px solid #999');
     } else {
       e.preventDefault();
       goTop();
-      $("#pw_check_text").html("비밀번호가 일치하지 않습니다.");
-      $("#pw_check_text").css("color", "red");
-      $("#pw_check").css("border", "2px solid red");
+      $('#pw_check_text').html('비밀번호가 일치하지 않습니다.');
+      $('#pw_check_text').css('color', 'red');
+      $('#pw_check').css('border', '2px solid red');
       e.preventDefault();
     }
 
@@ -332,78 +282,124 @@ $(document).ready(function () {
     if (!nameJ.test(user_name)) {
       e.preventDefault();
       goTop();
-      $("#name_text_td").css("display", "block");
-      $("#name_text").html("이름을 올바르게 입력해주세요.");
-      $("#name").css("border", "2px solid red");
-    } else{
-      $("#name_text_td").css("display", "none");
-      $("#name").css("border", "2px solid #1aa3ff");
-      $("#name_text").hide();
+      $('#name_text_td').css('display', 'block');
+      $('#name_text').html('이름을 올바르게 입력해주세요.');
+      $('#name').css('border', '2px solid red');
+    } else {
+      $('#name_text_td').css('display', 'none');
+      $('#name').css('border', '1px solid #999');
+      $('#name_text').hide();
     }
 
     // 통신사 체크
     if (checkedAgency.length === 0) {
       e.preventDefault();
       goTop();
-      $("#agency_text").html("통신사를 선택해주세요.");
-      $("#agency_text_td").show();
-      $('#agency_td div').css('border','2px solid red');
+      $('#agency_text').html('통신사를 선택해주세요.');
+      $('#agency_text_td').show();
+      $('#agency_td div label').css('border', '2px solid red');
+      $('#agency_td div label:eq(0)').css('border-right', '0');
+      $('#agency_td div label:eq(1)').css('border-right', '0');
+      $('#agency_td div label:eq(2)').css('border-right', '0');
+      $('#agency_td div label:eq(3)').css('border-right', '0');
+      $('#agency_td div label:eq(4)').css('border-right', '0');
     } else {
-      $("#agency_text_td").hide();      
+      $('#agency_text_td').hide();
+      $('#agency_td div label').css('border', '1px solid #999');
     }
 
     // 전화번호 체크
     if (!phoneJ.test(phoneValue)) {
       e.preventDefault();
       goTop();
-      $("#phone").css("border", "2px solid red");
-      $("#phone_text").show();
-      $("#phone_text").html('" - "를 제외한 전화번호 11자리를 입력해주세요');
+      $('#phone').css('border', '2px solid red');
+      $('#phone_text').show();
+      $('#phone_text').html('" - "를 제외한 전화번호 11자리를 입력해주세요');
     } else {
-      $("#phone").css("border", "2px solid #1aa3ff");
-      $("#phone_text").hide();
+      $('#phone').css('border', '1px solid #999');
+      $('#phone_text').hide();
     }
-    
+
     // 사업자 등록번호 체크
-    if(!businessValue.test()){
-    	
+    if (!businessNumJ1.test(businessNum1)) {
+      $('#business_num_text').show();
+      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
+      $('#business_num1').css('border','2px solid red');
+    } else {
+      $('#business_num_text').hide();
+      $('#business_num1').css('border','1px solid #999');
+    }
+    if(!businessNumJ2.test(businessNum2)){
+      $('#business_num_text').show();
+      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
+      $('#business_num2').css('border','2px solid red');
+    } else{
+      $('#business_num_text').hide();
+      $('#business_num1').css('border','1px solid #999');
+    }
+    if(!businessNumJ3.test(businessNum3)){
+      $('#business_num_text').show();
+      $('#business_num_text').html('사업자 등록번호를 올바르게 입력해주세요.');
+      $('#business_num3').css('border','2px solid red');
+    } else{
+      $('#business_num_text').hide();
+      $('#business_num3').css('border','1px solid #999');
     }
 
     // 이메일 체크
     if (!emailJ.test(emailValue)) {
       e.preventDefault();
       goTop();
-      $("#email").css("border", "2px solid red");
-      $("#email_text").show();
-      $("#email_text").html("올바른 이메일 형식을 입력해주세요.");
+      $('#email').css('border', '2px solid red');
+      $('#email_text').show();
+      $('#email_text').html('올바른 이메일 형식을 입력해주세요.');
+      $('#email_address').css('border', '2px solid red');
     } else {
-      $("#email_text").hide();
-      $("#email").css("border", "2px solid #1aa3ff");
+      $('#email_text').hide();
+      $('#email').css('border', '1px solid #999');
+      $('#email_address').css('border', '1px solid #999');
     }
 
     // 생년월일 체크
-    if (!birthYear || !birthMonth || !birthDay) {
+    if (!birthYear) {
       e.preventDefault();
       goTop();
-      $("#birth_text").show();
-      $("#birth_text").html("생년월일을 선택해주세요.");      
+      $('#birth_year').css('border', '2px solid red');
+      $('#birth_text').show();
+      $('#birth_text').html('생년월일을 선택해주세요.');
+    } else{
+      $('#birth_year').css('border', '1px solid #999');
+    }
+    if (!birthMonth) {
+      e.preventDefault();
+      goTop();
+      $('#birth_month').css('border', '2px solid red');
+      $('#birth_text').show();
+      $('#birth_text').html('생년월일을 선택해주세요.');
+    }
+    if (!birthDay) {
+      e.preventDefault();
+      goTop();
+      $('#birth_day').css('border', '2px solid red');
+      $('#birth_text').show();
+      $('#birth_text').html('생년월일을 선택해주세요.');
     } else {
-      $("#birth_text").hide();
+      $('#birth_text').hide();
     }
 
     // 주소 체크
-    if (postcode == "" || roadAddr == "" || jibunAddr == "" || extraAddr == "") {
+    if (postcode == '' || roadAddr == '' || jibunAddr == '' || extraAddr == '') {
       e.preventDefault();
       goTop();
-      $("#addr_text").show();
-      $("#addr_text").html("주소를 입력해주세요.");
-      $("#sample4_postcode").css('border','2px solid red');
-      $("#sample4_roadAddress").css('border','2px solid red');
-      $("#sample4_jibunAddress").css('border','2px solid red');
-      $("#sample4_detailAddress").css('border','2px solid red');
-      $("#sample4_extraAddress").css('border','2px solid red');
+      $('#addr_text').show();
+      $('#addr_text').html('주소를 입력해주세요.');
+      $('#sample4_postcode').css('border', '2px solid red');
+      $('#sample4_roadAddress').css('border', '2px solid red');
+      $('#sample4_jibunAddress').css('border', '2px solid red');
+      $('#sample4_detailAddress').css('border', '2px solid red');
+      $('#sample4_extraAddress').css('border', '2px solid red');
     } else {
-      $("#addr_text").hide();
+      $('#addr_text').hide();
     }
   });
 });

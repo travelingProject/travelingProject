@@ -4,7 +4,7 @@
 	String host_id = request.getParameter("host_id");
 	String result = "false";
 	Connection con = null;
-	Statement sta = null;
+	Statement stmt = null;
 	// db 비밀번호
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -12,22 +12,18 @@
 		if (con == null) {
 			throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 		}
-		sta = con.createStatement();
-		ResultSet rs = sta.executeQuery("SELECT host_id FROM project.host_info WHERE host_id = '" + host_id + "';");
-		if (rs.next()) {
+		stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT host_id FROM project.host_info WHERE host_id = '" + host_id + "';");
+		while (rs.next()) {
 			result = "true";
 		}
 	} finally {
 		try {
-			sta.close();
-		} catch (Exception ignored) {
-
-		}
-		try {
+			stmt.close();
 			con.close();
-		} catch (Exception ignored) {
-
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
-	out.print(result);
+	out.print(result);	
 %>

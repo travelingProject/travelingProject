@@ -2,7 +2,13 @@ package com.jslee.traveling;
 
 public class ReservationInfo {
 	int reservationId, roomId, people, price;
-	String userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status;
+	String userId, checkInDate, checkOutDate, checkInTime, checkOutTime, paymentTime, status, roomName;
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
 	public int getReservationId() {
 		return reservationId;
 	}

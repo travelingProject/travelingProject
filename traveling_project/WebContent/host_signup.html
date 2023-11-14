@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/signup.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="js/signup.js"></script>    
+    <script src="js/host_signup.js"></script>    
     <script src="js/header.js"></script>
     <title>회원가입</title>
   </head>
@@ -68,7 +68,7 @@
                   <b>아이디</b>
                 </th>
                 <td>
-                  <input type="text" name="id" id="id" class="user_info" placeholder="아이디" />
+                  <input type="text" name="host_id" id="id" class="user_info" placeholder="아이디" />
                   <p id="id_text" class="error_text"></p>
                 </td>
               </tr>
@@ -371,7 +371,7 @@
           <!-- 회원 가입 버튼 -->
           <div id="btn">
             <input type="submit" id="sign_up_btn" name="sign_up" value="회원가입" />
-            <input type="button" id="sign_up_cancel" name="sign_up_cancel" value="취소" onclick="location.href='login.html'" />
+            <input type="button" id="sign_up_cancel" name="sign_up_cancel" value="취소" onclick="location.href='host_agree.jsp'" />
           </div>
         </form>
       </section>

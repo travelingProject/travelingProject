@@ -45,7 +45,7 @@
 	 	<input id="rating4" class="rating" type="radio" name="rating" value="3.0"> <label for="rating4">★ 3.0 + </label> <br>
 	 	<hr>	 	
 	 	<h3>편의 시설</h3>
-	 	<input type="checkbox" id="parking" class="options" value="yes"> <label for="parking">주차</label>  <br> 
+	 	<input type="checkbox" id="parking" class="options" value="yes"> <label for="parking">주차</label> <br> 
 	 	<input type="checkbox" id="wireless_internet" class="options" value="yes"> <label for="wireless_internet">무료 인터넷</label> <br>
 	 	<input type="checkbox" id="tub" class="options" value="yes"><label for="tub"> 욕조</label> <br>
 	 	<input type="checkbox" id="washing_machine" class="options" value="yes"><label for="washing_machine"> 세탁기</label> <br>

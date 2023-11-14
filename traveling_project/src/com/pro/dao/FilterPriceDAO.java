@@ -50,7 +50,7 @@ public class FilterPriceDAO {
 		prices.put("minPrice", minPrice);
 		prices.put("maxPrice", maxPrice);
 		prices.put("rating",rating);
-		List<FilterStayInfo> stayList = s.selectList("filterStaySelect", prices);		
+		List<FilterStayInfo> stayList = s.selectList("filterStaySelect", prices);
 		s.close();
 		return stayList;
 	}

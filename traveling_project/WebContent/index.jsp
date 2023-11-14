@@ -31,7 +31,7 @@
 			<a href="pop_stays.condb?comm=pop_stays"><img src="images/view_all.png" alt="" /></a>
 			<div class="slider rec_slider">
 				<%
-				        for (int i = 0; i < 8; i++) {            
+				        for (int i = 0; i < 8; i++) {
 	    		%>
  			    <div>
  			        <a href="#">
