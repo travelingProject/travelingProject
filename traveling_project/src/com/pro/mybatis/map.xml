@@ -183,6 +183,11 @@
 		JOIN room_info ri ON si.stay_id = ri.stay_id
 		LEFT JOIN reservation res ON ri.room_id = res.room_id
 		LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id
+		<where>
+			<if test="parking != null">
+				AND si.parking_lot = #{parking}
+			</if>
+		</where>		
 		GROUP BY si.stay_id, si.stay_name, si.road_addr, si.image1
 		HAVING
 		min_room_price BETWEEN #{minPrice} AND #{maxPrice}

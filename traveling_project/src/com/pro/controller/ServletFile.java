@@ -1,6 +1,7 @@
 package com.pro.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,7 +69,7 @@ public class ServletFile extends HttpServlet {
 			} else if(comm.equals("pop_stays")) {
 				inter = PopStayService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("filter")) {				
+			} else if (comm.equals("filter")) {		        
 				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
 			}

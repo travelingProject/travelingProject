@@ -1,9 +1,18 @@
 package com.pro.dto;
 
+import java.util.List;
+
 public class FilterStayInfo {
+	List<String> facilities;	
 	String stay_name, road_addr, image1, parking;
 	int stay_id, min_room_price, rating_count;
 	double avg_rating, rating;
+	public List<String> getFacilities() {
+		return facilities;
+	}
+	public void setFacilities(List<String> facilities) {
+		this.facilities = facilities;
+	}
 	public String getStay_name() {
 		return stay_name;
 	}
