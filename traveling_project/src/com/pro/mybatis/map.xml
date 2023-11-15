@@ -155,6 +155,8 @@
 		si.stay_name AS stay_name,
 		si.road_addr AS road_addr,
 		si.image1 AS image1,
+		si.latitude AS latitude,
+		si.longitude AS longitude,
 		MIN(ri.price) AS min_room_price,
 		ROUND(AVG(rev.rating), 2) AS avg_rating,
 		COUNT(rev.rating) AS

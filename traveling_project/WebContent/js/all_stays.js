@@ -1,6 +1,6 @@
+var globalCoordinates = [];
 
-
-$(document).ready(function(){    
+$(document).ready(function(){
     let stayRequest = new XMLHttpRequest();
     const $rangeInput = $('.range-input input'),
     $priceInput = $('.price-input input'),
@@ -106,14 +106,22 @@ $(document).ready(function(){
                var parsedData = JSON.parse(data);
                var accommodationBox = $('#accomodation_info_box');
                accommodationBox.empty();
+               
+               // 위도와 경도를 저장할 배열을 초기화합니다.
+               var positionsArray = [];
 
                if (Array.isArray(parsedData.result)) {
+                   createMarkers(map);                   
+                   
                    parsedData.result.forEach(function(item) {
                        var formattedPrice = parseInt(item.price).toLocaleString();
                        var latitude = item.latitude;
                        var longitude = item.longitude;
-                       longitudes.push(latitude);
-                       latitudes.push(longitude);
+                       globalCoordinates.push({lat : item.latitude, lng : item.longitude})
+                       for(let i = 0; i < globalCoordinates.length; i++){
+                           console.log(globalCoordinates[i]);    
+                       }
+                       
                        var accommodationHTML = 
                        '<div class="accomodation">' +
                            '<a href="#">' +
@@ -131,6 +139,12 @@ $(document).ready(function(){
                            '</a>' +
                        '</div>';
                        accommodationBox.append(accommodationHTML);
+                       // 위도와 경도를 positionsArray에 추가합니다.
+                       positionsArray.push({
+                           lat: parseFloat(item.latitude),
+                           lng: parseFloat(item.longitude)
+                       });
+                       createMarkers(positionsArray);
                    });
                }
            }
@@ -384,25 +398,85 @@ $(document).ready(function(){
     });
 });
 
-window.onload = function(){
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+function initMap() {    
+    var latitudes = []; // 위도를 저장할 배열
+    var longitudes = []; // 경도를 저장할 배열
     
-    // 마커가 표시될 위치입니다 
-    var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
-    
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-        position: markerPosition
+    // 모든 'latitude' 클래스를 가진 input 요소를 찾아서 배열에 저장
+    document.querySelectorAll('.latitude').forEach(function(input, index) {
+        latitudes.push(input.value);
     });
     
-    // 마커가 지도 위에 표시되도록 설정합니다
-    marker.setMap(map);
+    // 모든 'longitude' 클래스를 가진 input 요소를 찾아서 배열에 저장
+    document.querySelectorAll('.longitude').forEach(function(input, index) {
+        longitudes.push(input.value);
+    });    
     
-    // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-    // marker.setMap(null);      
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: new kakao.maps.LatLng(latitudes[0], longitudes[0]), // 지도의 중심좌표
+        level: 12 // 지도의 확대 레벨
+    };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+    var positions = [];
+     
+    // 마커를 표시할 위치와 title 객체 배열입니다 
+    for (var i = 0; i < latitudes.length; i++) {
+        positions.push({
+            latlng: new kakao.maps.LatLng(latitudes[i], longitudes[i])
+        });
+    }
+    
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png"; 
+        
+    for (var i = 0; i < positions.length; i ++) {
+        
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(36, 50); 
+        
+        // 마커 이미지를 생성합니다    
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+        
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지 
+        });
+    }   
+}
+
+//마커를 생성하는 함수
+function createMarkers(map) {
+    var latitudes = []; // 위도를 저장할 배열
+    var longitudes = []; // 경도를 저장할 배열
+    
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png"; 
+    // 마커 이미지의 이미지 크기 입니다
+    var imageSize = new kakao.maps.Size(29, 35); 
+    // 마커 이미지를 생성합니다    
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+    // globalCoordinates 배열에 담긴 위치에 마커를 생성합니다
+    globalCoordinates.forEach(function(position) {
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: new kakao.maps.LatLng(position.lat, position.lng), // 마커를 표시할 위치
+            image: markerImage // 마커 이미지
+        });
+    });
+}
+
+window.onload = function(){
+    var map = initMap();
+    // 만약 AJAX 호출이 이미 완료되어 globalCoordinates 배열이 채워져 있다면,
+    // 바로 마커를 생성합니다. 그렇지 않다면 AJAX 호출 성공 후에 마커가 생성될 것입니다.
+    if(globalCoordinates.length > 0) {
+        createMarkers(map);
+    }
 }
