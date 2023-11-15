@@ -38,6 +38,8 @@ public class FilterPriceService implements ControlQuery{
 	        result.append("\"image\": \"" + stayList.get(i).getImage1() + "\",");
 	        result.append("\"price\": \"" + stayList.get(i).getMin_room_price() + "\",");
 	        result.append("\"avgRating\": \"" + stayList.get(i).getAvg_rating() + "\",");
+	        result.append("\"latitude\": \"" + stayList.get(i).getLatitude() + "\",");
+	        result.append("\"longitude\": \"" + stayList.get(i).getLongitude() + "\",");
 	        result.append("\"ratingCount\": \"" + stayList.get(i).getRating_count() + "\"}");
 	        if (i < stayList.size() - 1) {
 	            result.append(",");

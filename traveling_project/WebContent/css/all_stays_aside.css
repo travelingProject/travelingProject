@@ -5,7 +5,7 @@ aside {
 	padding: 0 20px;
 }
 
-#map {
+#side-map {
 	width: 300px;
 	height: 150px;
 	background: url(../images/map_image.svg) no-repeat center/cover;
@@ -13,11 +13,11 @@ aside {
 	cursor: pointer;
 }
 
-#map:hover p {
+#side-map:hover p {
 	color: #5392f9;
 }
 
-#map span {
+#side-map span {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -27,7 +27,7 @@ aside {
 	background: url(../images/map_pin.svg) no-repeat center/contain;
 }
 
-#map p {
+#side-map p {
 	text-align: center;
 	font-size: 20px;
 	font-weight: bold;

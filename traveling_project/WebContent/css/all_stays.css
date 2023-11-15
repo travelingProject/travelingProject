@@ -73,15 +73,13 @@ main {
 	left: 10px;
 }
 
-#mapper{
-    margin: 0;
+#map{
+    margin: 80px 0;
     width: 933px;
-    height: 100%;
-    border: 1px solid #000;    
+    height: 100%;        
     position: fixed;
     top:0;
-    right: 0;
-    border:1px solid #ccc;
+    right: 0;    
 }
 
 #more{

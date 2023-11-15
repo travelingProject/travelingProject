@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="css/all_stays.css" />
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- script -->    
+    <!-- script -->
+    <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
     <script src="js/all_stays.js"></script>
+    <script src="js/all_stays_map.js"></script>
     <title>예약하기</title>
   </head>
   <body>
@@ -51,7 +53,7 @@
 	      	}
 	      %>
 	     </div>	      
-	     <div id="mapper"></div>
+	     <div id="map"></div>
       </section>      
             
     </main>

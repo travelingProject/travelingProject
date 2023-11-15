@@ -2,16 +2,21 @@ package com.pro.dto;
 
 import java.util.List;
 
-public class FilterStayInfo {
-	List<String> facilities;	
+public class FilterStayInfo {		
 	String stay_name, road_addr, image1, parking;
 	int stay_id, min_room_price, rating_count;
-	double avg_rating, rating;
-	public List<String> getFacilities() {
-		return facilities;
+	double avg_rating, rating, latitude, longitude;
+	public double getLatitude() {
+		return latitude;
 	}
-	public void setFacilities(List<String> facilities) {
-		this.facilities = facilities;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+	public double getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 	public String getStay_name() {
 		return stay_name;

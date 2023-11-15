@@ -9,7 +9,7 @@
 </head>
 <body>
 	<aside>
-		<div id="map">
+		<div id="side-map">
 			<span></span>
 			<p>지도 전체 보기</p>
 		</div>
@@ -45,8 +45,8 @@
 	 	<input id="rating4" class="rating" type="radio" name="rating" value="3.0"> <label for="rating4">★ 3.0 + </label> <br>
 	 	<hr>	 	
 	 	<h3>편의 시설</h3>
-	 	<input type="checkbox" id="parking" class="options" value="parking"> <label for="parking">주차</label> <br> 
-	 	<input type="checkbox" id="wireless_internet" class="options" value="wireless_internet"> <label for="wireless_internet">무료 인터넷</label> <br>
+	 	<input type="checkbox" id="parking" class="options" value="yes"> <label for="parking">주차</label> <br> 
+	 	<input type="checkbox" id="wireless_internet" class="options" value="yes"> <label for="wireless_internet">무료 인터넷</label> <br>
 	 	<input type="checkbox" id="tub" class="options" value="yes"><label for="tub"> 욕조</label> <br>
 	 	<input type="checkbox" id="washing_machine" class="options" value="yes"><label for="washing_machine"> 세탁기</label> <br>
 	 	<input type="checkbox" id="drying_machine" class="options" value="yes"><label for="drying_machine"> 건조기</label><br>
@@ -57,7 +57,7 @@
 	 	<input type="checkbox" id="arcade_game" class="options" value="yes"><label for="arcade_game"> 오락실 게임</label><br>
 	 	<input type="checkbox" id="gym" class="options" value="yes"><label for="gym"> 헬스장</label><br>
 	 	<input type="checkbox" id="board_game" class="options" value="yes"><label for="board_game"> 보드게임</label><br>
-	 	<input type="checkbox" id="barbeque_tool" class="options" value="yes"><label for="barbeque_tool"> 바베큐</label><br>
+	 	<input type="checkbox" id="barbecue_tool" class="options" value="yes"><label for="barbecue_tool"> 바베큐</label><br>
 	 	<input type="checkbox" id="basic_cookware" class="options" value="yes"><label for="basic_cookware"> 기본 조리도구</label><br>
 	 	<hr>
 	 	<h3>서비스</h3>

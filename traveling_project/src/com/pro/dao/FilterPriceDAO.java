@@ -21,36 +21,68 @@ public class FilterPriceDAO {
 	}
 
 	SqlSessionFactory f = DBCon.getSqlSession();
+	
+	public String getParameterOrNull(HttpServletRequest req, String paramName) {
+	    String paramValue = req.getParameter(paramName);
+	    return (paramValue != null && paramValue.isEmpty()) ? null : paramValue;
+	}
 
 	public List<FilterStayInfo> dataCon(HttpServletRequest req, HttpServletResponse res) {
 		SqlSession s = f.openSession();
 		double rating = 0.0; // 기본값을 0으로 초기화
 		int minPrice = 0;
 		int maxPrice = 500000;
-
-		try {
-		    // req.getParameter("rating")이 null이 아니면 파싱을 시도합니다.
-		    String ratingParam = req.getParameter("rating");
-		    String minPriceParam = req.getParameter("minPrice");
-		    String maxPriceParam = req.getParameter("maxPrice");
-		    if (ratingParam != null && !ratingParam.isEmpty()) {
-		        rating = Double.parseDouble(ratingParam);
-		    }
-		    if(minPriceParam != null && !minPriceParam.isEmpty()) {
-		    	minPrice = Integer.parseInt(minPriceParam);
-		    }
-		    if(maxPriceParam != null && !maxPriceParam.isEmpty()) {
-		    	maxPrice = Integer.parseInt(maxPriceParam);
-		    }
-		} catch (NumberFormatException e) {
-		    // 파라미터 값이 숫자로 파싱할 수 없는 경우 예외를 처리합니다.
-		    // rating은 이미 0으로 초기화되어 있습니다.
-		}
-		Map<String, Object> prices = new HashMap<>();
-		prices.put("minPrice", minPrice);
-		prices.put("maxPrice", maxPrice);
-		prices.put("rating",rating);
-		List<FilterStayInfo> stayList = s.selectList("filterStaySelect", prices);
+		String parking = getParameterOrNull(req, "parking");
+		String wireless_internet = getParameterOrNull(req, "wireless_internet");
+		String tub = getParameterOrNull(req, "tub");
+		String washing_machine = getParameterOrNull(req, "washing_machine");
+		String drying_machine = getParameterOrNull(req, "drying_machine");
+		String air_conditioner = getParameterOrNull(req, "air_conditioner");
+		String fan = getParameterOrNull(req, "fan");
+		String heating_system = getParameterOrNull(req, "heating_system");
+		String pool = getParameterOrNull(req, "pool");
+		String arcade_game = getParameterOrNull(req, "arcade_game");
+		String gym = getParameterOrNull(req, "gym");
+		String board_game = getParameterOrNull(req, "board_game");
+		String barbecue_tool = getParameterOrNull(req, "barbecue_tool");
+		String basic_cookware = getParameterOrNull(req, "basic_cookware");
+		String breakfast = getParameterOrNull(req, "breakfast");
+		String clean_service = getParameterOrNull(req, "clean_service");
+		String luggage_storage = getParameterOrNull(req, "luggage_storage");
+	    String ratingParam = req.getParameter("rating");
+	    String minPriceParam = req.getParameter("minPrice");
+	    String maxPriceParam = req.getParameter("maxPrice");
+	    if (ratingParam != null && !ratingParam.isEmpty()) {
+	        rating = Double.parseDouble(ratingParam);
+	    }
+	    if(minPriceParam != null && !minPriceParam.isEmpty()) {
+	    	minPrice = Integer.parseInt(minPriceParam);
+	    }
+	    if(maxPriceParam != null && !maxPriceParam.isEmpty()) {
+	    	maxPrice = Integer.parseInt(maxPriceParam);
+	    }
+		Map<String, Object> filter = new HashMap<>();
+		filter.put("minPrice", minPrice);
+		filter.put("maxPrice", maxPrice);
+		filter.put("rating",rating);
+		filter.put("parking",parking);
+		filter.put("wireless_internet",wireless_internet);
+		filter.put("tub",tub);
+		filter.put("washing_machine",washing_machine);
+		filter.put("drying_machine",drying_machine);
+		filter.put("air_conditioner",air_conditioner);
+		filter.put("fan",fan);
+		filter.put("heating_system",heating_system);
+		filter.put("pool",pool);
+		filter.put("arcade_game",arcade_game);
+		filter.put("gym",gym);
+		filter.put("board_game",board_game);
+		filter.put("barbecue_tool",barbecue_tool);
+		filter.put("basic_cookware",basic_cookware);
+		filter.put("breakfast",breakfast);
+		filter.put("clean_service",clean_service);
+		filter.put("luggage_storage",luggage_storage);
+		List<FilterStayInfo> stayList = s.selectList("filterStaySelect", filter);		
 		s.close();
 		return stayList;
 	}
