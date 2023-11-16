@@ -55,8 +55,7 @@
 	      	}
 	      %>
 	     </div>	      
-	     <div id="map"></div>
-	     
+	     <div id="map"></div>    	
       </section>            
     </main>    
     <%@ include file="footer.jsp"%>    

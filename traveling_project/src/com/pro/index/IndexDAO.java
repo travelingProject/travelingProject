@@ -26,10 +26,10 @@ public class IndexDAO{
 	public void connect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "0509");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "xhddlf336!");
 			stmt = con.createStatement();	
 		} catch(Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class IndexDAO{
 			stmt.close();
 			con.close();
 		} catch(Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
