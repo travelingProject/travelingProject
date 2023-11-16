@@ -70,7 +70,7 @@ public class ServletFile extends HttpServlet {
 				inter.dataCon(req, res);
 			} else if (comm.equals("filter")) {				
 				inter = FilterPriceService.instance();
-				inter.dataCon(req, res);				
+				inter.dataCon(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

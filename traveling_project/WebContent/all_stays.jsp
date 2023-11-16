@@ -23,7 +23,7 @@
     <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
     <script src="js/all_stays.js"></script>
     <script src="js/all_stays_map.js"></script>
-    <title>예약하기</title>
+    <title>인기 숙소 정보</title>
   </head>
   <body>
     <%@ include file="header.jsp"%>
