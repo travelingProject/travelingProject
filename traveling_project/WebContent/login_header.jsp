@@ -7,7 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- css -->
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/login_header.css" />    
+    <link rel="stylesheet" href="css/login_header.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" /> 
     <!-- favicon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
     <!-- font -->
@@ -16,7 +19,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />    
     <!-- script -->    
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>   
     <script src="js/header.js"></script>
+    <script src="js/main.js"></script>
     <title>Traveling</title>
   </head>
 <body>
