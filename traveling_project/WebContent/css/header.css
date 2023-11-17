@@ -36,7 +36,7 @@ header {
   width: 1200px;
   height: 50px;
   background: #f5f5f5;
-  display: flex;
+  display: flex;f
   justify-content: space-between;
   border-radius: 30px;
   overflow: hidden;
@@ -196,8 +196,17 @@ input[type='number']::-webkit-outer-spin-button {
   transition: transform 250ms ease-in-out;
 }
 
-#my_info li:nth-child(2) a:after {
+#my_info li #sign-up:after {
   width: 73px;
+}
+
+#my_info li #my-info:after,
+#my_info li #my-plan:after {
+  width: 56px;
+}
+
+#my_info li #log-out:after{
+	width:68px;
 }
 
 #my_info li:hover a:after {

@@ -179,7 +179,7 @@ public class ReservationAcception {
 	public void reservationAccept(String reservationId) {
 		try {
 			connect();
-			stmt.executeUpdate("update reservation set status='예약 확정' where status='예약 대기' and reservation_id ='" + reservationId + "';");
+			stmt.executeUpdate("UPDATE reservation SET status='예약 확정' WHERE status='예약 대기' AND reservation_id ='" + reservationId + "';");
 		} catch(Exception e) {
 			System.out.println(e);
 		} finally {

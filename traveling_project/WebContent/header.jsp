@@ -46,14 +46,14 @@
         	<c:choose>
     			<c:when test="${not empty uid}">
         			<!-- uid가 있는 경우에 실행할 코드 -->
-        			<li><a href="my_info.jsp">내 정보</a></li>
-          			<li><a href="myplan.condb?comm=myplan">내 일정</a></li>
-          			<li><a href="logout.jsp">로그아웃</a></li>
+        			<li><a id="my-info" href="my_info.jsp">내 정보</a></li>
+          			<li><a id="my-plan" href="myplan.condb?comm=myplan">내 일정</a></li>
+          			<li><a id="log-out" href="logout.jsp">로그아웃</a></li>
     			</c:when>
     			<c:otherwise>
         			<!-- uid가 없는 경우에 실행할 코드 -->
-        			<li><a href="login_select.jsp">로그인</a></li>
-          			<li><a href="signup_select.jsp">회원 가입</a></li>
+        			<li><a id="login" href="login_select.jsp">로그인</a></li>
+          			<li><a id="sign-up" href="signup_select.jsp">회원 가입</a></li>
     			</c:otherwise>
 			</c:choose>
         </ul>

@@ -136,7 +136,8 @@
  				<div>
  					<a href="#">
  						<div class="image_slider">
- 							<img src="images/pop_image1.jpg" alt="" /> <img src="images/pop_image2.jpg" alt="" />
+ 							<img src="<%=path %>/stay_images/<%=cheepStays.get(i).getImage1() %>" alt="이미지1" />
+ 							<img src="<%=path %>/stay_images/<%=cheepStays.get(i).getImage2() %>" alt="이미지1" />
  						</div>
  						<h3><%=cheepStays.get(i).getStayName() %></h3>
  						<p><%=cheepStays.get(i).getStayAddr() %></p>
