@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% String id = (String) session.getAttribute("id");%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="uid" value="<%=id %>" />
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -40,8 +43,19 @@
           <a href="#" class="ir_pm">고객 센터</a>
         </div>
         <ul id="my_info">
-          <li><a href="login_select.jsp">로그인</a></li>
-          <li><a href="signup_select.jsp">회원 가입</a></li>
+        	<c:choose>
+    			<c:when test="${not empty uid}">
+        			<!-- uid가 있는 경우에 실행할 코드 -->
+        			<li><a href="my_info.jsp">내 정보</a></li>
+          			<li><a href="myplan.condb?comm=myplan">내 일정</a></li>
+          			<li><a href="logout.jsp">로그아웃</a></li>
+    			</c:when>
+    			<c:otherwise>
+        			<!-- uid가 없는 경우에 실행할 코드 -->
+        			<li><a href="login_select.jsp">로그인</a></li>
+          			<li><a href="signup_select.jsp">회원 가입</a></li>
+    			</c:otherwise>
+			</c:choose>
         </ul>
       </nav>
     </header>

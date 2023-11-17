@@ -25,7 +25,7 @@
 <script src="js/review_control.js"></script>
 </head>
 <body>
-	<jsp:include page="login_header.jsp" />
+	<jsp:include page="header.jsp" />
 	<!-- 마이페이지 공통 배너 -->
 	<section id="member_status">
 		<jsp:include page="./status.jsp" />

@@ -16,14 +16,14 @@
 <head>	
     <!-- favicon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
-	<%@ include file="login_header.jsp"%>	
+	<%@ include file="header.jsp"%>	
 </head>
 <body>
 	<section id="video">
 		<video autoplay loop muted>
 			<source src="video/Banner.mp4" type="video/mp4" width="100%" />
 		</video>
-	</section>	
+	</section>
 	<main>
 		<!-- 호텔 추천 -->
 		<section class="hotel_recommend">
