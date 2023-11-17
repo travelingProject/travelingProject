@@ -624,3 +624,8 @@ section {
 .event .event_slider .slick-dots .slick-active button {
 	opacity: 0.9
 }
+
+/* 마이페이지 section */
+.mypage-section {
+	margin: 0;
+}

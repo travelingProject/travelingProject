@@ -29,7 +29,7 @@ $(document).ready(function() {
 	
 	// 수정 버튼 클릭 시
 	$("#r_modi_btn").click(function() {
-		if (confirm("수정 버튼을 누르면 이미지를 새로 등록해야 합니다. 수정하시겠습니까?")) {
+		if (confirm("수정 버튼을 누르면 등록된 이미지는 삭제됩니다. 수정하시겠습니까?")) {
 			// 입력 필드를 수정 가능하게 만들고 수정 버튼을 비활성화
 			$("#r_modi_btn").hide();
 			$("#r_can_btn").hide();
@@ -44,7 +44,7 @@ $(document).ready(function() {
 	});
 	
 	// 모달 닫기 오른쪽 위 X
-	$(".close_btn, #r_can_btn").click(function() {
+	$("#r_can_btn").click(function() {
 		if (confirm("저장되지 않은 정보는 복원할 수 없습니다. 종료하시겠습니까?")) {
 			$("#r_modi_btn").show();
 			$("#r_can_btn").show();

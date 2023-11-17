@@ -1,18 +1,30 @@
 $(document).ready(function() {
+	
+	// 원래 상태를 저장할 객체
+	var originalState = {};
 
 	// 수정 버튼 클릭 시
 	$("#modi_btn").click(function() {
+		// 원래의 일정 상태를 저장합니다.
+        originalState.schedules = $(".schedule").map(function() {
+            return $(this).clone(); // 각 일정의 복제본을 저장합니다.
+        }).get();
 		$("#modi_btn").hide();
 		$("#can_btn").hide();
 		$("#modi_save_btn").show();
 		$("#modi_can_btn").show();
 		$(".days_btn button").show();
 		$(".dsch input").prop("disabled", false);
+		$(".nonetext").remove();
 	});
 
 	// 수정 -> 취소 버튼 클릭 시
 	$("#modi_can_btn").click(function() {
 		if (confirm("저장되지 않은 정보는 삭제됩니다. 취소하시겠습니까?")) {
+			// 저장된 원래의 일정 상태로 복원합니다.
+            $(".schedule").each(function(index) {
+                $(this).replaceWith(originalState.schedules[index]); // 각 일정을 원래 상태로 교체합니다.
+            });
 			$("#modi_btn").show();
 			$("#can_btn").show();
 			$("#modi_save_btn").hide();
@@ -36,7 +48,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	// 저장 버튼 클릭 시
+	/*// 저장 버튼 클릭 시
 	$("#modi_save_btn").click(function() {
 		if (confirm("저장하시겠습니까?")) {
 		$("#modi_btn").show();
@@ -55,7 +67,7 @@ $(document).ready(function() {
 				pid : pid
 			},
 			success: function(res) {
-				/* 비동기 방식으로 데이터 처리할 예정 */
+				 비동기 방식으로 데이터 처리할 예정 
 				$(".dsch").each(function() {
 			        var schedule = $(this);
 
@@ -96,7 +108,85 @@ $(document).ready(function() {
 
 		}
 		
+	});*/
+	
+	// 저장 버튼 클릭 시
+	$("#modi_save_btn").click(function() {
+	    if (confirm("저장하시겠습니까?")) {
+	        var pid = $("#pid_hidden").val(); // plan_id 값을 가져옴
+	        
+	        // 먼저 일정을 삭제하는 AJAX 요청
+	        $.ajax({
+	            url: "delete_plan.condb?comm=delPlan",
+	            type: "POST",
+	            data: { pid: pid },
+	            success: function(response) {
+	                // 여기에서 새 일정을 삽입하는 AJAX 요청을 합니다.
+	                insertSchedules(pid, function() {
+	                    // 모든 AJAX 호출이 성공한 후 UI를 원래 상태로 되돌립니다.
+	                    $("#modi_btn").show();
+	                    $("#can_btn").show();
+	                    $("#modi_save_btn").hide();
+	                    $("#modi_can_btn").hide();
+	                    $(".days_btn button").hide();
+	                    $(".dsch input").prop("disabled", true);
+	                    alert("저장되었습니다."); // 성공 메시지
+	                });
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Delete error:", status, error);
+	            }
+	        });
+	    }
 	});
+
+	function insertSchedules(planId) {
+	    // 각 .dsch 요소에 대해 반복
+	    $(".dsch").each(function() {
+	        var schedule = $(this);
+	        var pdate = schedule.find(".pdate").val();
+	        var pst = schedule.find(".pst").val();
+	        var pet = schedule.find(".pet").val();
+	        var pcon = schedule.find(".pcon").val();
+	        
+	        // 새 일정을 삽입하는 AJAX 요청
+	        $.ajax({
+	            url: "insert_plan.condb?comm=insPlan",
+	            type: "POST",
+	            data: {
+	                pid: planId,
+	                pdate: pdate,
+	                pst: pst,
+	                pet: pet,
+	                pcon: pcon
+	            },
+	            success: function(response) {
+	                // 삽입 성공 후, 일정을 업데이트하는 AJAX 요청을 할 수 있습니다.
+	                updateSchedule(planId);
+	            },
+	            error: function(xhr, status, error) {
+	                console.error("Insert error:", status, error);
+	            }
+	        });
+	    });
+	}
+
+	function updateSchedule(planId) {
+	    // 일정을 업데이트하는 AJAX 요청
+	    $.ajax({
+	        url: "update_plan.condb?comm=upPlan",
+	        type: "POST",
+	        data: { pid: planId },
+	        success: function(response) {
+	            // 업데이트 성공 후 할 작업
+	            console.log("Update success:", response);
+	        },
+	        error: function(xhr, status, error) {
+	            console.error("Update error:", status, error);
+	        }
+	    });
+	}
+
 	
 	// 이벤트 위임을 사용하여 "추가하기" 버튼 클릭 이벤트 처리
     $(".tab_list").on("click", ".add_schedule", function() {
@@ -322,7 +412,6 @@ function addScheduleToActiveTab(activeTab, currentDay) {
     	'<input type="hidden" class="pdate" value="' + pdate  + '">' +
         '<img src="images/number/' + imageFileName + '.png" alt="" width="36px" height="36px">' +
         '<input type="time" class="pst"> ~ <input type="time" class="pet"><br>' +
-        '<button type="button" class="add_place">장소 추가</button>' +
         '<input type="checkbox" class="delete_box" name="delete_box">' +
         '<input type="text" class="pcon" maxlength="100" placeholder="내용은 100자 이내로 입력해주세요.">' +
         '</div>';

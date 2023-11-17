@@ -33,7 +33,7 @@
 	<main id="member_contents">
 		<!-- 마이페이지 사이드 nav include -->
 		<jsp:include page="./my_page_nav.jsp" />
-		<section>
+		<section class="mypage-section">
 			<!-- 이 부분에 기능 index 페이지 -->
 			<div id="reservation_wrap" class="index_wrap">
 				<article>

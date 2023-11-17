@@ -36,7 +36,7 @@
     </section>
     <main id="member_contents">
       <jsp:include page="./my_page_nav.jsp"/>
-      <section> <!-- 이 부분에 기능 index 페이지 -->
+      <section class="mypage-section"> <!-- 이 부분에 기능 index 페이지 -->
         <div id="planner_wrap">
           <article>
             <h2>내 일정</h2>
