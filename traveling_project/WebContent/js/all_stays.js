@@ -1,5 +1,10 @@
 var map;
 var markers = [];
+var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png';
+var imageSize = new kakao.maps.Size(36, 50);
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+var priceVals = [];
+var overlays = [];
 
 //필터링 데이터를 수집하는 함수
 function collectFilterData() {
@@ -74,13 +79,72 @@ function sendFilterRequest(filterData) {
             lng: parseFloat(item.longitude),
           });
         });
-        createMarkers(positionsArray);
+        createOverlays(positionsArray, priceVals)
       }
     },
   });
 }
 
-$(document).ready(function () {	
+$(document).ready(function () {
+	  var latitudes = [];
+	  var longitudes = [];
+
+	  // '.latitude'와 '.longitude' 클래스를 가진 각 input 요소에서 위도와 경도 정보를 가져와 배열에 저장합니다.
+	  $('.latitude').each(function (index, element) {
+	    latitudes.push(parseFloat(element.value));
+	  });
+
+	  $('.longitude').each(function (index, element) {
+	    longitudes.push(parseFloat(element.value));
+	  });
+
+	  // '.price-val' 클래스를 가진 각 input 요소에서 가격 정보를 가져와 priceVals 배열에 저장합니다.
+	  $('.price-val').each(function (index, element) {
+	    priceVals.push(element.value); // element.value는 이미 문자열이므로 parseFloat()는 적용하지 않습니다.
+	  });
+
+	  // 지도를 표시할 div
+	  var mapContainer = document.getElementById('map');
+	  var mapOption = {
+	    center: new kakao.maps.LatLng(latitudes[0], longitudes[0]), // 지도의 중심좌표
+	    level: 6 // 지도의 확대 레벨
+	  };
+
+	  // 지도를 생성합니다
+	  var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	  // 위도와 경도 정보를 바탕으로 지도에 커스텀 오버레이를 추가합니다.
+	  latitudes.forEach(function (latitude, index) {
+	    var longitude = longitudes[index];
+	    var position = new kakao.maps.LatLng(latitude, longitude);
+
+	    // 커스텀 오버레이에 표시할 내용을 설정합니다.
+	    var content = '<div class="label"><span class="center">₩' + priceVals[index] + '</span></div>';
+
+	    // 커스텀 오버레이를 생성합니다.
+	    var customOverlay = new kakao.maps.CustomOverlay({
+	      map: map,
+	      position: position,
+	      content: content,
+	      yAnchor: 1 // 오버레이의 수직 위치 조정 값. 1이면 오버레이의 하단이 마커 위치에 맞춰집니다.
+	    });
+	    
+	    overlays.push(customOverlay)
+	  });
+
+	  // 지도 타입 변경 컨트롤을 생성한다
+	  var mapTypeControl = new kakao.maps.MapTypeControl();
+
+	  // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
+	  map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+	  // 지도에 확대 축소 컨트롤을 생성한다
+	  var zoomControl = new kakao.maps.ZoomControl();
+
+	  // 지도의 우측에 확대 축소 컨트롤을 추가한다
+	  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+	
   let stayRequest = new XMLHttpRequest();
   const $rangeInput = $('.range-input input'),
     $priceInput = $('.price-input input'),
@@ -159,98 +223,27 @@ $(document).ready(function () {
   });
 });
 
-window.onload = function () {
-  var latitudes = []; // 위도를 저장할 배열
-  var longitudes = []; // 경도를 저장할 배열
-
-  // 모든 'latitude' 클래스를 가진 input 요소를 찾아서 배열에 저장
-  document.querySelectorAll('.latitude').forEach(function (input, index) {
-    latitudes.push(input.value);
-  });
-
-  // 모든 'longitude' 클래스를 가진 input 요소를 찾아서 배열에 저장
-  document.querySelectorAll('.longitude').forEach(function (input, index) {
-    longitudes.push(input.value);
-  });
-
-  var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-      center: new kakao.maps.LatLng(latitudes[0], longitudes[0]), // 지도의
-      // 중심좌표
-      level: 6,
-      // 지도의 확대 레벨
-    };
-
-  map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-  var positions = [];
-
-  // 마커를 표시할 위치와 title 객체 배열입니다
-  for (var i = 0; i < latitudes.length; i++) {
-    positions.push({
-      latlng: new kakao.maps.LatLng(latitudes[i], longitudes[i]),
-    });
+//오버레이를 지도에서 제거하는 함수
+function removeOverlays() {	
+  for (var i = 0; i < overlays.length; i++) {	  
+	  overlays[i].setMap(null); // 오버레이를 지도에서 제거
   }
-
-  // 마커 이미지의 이미지 주소입니다
-  imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png';
-
-  for (var i = 0; i < positions.length; i++) {
-    // 마커 이미지의 이미지 크기 입니다 
-    imageSize = new kakao.maps.Size(36, 50);
-
-    // 마커 이미지를 생성합니다
-    markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-      map: map, // 마커를 표시할 지도
-      position: positions[i].latlng, // 마커를 표시할 위치
-      title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-      image: markerImage,
-      // 마커 이미지
-    });
-    
-    // 생성된 마커를 markers 배열에 추가합니다.
-    markers.push(marker);
-  }
-
-  // 지도 타입 변경 컨트롤을 생성한다
-  var mapTypeControl = new kakao.maps.MapTypeControl();
-
-  // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-  map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
-
-  // 지도에 확대 축소 컨트롤을 생성한다
-  var zoomControl = new kakao.maps.ZoomControl();
-
-  // 지도의 우측에 확대 축소 컨트롤을 추가한다
-  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-};
-
-//마커를 지도에서 제거하는 함수
-function removeMarkers() {	
-  for (var i = 0; i < markers.length; i++) {	  
-	  markers[i].setMap(null); // 마커를 지도에서 제거
-  }
-  markers = []; // 마커 배열을 비웁니다.
+  overlays = []; // 오버레이 배열을 비웁니다.
 }
 
-//마커를 생성하고 지도에 표시하는 함수
-function createMarkers(positionsArray) {
-  removeMarkers(); // 기존에 있던 마커들을 지도에서 모두 제거합니다.
-
-  var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png';
-  var imageSize = new kakao.maps.Size(36, 50);
-  var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-  // positionsArray에 있는 각 위치에 대해 마커 생성
-  positionsArray.forEach(function (position) {
-    var marker = new kakao.maps.Marker({
+// 오버레이를 생성하고 지도에 표시하는 함수
+function createOverlays(positionsArray, priceVals) {
+  removeOverlays(); // 기존에 있던 오버레이들을 지도에서 모두 제거합니다.
+  var position = new kakao.maps.LatLng(latitude, longitude);
+  positionsArray.forEach(function (position, index) {
+    var content = '<div class="label"><span class="center">' + priceVals[index] + '</span></div>';
+    
+    var overlay = new kakao.maps.CustomOverlay({
       map: map,
       position: new kakao.maps.LatLng(position.lat, position.lng),
-      image: markerImage,
+      content: content,
+      yAnchor: 1 // 오버레이의 수직 위치 조정 값. 1이면 오버레이의 하단이 마커 위치에 맞춰집니다.
     });
-    markers.push(marker); // 생성된 마커를 배열에 추가합니다.
+    overlays.push(overlay); // 생성된 오버레이를 배열에 추가합니다.
   });
 }

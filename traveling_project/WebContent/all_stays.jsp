@@ -21,8 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- script -->
     <script	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=503ba05a6aebde2c3d2be42f78d1b63b&libraries=services"></script>
-    <script src="js/all_stays.js"></script>
-    <script src="js/all_stays_map.js"></script>
+    <script src="js/all_stays.js"></script>    
     <title>인기 숙소 정보</title>
   </head>
   <body>
@@ -43,6 +42,7 @@
 		      		<div>		      			
 		      			<input type="hidden" class="latitude" value="<%=stayList.get(i).getLatitude()%>">
 		      			<input type="hidden" class="longitude" value="<%=stayList.get(i).getLongitude()%>">
+		      			<input type="hidden" class="price-val" value="<%= nf.format(stayList.get(i).getMin_room_price()) %>">
 		      			<h2 class="stay-name"><%= stayList.get(i).getStay_name() %></h2>
 		            	<p class="avg-rating"><%=stayList.get(i).getAvg_rating() + " (" + stayList.get(i).getRating_count() + ")" %></p>
 		            	<p class="road-addr"><%= stayList.get(i).getRoad_addr() %></p>

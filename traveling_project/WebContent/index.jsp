@@ -9,8 +9,7 @@
  	HashMap<Integer, PopStayInfo> popStays = indexDAO.selectPopStays();
  	HashMap<Integer, PopStayInfo> bestReviewStays = indexDAO.selectBestReviewStays();
  	HashMap<Integer, PopStayInfo> cheepStays = indexDAO.selectCheepStays();
-%>
- 	
+%> 	
 <!DOCTYPE html>
 <html>
 <head>	
