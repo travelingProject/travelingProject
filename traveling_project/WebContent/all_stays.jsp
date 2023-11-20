@@ -43,6 +43,7 @@
 		      			<input type="hidden" class="latitude" value="<%=stayList.get(i).getLatitude()%>">
 		      			<input type="hidden" class="longitude" value="<%=stayList.get(i).getLongitude()%>">
 		      			<input type="hidden" class="price-val" value="<%= nf.format(stayList.get(i).getMin_room_price()) %>">
+		      			<input type="hidden" class="name-val" value="<%= stayList.get(i).getStay_name() %>">
 		      			<h2 class="stay-name"><%= stayList.get(i).getStay_name() %></h2>
 		            	<p class="avg-rating"><%=stayList.get(i).getAvg_rating() + " (" + stayList.get(i).getRating_count() + ")" %></p>
 		            	<p class="road-addr"><%= stayList.get(i).getRoad_addr() %></p>

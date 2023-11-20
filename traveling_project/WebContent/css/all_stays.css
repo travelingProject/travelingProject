@@ -121,6 +121,7 @@ footer .footerInner {
 	border-radius: 8px;
 	user-select:none;
 	cursor:pointer;
+	text-align:center;
 }
 
 .center:before{
@@ -130,7 +131,7 @@ footer .footerInner {
       content: '';
       display: block;
       position: absolute;
-      top: 25px;
+      top: 49px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
@@ -146,7 +147,7 @@ footer .footerInner {
       left: 50%;
       transform:translateX(-50%);
       position: absolute;
-      top: 24px;
+      top: 48px;
       width: 0;
       z-index: 1;
 }
@@ -158,4 +159,8 @@ footer .footerInner {
 
 .center:hover:after{
 	display:none;
+}
+
+.center p{
+	font-weight:bold;
 }
