@@ -18,13 +18,27 @@ section {
 
 .stay-info-text {
 	text-align: center;
+	width: 520px;
 }
 
 .text-stay-content {
 	padding: 20px;
+	font-weight: bold;
 }
 
-.detail-stay-room {
+.text-stay-amenity {
+	margin-top: 17px;
+	padding-top: 8px;
+	background-color: #f3f3f3;
+	border-radius: 10px;
+}
+
+.stay-amenity-content {
+	text-align: left;
+	padding: 8px 10px;
+}
+
+.detail-stay-room, .detail-stay-review {
 	margin-top: 60px;
 	text-align: center;
 	font-weight: bold;
@@ -51,11 +65,15 @@ section {
 
 .room-item-info {
 	text-align: left;
-	padding-right: 175px;
+	width: 455px;
 }
 
 .room-info-name {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+}
+
+.room-content {
+	
 }
 
 .room-to-reservation {
@@ -77,4 +95,64 @@ section {
 	margin-top: 60px;
 	text-align: center;
 	font-weight: bold;
+}
+
+/* 별점 */
+.stay-review-avg {
+}
+
+.star-rating {
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 1.25rem;
+	line-height: 2.5rem;
+	justify-content: space-around;
+	padding: 0 0.2em;
+	text-align: center;
+	width: 5em;
+	margin: 0 auto;
+	font-weight: lighter;
+}
+
+.star-rating input {
+	display: none;
+}
+
+.star-rating label {
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 2.3px;
+	-webkit-text-stroke-color: #2b2a29;
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+.star-rating :checked ~label {
+	-webkit-text-fill-color: gold;
+}
+
+/* 리뷰 */
+.stay-review-content-wrap {
+	display: flex;
+	justify-content: left;
+}
+
+
+.stay-review-content {
+	text-align: left;
+	padding-left: 30px;
+}
+
+.review-writter {
+	padding: 0px 10px 10px 10px;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.review-content-wrap {
+	height: 90px;
+	width: 300px;
+	background-color: #f3f3f3;
+	border-radius: 10px;
+	padding: 10px;
 }
