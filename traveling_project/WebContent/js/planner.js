@@ -140,8 +140,9 @@ $(document).ready(function() {
 	    }
 	});
 
-	function insertSchedules(planId) {
-	    // 각 .dsch 요소에 대해 반복
+	function insertSchedules(planId, callback) {
+		// 각 .dsch 요소에 대해 반복
+	    var isAllSuccess = true;
 	    $(".dsch").each(function() {
 	        var schedule = $(this);
 	        var pdate = schedule.find(".pdate").val();
@@ -166,9 +167,15 @@ $(document).ready(function() {
 	            },
 	            error: function(xhr, status, error) {
 	                console.error("Insert error:", status, error);
+	                isAllSuccess = false;
 	            }
 	        });
 	    });
+	    
+	    // 모든 ajax 요청이 성공한 경우 callback 함수를 호출합니다.
+	    if (isAllSuccess) {
+	    	callback();
+	    }
 	}
 
 	function updateSchedule(planId) {

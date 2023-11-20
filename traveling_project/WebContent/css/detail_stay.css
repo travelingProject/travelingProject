@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+section {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+.detail-stay-info {
+	margin-top: 80px;
+	padding-top: 100px;
+}
+
+.stay-info-wrap {
+	display: flex;
+	justify-content: space-between;
+}
+
+.stay-info-text {
+	text-align: center;
+}
+
+.text-stay-content {
+	padding: 20px;
+}
+
+.detail-stay-room {
+	margin-top: 60px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.room-list {
+	margin-top: 60px;
+}
+
+.room-item {
+	padding: 30px 0px;
+    border-bottom: 1px dashed #b6b6b663;
+}
+
+.room-info-list li span {
+	font-size: 15px;
+	font-weight: lighter;
+}
+
+.room-item-wrap {
+	display: flex;
+	justify-content: space-between;
+}
+
+.room-item-info {
+	text-align: left;
+	padding-right: 175px;
+}
+
+.room-info-name {
+	margin-bottom: 15px;
+}
+
+.room-to-reservation {
+	margin-top: 28px;
+}
+
+.reservation-a {
+	padding: 15px;
+	border-radius: 6px;
+	background-color: black;
+	color: white;
+}
+
+.room-price {
+	margin-left: 15px;
+}
+
+.detail-stay-location {
+	margin-top: 60px;
+	text-align: center;
+	font-weight: bold;
+}
