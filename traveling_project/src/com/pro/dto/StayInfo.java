@@ -1,7 +1,15 @@
 package com.pro.dto;
 
 public class StayInfo {
-	private int stayId;
+	private int stayId, rating_count;
+	public int getRating_count() {
+		return rating_count;
+	}
+
+	public void setRating_count(int rating_count) {
+		this.rating_count = rating_count;
+	}
+
 	private String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, referenceAddr, lat, lngt, hostPhone, image1,
 			image2, image3, image4, image5, content, tub, bathSupplies, hairDryer, towel, bedding, washingMachine,
 			dryingMachine, pool, arcadeGame, gym, tv, boardGame, airConditioner, fan, heatingSystem, carbonMonoxideAlarm,

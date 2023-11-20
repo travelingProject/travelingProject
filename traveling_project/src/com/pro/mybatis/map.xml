@@ -4,8 +4,7 @@
 
 <mapper namespace="query_ex">
 
-	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner"
-		parameterType="com.pro.dto.MyPlanner">
+	<select id="myPlannerSelect" resultType="com.pro.dto.MyPlanner" parameterType="com.pro.dto.MyPlanner">
 		SELECT s.stay_name, s.location,
 		date_format(r.check_in_date, '%Y.%m.%d') AS check_in_date,
 		date_format(r.check_out_date, '%Y.%m.%d') AS check_out_date,
@@ -20,8 +19,7 @@
 		WHERE r.user_id = #{user_id};
 	</select>
 
-	<select id="planSelect" resultType="com.pro.dto.DetailPlan"
-		parameterType="com.pro.dto.DetailPlan">
+	<select id="planSelect" resultType="com.pro.dto.DetailPlan" parameterType="com.pro.dto.DetailPlan">
 		SELECT * FROM detail_plan WHERE plan_id = #{plan_id} AND
 		plan_date = #{check_in_date} ORDER BY plan_start_time, plan_end_time;
 	</select>
@@ -42,9 +40,7 @@
 		modified_date = now() WHERE plan_id = #{plan_id};
 	</update>
 
-	<select id="checkInInfoSelect"
-		resultType="com.pro.dto.CheckInInfo"
-		parameterType="com.pro.dto.CheckInInfo">
+	<select id="checkInInfoSelect" resultType="com.pro.dto.CheckInInfo" parameterType="com.pro.dto.CheckInInfo">
 		SELECT
 		hi.host_id AS hostId,
 		r.reservation_id AS
@@ -151,8 +147,7 @@
 		);
 	</insert>
 
-	<select id="popStaySelect"
-		resultType="com.pro.dto.FilterStayInfo">
+	<select id="popStaySelect" resultType="com.pro.dto.FilterStayInfo">
 		SELECT
 		si.stay_id AS stay_id,
 		si.stay_name AS stay_name,
@@ -168,30 +163,24 @@
 		JOIN room_info ri ON si.stay_id =
 		ri.stay_id
 		LEFT JOIN reservation res ON ri.room_id = res.room_id
-		LEFT
-		JOIN review_info rev ON res.reservation_id = rev.reservation_id
+		LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id
 		GROUP
 		BY si.stay_id, si.stay_name, si.road_addr, si.image1
 		ORDER BY
 		COUNT(res.room_id) DESC;
 	</select>
 
-	<select id="filterStaySelect" parameterType="map"
-		resultType="com.pro.dto.FilterStayInfo">
+	<select id="filterStaySelect" parameterType="map" resultType="com.pro.dto.FilterStayInfo">
 		SELECT
 		si.stay_id AS stay_id,
 		si.stay_name AS stay_name,
-		si.road_addr AS
-		road_addr,
+		si.road_addr AS road_addr,
 		si.image1 AS image1,
 		si.latitude AS latitude,
-		si.longitude AS
-		longitude,
+		si.longitude AS longitude,
 		MIN(ri.price) AS min_room_price,
-		ROUND(AVG(rev.rating), 2) AS
-		avg_rating,
-		count(rev.rating) as
-		rating_count
+		ROUND(AVG(rev.rating), 2) AS avg_rating,
+		count(rev.rating) AS rating_count
 		FROM stay_info si
 		JOIN
 		room_info ri ON si.stay_id = ri.stay_id
@@ -263,31 +252,61 @@
 		;
 	</select>
 
-	<select id="detailStayList"
-		resultType="com.pro.dto.DetailStayInfo" parameterType="int">
+	<!-- <select id="detailStayList" resultType="com.pro.dto.stayInfo" parameterType="int">
 		SELECT
-		si.stay_id AS stay_id,
-		si.stay_name AS stay_name,
-		si.road_addr AS	road_addr,
-		si.host_phone AS host_phone,
-		si.image1 AS stay_image1,
-		si.image2 AS stay_image2,
-		si.image3 AS stay_image3,
-		si.image4 AS stay_image4,
-		si.image5 AS stay_image5,
-		si.latitude AS latitude,
-		si.longitude AS	longitude,
-		ri.room_id AS room_id,
-		ri.price AS room_price,
-		rev.rating AS rating,
-		COUNT(rev.rating) AS rating_count
-		FROM stay_info si
-		JOIN
-		room_info ri ON si.stay_id = ri.stay_id
+		si.stay_name,si.content,si.road_addr,si.latitude,si.longitude,si.host_phone,si.image1,si.image2,si.image3,si.image4,si.image5,count(rev.rating) AS rating_count,
+		CASE WHEN tub = 'yes' THEN 'tub' END as tub,
+		CASE WHEN bath_supplies = 'yes' THEN 'bath_supplies' END as bath_supplies,
+		CASE WHEN hair_dryer = 'yes' THEN 'hair_dryer' END as hair_dryer,
+		CASE WHEN towel = 'yes' THEN 'towel' END as towel,
+		CASE WHEN bedding = 'yes' THEN 'bedding' END as bedding,
+		CASE WHEN washing_machine = 'yes' THEN 'washing_machine' END as washing_machine,
+		CASE WHEN drying_machine = 'yes' THEN 'drying_machine' END as drying_machine,
+		CASE WHEN pool = 'yes' THEN 'pool' END as pool,
+		CASE WHEN arcade_game = 'yes' THEN 'arcade_game' END as arcade_game,
+		CASE WHEN gym = 'yes' THEN 'gym' END as gym,
+		CASE WHEN tv = 'yes' THEN 'tv' END as tv,
+		CASE WHEN board_game = 'yes' THEN 'board_game' END as board_game,
+		CASE WHEN air_conditioner = 'yes' THEN 'air_conditioner' END as air_conditioner,
+		CASE WHEN fan = 'yes'
+		THEN 'fan' END as fan,
+		CASE WHEN heating_system = 'yes' THEN 'heating_system' END as heating_system,
+		CASE WHEN carbon_monoxide_alarm = 'yes' THEN 'carbon_monoxide_alarm' END as carbon_monoxide_alarm,
+		CASE WHEN fire_extinguisher = 'yes' THEN 'fire_extinguisher' END as fire_extinguisher,
+		CASE WHEN aid_kit = 'yes' THEN 'aid_kit' END as aid_kit,
+		CASE WHEN fire_alarm = 'yes' THEN 'fire_alarm' END as fire_alarm,
+		CASE WHEN workspace = 'yes' THEN 'workspace' END as workspace,
+		CASE WHEN wireless_internet = 'yes' THEN 'wireless_internet' END as wireless_internet,
+		CASE WHEN barbecue_tool = 'yes' THEN 'barbecue_tool' END as barbecue_tool,
+		CASE WHEN basic_cookware = 'yes' THEN 'basic_cookware' END as basic_cookware,
+		CASE WHEN dining_table = 'yes' THEN 'dining_table' END as dining_table,
+		CASE WHEN cutlery = 'yes' THEN 'cutlery' END as cutlery,
+		CASE WHEN refrigerator = 'yes' THEN 'refrigerator' END as refrigerator,
+		CASE WHEN microwave = 'yes' THEN 'microwave' END as microwave,
+		CASE WHEN electric_rice_cooker =
+		'yes' THEN 'electric_rice_cooker' END as electric_rice_cooker,
+		CASE WHEN gas_stove_or_induction = 'yes' THEN 'gas_stove_or_induction' END as gas_stove_or_induction,
+		CASE WHEN electric_vehicle_charging_facilities = 'yes' THEN 'electric_vehicle_charging_facilities' END as electric_vehicle_charging_facilities,
+		CASE WHEN parking = 'yes' THEN 'parking' END as parking,
+		CASE WHEN breakfast = 'yes' THEN 'breakfast' END as breakfast,
+		CASE WHEN clean_service = 'yes' THEN 'clean_service' END as clean_service,
+		CASE WHEN luggage_storage = 'yes' THEN 'luggage_storage' END as
+		luggage_storage
+		FROM
+		stay_info si
+        JOIN room_info ri ON si.stay_id =
+		ri.stay_id
 		LEFT JOIN reservation res ON ri.room_id = res.room_id
 		LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id
-		GROUP BY si.stay_id, si.stay_name, si.road_addr, si.image1
-		ORDER BY
-		COUNT(res.room_id) DESC;
+		WHERE si.stay_id = #{stay_id};
+	</select> -->
+
+	<select id="reviewList" resultType="com.pro.dto.RoomInfo" parameterType="int">
+		SELECT ri.room_name, revi.review_title, revi.review_content,ri.room_id, revi.rating
+		FROM review_info revi
+		JOIN reservation res ON revi.reservation_id = res.reservation_id
+		JOIN room_info ri ON res.room_id = ri.room_id
+		JOIN stay_info si ON ri.stay_id = si.stay_id
+		WHERE si.stay_id = #{stay_id};
 	</select>
 </mapper>

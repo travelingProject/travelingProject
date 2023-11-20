@@ -72,7 +72,7 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("filter")) {				
 				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("stay_info")) {
+			} else if (comm.equals("stay_info")) {				
 				inter = DetailStayService.instance();
 				inter.dataCon(req, res);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("detail_stay.jsp");

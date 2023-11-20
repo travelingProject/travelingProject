@@ -19,10 +19,9 @@ public class DetailStayService implements ControlQuery{
 
 	@Override
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int stay_id = Integer.parseInt((String) req.getParameter("stay_id"));
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
-		DetailStayInfo detailStayInfo = new DetailStayInfo();
-		RoomInfo roomInfo = new RoomInfo();
-		List<DetailStayInfo> detailStayList =  stayManagementDAO.selectStayInfo(detailStayInfo);
+		List<DetailStayInfo> detailStayList =  stayManagementDAO.selectStayInfo(stay_id);
 		req.setAttribute("detailStayList", detailStayList);
 		return null;
 	}

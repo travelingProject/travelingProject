@@ -137,19 +137,18 @@ public class StayManagementDAO {
 	}
 	
 	// 숙소 상세 정보
-	public List<DetailStayInfo> selectStayInfo(DetailStayInfo detailStayInfo) {
+	public List<DetailStayInfo> selectStayInfo(int stay_id) {
 		SqlSession s = f.openSession();
-		List<DetailStayInfo> detailStayList =  s.selectList("selectDetailStayInfo",detailStayInfo);
-		s.commit();
+		List<DetailStayInfo> detailStayList =  s.selectList("detailStayList",stay_id);		
 		s.close();
 		return detailStayList;
 	}
 	
 	// 객실 상세 정보
-	public List<RoomInfo> selectRoomInfo() {
-		RoomInfo roomInfo = new RoomInfo();
+	public List<RoomInfo> selectRoomInfo(int stay_id) {		
 		SqlSession s = f.openSession();
-		List<RoomInfo> detailRoomList = s.selectList("selectDetailRoomInfo",roomInfo);
+		List<RoomInfo> detailRoomList = s.selectList("reviewList",stay_id);
+		s.close();
 		return detailRoomList;
 	}
 	
