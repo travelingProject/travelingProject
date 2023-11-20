@@ -12,6 +12,7 @@ import com.pro.service.FilterPriceService;
 import com.pro.service.PopStayService;
 import com.pro.service.ReservationSelectService;
 import com.pro.service.RoomInsertService;
+import com.pro.service.DetailStayService;
 import com.pro.service.StayInsertService;
 import com.pro.service.StaySelectService;
 
@@ -71,6 +72,11 @@ public class ServletFile extends HttpServlet {
 			} else if (comm.equals("filter")) {				
 				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
+			} else if (comm.equals("stay_info")) {
+				inter = DetailStayService.instance();
+				inter.dataCon(req, res);
+				RequestDispatcher dispatcher = req.getRequestDispatcher("detail_stay.jsp");
+				dispatcher.forward(req, res);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

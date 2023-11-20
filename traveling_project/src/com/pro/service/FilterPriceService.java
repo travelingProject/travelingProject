@@ -33,6 +33,7 @@ public class FilterPriceService implements ControlQuery{
 	    result.append("{\"result\":[");
 	    for (int i = 0; i < stayList.size(); i++) {
 	        result.append("{");
+	        result.append("\"stayId\": \"" + stayList.get(i).getStay_id() + "\",");
 	        result.append("\"stayName\": \"" + stayList.get(i).getStay_name() + "\",");
 	        result.append("\"roadAddr\": \"" + stayList.get(i).getRoad_addr() + "\",");
 	        result.append("\"image\": \"" + stayList.get(i).getImage1() + "\",");

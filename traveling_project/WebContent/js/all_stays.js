@@ -57,7 +57,7 @@ function sendFilterRequest(filterData) {
           // 숙박 정보 HTML을 구성하고 페이지에 추가합니다.
           var accommodationHTML = `
             <div class="accomodation">
-              <a href="#">
+              <a href="stay_info.condb?comm=stay_info&stay_id=${item.stayId}">
                 <div class="accomodation_box">
                   <div>
                     <img class="image" src="/traveling_project/stay_images/${item.image}" alt="이미지1" />
@@ -103,12 +103,10 @@ function createOverlays(locations) {
   for (var key in locations) {
     if (locations.hasOwnProperty(key)) {
       var position = locations[key];
-      var content = '<a href="#">' +
-                        '<div class="center">' +
-                              '<p>' + position.stayName + '</p>' + 
-                              '<span>₩' + position.price + '</span>' +
-                         '</div>' +
-                    '</a>';
+      var content ='<div class="center">' +
+                       '<p>' + position.stayName + '</p>' + 
+                       '<span>₩' + position.price + '</span>' +
+                   '</div>';                   
       var customOverlay = new kakao.maps.CustomOverlay({
         map: map,
         position: new kakao.maps.LatLng(position.lat, position.lng),
@@ -121,7 +119,7 @@ function createOverlays(locations) {
 }
 
 $(document).ready(function () {
-    
+            
   var locations = {};
 
   // 위도와 경도 값을 포함하는 각 요소에 대해 반복합니다.
@@ -172,12 +170,11 @@ $(document).ready(function () {
       var position = new kakao.maps.LatLng(location.lat, location.lng);
       
       // 커스텀 오버레이에 표시할 내용을 설정합니다.
-      var content = '<a href="#">' +
-                      '<div class="center">' +
-                          '<p>' + location.stayName + '</p>' + 
-                          '<span>₩' + location.price + '</span>' +
-                       '</div>' +
-                     '</a>';
+      var content = '<div class="center">' +
+                       '<p>' + location.stayName + '</p>' + 
+                       '<span>₩' + location.price + '</span>' +
+                     '</div>';
+                    
 
       // 커스텀 오버레이를 생성합니다.
       var customOverlay = new kakao.maps.CustomOverlay({
@@ -282,6 +279,14 @@ $(document).ready(function () {
   });
   
   $('#side-map').click(function(){
-      $('#map').css('width','100%');
+      $('#map').css('width','100vw');
+      map.relayout();
+      $('#map-close').show();
+  })
+  
+  $('#map-close').click(function(){
+      $('#map').css('width','933px');
+      map.relayout();
+      $(this).hide();      
   })
 });

@@ -5,7 +5,7 @@
 <%@ page import="java.text.NumberFormat" %>
 <%
 	List<FilterStayInfo> stayList = (List<FilterStayInfo>) request.getAttribute("stayList");
-	List<FilterStayInfo> filterList = (List<FilterStayInfo>) request.getAttribute("filterList");	
+	List<FilterStayInfo> filterList = (List<FilterStayInfo>) request.getAttribute("filterList");
 	String path = request.getContextPath();
 	NumberFormat nf = NumberFormat.getInstance();	
 %>
@@ -34,8 +34,8 @@
 	      	for(int i = 0; i < stayList.size(); i++){
 	      %>
       	<div class="accomodation">
-	      	<a href="#">
-	      		<div class="accomodation_box">	      				
+	      	<a href="stay_info.condb?comm=stay_info&stay_id=<%=stayList.get(i).getStay_id()%>">
+	      		<div class="accomodation_box">
 		      		<div>
 		      			<img class="image" src="<%=path %>/stay_images/<%=stayList.get(i).getImage1() %>" alt="이미지1" />
 		      		</div>
@@ -55,9 +55,10 @@
 	      <%
 	      	}
 	      %>
-	     </div>	      
-	     <div id="map"></div>    	
-      </section>            
+	     </div>	         	
+      </section>
+      <div id="map"></div>
+      <div id="map-close">목록 보기</div>            
     </main>    
     <%@ include file="footer.jsp"%>    
   </body>

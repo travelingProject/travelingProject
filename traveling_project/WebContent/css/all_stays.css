@@ -72,13 +72,12 @@ main {
 	left: 10px;
 }
 
-#map {
-	margin: 80px 0;
+#map {	
 	width: 933px;
 	height: 100%;
-	position: fixed;
-	top: 0;
-	right: 0;
+	position:fixed;
+	top:80px;
+	right:0;
 }
 
 #more {
@@ -163,4 +162,24 @@ footer .footerInner {
 
 .center p{
 	font-weight:bold;
+}
+
+#map-close{
+    width: 100px;
+    height: 50px;
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);    
+    line-height: 50px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    border-radius: 15px;
+    cursor:pointer;
+    display:none;
+}
+
+#map-close:hover{
+	color:#1aa3ff;
 }
