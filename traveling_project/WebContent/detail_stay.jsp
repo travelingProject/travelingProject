@@ -5,19 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- favicon -->
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
-<!-- fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Gowun+Dodum&display=swap" rel="stylesheet" />
-<style> <!-- 나눔고딕 폰트 -->
-  @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-</style>
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <!-- css -->
-<link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/detail_stay.css">
 <!-- js -->
 </head>

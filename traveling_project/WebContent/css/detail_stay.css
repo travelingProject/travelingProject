@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 section {
-	width: 1200px;
+	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 auto;
 }
