@@ -10,24 +10,73 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.pro.dto.CheckInInfo;
+import com.pro.dto.DetailStayInfo;
 import com.pro.dto.FilterStayInfo;
+import com.pro.dto.RoomInfo;
+import com.pro.dto.StayInfo;
 import com.pro.mybatis.DBCon;
 
-public class FilterPriceDAO {
-	static FilterPriceDAO fps = new FilterPriceDAO();
+public class StayManagementDAO {
+	static StayManagementDAO stmd = new StayManagementDAO();
 
-	public static FilterPriceDAO instance() {
-		return fps;
+	public static StayManagementDAO instance() {
+		return stmd;
 	}
-
+	
 	SqlSessionFactory f = DBCon.getSqlSession();
 	
+	// 체크인 정보
+	public List<CheckInInfo> checkInSelect(CheckInInfo checkInInfo) {
+		SqlSession s = f.openSession();
+		
+		List<CheckInInfo> checkInList = s.selectList("checkInInfoSelect", checkInInfo);
+		
+		s.close();
+		
+		return checkInList;
+	}
+	
+	// 숙소 등록
+	public void stayInsert(StayInfo stayInfo) {		
+		SqlSession s = f.openSession();		
+			s.insert("stayInfoInsert", stayInfo);			
+			s.commit();
+			s.close();
+	}
+	
+	// 숙소ID 개수
+	public int countStayId(String hostId) {
+		SqlSession s = f.openSession();		
+		int stayId = s.selectOne("stayIdCount" , hostId);		
+		s.close();
+		return stayId;
+	}
+	
+	// 객실 등록
+	public void roomInsert(RoomInfo roomInfo) {
+		SqlSession s = f.openSession();
+		s.insert("roomInfoInsert", roomInfo);
+		s.commit();
+		s.close();
+	}
+	
+	
+	// 인기 숙소 선택
+	public List<FilterStayInfo> popStaySelect() {
+		SqlSession s = f.openSession();
+		List<FilterStayInfo> stayList = s.selectList("popStaySelect");
+		s.close();
+		return stayList;
+	}	
+	
+	// 필터링된 숙소 선택
 	public String getParameterOrNull(HttpServletRequest req, String paramName) {
 	    String paramValue = req.getParameter(paramName);
 	    return (paramValue != null && paramValue.isEmpty()) ? null : paramValue;
 	}
-
-	public List<FilterStayInfo> dataCon(HttpServletRequest req, HttpServletResponse res) {
+	
+	public List<FilterStayInfo> filterStay(HttpServletRequest req, HttpServletResponse res) {
 		SqlSession s = f.openSession();
 		double rating = 0.0; // 기본값을 0으로 초기화
 		int minPrice = 0;
@@ -86,4 +135,22 @@ public class FilterPriceDAO {
 		s.close();
 		return stayList;
 	}
+	
+	// 숙소 상세 정보
+	public List<DetailStayInfo> selectStayInfo(DetailStayInfo detailStayInfo) {
+		SqlSession s = f.openSession();
+		List<DetailStayInfo> detailStayList =  s.selectList("selectDetailStayInfo",detailStayInfo);
+		s.commit();
+		s.close();
+		return detailStayList;
+	}
+	
+	// 객실 상세 정보
+	public List<RoomInfo> selectRoomInfo() {
+		RoomInfo roomInfo = new RoomInfo();
+		SqlSession s = f.openSession();
+		List<RoomInfo> detailRoomList = s.selectList("selectDetailRoomInfo",roomInfo);
+		return detailRoomList;
+	}
+	
 }

@@ -134,11 +134,6 @@
 		);
 	</insert>
 
-	<select id="stayIdSelect" resultType="int"
-		parameterType="String">
-		SELECT stay_id FROM stay_info where host_id = #{hostId};
-	</select>
-
 	<select id="stayIdCount" resultType="int" parameterType="String">
 		SELECT
 		count(stay_id) FROM stay_info where host_id = #{hostId};

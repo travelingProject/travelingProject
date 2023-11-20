@@ -1,4 +1,4 @@
-package com.pro.service;
+package com.pro.svc;
 
 import java.util.Enumeration;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.pro.controller.ControlQuery;
-import com.pro.dao.RoomInsertDAO;
+import com.pro.dao.StayManagementDAO;
 import com.pro.dto.RoomInfo;
 
 public class RoomInsertService implements ControlQuery {
@@ -116,8 +116,8 @@ public class RoomInsertService implements ControlQuery {
 		}
 
 		rs.setCharacterEncoding("UTF-8");
-		RoomInsertDAO roomInsert = new RoomInsertDAO();
-		StayIdSelectService stayIdSel = new StayIdSelectService();
+		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
+		CountStayIdService stayIdSel = new CountStayIdService();
 		int stayId = stayIdSel.selStayId(hostId);
 		RoomInfo roomInfo = new RoomInfo();					
 		roomInfo.setStayId(stayId);
@@ -136,7 +136,7 @@ public class RoomInsertService implements ControlQuery {
 		roomInfo.setImage8(imagename8);
 		roomInfo.setImage9(imagename9);
 		roomInfo.setImage10(imagename10);
-		roomInsert.dbInsert(roomInfo);
+		stayManagementDAO.roomInsert(roomInfo);
 		return null;
 	}
 }

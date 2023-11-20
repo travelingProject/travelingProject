@@ -1,4 +1,4 @@
-package com.pro.service;
+package com.pro.svc;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.ControlQuery;
-import com.pro.dao.FilterPriceDAO;
+import com.pro.dao.StayManagementDAO;
 import com.pro.dto.FilterStayInfo;
 
 public class FilterPriceService implements ControlQuery{
@@ -22,8 +22,8 @@ public class FilterPriceService implements ControlQuery{
 	public String dataCon(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		res.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html;charset=UTF-8");
-		FilterPriceDAO filterPriceSelect = new FilterPriceDAO();
-		List<FilterStayInfo> stayList = filterPriceSelect.dataCon(req,res);
+		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
+		List<FilterStayInfo> stayList = stayManagementDAO.filterStay(req,res);
 		res.getWriter().write(getJSON(stayList));
 		return null;
 	}
