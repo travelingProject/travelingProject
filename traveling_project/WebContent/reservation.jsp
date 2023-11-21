@@ -16,6 +16,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
+<!-- 토스페이먼츠 -->
+<script src="https://js.tosspayments.com/v1/payment-widget"></script>
+<script src="js/tosspay.js"></script>
+
 <script src="js/reservation.js"></script>
 </head>
 <body>
@@ -125,7 +129,7 @@
 								<strong>이용인원</strong>
 								<div class="option-txt">
 									<button type="button" class="people-change" id="people-minus">-</button>
-									<span id="guest"><b id="guest-txt"></b>명</span>
+									<span id="guest"><b id="guest-txt">2</b>명</span>
 									<button type="button" class="people-change" id="people-plus">+</button>
 								</div>
 							</li>
@@ -149,12 +153,21 @@
 								</table>
 							</li>
 							<li>
-								<a href="#" id="reservation-next">예약하기</a>
+								<button type="button" id="reservation-next" onclick="payModal()">예약하기</button>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
+	<section class="toss-modal">
+		<div id="toss-modal-wrap">
+			<div id="toss-window"></div>
+			<div id="toss-window-btn">
+				<button type="button" id="payment-btn">결제</button>
+				<button type="button" id="payment-cancel">취소</button>				
+			</div>			
 		</div>
 	</section>
 	
