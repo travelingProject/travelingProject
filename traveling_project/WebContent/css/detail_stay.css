@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+#modal-backdrop{
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	background:rgba(0,0,0,.5);
+	z-index:1;
+	display:none;
+}
+
 #amenity-title{
 	margin-bottom:20px;
 }
@@ -8,29 +19,29 @@
 	padding:5px 0;
 }
 
-#amenity-btn{
+#amenity-btn{	
     width: 120px;
     height: 30px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: block;    
-    margin: 0 auto;
+    margin: 20px auto 0;
     cursor:pointer;
     background:#1aa3ff;
-    color:#fff;
+    font-weight:bold;
 }
 
 #amenity-btn:hover{
-	background:#000;	
+	background:#000;
+	color:#fff;
 }
 
-.amenity{
-	/* display:none; */
+.amenity{	
     position: fixed;
     width: 700px;    
-    background: #fff;
-    padding: 50px 100px;
+    background: #f9f9f9;
+    padding: 50px 100px 30px;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 30px;
@@ -38,6 +49,29 @@
     top: 20%;
     transform: translateX(-50%);
     z-index: 100;
+    display:none;
+}
+
+.amenity-category{
+	padding:10px 0;
+}
+
+#amenity-close{
+	display:block;
+	margin:20px auto 0;
+	border:1px solid #ccc;
+	border-radius:5px;
+	width:100px;
+	height:30px;
+	background:#1aa3ff;
+	line-height:30px;	
+	cursor:pointer;
+	font-weight:bold;
+}
+
+#amenity-close:hover{
+	color:#fff;
+	background:#000;
 }
 
 .content{
@@ -61,10 +95,15 @@ section {
 
 .stay-amenity-content {
 	text-align: left;
-    padding: 8px 10px;
+    padding: 0 20px 10px;
     overflow-y: scroll;
-    border: 1px solid #000;
+    border: 1px solid #ccc;
     height: 500px;
+    background: #fff;    
+}
+.stay-amenity-content span{
+	display:block;
+	margin:5px 0;
 }
 
 .room-item {
@@ -110,10 +149,29 @@ section {
 	margin-left: 15px;
 }
 
+.detail-stay-info{
+	padding: 20px 200px;
+}
+
 .detail-stay-location {
-	margin: 20px auto 60px;
-	text-align: center;
+	margin: 20px auto 60px;	
 	font-weight: bold;
+}
+
+.detail-stay-location h2{	
+	margin-bottom:20px;
+	text-align:center;
+	font-size:20px;
+}
+
+.stay-location-info{
+	margin-top:20px;
+	display:flex;
+	justify-content:space-between;
+}
+
+.stay-location-info address{
+	display:inline-block;
 }
 
 #review-title{	
@@ -226,4 +284,10 @@ div.swiper-button-next{
 div.swiper-button-prev:hover,
 div.swiper-button-next:hover{
 	color:#000;
+}
+
+#map{
+	width:1040px;
+	height:585px;
+	border:1px solid #ccc;
 }

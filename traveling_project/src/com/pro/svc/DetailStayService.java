@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pro.controller.ControlQuery;
 import com.pro.dao.StayManagementDAO;
-import com.pro.dto.DetailStayInfo;
 import com.pro.dto.ReviewInfo;
 import com.pro.dto.RoomInfo;
 import com.pro.dto.StayInfo;

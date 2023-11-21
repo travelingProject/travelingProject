@@ -1,5 +1,9 @@
-main {
-	width: 1700px;
-	margin: 0 auto;
-	margin-top: 80px;
+.info{
+	font-size:16px;	
+	line-height:2;	
+}
+
+#amenties_edit_btn{
+	display:block;
+	margin:0 auto;
 }

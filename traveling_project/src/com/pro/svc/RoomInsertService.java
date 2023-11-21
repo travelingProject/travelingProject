@@ -22,12 +22,15 @@ public class RoomInsertService implements ControlQuery {
 	@Override
 	public String dataCon(HttpServletRequest rq, HttpServletResponse rs) throws Exception {
 		// TODO Auto-generated method stub
+		rs.setCharacterEncoding("UTF-8");
 		HttpSession session = rq.getSession();
 		String hostId = (String) session.getAttribute("host_id");		
 		String uploadPath = rq.getRealPath("/room_images");
 		int size = 10 * 1024 * 1024;		
 		String roomName = "";
 		String content = "";
+		String checkInTime = "";
+		String checkOutTime = "";
 		int price = 0;
 		int stdPeople = 0;
 		int maxPeople = 0;
@@ -56,6 +59,8 @@ public class RoomInsertService implements ControlQuery {
 			Enumeration files = multi.getFileNames();
 			roomName = multi.getParameter("room_name");
 			content = multi.getParameter("content");
+			checkInTime = multi.getParameter("check_in_time");
+			checkOutTime = multi.getParameter("check_out_time");
 			price = Integer.parseInt(multi.getParameter("price"));			
 			stdPeople = Integer.parseInt(multi.getParameter("std_people"));
 			maxPeople = Integer.parseInt(multi.getParameter("max_people"));			
@@ -110,33 +115,35 @@ public class RoomInsertService implements ControlQuery {
 			String image10 = (String) files.nextElement();
 			imagename10 = multi.getFilesystemName(image10);
 			origimagename10 = multi.getOriginalFileName(image10);
-
+			
+			StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
+			CountStayIdService stayIdSel = new CountStayIdService();
+			int stayId = stayIdSel.selStayId(hostId);
+			
+			RoomInfo roomInfo = new RoomInfo();			
+			roomInfo.setStayId(stayId);
+			roomInfo.setRoomName(roomName);
+			roomInfo.setContent(content);			
+			roomInfo.setCheckInTime(checkInTime);
+			roomInfo.setCheckOutTime(checkOutTime);
+			roomInfo.setPrice(price);
+			roomInfo.setStdPeople(stdPeople);
+			roomInfo.setMaxPeople(maxPeople);
+			roomInfo.setImage1(imagename1);
+			roomInfo.setImage2(imagename2);
+			roomInfo.setImage3(imagename3);
+			roomInfo.setImage4(imagename4);
+			roomInfo.setImage5(imagename5);
+			roomInfo.setImage6(imagename6);
+			roomInfo.setImage7(imagename7);
+			roomInfo.setImage8(imagename8);
+			roomInfo.setImage9(imagename9);
+			roomInfo.setImage10(imagename10);
+			
+			stayManagementDAO.roomInsert(roomInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		rs.setCharacterEncoding("UTF-8");
-		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
-		CountStayIdService stayIdSel = new CountStayIdService();
-		int stayId = stayIdSel.selStayId(hostId);
-		RoomInfo roomInfo = new RoomInfo();					
-		roomInfo.setStayId(stayId);
-		roomInfo.setRoomName(roomName);
-		roomInfo.setContent(content);
-		roomInfo.setPrice(price);
-		roomInfo.setStdPeople(stdPeople);
-		roomInfo.setMaxPeople(maxPeople);
-		roomInfo.setImage1(imagename1);
-		roomInfo.setImage2(imagename2);
-		roomInfo.setImage3(imagename3);
-		roomInfo.setImage4(imagename4);
-		roomInfo.setImage5(imagename5);
-		roomInfo.setImage6(imagename6);
-		roomInfo.setImage7(imagename7);
-		roomInfo.setImage8(imagename8);
-		roomInfo.setImage9(imagename9);
-		roomInfo.setImage10(imagename10);
-		stayManagementDAO.roomInsert(roomInfo);
 		return null;
 	}
 }

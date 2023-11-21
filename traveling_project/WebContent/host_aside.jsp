@@ -14,7 +14,7 @@
 			<li><input type="button" class="add_stay_btn" value="숙소 등록하기"></li>
 			<li><a href="add_room.jsp">객실 등록하기</a></li>
 			<li><a href="stay_info.jsp">숙소 정보</a></li>
-			<li><a href="#">객실 정보</a></li>
+			<li><a href="room_info.jsp">객실 정보</a></li>
 		</ul>
 		<ul>
 			<li>예약 관리</li>

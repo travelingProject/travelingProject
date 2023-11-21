@@ -27,7 +27,7 @@ public class ServletFile extends HttpServlet {
 		try {
 			if (comm.equals("myplan")) {
 				inter = SelMyPlanInfo.instance();
-				inter.dataCon(req, res);			
+				inter.dataCon(req, res);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("planner.jsp");
 				dispatcher.forward(req, res);
 			} else if (comm.equals("hostData")) {
@@ -39,7 +39,7 @@ public class ServletFile extends HttpServlet {
 				inter = StayInsertService.instance();
 				inter.dataCon(req, res);
 				res.sendRedirect("add_stay_result.jsp");
-			} else if (comm.equals("room_ins")) {
+			} else if (comm.equals("room_ins")) {				
 				inter = RoomInsertService.instance();
 				inter.dataCon(req, res);
 				res.sendRedirect("add_room_result.jsp");
@@ -65,15 +65,14 @@ public class ServletFile extends HttpServlet {
 				inter.dataCon(req, res);
 			} else if (comm.equals("upPlan")) {
 				inter = PlanUp.instance();
-				inter.dataCon(req, res);   
+				inter.dataCon(req, res);
 			} else if(comm.equals("pop_stays")) {
 				inter = PopStayService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("filter")) {				
+			} else if (comm.equals("filter")) {
 				inter = FilterPriceService.instance();
 				inter.dataCon(req, res);
-			} else if (comm.equals("stay_info")) {	
-				System.out.println(req.getParameter("stay_id"));
+			} else if (comm.equals("stay_info")) {
 				inter = DetailStayService.instance();
 				inter.dataCon(req, res);
 				RequestDispatcher dispatcher = req.getRequestDispatcher("detail_stay.jsp");

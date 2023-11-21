@@ -86,11 +86,7 @@ function sample5_execDaumPostcode() {
 }
 
 // 유효성 검사 jquery
-$(document).ready(function () {
-    
-    $(window).scroll(function(){
-        console.log($(window).scrollTop());
-    });
+$(document).ready(function () {    
     
   // 숙소 이름 blur
   $("#stay_name").blur(function () {

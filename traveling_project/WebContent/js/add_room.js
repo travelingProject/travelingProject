@@ -74,10 +74,6 @@ $(document).ready(function() {
         });
     }
 
-    $(window).on("scroll", function() {
-        // console.log("Scroll Top:", $(window).scrollTop());
-    });
-
     $('#add_room_btn').click(function(e) {        
         const roomNameVal = $('#room_name').val();
         const contentVal = $('#content').val();
@@ -171,5 +167,28 @@ $(document).ready(function() {
         $("#image_th").css("border-right", "1px solid #ccc");
         $("#image_td").css("border", "1px solid #ccc");
         $("#max_people_th").css("border-bottom", "1px solid #ccc");        
-    });    
+    });
+    
+    $('input[name="check_in_time"]').timepicker({
+        timeFormat: 'H:mm',
+        interval: 60,
+        minTime: '11:00', // 오전 10시로 설정
+        maxTime: '17:00', // 오후 6시로 설정
+        defaultTime: '15:00',
+        startTime: '09:00', // 오전 10시로 시작 시간 설정
+        dynamic: false,
+        dropdown: true,
+        scrollbar: true,        
+    });
+    $('input[name="check_out_time"]').timepicker({
+    	timeFormat: 'H:mm',
+    	interval: 60,
+    	minTime: '11:00', // 오전 10시로 설정
+    	maxTime: '16:00', // 오후 4시로 설정
+    	defaultTime: '11:00',
+    	startTime: '11:00', // 오전 10시로 시작 시간 설정
+    	dynamic: false,
+    	dropdown: true,
+    	scrollbar: true,        
+    });
 });

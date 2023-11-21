@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.pro.dto.CheckInInfo;
-import com.pro.dto.DetailStayInfo;
 import com.pro.dto.FilterStayInfo;
 import com.pro.dto.ReviewInfo;
 import com.pro.dto.RoomInfo;

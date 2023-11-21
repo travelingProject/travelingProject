@@ -28,3 +28,8 @@ td input[type="button"]{
 #content_error_text{
 	margin-bottom: 10px;
 }
+
+input[name="check_in_time"],
+input[name="check_out_time"]{
+	cursor:pointer;
+}
