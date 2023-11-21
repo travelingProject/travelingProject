@@ -252,61 +252,106 @@
 		;
 	</select>
 
-	<!-- <select id="detailStayList" resultType="com.pro.dto.stayInfo" parameterType="int">
+	<select id="detailStaySelect" resultType="com.pro.dto.StayInfo" parameterType="int">
 		SELECT
-		si.stay_name,si.content,si.road_addr,si.latitude,si.longitude,si.host_phone,si.image1,si.image2,si.image3,si.image4,si.image5,count(rev.rating) AS rating_count,
+		si.stay_name AS stayName,
+		si.content AS content,
+		si.road_addr AS roadAddr,
+		si.latitude AS latitude,
+		si.longitude AS longitude,
+		si.host_phone AS hostPhone,
+		si.image1 AS image1,
+		si.image2 AS image2,
+		si.image3 AS image3,
+		si.image4 AS image4,
+		si.image5 AS image5,
+		(SELECT COUNT(*) 
+     	FROM review_info rev
+     	INNER JOIN reservation res ON rev.reservation_id = res.reservation_id
+     	INNER JOIN room_info ri ON res.room_id = ri.room_id
+     	WHERE ri.stay_id = si.stay_id) AS rating_count,
+     	(SELECT ROUND(AVG(CAST(rev.rating AS DECIMAL(10,2))), 2)
+     	FROM review_info rev
+     	INNER JOIN reservation res ON rev.reservation_id = res.reservation_id
+     	INNER JOIN room_info ri ON res.room_id = ri.room_id
+     	WHERE ri.stay_id = si.stay_id) AS ratingAvg,
 		CASE WHEN tub = 'yes' THEN 'tub' END as tub,
-		CASE WHEN bath_supplies = 'yes' THEN 'bath_supplies' END as bath_supplies,
-		CASE WHEN hair_dryer = 'yes' THEN 'hair_dryer' END as hair_dryer,
+		CASE WHEN bath_supplies = 'yes' THEN 'bath_supplies' END as bathSupplies,
+		CASE WHEN hair_dryer = 'yes' THEN 'hair_dryer' END as hairDryer,
 		CASE WHEN towel = 'yes' THEN 'towel' END as towel,
 		CASE WHEN bedding = 'yes' THEN 'bedding' END as bedding,
-		CASE WHEN washing_machine = 'yes' THEN 'washing_machine' END as washing_machine,
-		CASE WHEN drying_machine = 'yes' THEN 'drying_machine' END as drying_machine,
+		CASE WHEN washing_machine = 'yes' THEN 'washing_machine' END as washingMachine,
+		CASE WHEN drying_machine = 'yes' THEN 'drying_machine' END as dryingMachine,
 		CASE WHEN pool = 'yes' THEN 'pool' END as pool,
-		CASE WHEN arcade_game = 'yes' THEN 'arcade_game' END as arcade_game,
+		CASE WHEN arcade_game = 'yes' THEN 'arcade_game' END as arcadeGame,
 		CASE WHEN gym = 'yes' THEN 'gym' END as gym,
 		CASE WHEN tv = 'yes' THEN 'tv' END as tv,
-		CASE WHEN board_game = 'yes' THEN 'board_game' END as board_game,
-		CASE WHEN air_conditioner = 'yes' THEN 'air_conditioner' END as air_conditioner,
-		CASE WHEN fan = 'yes'
-		THEN 'fan' END as fan,
-		CASE WHEN heating_system = 'yes' THEN 'heating_system' END as heating_system,
-		CASE WHEN carbon_monoxide_alarm = 'yes' THEN 'carbon_monoxide_alarm' END as carbon_monoxide_alarm,
-		CASE WHEN fire_extinguisher = 'yes' THEN 'fire_extinguisher' END as fire_extinguisher,
-		CASE WHEN aid_kit = 'yes' THEN 'aid_kit' END as aid_kit,
-		CASE WHEN fire_alarm = 'yes' THEN 'fire_alarm' END as fire_alarm,
+		CASE WHEN board_game = 'yes' THEN 'board_game' END as boardGame,
+		CASE WHEN air_conditioner = 'yes' THEN 'air_conditioner' END as airConditioner,
+		CASE WHEN fan = 'yes' THEN 'fan' END as fan,
+		CASE WHEN heating_system = 'yes' THEN 'heating_system' END as heatingSystem,
+		CASE WHEN carbon_monoxide_alarm = 'yes' THEN 'carbon_monoxide_alarm' END as carbonMonoxideAlarm,
+		CASE WHEN fire_extinguisher = 'yes' THEN 'fire_extinguisher' END as fireExtinguisher,
+		CASE WHEN aid_kit = 'yes' THEN 'aid_kit' END as aidKit,
+		CASE WHEN fire_alarm = 'yes' THEN 'fire_alarm' END as fireAlarm,
 		CASE WHEN workspace = 'yes' THEN 'workspace' END as workspace,
-		CASE WHEN wireless_internet = 'yes' THEN 'wireless_internet' END as wireless_internet,
-		CASE WHEN barbecue_tool = 'yes' THEN 'barbecue_tool' END as barbecue_tool,
-		CASE WHEN basic_cookware = 'yes' THEN 'basic_cookware' END as basic_cookware,
-		CASE WHEN dining_table = 'yes' THEN 'dining_table' END as dining_table,
+		CASE WHEN wireless_internet = 'yes' THEN 'wireless_internet' END as wirelessInternet,
+		CASE WHEN barbecue_tool = 'yes' THEN 'barbecue_tool' END as barbecueTool,
+		CASE WHEN basic_cookware = 'yes' THEN 'basic_cookware' END as basicCookware,
+		CASE WHEN dining_table = 'yes' THEN 'dining_table' END as diningTable,
 		CASE WHEN cutlery = 'yes' THEN 'cutlery' END as cutlery,
 		CASE WHEN refrigerator = 'yes' THEN 'refrigerator' END as refrigerator,
 		CASE WHEN microwave = 'yes' THEN 'microwave' END as microwave,
-		CASE WHEN electric_rice_cooker =
-		'yes' THEN 'electric_rice_cooker' END as electric_rice_cooker,
-		CASE WHEN gas_stove_or_induction = 'yes' THEN 'gas_stove_or_induction' END as gas_stove_or_induction,
-		CASE WHEN electric_vehicle_charging_facilities = 'yes' THEN 'electric_vehicle_charging_facilities' END as electric_vehicle_charging_facilities,
-		CASE WHEN parking = 'yes' THEN 'parking' END as parking,
+		CASE WHEN electric_rice_cooker = 'yes' THEN 'electric_rice_cooker' END as electricRiceCooker,
+		CASE WHEN gas_stove_or_induction = 'yes' THEN 'gas_stove_or_induction' END as gasStoveOrInduction,
+		CASE WHEN electric_vehicle_charging_facilities = 'yes' THEN 'electric_vehicle_charging_facilities' END as electricVehicleChargingFacilities,
+		CASE WHEN parking = 'yes' THEN 'parking' END as parkingLot,
 		CASE WHEN breakfast = 'yes' THEN 'breakfast' END as breakfast,
-		CASE WHEN clean_service = 'yes' THEN 'clean_service' END as clean_service,
-		CASE WHEN luggage_storage = 'yes' THEN 'luggage_storage' END as
-		luggage_storage
+		CASE WHEN clean_service = 'yes' THEN 'clean_service' END as cleanService,
+		CASE WHEN luggage_storage = 'yes' THEN 'luggage_storage' END as luggageStorage
 		FROM
-		stay_info si
-        JOIN room_info ri ON si.stay_id =
-		ri.stay_id
-		LEFT JOIN reservation res ON ri.room_id = res.room_id
-		LEFT JOIN review_info rev ON res.reservation_id = rev.reservation_id
-		WHERE si.stay_id = #{stay_id};
-	</select> -->
+		stay_info si        
+		WHERE si.stay_id = 1;
+	</select>
+	
+	<select id="detailRoom" resultType="com.pro.dto.RoomInfo" parameterType="int">
+		SELECT
+	    ri.room_name AS roomName,
+	    ri.content AS content,
+	    ri.standard_people AS stdPeople,
+	    ri.maximum_people AS maxPeople,
+	    ri.room_id AS room_id,
+	    ri.price AS price,
+	    ri.image1 AS image1,
+	    ri.image1 AS image2,
+	    ri.image1 AS image3,
+	    ri.image1 AS image4,
+	    ri.image1 AS image5,
+	    ri.image1 AS image6,
+	    ri.image1 AS image7,
+	    ri.image1 AS image8,
+	    ri.image1 AS image9,
+	    ri.image1 AS image10
+		FROM room_info ri
+		JOIN stay_info si ON ri.stay_id = si.stay_id
+		WHERE si.stay_id = #{stay_id};		
+	</select>
 
-	<select id="reviewList" resultType="com.pro.dto.RoomInfo" parameterType="int">
-		SELECT ri.room_name, revi.review_title, revi.review_content,ri.room_id, revi.rating
+	<select id="reviewList" resultType="com.pro.dto.ReviewInfo" parameterType="int">
+		SELECT
+		ri.room_name AS room_name,
+	    revi.review_title AS review_title,
+	    revi.review_content AS review_content,
+	    revi.rating AS rating,
+	    revi.image_path01 AS review_image1,
+	    revi.image_path02 AS review_image2,
+	    revi.image_path03 AS review_image3,
+	    revi.image_path04 AS review_image4,
+	    revi.image_path05 AS review_image5,
+	    res.user_id AS user_id
 		FROM review_info revi
 		JOIN reservation res ON revi.reservation_id = res.reservation_id
 		JOIN room_info ri ON res.room_id = ri.room_id
-		JOIN stay_info si ON ri.stay_id = si.stay_id
-		WHERE si.stay_id = #{stay_id};
-	</select>
+		WHERE ri.stay_id = #{stay_id};
+	</select>	
 </mapper>

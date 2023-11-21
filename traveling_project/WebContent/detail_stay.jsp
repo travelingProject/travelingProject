@@ -1,185 +1,297 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.pro.dto.StayInfo" %>
+<%@ page import="com.pro.dto.RoomInfo" %>
+<%@ page import="com.pro.dto.ReviewInfo" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.text.NumberFormat" %>
+<%
+	List<StayInfo> detailStayList = (List<StayInfo>) request.getAttribute("detailStayList");
+	List<RoomInfo> roomList = (List<RoomInfo>) request.getAttribute("roomList");
+	List<ReviewInfo> reviewList = (List<ReviewInfo>) request.getAttribute("reviewList");
+	
+	String path = request.getContextPath();
+	NumberFormat formatter = NumberFormat.getNumberInstance();	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="css/detail_stay.css">
 <!-- js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/detail_stay.js"></script>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
+	<h1 id="stay_name"><%=detailStayList.get(0).getStayName() %></h1>
+	<!-- Swiper -->	
+	<div class="swiper mySwiper">
+	  <div class="swiper-wrapper">
+		  <%
+		  	if(detailStayList.get(0).getImage1() != null){
+		  %>	  	  	
+		    <div class="swiper-slide"><img alt="숙소 이미지" src="<%=path%>/stay_images/<%=detailStayList.get(0).getImage1()%>"></div>
+		  <%
+		  	}
+		  %>	    	    
+		  <%
+		  	if(detailStayList.get(0).getImage2() != null){
+		  %>	  	  	
+		    <div class="swiper-slide"><img alt="숙소 이미지" src="<%=path%>/stay_images/<%=detailStayList.get(0).getImage2()%>"></div>
+		  <%
+		  	}
+		  %>	    	    
+		  <%
+		  	if(detailStayList.get(0).getImage3() != null){
+		  %>	  	  	
+		    <div class="swiper-slide"><img alt="숙소 이미지" src="<%=path%>/stay_images/<%=detailStayList.get(0).getImage3()%>"></div>
+		  <%
+		  	}
+		  %>	    	    
+		  <%
+		  	if(detailStayList.get(0).getImage4() != null){
+		  %>	  	  	
+		    <div class="swiper-slide"><img alt="숙소 이미지" src="<%=path%>/stay_images/<%=detailStayList.get(0).getImage4()%>"></div>
+		  <%
+		  	}
+		  %>	    	    
+		  <%
+		  	if(detailStayList.get(0).getImage5() != null){
+		  %>	  	  	
+		    <div class="swiper-slide"><img alt="숙소 이미지" src="<%=path%>/stay_images/<%=detailStayList.get(0).getImage5()%>"></div>
+		  <%
+		  	}
+		  %>	    	    
+	  </div>
+	  <div class="swiper-button-next"></div>
+	  <div class="swiper-button-prev"></div>
+	</div>	
 	<!-- 숙소 정보 -->
 	<section class="detail-stay-info">
-		<div class="stay-info-wrap">
-			<div class="stay-info-image">
-				<img alt="숙소 이미지" src="images/trash.jpg" width="640px" height="432px">
-			</div>
-			<div class="stay-info-text">
-				<div class="text-stay-name">
-					<h1>금문도</h1>
-				</div>
-				<div class="text-stay-content">
-					<p>지구 최악의 중국집</p>
-				</div>
-				<div class="text-stay-amenity">
-					<h3>편의시설</h3>
-					<div class="stay-amenity-content">
-						<p class="amenity-bath"><b>욕실 : </b><span>욕조, 샤워 용품, 헤어 드라이어</span></p>
-						<p class="amenity-bedroom"><b>침실 및 세탁 시설 : </b><span>수건, 침구류, 세탁기, 건조기</span></p>
-						<p class="amenity-entertainment"><b>엔터테인먼트 : </b><span>수영장, 오락실 게임, 헬스장, TV, 보드게임</span></p>
-						<p class="amenity-aircontrol"><b>냉난방 : </b><span>에어컨, 선풍기, 난방</span></p>
-						<p class="amenity-safety"><b>숙소 안전 : </b><span>일산화탄소 경보기, 소화기, 구급상자, 화재 경보기</span></p>
-						<p class="amenity-internet"><b>인터넷 및 업무 공간 : </b><span>업무 전용 공간, 무선 인터넷</span></p>
-						<p class="amenity-dining"><b>주방 및 식당 : </b><span>바베큐 도구, 기본 조리도구, 식탁, 식기류, 냉장고, 전자레인지, 전기밥솥, 가스레인지 또는 인덕션</span></p>
-						<p class="amenity-parking"><b>주차 : </b><span>전기차 충전시설, 주차장</span></p>
-						<p class="amenity-service"><b>서비스 : </b><span>아침 식사, 청소 서비스, 짐 보관</span></p>
+		<div>
+			<h3>숙소 설명</h3>
+			<p class="content"><%=detailStayList.get(0).getContent() %></p>
+			<input id="amenity-btn" type="button" value="편의 시설 보기">
+		</div>
+		<div class="amenity">
+					<h3 id="amenity-title">편의시설</h3>
+					<div class="stay-amenity-content">						
+						<c:if test="${not empty detailStayList[0].tub or 
+						             not empty detailStayList[0].bathSupplies or 
+						             not empty detailStayList[0].hairDryer}">
+						    <p class="amenity-bedroom">
+						        <b>욕실</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].tub}">욕조</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].bathSupplies}">샤워용품</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].hairDryer}">헤어 드라이기</c:if> <br>					            					
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].towel or 
+						             not empty detailStayList[0].bedding or 
+						             not empty detailStayList[0].washingMachine or 
+						             not empty detailStayList[0].dryingMachine}">
+						    <p class="amenity-bedroom">
+						        <b>침실 및 세탁 시설</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].towel}">수건</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].bedding}">침구류</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].washingMachine}">세탁기</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].dryingMachine}">건조기</c:if> <br>						
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].pool or 
+						             not empty detailStayList[0].arcadeGame or 
+						             not empty detailStayList[0].gym or 
+						             not empty detailStayList[0].tv or 
+						             not empty detailStayList[0].boardGame}">
+						    <p class="amenity-bedroom">
+						        <b>엔터테인먼트</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].pool}">수영장</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].arcadeGame}">오락실 게임</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].gym}">헬스장</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].tv}">TV</c:if> <br>						
+						            <c:if test="${not empty detailStayList[0].boardGame}">보드 게임</c:if> <br>						
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].airConditioner or 
+						             not empty detailStayList[0].fan or						             
+						             not empty detailStayList[0].heatingSystem}">
+						    <p class="amenity-bedroom">
+						        <b>냉난방</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].airConditioner}">에어컨</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].fan}">선풍기</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].heatingSystem}">난방</c:if> <br>					            							
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].carbonMonoxideAlarm or 
+						             not empty detailStayList[0].fireExtinguisher or 
+						             not empty detailStayList[0].aidKit or 
+						             not empty detailStayList[0].fireAlarm}">
+						    <p class="amenity-bedroom">
+						        <b>숙소 안전</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].carbonMonoxideAlarm}">일산화탄소 경보기</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].fireExtinguisher}">소화기</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].aidKit}">구급상자</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].fireAlarm}">화재 경보기</c:if> <br>					
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].workspace or						             
+						             not empty detailStayList[0].wirelessInternet}">
+						    <p class="amenity-bedroom">
+						        <b>인터넷 및 업무 공간</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].workspace}">업무 전용 공간</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].wirelessInternet}">무선 인터넷</c:if> <br>					            							
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].barbecueTool or 
+						             not empty detailStayList[0].basicCookware or
+						             not empty detailStayList[0].diningTable or
+						             not empty detailStayList[0].cutlery or
+						             not empty detailStayList[0].refrigerator or
+						             not empty detailStayList[0].microwave or
+						             not empty detailStayList[0].electricRiceCooker or 
+						             not empty detailStayList[0].gasStoveOrInduction}">
+						    <p class="amenity-bedroom">
+						        <b>주방 및 식당</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].barbecueTool}">바베큐 도구</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].basicCookware}">기본 조리도구</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].diningTable}">식탁</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].cutlery}">식기류</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].refrigerator}">냉장고</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].microwave}">전자레인지</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].electricRiceCooker}">전기밥솥</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].gasStoveOrInduction}">가스레인지 또는 인덕션</c:if> <br>
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].electricVehicleChargingFacilities or						             
+						             not empty detailStayList[0].parkingLot}">
+						    <p class="amenity-bedroom">
+						        <b>주차</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].electricVehicleChargingFacilities}">전기차 충전 시설</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].parkingLot}">주차장</c:if> <br>
+						        </span>
+						    </p>
+						</c:if>
+						<c:if test="${not empty detailStayList[0].breakfast or						             
+						             not empty detailStayList[0].cleanService or 
+						             not empty detailStayList[0].luggageStorage}">
+						    <p class="amenity-bedroom">
+						        <b>서비스</b>
+						        <hr>
+						        <span>
+						            <c:if test="${not empty detailStayList[0].breakfast}">아침 식사</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].cleanService}">청소 서비스</c:if> <br>
+						            <c:if test="${not empty detailStayList[0].luggageStorage}">짐보관</c:if> <br>
+						        </span>
+						    </p>
+						</c:if>						
 					</div>
 				</div>
-			</div>
-		</div>
 	</section>
 	<!-- 리뷰 -->
 	<section class="detail-stay-review">
-		<span>REVIEW</span>
+		<h3 id="review-title">리뷰 ★<%=detailStayList.get(0).getRatingAvg() %> (<%=detailStayList.get(0).getRating_count() %>)</h3>
 		<div class="stay-review-wrap">
-			<div class="stay-review-avg">
-				<div class="star-rating">
-					<input type="radio" id="5-stars" name="rating" value="5.0" disabled />
-					<label for="5-stars" class="star">★</label>
-					<input type="radio" id="4-stars" name="rating" value="4.0" disabled />
-					<label for="4-stars" class="star">★</label>
-					<input type="radio" id="3-stars" name="rating" value="3.0" disabled />
-					<label for="3-stars" class="star">★</label>
-					<input type="radio" id="2-stars" name="rating" value="2.0" disabled />
-					<label for="2-stars" class="star">★</label>
-					<input type="radio" id="1-star" name="rating" value="1.0" disabled checked />
-					<label for="1-star" class="star">★</label>
-				</div>
-			</div>
+			<%
+				for(int i = 0; i < 3; i++){
+			%>
 			<div class="stay-review-content-wrap">
 				<div class="stay-review-image">
-					<img alt="리뷰 이미지" src="images/trash.jpg" width="128px" height="128px">
+					<img src="<%=path %>/images/review/<%=reviewList.get(i).getReview_image1() %>" width="150px" height="150px">
 				</div>
 				<div class="stay-review-content">
 					<div class="review-writter">
-						<h3>yoonsumin</h3>
-						<span class="review-writter-star">★ 1.0</span>
+						<h3><%=reviewList.get(i).getUser_id() %></h3>						
+						<span class="review-writter-star">★<%=reviewList.get(i).getRating() %></span>
 					</div>
-					<div class="review-content-wrap">
-						<div class="review-title">
-							<h3>최악의 중국집..</h3>
-						</div>
-						<div class="review-content">
-							<h5>인생의 90%를 손해봤습니다.. 여길 가서요.. 가지 말라고 하고 싶은데 이미 망했더라구요... 꼴이좋아</h5>
-						</div>											
+					<div class="room-name">
+						<h4><%=reviewList.get(i).getRoom_name() %></h4>
+					</div>
+					<div class="review-content-wrap">						
+						<h3 class="review-title"><%=reviewList.get(i).getReview_title() %></h3>
+						<p id="review-content"><%=reviewList.get(i).getReview_content() %></p>																	
 					</div>
 				</div>
-			</div>
+			</div>			
+			<%
+				}
+			%>
 		</div>
 	</section>
 	<!-- 객실 예약 -->
 	<section class="detail-stay-room">
-		<span>ACCOMODATION</span>
+		<h2>객실</h2>
 		<ul class="room-list">
-			<li class="room-item" data-room_id="1">
+		<%
+			for(int i = 0; i < roomList.size(); i++){
+		%>		
+			<li class="room-item" data-room_id="<%=roomList.get(i).getRoom_id()%>">
 				<div class="room-item-wrap">
 					<div class="room-item-image">
-						<img alt="객실 이미지" src="images/pop_image2.jpg" height="256px" width="512px">
+						<img alt="객실 이미지" src="<%=path %>/room_images/<%=roomList.get(i).getImage1() %>" width="512px" height="256px">
 					</div>
 					<div class="room-item-info">
 						<div class="room-info-name">
-							<h2>루마니아 뷰 룸</h2>
+							<h2><%=roomList.get(i).getRoomName() %></h2>
 						</div>
 						<div class="room-info-detail">
 							<ul class="room-info-list">
 								<li class="room-content">
 									<h4>방 소개</h4>
-									<span>이 아름다운 루마니아 뷰 룸에서 편안한 휴식을 즐기세요.</span>
+									<span><%=roomList.get(i).getContent() %></span>
 								</li>
 								<li class="room-min-people">
 									<h4>기준 인원</h4>
-									<span>4명</span>
+									<span><%=roomList.get(i).getStdPeople() %>명</span>
 								</li>
 								<li class="room-max-people">
 									<h4>최대 인원</h4>
-									<span>6명</span>
+									<span><%=roomList.get(i).getMaxPeople() %>명</span>
 								</li>
 							</ul>
 							<div class="room-to-reservation">
-								<a href="#" class="reservation-a">RESERVATION</a>
-								<span class="room-price">₩ 120,000 ~</span>
+								<a href="#" class="reservation-a">예약하기</a>
+								<span class="room-price">
+								<%-- ₩ <%
+									String formattedPrice = formatter.format(roomList.get(i).getPrice());
+									out.println(formattedPrice);
+								%> --%>
+								</span>
 							</div>
 						</div>
 					</div>
 				</div>
 			</li>
-			<li class="room-item" data-room_id="2">
-				<div class="room-item-wrap">
-					<div class="room-item-image">
-						<img alt="객실 이미지" src="images/pop_image3.jpg" height="256px" width="512px">
-					</div>
-					<div class="room-item-info">
-						<div class="room-info-name">
-							<h2>오션 프론트 스위트</h2>
-						</div>
-						<div class="room-info-detail">
-							<ul class="room-info-list">
-								<li class="room-content">
-									<h4>방 소개</h4>
-									<span>오션 전망이 멋지고 아늑한 스위트입니다.</span>
-								</li>
-								<li class="room-min-people">
-									<h4>기준 인원</h4>
-									<span>2명</span>
-								</li>
-								<li class="room-max-people">
-									<h4>최대 인원</h4>
-									<span>4명</span>
-								</li>
-							</ul>
-							<div class="room-to-reservation">
-								<a href="#" class="reservation-a">RESERVATION</a>
-								<span class="room-price">₩ 150,000 ~</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="room-item" data-room_id="3">
-				<div class="room-item-wrap">
-					<div class="room-item-image">
-						<img alt="객실 이미지" src="images/pop_image4.jpg" height="256px" width="512px">
-					</div>
-					<div class="room-item-info">
-						<div class="room-info-name">
-							<h2>산 속 코티지</h2>
-						</div>
-						<div class="room-info-detail">
-							<ul class="room-info-list">
-								<li class="room-content">
-									<h4>방 소개</h4>
-									<span>자연 속에서 평온한 휴식을 즐기세요.</span>
-								</li>
-								<li class="room-min-people">
-									<h4>기준 인원</h4>
-									<span>3명</span>
-								</li>
-								<li class="room-max-people">
-									<h4>최대 인원</h4>
-									<span>5명</span>
-								</li>
-							</ul>
-							<div class="room-to-reservation">
-								<a href="#" class="reservation-a">RESERVATION</a>
-								<span class="room-price">₩ 90,000 ~</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</li>
+			<%
+				}
+			%>				
 		</ul>
 	</section>
 	<!-- 숙소 위치 -->

@@ -1,56 +1,75 @@
 @charset "UTF-8";
 
+#amenity-title{
+	margin-bottom:20px;
+}
+
+.room-name{
+	padding:5px 0;
+}
+
+#amenity-btn{
+    width: 120px;
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;    
+    margin: 0 auto;
+    cursor:pointer;
+    background:#1aa3ff;
+    color:#fff;
+}
+
+#amenity-btn:hover{
+	background:#000;	
+}
+
+.amenity{
+	/* display:none; */
+    position: fixed;
+    width: 700px;    
+    background: #fff;
+    padding: 50px 100px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+.content{
+	margin-top:20px	;
+	font-weight:bold;
+}
+
 section {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 auto;
-}
-
-.detail-stay-info {
-	margin-top: 80px;
-	padding-top: 100px;
-}
-
-.stay-info-wrap {
-	display: flex;
-	justify-content: space-between;
-}
-
-.stay-info-text {
-	text-align: center;
-	width: 520px;
-}
-
-.text-stay-content {
-	padding: 20px;
-	font-weight: bold;
+	border:1px solid #c2c2c2;	
+	background:#fcfcfc;
+	padding:20px 80px;
 }
 
 .text-stay-amenity {
 	margin-top: 17px;
 	padding-top: 8px;
-	background-color: #f3f3f3;
-	border-radius: 10px;
+	background-color: #f3f3f3;	
 }
 
 .stay-amenity-content {
 	text-align: left;
-	padding: 8px 10px;
-}
-
-.detail-stay-room, .detail-stay-review {
-	margin-top: 60px;
-	text-align: center;
-	font-weight: bold;
-}
-
-.room-list {
-	margin-top: 60px;
+    padding: 8px 10px;
+    overflow-y: scroll;
+    border: 1px solid #000;
+    height: 500px;
 }
 
 .room-item {
 	padding: 30px 0px;
-    border-bottom: 1px dashed #b6b6b663;
+	border-bottom: 1px dashed #cecece;
 }
 
 .room-info-list li span {
@@ -81,10 +100,10 @@ section {
 }
 
 .reservation-a {
-	padding: 15px;
-	border-radius: 6px;
-	background-color: black;
-	color: white;
+	padding: 10px 20px;
+    border-radius: 6px;
+    background-color: black;
+    color: white;
 }
 
 .room-price {
@@ -92,13 +111,13 @@ section {
 }
 
 .detail-stay-location {
-	margin-top: 60px;
+	margin: 20px auto 60px;
 	text-align: center;
 	font-weight: bold;
 }
 
-/* 별점 */
-.stay-review-avg {
+#review-title{	
+	margin-bottom:10px;	
 }
 
 .star-rating {
@@ -131,28 +150,80 @@ section {
 }
 
 /* 리뷰 */
-.stay-review-content-wrap {
-	display: flex;
-	justify-content: left;
+.stay-review-wrap{
+	display:flex;
+	justify-content:space-between;
 }
 
+.stay-review-content-wrap:first-of-type{
+	margin:0;
+}
+
+.stay-review-content-wrap {
+	display: flex;
+    justify-content: left;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius:5px;
+}
 
 .stay-review-content {
 	text-align: left;
-	padding-left: 30px;
+	margin-left:10px;
 }
 
-.review-writter {
-	padding: 0px 10px 10px 10px;
+.review-writter {	
 	display: flex;
 	justify-content: space-between;
 }
 
-
 .review-content-wrap {
-	height: 90px;
-	width: 300px;
-	background-color: #f3f3f3;
-	border-radius: 10px;
-	padding: 10px;
+    height: 90px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+#stay_name{
+	text-align:center;
+	margin-top:110px;
+}
+
+.swiper {
+	width: 1200px;
+	height:675px;	
+	margin-top:30px;
+	border:1px solid #c2c2c2;
+	user-select:none;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height:800px;	
+}
+
+.swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+div.swiper-button-prev,
+div.swiper-button-next{
+	color:#c9c9c9;
+}
+
+div.swiper-button-prev:hover,
+div.swiper-button-next:hover{
+	color:#000;
 }

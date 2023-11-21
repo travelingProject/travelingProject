@@ -2,13 +2,7 @@ package com.pro.dto;
 
 public class RoomInfo {
 	String roomName, content, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10;
-	int stayId, price, stdPeople, maxPeople;
-	public int getStayId() {
-		return stayId;
-	}	
-	public void setStayId(int stayId) {
-		this.stayId = stayId;
-	}
+	int stayId, room_id, price, stdPeople, maxPeople;
 	public String getRoomName() {
 		return roomName;
 	}
@@ -81,6 +75,18 @@ public class RoomInfo {
 	public void setImage10(String image10) {
 		this.image10 = image10;
 	}
+	public int getStayId() {
+		return stayId;
+	}
+	public void setStayId(int stayId) {
+		this.stayId = stayId;
+	}
+	public int getRoom_id() {
+		return room_id;
+	}
+	public void setRoom_id(int room_id) {
+		this.room_id = room_id;
+	}
 	public int getPrice() {
 		return price;
 	}
@@ -99,6 +105,5 @@ public class RoomInfo {
 	public void setMaxPeople(int maxPeople) {
 		this.maxPeople = maxPeople;
 	}
-
 	
 }

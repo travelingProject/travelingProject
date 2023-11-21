@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.pro.dto.CheckInInfo;
 import com.pro.dto.DetailStayInfo;
 import com.pro.dto.FilterStayInfo;
+import com.pro.dto.ReviewInfo;
 import com.pro.dto.RoomInfo;
 import com.pro.dto.StayInfo;
 import com.pro.mybatis.DBCon;
@@ -137,19 +138,25 @@ public class StayManagementDAO {
 	}
 	
 	// 숙소 상세 정보
-	public List<DetailStayInfo> selectStayInfo(int stay_id) {
-		SqlSession s = f.openSession();
-		List<DetailStayInfo> detailStayList =  s.selectList("detailStayList",stay_id);		
+	public List<StayInfo> selectStayInfo(int stay_id) {
+		SqlSession s = f.openSession();		
+		List<StayInfo> detailStayList =  s.selectList("detailStaySelect",stay_id);		
 		s.close();
-		return detailStayList;
+		return detailStayList;		
 	}
 	
 	// 객실 상세 정보
 	public List<RoomInfo> selectRoomInfo(int stay_id) {		
 		SqlSession s = f.openSession();
-		List<RoomInfo> detailRoomList = s.selectList("reviewList",stay_id);
+		List<RoomInfo> roomList = s.selectList("detailRoom",stay_id);
 		s.close();
-		return detailRoomList;
+		return roomList;		
 	}
 	
+	// 리뷰 정보
+	public List<ReviewInfo> selectReview(int stay_id){
+		SqlSession s = f.openSession();
+		List<ReviewInfo> reviewList = s.selectList("reviewList",stay_id);
+		return reviewList;
+	}
 }
