@@ -6,6 +6,10 @@ window.onload = function () {
     // 버튼에 이벤트 리스너를 추가합니다.
     document.getElementById("people-minus").addEventListener('click', decreaseGuestCount);
     document.getElementById("people-plus").addEventListener('click', increaseGuestCount);
+    
+    baseRoomPrice = parseInt($("#room-price").val());
+    baseStandardPeople = parseInt($("#standard-people").val());
+    baseMaximumPeople = parseInt($("#maximum-people").val());
 };
 
 let nowMonth = new Date();  // 현재 달을 페이지를 로드한 날의 달로 초기화
@@ -15,6 +19,10 @@ today.setHours(0, 0, 0, 0);    // 비교 편의를 위해 today의 시간을 초
 //선택된 체크인 및 체크아웃 날짜를 저장하기 위한 변수들
 let checkInDate = null;
 let checkOutDate = null;
+
+let baseRoomPrice; // 1박당 금액
+let baseStandardPeople; // 기준인원
+let baseMaximumPeople; // 최대인원
 
 // 달력 생성 : 해당 달에 맞춰 테이블을 만들고, 날짜를 채워 넣는다.
 function buildCalendar() {
@@ -218,58 +226,63 @@ function formatDate(date) {
     return date.getFullYear() + '-' + leftPad(date.getMonth() + 1) + '-' + leftPad(date.getDate());
 }
 
-//이용인원 수를 관리하는 변수입니다.
-let guestCount = 2; // 초기값은 2명으로 설정합니다.
-
-// 인원수를 감소시키는 함수입니다.
+//인원수를 감소시키는 함수입니다.
 function decreaseGuestCount() {
-    if (guestCount > 1) { // 인원수가 1명보다 많을 때만 감소시킵니다.
-        guestCount--; // 인원수를 감소시킵니다.
-        document.getElementById("guest-txt").innerText = guestCount; // UI를 업데이트합니다.
-        document.getElementById("people-plus").disabled = false;
+    let guestCount = parseInt($("#guest-txt").text(), 10); // 현재 UI의 값을 가져와서 업데이트합니다.
+    if (guestCount > 0) { // 기준 인원보다 클 때만 감소시킬 수 있습니다.
+        guestCount--;
+        $("#guest-txt").text(guestCount); // jQuery를 사용하여 UI 업데이트
+        $("#people-plus").prop('disabled', false); // 증가 버튼 활성화
     }
     
-    if (guestCount <= 1) {
-    	document.getElementById("people-minus").disabled = true;
+    if (guestCount <= 0) { // 기준 인원 이하가 되면 감소 버튼 비활성화
+        $("#people-minus").prop('disabled', true);
     }
     
-    handleGuestCountChange();
+    handleGuestCountChange(); // 요금 업데이트 함수 호출
 }
 
 // 인원수를 증가시키는 함수입니다.
 function increaseGuestCount() {
-    guestCount++; // 인원수를 증가시킵니다.
-    document.getElementById("guest-txt").innerText = guestCount; // UI를 업데이트합니다.
-    document.getElementById("people-minus").disabled = false;
+    let guestCount = parseInt($("#guest-txt").text(), 10); // 현재 UI의 값을 가져와서 업데이트합니다.
+    if (guestCount < baseMaximumPeople) { // 최대 인원 이하일 때만 증가시킬 수 있습니다.
+        guestCount++;
+        $("#guest-txt").text(guestCount); // jQuery를 사용하여 UI 업데이트
+        $("#people-minus").prop('disabled', false); // 감소 버튼 활성화
+    }
     
-    handleGuestCountChange();
+    if (guestCount >= baseMaximumPeople) { // 최대 인원에 도달하면 증가 버튼 비활성화
+        $("#people-plus").prop('disabled', true);
+    }
+    
+    handleGuestCountChange(); // 요금 업데이트 함수 호출
 }
 
 
 //요금 계산 및 UI 업데이트 함수
 function updatePricing() {
-    // 설정값
-    const roomPricePerNight = 120000; // 1박당 객실 요금
+	// 설정값
     const extraPersonPrice = 30000; // 추가 인원당 요금
-    const baseGuestCount = 2; // 기준 인원
+    const currentGuestCount = parseInt($("#guest-txt").text(), 10);
+    const baseGuestCount = baseStandardPeople; // 전역변수를 사용합니다.
 
     // 숙박 일수 계산
     let nightsStayed = checkOutDate ? (checkOutDate - checkInDate) / (1000 * 3600 * 24) : 0;
     
     // 객실 요금 계산
-    let totalRoomPrice = nightsStayed * roomPricePerNight;
+    let totalRoomPrice = nightsStayed * baseRoomPrice; // 전역변수를 사용합니다.
     
     // 추가 인원 요금 계산
-    let additionalGuests = guestCount - baseGuestCount;
+    let additionalGuests = currentGuestCount - baseGuestCount;
     let totalExtraPersonPrice = additionalGuests > 0 ? additionalGuests * extraPersonPrice : 0;
     
     // 총 요금 계산
     let finalPrice = totalRoomPrice + totalExtraPersonPrice;
 
     // UI 업데이트
-    document.getElementById("total_room_price").innerText = `￦${formatNumber(totalRoomPrice)}`;
-    document.getElementById("total_pers_price").innerText = `￦${formatNumber(totalExtraPersonPrice)}`;
-    document.getElementById("final-price").innerText = `￦${formatNumber(finalPrice)}`;
+    $("#total_room_price").text(`￦${formatNumber(totalRoomPrice)}`);
+    $("#total_pers_price").text(`￦${formatNumber(totalExtraPersonPrice)}`);
+    $("#final-price").text(`￦${formatNumber(finalPrice)}`);
 }
 
 // 숫자를 포맷팅하는 함수 (예: 120000 -> 120,000)

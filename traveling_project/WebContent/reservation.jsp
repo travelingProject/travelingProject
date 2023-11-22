@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.hh.db.RoomReserv" %>
+<jsp:useBean id="sel" class="com.hh.db.ControlDB" />
+<% 
+	int rid = new Integer(request.getParameter("room_id"));
+	String uid = (String) session.getAttribute("id");
+	
+	RoomReserv rv = sel.roomDetail(rid);
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,31 +39,31 @@
 		<div class="room-info-wrap">
 			<div class="room-info-content">
 				<div class="room-info-name">
-					<h1>루마니아 뷰 룸</h1>
+					<h1 id="room-name"><%=rv.getRoom_name() %></h1>
 				</div>
 				<div class="room-info-text">
-					<h3>이 아름다운 루마니아 뷰 룸에서 편안한 휴식을 즐기세요.</h3>
+					<h3><%=rv.getContent() %></h3>
 				</div>
 			</div>
 			<div class="room-info-images">
 				<div class="room-info-image">
-					<img alt="이미지" src="images/pop_image1.jpg" width="580px" height="480px">
+					<img alt="이미지1" src="<%=rv.getImage1() %>" width="580px" height="480px">
 				</div>
 				<div class="images-others">
 					<div class="others-row">
-						<img alt="이미지" src="images/pop_image2.jpg" width="190px">
-						<img alt="이미지" src="images/pop_image3.jpg" width="190px">
-						<img alt="이미지" src="images/pop_image4.jpg" width="190px">
+						<img alt="이미지2" src="<%=rv.getImage2() %>" width="190px">
+						<img alt="이미지3" src="<%=rv.getImage3() %>" width="190px">
+						<img alt="이미지4" src="<%=rv.getImage4() %>" width="190px">
 					</div>
 					<div class="others-row">
-						<img alt="이미지" src="images/pop_image5.jpg" width="190px">
-						<img alt="이미지" src="images/pop_image6.jpg" width="190px">
-						<img alt="이미지" src="images/pop_image7.jpg" width="190px">
+						<img alt="이미지5" src="<%=rv.getImage5() %>" width="190px">
+						<img alt="이미지6" src="<%=rv.getImage6() %>" width="190px">
+						<img alt="이미지7" src="<%=rv.getImage7() %>" width="190px">
 					</div>
 					<div class="others-row">
-						<img alt="이미지" src="images/pop_image8.jpg" width="190px">
-						<img alt="이미지" src="images/pop_image9.jpg" width="190px">
-						<img alt="이미지" src="images/pop_image10.jpg" width="190px">
+						<img alt="이미지8" src="<%=rv.getImage8() %>" width="190px">
+						<img alt="이미지9" src="<%=rv.getImage9() %>" width="190px">
+						<img alt="이미지10" src="<%=rv.getImage10() %>" width="190px">
 					</div>
 				</div>
 			</div>
@@ -122,19 +131,24 @@
 									<span id="leave-stay"><b id="leave-stay-txt"></b>박</span>
 									<div id="date-display">
 										<span id="check-in-date">체크인</span> ~ <span id="check-out-date">체크아웃</span>
+										<input type="hidden" id="check-in-time" value="<%=rv.getCheck_in_time()%>">
+										<input type="hidden" id="check-out-time" value="<%=rv.getCheck_out_time()%>">
 									</div>
 								</div>
 							</li>
 							<li class="option-people">
 								<strong>이용인원</strong>
+								<input type="hidden" id="standard-people" value="<%= rv.getStandard_people() %>">
+								<input type="hidden" id="maximum-people" value="<%= rv.getMaximum_people() %>">
 								<div class="option-txt">
 									<button type="button" class="people-change" id="people-minus">-</button>
-									<span id="guest"><b id="guest-txt">2</b>명</span>
+									<span id="guest"><b id="guest-txt"><%=rv.getStandard_people() %></b>명</span>
 									<button type="button" class="people-change" id="people-plus">+</button>
 								</div>
 							</li>
 							<li class="option-result">
 								<strong>요금안내</strong>
+								<input type="hidden" id="room-price" value="<%= rv.getPrice() %>">
 								<table border="1" id="total-price-table">
 									<tbody>
 										<tr id="default-price">
@@ -151,9 +165,8 @@
 										</tr>
 									</tbody>
 								</table>
-							</li>
-							<li>
-								<button type="button" id="reservation-next" onclick="payModal()">예약하기</button>
+								<button type="button" id="reservation-next">예약하기</button>
+								<input type="hidden" id="customer-id" value="<%=uid %>">
 							</li>
 						</ul>
 					</div>
@@ -166,6 +179,7 @@
 			<div id="toss-window"></div>
 			<div id="toss-window-btn">
 				<button type="button" id="payment-btn">결제</button>
+				<input type="hidden" id="room-id" value="<%=rid %>">
 				<button type="button" id="payment-cancel">취소</button>				
 			</div>			
 		</div>

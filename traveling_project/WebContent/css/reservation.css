@@ -21,6 +21,7 @@ section {
 }
 
 .room-info-image {
+	width: 580px;
 	height: 480px;
 	box-shadow: 30px 40px 30px -20px rgba(0, 0, 0, 0.3);
 }
@@ -146,7 +147,6 @@ section {
 
 /* 예약 상세 */
 .reservation-option {
-	float: left;
 	margin: 16px 0px 0px 16px;
 }
 
@@ -187,6 +187,11 @@ section {
 
 .detail-option li:last-child {
 	margin-top: 10px;
+}
+
+ul.detail-option {
+	float: left;
+    margin-left: 14px;
 }
 
 #reservation-next {

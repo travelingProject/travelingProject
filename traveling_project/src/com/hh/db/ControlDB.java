@@ -21,7 +21,7 @@ public class ControlDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
-					"xhddlf336!");
+					"0509");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -300,6 +300,78 @@ public class ControlDB {
 		try {
 			condb();
 			sta.executeUpdate("DELETE FROM review_info WHERE reservation_id = " + rid + ";");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+	}
+	
+	public RoomReserv roomDetail(int rid) {
+		RoomReserv rv = new RoomReserv();
+		
+		try {
+			condb();
+			rs = sta.executeQuery("SELECT * FROM room_info WHERE room_id = " + rid);
+			
+			if (rs.next()) {
+				rv.setRoom_id(rs.getInt("room_id"));
+				rv.setStay_id(rs.getInt("stay_id"));
+				rv.setRoom_name(rs.getString("room_name"));
+				rv.setContent(rs.getString("content"));
+				rv.setCheck_in_time(rs.getString("check_in_time"));
+				rv.setCheck_out_time(rs.getString("check_out_time"));
+				rv.setPrice(rs.getInt("price"));
+				rv.setStandard_people(rs.getInt("standard_people"));
+				rv.setMaximum_people(rs.getInt("maximum_people"));
+				rv.setImage1(rs.getString("image1"));
+				rv.setImage2(rs.getString("image2"));
+				rv.setImage3(rs.getString("image3"));
+				rv.setImage4(rs.getString("image4"));
+				rv.setImage5(rs.getString("image5"));
+				rv.setImage6(rs.getString("image6"));
+				rv.setImage7(rs.getString("image7"));
+				rv.setImage8(rs.getString("image8"));
+				rv.setImage9(rs.getString("image9"));
+				rv.setImage10(rs.getString("image10"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			discon();
+		}
+		
+		return rv;
+	}
+	
+	public void reservInsert(ReservationInsert rinfo) {
+		
+		String uid = rinfo.getUser_id();
+		int rid = rinfo.getRoom_id();
+		String chkin = rinfo.getCheck_in_date();
+		String chkout = rinfo.getCheck_out_date();
+		String chkinTime = rinfo.getCheck_in_time();
+		String chkoutTime = rinfo.getCheck_out_time();
+		int people = rinfo.getPeople();
+		int price = rinfo.getPrice();
+		
+		System.out.println(uid);
+		System.out.println(rid);
+		System.out.println(chkin);
+		System.out.println(chkout);
+		System.out.println(chkinTime);
+		System.out.println(chkoutTime);
+		System.out.println(people);
+		System.out.println(price);
+		
+		try {
+			condb();
+			sta.executeUpdate(
+					"INSERT INTO reservation (user_id, room_id, check_in_date, check_out_date, "
+					+ "check_in_time, check_out_time, people, price, payment_time, status) "
+					+ "VALUES ('" + uid + "', " + rid + ", '" + chkin + "', '" + chkout + "', '"
+					+ chkinTime + "', '" + chkoutTime + "', " + people + ", " + price + ", now(), '예약 대기');");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
