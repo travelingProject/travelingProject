@@ -200,6 +200,7 @@
 		<h3 id="review-title">리뷰 ★<%=detailStayList.get(0).getRatingAvg() %> (<%=detailStayList.get(0).getRating_count() %>)</h3>
 		<div class="stay-review-wrap">
 			<%
+			if(reviewList.size() !=0){
 				for(int i = 0; i < 3; i++){
 			%>
 			<div class="stay-review-content-wrap">
@@ -222,6 +223,9 @@
 			</div>			
 			<%
 				}
+			} else{
+				
+			}
 			%>
 		</div>
 	</section>
