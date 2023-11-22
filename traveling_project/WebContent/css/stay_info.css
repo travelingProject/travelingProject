@@ -30,6 +30,12 @@
 	margin:0 auto;
 }
 
+#content-edit-btn{
+	display:block;
+	margin:10px auto 0;
+}
+
+
 #phone-edit-btn{
 	float:right;
 }

@@ -3,12 +3,24 @@ package com.pro.dto;
 public class StayInfo {
 	private int stayId, rating_count;
 	private double latitude,longitude,ratingAvg;
-	private String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr, referenceAddr, lat, lngt, hostPhone, image1,
+	private String hostId, stayName, postCode, roadAddr, JibunAddr, detailAddr,lat,lngt, referenceAddr, hostPhone, image1,
 			image2, image3, image4, image5, content, tub, bathSupplies, hairDryer, towel, bedding, washingMachine,
 			dryingMachine, pool, arcadeGame, gym, tv, boardGame, airConditioner, fan, heatingSystem, carbonMonoxideAlarm,
 			fireExtinguisher, aidKit, fireAlarm, workspace, wirelessInternet, barbecueTool, basicCookware, diningTable,
 			cutlery, refrigerator, microwave, electricRiceCooker, gasStoveOrInduction, electricVehicleChargingFacilities, parkingLot, breakfast, cleanService,luggageStorage;
 	
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLngt() {
+		return lngt;
+	}
+	public void setLngt(String lngt) {
+		this.lngt = lngt;
+	}
 	public double getRatingAvg() {
 		return ratingAvg;
 	}
@@ -80,18 +92,6 @@ public class StayInfo {
 	}
 	public void setReferenceAddr(String referenceAddr) {
 		this.referenceAddr = referenceAddr;
-	}
-	public String getLat() {
-		return lat;
-	}
-	public void setLat(String lat) {
-		this.lat = lat;
-	}
-	public String getLngt() {
-		return lngt;
-	}
-	public void setLngt(String lngt) {
-		this.lngt = lngt;
 	}
 	public String getHostPhone() {
 		return hostPhone;

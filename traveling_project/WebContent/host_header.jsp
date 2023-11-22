@@ -46,8 +46,8 @@ rk dkslq
 				<li>
 					<input type="button" class="add_stay_btn" value="숙소 등록하기">				
 					<a href="add_room.jsp">객실 등록하기</a>
-					<a href="#">숙소  수정하기</a>
-					<a href="#">객실 수정하기</a>
+					<a href="#">숙소 정보</a>
+					<a href="#">객실 정보</a>
 				</li>
 				<li>
 					<a href="#">예약 정보 조회</a>

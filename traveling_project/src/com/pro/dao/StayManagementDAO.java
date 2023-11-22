@@ -28,22 +28,26 @@ public class StayManagementDAO {
 	
 	// 체크인 정보
 	public List<CheckInInfo> checkInSelect(CheckInInfo checkInInfo) {
-		SqlSession s = f.openSession();
-		
-		List<CheckInInfo> checkInList = s.selectList("checkInInfoSelect", checkInInfo);
-		
-		s.close();
-		
+		SqlSession s = f.openSession();		
+		List<CheckInInfo> checkInList = s.selectList("checkInInfoSelect", checkInInfo);		
+		s.close();		
 		return checkInList;
 	}
 	
 	// 숙소 등록
 	public void stayInsert(StayInfo stayInfo) {		
-		SqlSession s = f.openSession();		
-			s.insert("stayInfoInsert", stayInfo);			
-			s.commit();
-			s.close();
+		SqlSession s = f.openSession();
+		s.insert("stayInfoInsert", stayInfo);			
+		s.commit();
+		s.close();
 	}
+	
+	// 숙소 정보
+	public List<StayInfo> selectStayInfo(String host_id) {
+		SqlSession s = f.openSession();
+		List<StayInfo> stayInfo = s.selectList("selectStayInfo",host_id);
+		return stayInfo;
+	}	
 	
 	// 숙소ID 개수
 	public int countStayId(String hostId) {
@@ -59,7 +63,7 @@ public class StayManagementDAO {
 		s.insert("roomInfoInsert", roomInfo);
 		s.commit();
 		s.close();
-	}
+	}	
 	
 	
 	// 인기 숙소 선택
@@ -141,13 +145,13 @@ public class StayManagementDAO {
 		SqlSession s = f.openSession();		
 		List<StayInfo> detailStayList =  s.selectList("detailStaySelect",stay_id);		
 		s.close();
-		return detailStayList;		
+		return detailStayList;
 	}
 	
-	// 객실 상세 정보
+	// 객실 정보
 	public List<RoomInfo> selectRoomInfo(int stay_id) {		
 		SqlSession s = f.openSession();
-		List<RoomInfo> roomList = s.selectList("detailRoom",stay_id);
+		List<RoomInfo> roomList = s.selectList("roomSelect",stay_id);
 		s.close();
 		return roomList;		
 	}

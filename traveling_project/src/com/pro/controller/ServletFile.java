@@ -13,6 +13,7 @@ import com.pro.svc.FilterPriceService;
 import com.pro.svc.PopStayService;
 import com.pro.svc.ReservationSelectService;
 import com.pro.svc.RoomInsertService;
+import com.pro.svc.SelectStayInfoService;
 import com.pro.svc.StayInsertService;
 import com.pro.svc.StaySelectService;
 
@@ -43,10 +44,14 @@ public class ServletFile extends HttpServlet {
 				inter = RoomInsertService.instance();
 				inter.dataCon(req, res);
 				res.sendRedirect("add_room_result.jsp");
-			} else if (comm.equals("stay_sel")) {
-				inter = StaySelectService.instance();
+			} else if(comm.equals("edit_stay")) {
+				inter = SelectStayInfoService.instance();
 				inter.dataCon(req, res);
-				String result = inter.dataCon(req, res);								
+				RequestDispatcher dispatcher = req.getRequestDispatcher("stay_info.jsp");
+				dispatcher.forward(req, res);
+			} else if (comm.equals("stay_sel")) {
+				inter = StaySelectService.instance();				
+				String result = inter.dataCon(req, res);
 				if (result.equals("0")) {
 					req.setAttribute("result", false);
 				} else {

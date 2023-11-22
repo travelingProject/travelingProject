@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.pro.dto.StayInfo" %>
+<%@ page import="java.util.List" %>
 <% String hostId = (String) session.getAttribute("host_id"); %>
+<% 
+	List<StayInfo> stayInfo = (List<StayInfo>) request.getAttribute("stayInfo");
+	String path = request.getContextPath();	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +46,7 @@
 					<tr>
 						<th>숙소 이름</th>
 						<td colspan="2">
-							<p id="stay-name" class="info">서초포레스타</p>
+							<p id="stay-name" class="info"><%=stayInfo.get(0).getStayName() %></p>
 							<input id="stay-name-edit" type="button" value="수정하기">
 						</td>						
 					</tr>
@@ -47,24 +54,26 @@
 						<th rowspan="2">숙소 주소</th>
 						<td colspan="2" id="addr-td">
 							<div id="addr-box">
-								<p class="info">우편번호 : 06800</p>
-								<p class="info">도로명 주소 : 서울특별시 서초구 헌릉로 8길 45</p>
-								<p class="info">지번 주소 : 서울 서초구 내곡동 384</p>
-								<p class="info">상세 주소 : 210-701</p>
-								<p class="info">참고 사항 : (내곡동, 서초포레스타2단지)</p>
-							</div>							
+								<p class="info">우편번호 : <%=stayInfo.get(0).getPostCode() %></p>
+								<p class="info">도로명 주소 : <%=stayInfo.get(0).getRoadAddr() %></p>
+								<p class="info">지번 주소 : <%=stayInfo.get(0).getJibunAddr() %></p>
+								<p class="info">상세 주소 : <%=stayInfo.get(0).getDetailAddr() %></p>
+								<p class="info">참고 사항 : <%=stayInfo.get(0).getReferenceAddr() %></p>
+							</div>
 							<input type="button" id="addr-edit-btn" value="수정하기">
-						</td>						
+						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
+							<input type="hidden" id="latitude" value="<%=stayInfo.get(0).getLatitude()%>">
+							<input type="hidden" id="longitude" value="<%=stayInfo.get(0).getLongitude()%>">
 							<div id="map" style="width: 100%; height: 300px; margin-top: 10px;"></div>
 						</td>
 					</tr>
 					<tr>
 						<th>연락받을 전화번호</th>
 						<td>
-							<p id="host-phone" class="info">01041868842</p>
+							<p id="host-phone" class="info"><%=stayInfo.get(0).getHostPhone() %></p>
 							<input id="phone-edit-btn" type="button" value="수정하기">
 						</td>
 					</tr>
@@ -73,29 +82,19 @@
 						<td id="image_td">							
 							<div id="att_zone">
 								<div>
-									<label id="image_label1" class="image_label" for="image1">이미지를 선택해주세요.</label>									
-									<input type="button" id="remove_btn1" class="remove_btn" value="-" style="display:none">
-									<input type="file" class="images" id="image1" name="image1" accept="image/png,image/jpeg,image/gif">
+									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage1()%>" width="128" height="128">
 								</div>			
 								<div>
-									<label id="image_label2" class="image_label" for="image2">이미지를 선택해주세요.</label>
-									<input type="button" id="remove_btn2" class="remove_btn" value="-" style="display:none">
-									<input type="file" class="images" id="image2" name="image2" accept="image/png,image/jpeg,image/gif">		
+									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage2()%>" width="128" height="128">
 								</div>								
 								<div>
-									<label id="image_label3" class="image_label" for="image3">이미지를 선택해주세요.</label>
-									<input type="button" id="remove_btn3" class="remove_btn" value="-" style="display:none">
-									<input type="file" class="images" id="image3" name="image3" accept="image/png,image/jpeg,image/gif">								
+									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage3()%>" width="128" height="128">								
 								</div>								
 								<div>
-									<label id="image_label4" class="image_label" for="image4">이미지를 선택해주세요.</label>
-									<input type="button" id="remove_btn4" class="remove_btn" value="-" style="display:none">
-									<input type="file" class="images" id="image4" name="image4" accept="image/png,image/jpeg,image/gif">									
+									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage4()%>" width="128" height="128">
 								</div>								
 								<div>
-									<label id="image_label5" class="image_label" for="image5">이미지를 선택해주세요.</label>
-									<input type="button" id="remove_btn5" class="remove_btn" value="-" style="display:none">
-									<input type="file" class="images" id="image5" name="image5" accept="image/png,image/jpeg,image/gif">												
+									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage5()%>" width="128" height="128">		
 								</div>
 							</div>
 							<input id="image-edit-btn" type="button" value="수정하기">
@@ -105,8 +104,9 @@
 						<th>숙소 상세 정보</th>
 						<td>							
 							<p class="info">
-								편안한 휴식을 취할 수 있고, 화려한 전망을 자랑하는 온수 욕조에서 휴식을 취할 수 있습니다! 리우데자네이루 캄포의 타이오진호에 위치하고 있으며, 문 앞에는 석호, 정원, 과수원, 그네 등이 있어 자연과 다시 만날 수 있습니다! 시설이 완비된 주방에서 식사를 준비하고 백만 개의 별표 아래에서 휴식을 취해보세요! 체험에 참여하세요!
+								<%=stayInfo.get(0).getContent()%>
 							</p>
+							<input id="content-edit-btn" type="button" value="수정하기">
 						</td>
 					</tr>
 					<tr>
@@ -114,26 +114,97 @@
 						<td>
 							<div style="color:#999; border-bottom:none">
 								<div>
-									<div>욕조</div>
-									<div>샤워 용품</div>
-									<div>헤어 드라이어</div>
-									<div>수건</div>
-									<div>침구류</div>
-									<div>세탁기기</div>
-									<div>건조기</div>
-									<div>수영장</div>
-									<div>오락실 게임</div>
-									<div>헬스장</div>
-									<div>TV</div>
-									<div>보드게임</div>
-									<div>에어컨</div>
-									<div>선풍기</div>
-									<div>난방</div>
-									<div>일산화탄소 경보기</div>
-									<div>소화기</div>
-									<div>구급 상자</div>
+									<c:choose>
+									
+									    <c:when test="${not empty stayInfo[0].tub}">
+									        <div>${stayInfo[0].tub}</div>
+									    </c:when>
+									    
+										<c:when test="${not empty stayInfo[0].bathSupplies}">
+											<div>${stayInfo[0].bathSupplies}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].hairDryer}">
+											<div>${stayInfo[0].hairDryer}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].towel}">
+											<div>${stayInfo[0].towel}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].bedding}">
+											<div>${stayInfo[0].bedding}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].washingMachine}">
+											<div>${stayInfo[0].washingMachine}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].dryingMachine}">
+											<div>${stayInfo[0].dryingMachine}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].pool}">
+											<div>${stayInfo[0].pool}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].arcadeGame}">
+											<div>${stayInfo[0].arcadeGame}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].gym}">
+											<div>${stayInfo[0].gym}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].tv}">
+											<div>${stayInfo[0].tv}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].boardGame}">
+											<div>${stayInfo[0].boardGame}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].airConditioner}">
+											<div>${stayInfo[0].airConditioner}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].fan}">
+											<div>${stayInfo[0].fan}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].heatingSystem}">
+											<div>${stayInfo[0].heatingSystem}</div>
+										</c:when>
+										
+										<c:when test="${not empty stayInfo[0].carbonMonoxideAlarm}">
+											<div>${stayInfo[0].carbonMonoxideAlarm}</div>
+										</c:when>
+										
+									</c:choose>																		
 								</div>
 								<div>
+<%-- 									<c:choose>
+									    <c:when test="${not empty stayInfo[0].tub}">
+									    	<div>${stayInfo[0].fire_extinguisher}</div>
+									        <div>${stayInfo[0].aid_kit}</div>
+									        <div>${stayInfo[0].fire_alarm}</div>
+									        <div>${stayInfo[0].workspace}</div>
+									        <div>${stayInfo[0].wireless_internet}</div>
+									        <div>${stayInfo[0].barbecue_tool}</div>
+									        <div>${stayInfo[0].basic_cookware}</div>
+									        <div>${stayInfo[0].dining_table}</div>
+									        <div>${stayInfo[0].cutlery}</div>
+									        <div>${stayInfo[0].refrigerator}</div>
+									        <div>${stayInfo[0].microwave}</div>
+									        <div>${stayInfo[0].electric_rice_cooker}</div>
+									        <div>${stayInfo[0].gas_stove_or_induction}</div>
+									        <div>${stayInfo[0].electric_vehicle_charging_facilities}</div>
+									        <div>${stayInfo[0].parking}</div>
+									        <div>${stayInfo[0].breakfast}</div>
+									        <div>${stayInfo[0].clean_service}</div>
+									        <div>${stayInfo[0].luggage_storage}</div>									        
+									    </c:when>    
+									</c:choose> --%>
 									<div>화재 경보기</div>
 									<div>업무 전용 공간</div>
 									<div>무선 인터넷</div>

@@ -12,7 +12,7 @@
 	String path = request.getContextPath();
 	NumberFormat formatter = NumberFormat.getNumberInstance();
     String rawPhone = detailStayList.get(0).getHostPhone();
-    String formattedPhone;
+    String formattedPhone;    
 
     if(rawPhone != null && rawPhone.length() == 11) {
         formattedPhone = rawPhone.substring(0, 3) + "-" 
@@ -68,7 +68,7 @@
 	<!-- 숙소 정보 -->
 	<section class="detail-stay-info">
 		<div>
-			<h3>숙소 설명</h3>
+			<h3 style="text-align:center;">숙소 설명</h3>
 			<p class="content"><%=detailStayList.get(0).getContent() %></p>
 			<input id="amenity-btn" type="button" value="편의 시설 보기">
 		</div>
