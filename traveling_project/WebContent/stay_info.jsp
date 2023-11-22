@@ -38,35 +38,23 @@
 				<table>
 					<tr>
 						<th>숙소 이름</th>
-						<td>
-							<p class="info">서초포레스타</p>
+						<td colspan="2">
+							<p id="stay-name" class="info">서초포레스타</p>
+							<input id="stay-name-edit" type="button" value="수정하기">
 						</td>						
 					</tr>
 					<tr>
-						<th rowspan="6">숙소 주소</th>
-						<td>
-							<p class="info">우편번호 : 06800</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p class="info">도로명 주소 : 서울특별시 서초구 헌릉로 8길 45</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p class="info">지번 주소 : 서울 서초구 내곡동 384</p>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p class="info">상세 주소 : 210-701</p>							
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<p class="info">참고 사항 : (내곡동, 서초포레스타2단지)</p>
-						</td>
+						<th rowspan="2">숙소 주소</th>
+						<td colspan="2" id="addr-td">
+							<div id="addr-box">
+								<p class="info">우편번호 : 06800</p>
+								<p class="info">도로명 주소 : 서울특별시 서초구 헌릉로 8길 45</p>
+								<p class="info">지번 주소 : 서울 서초구 내곡동 384</p>
+								<p class="info">상세 주소 : 210-701</p>
+								<p class="info">참고 사항 : (내곡동, 서초포레스타2단지)</p>
+							</div>							
+							<input type="button" id="addr-edit-btn" value="수정하기">
+						</td>						
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -76,7 +64,8 @@
 					<tr>
 						<th>연락받을 전화번호</th>
 						<td>
-							<p class="info">01041868842</p>
+							<p id="host-phone" class="info">01041868842</p>
+							<input id="phone-edit-btn" type="button" value="수정하기">
 						</td>
 					</tr>
 					<tr>
@@ -107,8 +96,9 @@
 									<label id="image_label5" class="image_label" for="image5">이미지를 선택해주세요.</label>
 									<input type="button" id="remove_btn5" class="remove_btn" value="-" style="display:none">
 									<input type="file" class="images" id="image5" name="image5" accept="image/png,image/jpeg,image/gif">												
-								</div>								
+								</div>
 							</div>
+							<input id="image-edit-btn" type="button" value="수정하기">
 						</td>
 					</tr>
 					<tr>					
