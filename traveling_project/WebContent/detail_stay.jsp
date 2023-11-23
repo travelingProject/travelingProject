@@ -39,31 +39,33 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<h1 id="stay_name"><%=detailStayList.get(0).getStayName() %></h1>
-	<!-- Swiper -->	
-	<div class="swiper mySwiper">
-	  <div class="swiper-wrapper">
-		<c:if test="${not empty detailStayList[0].image1}">
-		  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image1}'/>"></div>
-		</c:if>
-		
-		<c:if test="${not empty detailStayList[0].image2}">
-		  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image2}'/>"></div>
-		</c:if>
-		
-		<c:if test="${not empty detailStayList[0].image3}">
-		  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image3}'/>"></div>
-		</c:if>
-		
-		<c:if test="${not empty detailStayList[0].image4}">
-		  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image4}'/>"></div>
-		</c:if>
-		
-		<c:if test="${not empty detailStayList[0].image5}">
-		  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image5}'/>"></div>
-		</c:if>	    	    
-	  </div>
-	  <div class="swiper-button-next"></div>
-	  <div class="swiper-button-prev"></div>
+	<!-- Swiper -->
+	<div id="swiper-box">
+		<div class="swiper mySwiper">
+		  <div class="swiper-wrapper">
+			<c:if test="${not empty detailStayList[0].image1}">
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image1}'/>"></div>
+			</c:if>
+			
+			<c:if test="${not empty detailStayList[0].image2}">
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image2}'/>"></div>
+			</c:if>
+			
+			<c:if test="${not empty detailStayList[0].image3}">
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image3}'/>"></div>
+			</c:if>
+			
+			<c:if test="${not empty detailStayList[0].image4}">
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image4}'/>"></div>
+			</c:if>
+			
+			<c:if test="${not empty detailStayList[0].image5}">
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image5}'/>"></div>
+			</c:if>	    	    
+		  </div>		  	  	  
+		</div>		
+		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev"></div>
 	</div>	
 	<!-- 숙소 정보 -->
 	<section class="detail-stay-info">

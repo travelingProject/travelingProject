@@ -21,7 +21,7 @@ public class ControlDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root",
-					"0509");
+					"xhddlf336!");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -333,7 +333,7 @@ public class ControlDB {
 				rv.setImage7(rs.getString("image7"));
 				rv.setImage8(rs.getString("image8"));
 				rv.setImage9(rs.getString("image9"));
-				rv.setImage10(rs.getString("image10"));
+				rv.setImage10(rs.getString("image10"));				
 			}
 			
 		} catch (Exception e) {
