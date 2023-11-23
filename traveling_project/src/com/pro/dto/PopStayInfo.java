@@ -1,7 +1,17 @@
 package com.pro.dto;
 
 public class PopStayInfo {
+	int stay_id;
 	String stayName,stayAddr,image1,image2,price,reviewContent;
+
+	
+	public int getStay_id() {
+		return stay_id;
+	}
+
+	public void setStay_id(int stay_id) {
+		this.stay_id = stay_id;
+	}
 
 	public String getStayName() {
 		return stayName;

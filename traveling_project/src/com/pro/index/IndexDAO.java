@@ -51,7 +51,8 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " + 
+			rs = stmt.executeQuery("SELECT " +
+					"si.stay_id AS stay_id, " +
 					"si.stay_name AS stay_name, " + 
 					"si.road_addr AS stay_addr, " + 
 					"si.image1 AS image1, " + 
@@ -69,6 +70,7 @@ public class IndexDAO{
 			while (rs.next()) {				
 				String formattedPrice = nf.format(rs.getInt("min_room_price"));
 				PopStayInfo popStayInfo = new PopStayInfo();
+				popStayInfo.setStay_id(rs.getInt("stay_id"));
 				popStayInfo.setStayName(rs.getString("stay_name"));
 				popStayInfo.setStayAddr(rs.getString("stay_addr"));
 				popStayInfo.setImage1(rs.getString("image1"));
@@ -93,7 +95,8 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " +				   
+			rs = stmt.executeQuery("SELECT " +
+				  "si.stay_id AS stay_id, " +
 				  "si.stay_name AS stay_name, " + 
 				  "si.road_addr AS stay_addr, " +
 				  "si.image1 AS image1, " +
@@ -111,6 +114,7 @@ public class IndexDAO{
 			while(rs.next()) {
 				String formattedPrice = nf.format(rs.getInt("min_room_price"));
 				PopStayInfo popStayInfo = new PopStayInfo();
+				popStayInfo.setStay_id(rs.getInt("stay_id"));
 				popStayInfo.setStayName(rs.getString("stay_name"));
 				popStayInfo.setStayAddr(rs.getString("stay_addr"));
 				popStayInfo.setImage1(rs.getString("image1"));
@@ -134,7 +138,8 @@ public class IndexDAO{
 		int rowCount = 0;
 		try {
 			connect();
-			rs = stmt.executeQuery("SELECT " +					
+			rs = stmt.executeQuery("SELECT " +
+					"si.stay_id AS stay_id, " + 
 					"si.stay_name AS stay_name, " + 
 					"si.road_addr AS stay_addr, " + 
 					"si.image1 AS image1, " + 
@@ -152,6 +157,7 @@ public class IndexDAO{
 			while(rs.next()) {
 				String formattedPrice = nf.format(rs.getInt("min_room_price"));
 				PopStayInfo popStayInfo = new PopStayInfo();
+				popStayInfo.setStay_id(rs.getInt("stay_id"));
 				popStayInfo.setStayName(rs.getString("stay_name"));
 				popStayInfo.setStayAddr(rs.getString("stay_addr"));
 				popStayInfo.setImage1(rs.getString("image1"));

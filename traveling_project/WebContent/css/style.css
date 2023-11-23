@@ -76,10 +76,12 @@ section {
 /* 글씨 */
 .hotel_recommend .slider div p, .hotel_recommend .slider div h3 {
 	margin: 10px;
+	text-overflow:ellipsis;
+	overflow:hidden;
 }
 
 .hotel_recommend .slider div h3 {
-	font-size: 16px;
+	font-size: 16px;	
 }
 
 .hotel_recommend .slider div p {
@@ -118,6 +120,7 @@ section {
 	margin: 0 10px;
 	border-radius: 10px;
 	overflow: hidden;
+	white-space:nowrap;
 }
 
 .rec_slider .slick-dots {
@@ -364,6 +367,9 @@ section {
 	width: auto;
 	margin: 10px;
 	font-size: 14px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;        
 }
 
 .accomodation_near_me .slider div p {

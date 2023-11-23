@@ -288,5 +288,5 @@ $(document).ready(function () {
       $('#map').css('width','933px');
       map.relayout();
       $(this).hide();      
-  })
+  })  
 });

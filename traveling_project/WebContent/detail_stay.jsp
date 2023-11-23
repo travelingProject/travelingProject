@@ -241,7 +241,7 @@
 			<li class="room-item" data-room_id="<%=roomList.get(i).getRoom_id()%>">
 				<div class="room-item-wrap">
 					<div class="room-item-image">
-						<img alt="객실 이미지" src="<%=path %>/room_images/<%=roomList.get(i).getImage1() %>" width="512px" height="256px">
+						<img alt="객실 이미지" src="<%=path %>/room_images/<%=roomList.get(i).getImage1() %>">
 					</div>
 					<div class="room-item-info">
 						<div class="room-info-name">

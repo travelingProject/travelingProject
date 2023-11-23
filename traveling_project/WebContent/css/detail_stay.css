@@ -19,6 +19,14 @@
 	padding:5px 0;
 }
 
+.room-name h4{
+	display: block;
+    width: 157px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 #amenity-btn{	
     width: 120px;
     height: 30px;
@@ -111,9 +119,15 @@ section {
 	border-bottom: 1px dashed #cecece;
 }
 
-.room-info-list li span {
-	font-size: 15px;
-	font-weight: lighter;
+.room-item-image{
+	width:512px;
+	height:320px;
+	overflow:hidden;
+}
+
+.room-item-image img{
+	width:512px;
+	height:320px;
 }
 
 .room-item-wrap {
@@ -123,15 +137,27 @@ section {
 
 .room-item-info {
 	text-align: left;
-	width: 455px;
+	width: 512px;
+	height:320px;	
 }
 
 .room-info-name {
 	margin-bottom: 10px;
 }
 
-.room-content {
-	
+.room-info-list li span {
+	font-size: 15.5px;
+	font-weight: lighter;	
+}
+
+.room-content span{
+	display:block;
+	height:92px;
+	overflow:hidden;
+	text-overflow: ellipsis;	
+	display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .room-to-reservation {
@@ -218,12 +244,18 @@ section {
 }
 
 .stay-review-content-wrap {
+	width:33.3%;
 	display: flex;
     justify-content: left;
     border: 1px solid #ccc;
     padding: 10px;
     margin-left: 10px;
     border-radius:5px;
+}
+
+.stay-review-image{
+	width:150px;
+	height:150px;
 }
 
 .stay-review-content {
@@ -244,6 +276,14 @@ section {
     display: flex;
     flex-wrap: wrap;
     align-content: space-around;
+}
+
+#review-content{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	  display: -webkit-box;
+  -webkit-line-clamp: 2;    /* 라인 수 제한 */
+  -webkit-box-orient: vertical;
 }
 
 #stay_name{

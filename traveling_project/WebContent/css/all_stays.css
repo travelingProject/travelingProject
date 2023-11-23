@@ -173,7 +173,7 @@ footer .footerInner {
     transform: translateX(-50%);    
     line-height: 50px;
     text-align: center;
-    background: #000;
+    background: #1aa3ff;
     color: #fff;
     border-radius: 15px;
     cursor:pointer;
@@ -181,5 +181,5 @@ footer .footerInner {
 }
 
 #map-close:hover{
-	color:#1aa3ff;
+	background:#000;
 }

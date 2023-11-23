@@ -33,7 +33,7 @@
 				        for (int i = 0; i < 8; i++) {
 	    		%>
  			    <div>
- 			        <a href="#">
+ 			        <a href="stay_info.condb?comm=stay_info&stay_id=<%=popStays.get(i).getStay_id()%>">
  			            <div class="image_slider">
  			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage1() %>" alt="이미지1" /> 
  			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" />
@@ -106,7 +106,7 @@
 				<div class="slider swiper-wrapper">
 				<% for(int i = 0; i < 9; i++){ %>
  					<div class="swiper-slide banner">
- 						<a href="#">
+ 						<a href="stay_info.condb?comm=stay_info&stay_id=<%=bestReviewStays.get(i).getStay_id()%>">
  							<div class="image_slider">
  								<img src="<%=path %>/stay_images/<%=bestReviewStays.get(i).getImage1() %>" alt="이미지1" />
  								<img src="<%=path %>/stay_images/<%=bestReviewStays.get(i).getImage2() %>" alt="이미지1" />
@@ -133,7 +133,7 @@
 			<div class="slider pop_slider">
 				<%for(int i = 0; i < 8; i++) {%>
  				<div>
- 					<a href="#">
+ 					<a href="stay_info.condb?comm=stay_info&stay_id=<%=cheepStays.get(i).getStay_id()%>">
  						<div class="image_slider">
  							<img src="<%=path %>/stay_images/<%=cheepStays.get(i).getImage1() %>" alt="이미지1" />
  							<img src="<%=path %>/stay_images/<%=cheepStays.get(i).getImage2() %>" alt="이미지2" />
