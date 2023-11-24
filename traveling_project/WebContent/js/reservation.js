@@ -1,6 +1,6 @@
 window.onload = function () {
     
-	buildCalendar();
+    buildCalendar();
     buildNextMonthCalendar(); // 다음 달 달력도 빌드
     
     // 버튼에 이벤트 리스너를 추가합니다.
