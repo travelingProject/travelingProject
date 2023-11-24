@@ -71,112 +71,95 @@
 					</thead>
 					<%
 						// 예약 대기
-						/* if (rwArr.size() != 0) { */
+						if (rwArr.size() != 0) {
 							for (int i = 0; i < rwArr.size(); i++) {
-								out.println("<tr>");
-								out.println("<td>" + rwArr.get(i).getReservationId() + "</td>");
-								out.println("<td>" + rwArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rwArr.get(i).getRoomName() + "</td>");
-								out.println("<td>" + rwArr.get(i).getCheckInDate() + "</td>");
-								out.println("<td>" + rwArr.get(i).getCheckOutDate() + "</td>");
-								out.println("<td>" + rwArr.get(i).getCheckInTime() + "</td>");
-								out.println("<td>" + rwArr.get(i).getCheckOutTime() + "</td>");
-								out.println("<td>" + rwArr.get(i).getPeople() + "</td>");
-								out.println("<td>" + rwArr.get(i).getPrice() + "</td>");
-								out.println("<td>" + rwArr.get(i).getPaymentTime() + "</td>");
-								out.println("<td style='color:#999'>" + rwArr.get(i).getStatus() + "</td>");
-								out.println("<td>");
-								out.println("<input type='button' class='accept_btn' value='승인'>");
-								out.println("<input type='button' class='reject_btn' value='거부'>");
-								out.println("</td>");
-								out.println("</tr>");
-
-								// 예약 승인 
-								out.println("<div id='accept_modal' class='modal'>");
-								out.println("<div>");
-								out.println("<h2>예약 승인</h2>");
-								out.println("<p>예약을 확정하시겠습니까?<br />(예약이 확정되면 취소하실 수 없습니다.)</p>");
-								out.println("<div id='btn'><a id='accept' class='btn' href='reservationUpdate.jsp?reservationId="
-										+ rwArr.get(i).getReservationId() + "'>확인</a>");
-								out.println("<input type='button' class='btn' value='취소'/></div>");
-								out.println("<span class='ir_pm'>닫기</span>");
-								out.println("</div>");
-								out.println("</div>");
-
-								// 예약 거부
-								out.println("<div id='reject_modal' class='modal'>");
-								out.println("<div>");
-								out.println("<h2>예약 거부</h2>");
-								out.println("<p>예약을 거부하시겠습니까?<br />(예약을 거부하시면 취소하실 수 없습니다.)</p>");
-								out.println("<div id='btn'><a id='acccept' class='btn' href='reservationUpdate.jsp?cancelId="
-										+ rwArr.get(i).getReservationId() + "'>확인</a>");
-								out.println("<input type='button' class='btn' value='취소'/></div>");
-								out.println("<span class='ir_pm'>닫기</span>");
-								out.println("</div>");
-								out.println("</div>");
-
-							}
+					%>
+					<tr>
+						<input id="reservation-id-value" type="hidden" value="<%=rwArr.get(i).getReservationId()%>">
+						<td><%=rwArr.get(i).getReservationId()%></td>
+						<td><%=rwArr.get(i).getUserId()%></td>
+						<td><%=rwArr.get(i).getRoomName()%></td>
+						<td><%=rwArr.get(i).getCheckInDate()%></td>
+						<td><%=rwArr.get(i).getCheckOutDate()%></td>
+						<td><%=rwArr.get(i).getCheckInTime()%></td>
+						<td><%=rwArr.get(i).getCheckOutTime()%></td>
+						<td><%=rwArr.get(i).getPeople()%></td>
+						<td><%=rwArr.get(i).getPrice()%></td>
+						<td><%=rwArr.get(i).getPaymentTime()%></td>
+						<td style='color: #999'><%=rwArr.get(i).getStatus()%></td>
+						<td><a href="#" class='accept_btn'>승인</a> <input type='button' class='reject_btn' value='거부'></td>
+					</tr>
+					<%
+						}
 							// 예약 확정
 							for (int i = 0; i < rcArr.size(); i++) {
-								out.println("<tr>");
-								out.println("<td>" + rcArr.get(i).getReservationId() + "</td>");
-								out.println("<td>" + rcArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rcArr.get(i).getRoomName() + "</td>");
-								out.println("<td>" + rcArr.get(i).getCheckInDate() + "</td>");
-								out.println("<td>" + rcArr.get(i).getCheckOutDate() + "</td>");
-								out.println("<td>" + rcArr.get(i).getCheckInTime() + "</td>");
-								out.println("<td>" + rcArr.get(i).getCheckOutTime() + "</td>");
-								out.println("<td>" + rcArr.get(i).getPeople() + "</td>");
-								out.println("<td>" + rcArr.get(i).getPrice() + "</td>");
-								out.println("<td>" + rcArr.get(i).getPaymentTime() + "</td>");
-								out.println("<td style='color:#1a44ff; font-weight:bold'>" + rcArr.get(i).getStatus() + "</td>");
-								out.println("<td>-</td>");
-								out.println("</tr>");
-							}
+					%>
+								<tr>
+									<td><%=rcArr.get(i).getReservationId() %></td>								
+									<td><%=rcArr.get(i).getUserId() %></td>								
+									<td><%=rcArr.get(i).getRoomName() %></td>								
+									<td><%=rcArr.get(i).getCheckInDate() %></td>								
+									<td><%=rcArr.get(i).getCheckOutDate() %></td>								
+									<td><%=rcArr.get(i).getCheckInTime() %></td>								
+									<td><%=rcArr.get(i).getCheckOutTime() %></td>								
+									<td><%=rcArr.get(i).getPeople() %></td>								
+									<td><%=rcArr.get(i).getPrice() %></td>								
+									<td><%=rcArr.get(i).getPaymentTime() %></td>								
+									<td style="color:#1a44ff; font-weight:bold;"><%=rcArr.get(i).getStatus() %></td>								
+									<td>-</td>								
+								</tr>
+					<%
+							}					
 							// 예약 거부
 							for (int i = 0; i < rRArr.size(); i++) {
-								out.println("<tr>");
-								out.println("<td>" + rRArr.get(i).getReservationId() + "</td>");
-								out.println("<td>" + rRArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rRArr.get(i).getRoomName() + "</td>");
-								out.println("<td>" + rRArr.get(i).getCheckInDate() + "</td>");
-								out.println("<td>" + rRArr.get(i).getCheckOutDate() + "</td>");
-								out.println("<td>" + rRArr.get(i).getCheckInTime() + "</td>");
-								out.println("<td>" + rRArr.get(i).getCheckOutTime() + "</td>");
-								out.println("<td>" + rRArr.get(i).getPeople() + "</td>");
-								out.println("<td>" + rRArr.get(i).getPrice() + "</td>");
-								out.println("<td>" + rRArr.get(i).getPaymentTime() + "</td>");
-								out.println("<td style='color:red;font-weight:bold'>" + rRArr.get(i).getStatus() + "</td>");
-								out.println("<td>-</td>");
-								out.println("</tr>");
+					%>
+							<tr>
+								<td><%=rRArr.get(i).getReservationId() %></td>
+								<td><%=rRArr.get(i).getUserId() %></td>
+								<td><%=rRArr.get(i).getRoomName() %></td>
+								<td><%=rRArr.get(i).getCheckInDate() %></td>
+								<td><%=rRArr.get(i).getCheckOutDate() %></td>
+								<td><%=rRArr.get(i).getCheckInTime() %></td>
+								<td><%=rRArr.get(i).getCheckOutTime() %></td>
+								<td><%=rRArr.get(i).getPeople() %></td>
+								<td><%=rRArr.get(i).getPrice() %></td>
+								<td><%=rRArr.get(i).getPaymentTime() %></td>
+								<td style='color:red;font-weight:bold'><%=rRArr.get(i).getStatus() %></td>
+								<td>-</td>
+							</tr>
+					<%
 							}
 							// 예약 취소
 							for (int i = 0; i < rCancArr.size(); i++) {
-								out.println("<tr>");
-								out.println("<td>" + rCancArr.get(i).getReservationId() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getUserId() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getRoomName() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getCheckInDate() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getCheckOutDate() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getCheckInTime() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getCheckOutTime() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getPeople() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getPrice() + "</td>");
-								out.println("<td>" + rCancArr.get(i).getPaymentTime() + "</td>");
-								out.println("<td style='color:red;font-weight:bold'>" + rCancArr.get(i).getStatus() + "</td>");
-								out.println("<td>-</td>");
-								out.println("</tr>");
-							}
-							%>
-							</table>
-							<%			
-						if(rwArr.size() == 0 && rcArr.size() == 0 && rRArr.size() == 0 && rCancArr.size() == 0){							
-							out.println("<p style='height:466px; line-height:466px; color:#000; user-select:none;'>예약 정보가 없습니다.</p>");
-						}
 					%>
+							<tr>
+								<td><%=rCancArr.get(i).getReservationId() %></td>
+								<td><%=rCancArr.get(i).getUserId() %></td>
+								<td><%=rCancArr.get(i).getRoomName() %></td>
+								<td><%=rCancArr.get(i).getCheckInDate() %></td>
+								<td><%=rCancArr.get(i).getCheckOutDate() %></td>
+								<td><%=rCancArr.get(i).getCheckInTime() %></td>
+								<td><%=rCancArr.get(i).getCheckOutTime() %></td>
+								<td><%=rCancArr.get(i).getPeople() %></td>
+								<td><%=rCancArr.get(i).getPrice() %></td>
+								<td><%=rCancArr.get(i).getPaymentTime() %></td>
+								<td style='color:red;font-weight:bold'><%=rCancArr.get(i).getStatus() %></td>
+								<td>-</td>
+							</tr>
+					<%
+							}
+						}
+					%>					
+				</table>
+				<%
+					if (rwArr.size() == 0 && rcArr.size() == 0 && rRArr.size() == 0 && rCancArr.size() == 0) {
+				%>
+				<p style='height:466px; line-height:466px; color:#000; user-select:none;'>예약 정보가 없습니다.</p>
+				<%
+					}
+				%>				
 			</div>
-		</section>		
-		<div id="background_overlay"></div>
+		</section>
 	</main>
 	<%@ include file="footer.jsp"%>
 </body>

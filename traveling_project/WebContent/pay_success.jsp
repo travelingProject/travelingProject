@@ -26,6 +26,7 @@
 			int people = customerJson.getInt("people");
 			String chkinTime = customerJson.getString("chk_in_time");
 			String chkoutTime = customerJson.getString("chk_out_time");
+			System.out.println(uid);
 
 			rinfo.setUser_id(uid);
 			rinfo.setRoom_id(new Integer(rid));
@@ -46,33 +47,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- favicon -->
+<link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>예약 완료</title>
+<link rel="stylesheet" href="css/pay_success.css" />
 </head>
-<style>
-#success-reservation {
-    text-align: center;
-    max-width: 1200px;
-    margin: 130px auto;
-    height: 430px;
-}
-
-#notice-reservation p {
-	margin-top: 10px;
-}
-
-#go-mypage {
-    margin-top: 50px;
-}
-
-#go-mypage-tag {
-	background-color: #ccc;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-</style>
 <body>
 	<jsp:include page="header.jsp" />
 	
@@ -81,6 +61,13 @@
 			<div id="notice-reservation">
 				<h1>예약이 완료되었습니다.</h1>
 				<p>호스트가 수락하면 예약이 확정됩니다. 상세 내용은 마이페이지에서 확인 가능합니다.</p>
+				<p class="reservation-info"><strong>예약 번호:</strong></p>
+			    <p class="reservation-info"><strong>체크인 날짜:</strong></p>
+			    <p class="reservation-info"><strong>체크 아웃 날짜:</strong> 2023-12-26</p>
+			    <p class="reservation-info"><strong>예약자 성함:</strong> John Doe</p>
+			    <p class="reservation-info"><strong>객실 이름:</strong> Deluxe Double Room</p>
+			    <p class="reservation-info"><strong>인원 수:</strong> 2</p>
+			    <p class="reservation-info"><strong>결제 :</strong> $500</p>
 			</div>
 			<div id="go-mypage">
 				<a href="my_info.jsp" id="go-mypage-tag">마이페이지로 이동하기</a>

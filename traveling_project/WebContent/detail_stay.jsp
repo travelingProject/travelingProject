@@ -8,7 +8,7 @@
 <%
 	List<StayInfo> detailStayList = (List<StayInfo>) request.getAttribute("detailStayList");
 	List<RoomInfo> roomList = (List<RoomInfo>) request.getAttribute("roomList");
-	List<ReviewInfo> reviewList = (List<ReviewInfo>) request.getAttribute("reviewList");	
+	List<ReviewInfo> reviewList = (List<ReviewInfo>) request.getAttribute("reviewList");
 	String path = request.getContextPath();
 	NumberFormat formatter = NumberFormat.getNumberInstance();
     String rawPhone = detailStayList.get(0).getHostPhone();
@@ -26,7 +26,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>traveling</title>
+<!-- favicon -->
+<link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
 <!-- css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="css/detail_stay.css">
