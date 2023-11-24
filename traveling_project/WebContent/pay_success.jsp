@@ -3,13 +3,24 @@
 <%@ page import="javax.json.Json"%>
 <%@ page import="javax.json.JsonObject"%>
 <%@ page import="com.hh.db.ReservationInsert"%>
+<%@ page import="java.text.NumberFormat"%>
+<%@ page import="java.sql.*"%>
 <jsp:useBean id="ins" class="com.hh.db.ControlDB" />
 <%
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
 	String customerParam = request.getParameter("customer");
 	ReservationInsert rinfo = new ReservationInsert();
+	NumberFormat formatter = NumberFormat.getInstance();
 
-	if (customerParam != null && !customerParam.isEmpty()) {
-		try {
+	/* if (customerParam != null && !customerParam.isEmpty()) { */
+		try {			
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
+			stmt = conn.createStatement();
+			
 			// JSON 파서 생성
 			javax.json.JsonReader jsonReader = Json
 					.createReader(new java.io.StringReader(java.net.URLDecoder.decode(customerParam, "UTF-8")));
@@ -25,8 +36,23 @@
 			String chkout = customerJson.getString("chk_out");
 			int people = customerJson.getInt("people");
 			String chkinTime = customerJson.getString("chk_in_time");
-			String chkoutTime = customerJson.getString("chk_out_time");
-			System.out.println(uid);
+			String chkoutTime = customerJson.getString("chk_out_time");						
+			
+	        rs = stmt.executeQuery("SELECT ri.room_name AS room_name, si.stay_name AS stay_name, ui.name AS user_name " +
+	                "FROM room_info ri " +
+	                "INNER JOIN stay_info si ON ri.stay_id = si.stay_id " +
+	                "INNER JOIN reservation res ON ri.room_id = res.room_id " +
+	                "INNER JOIN user_info ui ON res.user_id = ui.user_id " +
+	                "WHERE ri.room_id = " + rid +
+	                " AND ui.user_id = '" + uid + "';");
+			if(rs.next()){
+				String stay_name = rs.getString("stay_name");
+				String room_name = rs.getString("room_name");
+				String user_name = rs.getString("user_name");
+				rinfo.setRoom_name(room_name);
+				rinfo.setStay_name(stay_name);
+				rinfo.setUser_name(user_name);
+			}
 
 			rinfo.setUser_id(uid);
 			rinfo.setRoom_id(new Integer(rid));
@@ -41,41 +67,61 @@
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally{
+			rs.close();
+			stmt.close();
+			conn.close();
 		}
-	}
+	/* } */
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <!-- favicon -->
-<link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
+<link rel="shortcut icon" href="images/logo.png" type="image/x-icon" />
 <meta charset="UTF-8">
 <title>예약 완료</title>
 <link rel="stylesheet" href="css/pay_success.css" />
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	
+
 	<section id="success-reservation">
 		<div id="notice-reservation-wrap">
 			<div id="notice-reservation">
 				<h1>예약이 완료되었습니다.</h1>
-				<p>호스트가 수락하면 예약이 확정됩니다. 상세 내용은 마이페이지에서 확인 가능합니다.</p>
-				<p class="reservation-info"><strong>예약 번호:</strong></p>
-			    <p class="reservation-info"><strong>체크인 날짜:</strong></p>
-			    <p class="reservation-info"><strong>체크 아웃 날짜:</strong> 2023-12-26</p>
-			    <p class="reservation-info"><strong>예약자 성함:</strong> John Doe</p>
-			    <p class="reservation-info"><strong>객실 이름:</strong> Deluxe Double Room</p>
-			    <p class="reservation-info"><strong>인원 수:</strong> 2</p>
-			    <p class="reservation-info"><strong>결제 :</strong> $500</p>
+				<p>
+					호스트가 수락하면 예약이 확정됩니다.<br> 상세 내용은 마이페이지에서 확인 가능합니다.
+				</p>
+				<p class="reservation-info">
+					<strong>숙소 이름 : </strong><%=rinfo.getStay_name()%></p>
+				<p class="reservation-info">
+					<strong>체크인 날짜 : </strong><%=rinfo.getCheck_in_date()%></p>
+				<p class="reservation-info">
+					<strong>체크 아웃 날짜 : </strong><%=rinfo.getCheck_out_date()%></p>
+				<p class="reservation-info">
+					<strong>예약자 성함 : </strong><%=rinfo.getUser_name() %>
+				</p>
+				<p class="reservation-info">
+					<strong>객실 이름 : </strong><%=rinfo.getRoom_name() %>
+				</p>
+				<p class="reservation-info">
+					<strong>인원 수:</strong>
+					<%=rinfo.getPeople()%></p>
+				<p class="reservation-info">
+					<strong>결제 금액 :</strong> ₩<%
+						String formattedPrice = formatter.format(rinfo.getPrice());
+						out.println(formattedPrice);
+					%>
+				</p>
 			</div>
 			<div id="go-mypage">
-				<a href="my_info.jsp" id="go-mypage-tag">마이페이지로 이동하기</a>
+				<a href="index.jsp" id="go-to-main">메인화면으로 이동하기</a> <a href="my_info.jsp" id="go-mypage-tag">마이페이지로 이동하기</a>
 			</div>
 		</div>
 	</section>
 
-	
+
 	<div class="go_top"></div>
 	<jsp:include page="./footer.jsp" />
 </body>

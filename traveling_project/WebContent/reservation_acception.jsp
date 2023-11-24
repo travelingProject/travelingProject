@@ -74,40 +74,40 @@
 						if (rwArr.size() != 0) {
 							for (int i = 0; i < rwArr.size(); i++) {
 					%>
-					<tr>
-						<input id="reservation-id-value" type="hidden" value="<%=rwArr.get(i).getReservationId()%>">
-						<td><%=rwArr.get(i).getReservationId()%></td>
-						<td><%=rwArr.get(i).getUserId()%></td>
-						<td><%=rwArr.get(i).getRoomName()%></td>
-						<td><%=rwArr.get(i).getCheckInDate()%></td>
-						<td><%=rwArr.get(i).getCheckOutDate()%></td>
-						<td><%=rwArr.get(i).getCheckInTime()%></td>
-						<td><%=rwArr.get(i).getCheckOutTime()%></td>
-						<td><%=rwArr.get(i).getPeople()%></td>
-						<td><%=rwArr.get(i).getPrice()%></td>
-						<td><%=rwArr.get(i).getPaymentTime()%></td>
-						<td style='color: #999'><%=rwArr.get(i).getStatus()%></td>
-						<td><a href="#" class='accept_btn'>승인</a> <input type='button' class='reject_btn' value='거부'></td>
-					</tr>
+						<tr>
+							<input id="reservation-id-value" type="hidden" value="<%=rwArr.get(i).getReservationId()%>">
+							<td><%=rwArr.get(i).getReservationId()%></td>
+							<td><%=rwArr.get(i).getUserId()%></td>
+							<td><%=rwArr.get(i).getRoomName()%></td>
+							<td><%=rwArr.get(i).getCheckInDate()%></td>
+							<td><%=rwArr.get(i).getCheckOutDate()%></td>
+							<td><%=rwArr.get(i).getCheckInTime()%></td>
+							<td><%=rwArr.get(i).getCheckOutTime()%></td>
+							<td><%=rwArr.get(i).getPeople()%></td>
+							<td><%=rwArr.get(i).getPrice()%></td>
+							<td><%=rwArr.get(i).getPaymentTime()%></td>
+							<td style='color: #999'><%=rwArr.get(i).getStatus()%></td>
+							<td><input type="button" class='accept_btn' value="승인"><input type='button' class='reject_btn' value='거부'></td>
+						</tr>
 					<%
 						}
 							// 예약 확정
 							for (int i = 0; i < rcArr.size(); i++) {
 					%>
-								<tr>
-									<td><%=rcArr.get(i).getReservationId() %></td>								
-									<td><%=rcArr.get(i).getUserId() %></td>								
-									<td><%=rcArr.get(i).getRoomName() %></td>								
-									<td><%=rcArr.get(i).getCheckInDate() %></td>								
-									<td><%=rcArr.get(i).getCheckOutDate() %></td>								
-									<td><%=rcArr.get(i).getCheckInTime() %></td>								
-									<td><%=rcArr.get(i).getCheckOutTime() %></td>								
-									<td><%=rcArr.get(i).getPeople() %></td>								
-									<td><%=rcArr.get(i).getPrice() %></td>								
-									<td><%=rcArr.get(i).getPaymentTime() %></td>								
-									<td style="color:#1a44ff; font-weight:bold;"><%=rcArr.get(i).getStatus() %></td>								
-									<td>-</td>								
-								</tr>
+						<tr>
+							<td><%=rcArr.get(i).getReservationId() %></td>
+							<td><%=rcArr.get(i).getUserId() %></td>
+							<td><%=rcArr.get(i).getRoomName() %></td>
+							<td><%=rcArr.get(i).getCheckInDate() %></td>
+							<td><%=rcArr.get(i).getCheckOutDate() %></td>
+							<td><%=rcArr.get(i).getCheckInTime() %></td>
+							<td><%=rcArr.get(i).getCheckOutTime() %></td>
+							<td><%=rcArr.get(i).getPeople() %></td>
+							<td><%=rcArr.get(i).getPrice() %></td>
+							<td><%=rcArr.get(i).getPaymentTime() %></td>
+							<td style="color:#1a44ff; font-weight:bold;"><%=rcArr.get(i).getStatus() %></td>
+							<td>-</td>								
+						</tr>
 					<%
 							}					
 							// 예약 거부
@@ -164,6 +164,3 @@
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
-
-
-

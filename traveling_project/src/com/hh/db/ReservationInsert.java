@@ -2,7 +2,32 @@ package com.hh.db;
 
 public class ReservationInsert {
 	private int room_id, people, price;
-	private String user_id, check_in_date, check_out_date, check_in_time, check_out_time;
+	private String user_name,stay_name,room_name, user_id, check_in_date, check_out_date, check_in_time, check_out_time;
+
+	
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+	public String getStay_name() {
+		return stay_name;
+	}
+
+	public void setStay_name(String stay_name) {
+		this.stay_name = stay_name;
+	}
+
+	public String getRoom_name() {
+		return room_name;
+	}
+
+	public void setRoom_name(String room_name) {
+		this.room_name = room_name;
+	}
 
 	public int getRoom_id() {
 		return room_id;

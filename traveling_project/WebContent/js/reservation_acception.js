@@ -1,7 +1,6 @@
 $(document).ready(function() {
     
-    $(".accept_btn").click(function(e){
-      e.preventDefault();
+    $(".accept_btn").click(function(){      
       var tr = $(this).closest('tr');
       var reservationId = tr.find('input[type="hidden"]').val();
       if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 확정하시겠습니까?")){          
@@ -9,8 +8,7 @@ $(document).ready(function() {
       }
     });
     
-    $(".reject_btn").click(function(e){
-        e.preventDefault();
+    $(".reject_btn").click(function(){        
         var tr = $(this).closest('tr');
         var reservationId = tr.find('input[type="hidden"]').val();
         if(confirm("예약 번호는[" + reservationId + "]입니다 \n예약을 거부하시겠습니까?")){          
