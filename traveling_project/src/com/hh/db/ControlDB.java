@@ -356,15 +356,6 @@ public class ControlDB {
 		int people = rinfo.getPeople();
 		int price = rinfo.getPrice();
 		
-		System.out.println(uid);
-		System.out.println(rid);
-		System.out.println(chkin);
-		System.out.println(chkout);
-		System.out.println(chkinTime);
-		System.out.println(chkoutTime);
-		System.out.println(people);
-		System.out.println(price);
-		
 		try {
 			condb();
 			sta.executeUpdate(

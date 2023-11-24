@@ -180,12 +180,26 @@ public class ReservationAcception {
 		try {
 			connect();
 			stmt.executeUpdate("UPDATE reservation SET status='예약 확정' WHERE status='예약 대기' AND reservation_id ='" + reservationId + "';");
+			reservationToPlanner(reservationId);
 		} catch(Exception e) {
 			System.out.println(e);
 		} finally {
 			close();
 		}
 	}
+	
+	// 예약 승인 -> 플래너 등록
+	public void reservationToPlanner(String reservationId) {
+		try {
+			connect();
+			stmt.executeUpdate("INSERT INTO planner (reservation_id, modified_date) VALUES (" + reservationId + ", now());");
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			close();
+		}
+	}
+	
 	
 	// 예약 거부
 	public void reservationReject(String reservationId) {
