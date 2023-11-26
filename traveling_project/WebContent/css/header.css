@@ -36,14 +36,14 @@ header {
   width: 1200px;
   height: 50px;
   background: #f5f5f5;
-  display: flex;f
+  display: flex;
   justify-content: space-between;
   border-radius: 30px;
   overflow: hidden;
 }
 
 #accomodation_search input {
-  width: 21.25%;
+  width: 220px;
   border: none;  
   outline: none;
   font-size: 18px;
@@ -52,19 +52,22 @@ header {
 }
 
 #accomodation_search input[type='text']:hover,
-#accomodation_search input[type='number']:hover{
+#accomodation_search input[type='button']:hover{
   background-color:#ececec;
 }
 
 #accomodation_search input[type='text'],
-#accomodation_search input[type='number'] {
+#accomodation_search input[type='button'] {
   background: #f5f5f5;
   text-align:center;  
 }
 
+#accomodation_search input[type='button']{
+	cursor:pointer;
+}
+
 #accomodation_search input[type='text']:focus,
-#accomodation_search input[type='date']:focus,
-#accomodation_search input[type='number']:focus {
+#accomodation_search input[type='date']:focus {
   background: #fff;   
 }
 
@@ -103,14 +106,47 @@ input[type='date']:valid::before {
   display: none;
 }
 
+/* 인원 수 */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
 }
 
-/* 숙소 검색 버튼 */
+#guests-dropdown{
+    width: 220px;
+    height: 50px;
+    background: #fff;
+    position: absolute;
+    right: 470px;
+    top: 15px;    
+    border-radius: 30px;
+    display:none;
+}
 
+#button-box{
+	display: inline-block;    
+    margin-top: 8px;
+    margin-left: 50%;
+    transform: translateX(-50%);   
+}
+
+#plus,
+#minus{
+	width:30px;
+	height:30px;
+	border-radius:100%;
+	border:1px solid #ccc;
+	font-size:20px;
+	cursor:pointer;
+	background:#f5f5f5;
+}
+
+#number{
+	margin:0 5px;
+}
+
+/* 숙소 검색 버튼 */
 #accomodation_search #search_btn {
   width: 15%;
   height:40px;

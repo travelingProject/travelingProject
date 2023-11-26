@@ -9,21 +9,39 @@ $(document).ready(function() {
 
 	$('#my_info').on('mouseleave', function() {
 		$(this).fadeOut(50);
-	})
-
-	// 인원 수 범위 0 ~ 32 사이로 만들기
-	const inputElement = $('#people_num');
-	inputElement.on('input', function() {
-		const inputValue = parseFloat(inputElement.val());
-		if (inputValue < 0) {
-			inputElement.val('1');
-		} else if (inputValue > 32) {
-			inputElement.val('32');
-		}
 	});
+	
+	$('#people_num').click(function(e){
+		$('#guests-dropdown').show();
+		e.stopPropagation();
+	});
+	
+	  // 문서의 어느 곳이든 클릭했을 때의 이벤트 핸들러입니다.
+	  $(document).click(function(event) {
+	    var target = $(event.target); // 클릭된 요소를 가져옵니다.
+
+	    // 클릭된 요소가 #people_num 또는 #guests-dropdown 내부의 것이 아니라면 #guests-dropdown을 숨깁니다.
+	    if (!target.closest('#people_num').length && !target.closest('#guests-dropdown').length) {
+	      $('#guests-dropdown').hide();
+	    }
+	  });
+
+	  // #guests-dropdown 내부에서의 클릭 이벤트가 문서 클릭 이벤트로 전파되지 않도록 합니다.
+	  $('#guests-dropdown').click(function(event){
+	    event.stopPropagation();
+	  });
+
 
 	// 달력 클릭시 효과
+	var today = new Date().toISOString().split('T')[0];
 	const date = $('input[type="date"]');
+	date.attr('min',today)
+	$('#check_in_date').change(function(){
+		var selectedDate = new Date($(this).val());
+		selectedDate.setDate(selectedDate.getDate() + 1);
+		var nextDay = selectedDate.toISOString().split('T')[0];
+		$('#check_out_date').attr('min',nextDay)
+	})	
 	date.css('color', '#000');
 	date.on('focus', function() {
 		$(this).css('background-color', '#fff');

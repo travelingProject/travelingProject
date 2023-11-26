@@ -30,13 +30,20 @@
         <h1 id="logo">
           <a href="index.jsp"><img src="images/logo.png" alt="" /></a>
         </h1>
-        <form action="reservation.jsp" id="accomodation_search">
+        <form action="search_stays.condb?comm=pop_stays" id="accomodation_search" method="post">
           <input type="text" name="region" id="region" required placeholder="어디로 떠나시나요?" />
           <input type="date" name="check_in_date" id="check_in_date" data-placeholder="체크인" required aria-required="true" />
           <input type="date" name="check_out_date" id="check_out_date" data-placeholder="체크 아웃" required aria-required="true" />
-          <input type="number" name="people_num" id="people_num" required placeholder="인원 수를 입력해주세요." max="32" min="1" />
+          <input type="button" name="people_num" id="people_num" value="인원 수를 입력해주세요."/>
           <input id="search_btn" type="submit" value="검색하기" />
         </form>
+        <div id="guests-dropdown">
+	        <div id="button-box">
+	        	<input type="button" id="minus" value="-">
+	        	<span id="number">1</span>
+	        	<input type="button" id="plus" value="+">
+	        </div>        	
+        </div>
         <div class="right_menu">
           <a href="#" class="ir_pm">내 정보</a>
           <a href="#" class="ir_pm">언어 선택</a>
