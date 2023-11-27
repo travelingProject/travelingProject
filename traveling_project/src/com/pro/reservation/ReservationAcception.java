@@ -1,4 +1,4 @@
-package com.jslee.traveling;
+package com.pro.reservation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

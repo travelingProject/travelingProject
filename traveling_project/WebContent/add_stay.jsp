@@ -371,7 +371,7 @@
 							<div>
 								<h4>전기밥솥</h4>
 								<div>										
-									<input type="radio" id="electric_rice_cooker_checked" name="electric_rice_cooker" value=1>
+									<input type="radio" id="electric_rice_cooker_checked" name="electric_rice_cooker" value="yes">
 									<label for="electric_rice_cooker_checked"></label>										
 									<input type="radio" id="electric_rice_cooker_not_checked" name="electric_rice_cooker" value="no">
 									<label for="electric_rice_cooker_not_checked"></label>

@@ -179,7 +179,7 @@
 			<div id="toss-window-btn">
 				<button type="button" id="payment-btn">결제</button>
 				<input type="hidden" id="room-id" value="<%=rid %>">
-				<button type="button" id="payment-cancel">취소</button>				
+				<button type="button" id="payment-cancel">취소</button>
 			</div>			
 		</div>
 	</section>

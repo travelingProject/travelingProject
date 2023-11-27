@@ -82,9 +82,6 @@ function requestPayment(customer) {
 	const customerKey = generateRandomCustomer(); // 내 상점에서 고객을 구분하기 위해 발급한 고객의 고유 ID
 	const button = document.getElementById("payment-btn")
 	const orderId = generateRandomOrder();
-	
-//	console.log("customer-id = " + customerKey);
-//	console.log("order-id = " + orderId);
 				
 	// 2. 결제위젯 SDK 초기화
 	const paymentWidget = PaymentWidget(clientKey, customerKey) // 회원 결제

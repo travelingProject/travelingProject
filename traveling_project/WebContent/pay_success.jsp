@@ -9,7 +9,7 @@
 <%
 	Connection conn = null;
 	Statement stmt = null;
-	ResultSet rs = null;
+	ResultSet rs = null;		
 	
 	String customerParam = request.getParameter("customer");
 	ReservationInsert rinfo = new ReservationInsert();
@@ -34,23 +34,22 @@
 			String chkout = customerJson.getString("chk_out");
 			int people = customerJson.getInt("people");
 			String chkinTime = customerJson.getString("chk_in_time");
-			String chkoutTime = customerJson.getString("chk_out_time");			
+			String chkoutTime = customerJson.getString("chk_out_time");
+			
+			String userId = (String) session.getAttribute("id");
 			
 			
-	        rs = stmt.executeQuery("SELECT ri.room_name AS room_name, si.stay_name AS stay_name, ui.name AS user_name " +
-					                "FROM room_info ri " +
-					                "INNER JOIN stay_info si ON ri.stay_id = si.stay_id " +
-					                "INNER JOIN reservation res ON ri.room_id = res.room_id " +
-					                "INNER JOIN user_info ui ON res.user_id = ui.user_id " +
-					                "WHERE ri.room_id = " + rid +
-					                " AND ui.user_id = '" + uid + "';");
+	        rs = stmt.executeQuery("SELECT ui.name AS user_name, si.stay_name AS stay_name, ri.room_name AS room_name " + 
+					        		"FROM user_info ui, stay_info si " + 
+					        		"JOIN room_info ri ON ri.stay_id = si.stay_id " + 
+					        		"WHERE ui.user_id = '"+ userId +"'  AND ri.room_id=" + rid + ";");
 			if(rs.next()){
 				String stay_name = rs.getString("stay_name");
 				String room_name = rs.getString("room_name");
 				String user_name = rs.getString("user_name");				
 				rinfo.setRoom_name(room_name);
 				rinfo.setStay_name(stay_name);
-				rinfo.setUser_name(user_name);
+				rinfo.setUser_name(user_name);				
 			}
 
 			rinfo.setUser_id(uid);

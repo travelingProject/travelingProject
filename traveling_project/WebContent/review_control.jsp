@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="css/my_info.css" />
 <link rel="stylesheet" href="css/review_modal.css" />
 <!-- js -->
+<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="js/review_modal.js"></script>
 <script src="js/review_control.js"></script>
 </head>

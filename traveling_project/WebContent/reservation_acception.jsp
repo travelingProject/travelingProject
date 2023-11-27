@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="com.jslee.traveling.ReservationInfo"%>
+<%@ page import="com.pro.reservation.ReservationInfo"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +35,7 @@
 </head>
 <body>
 	<%@ include file="host_header.jsp"%>
-	<jsp:useBean id="reservationAcception" class="com.jslee.traveling.ReservationAcception" scope="page" />
+	<jsp:useBean id="reservationAcception" class="com.pro.reservation.ReservationAcception" scope="page" />
 	<%
 		String hostId = (String) session.getAttribute("host_id");
 		// 예약 대기중인 예약 테이블 객체 배열

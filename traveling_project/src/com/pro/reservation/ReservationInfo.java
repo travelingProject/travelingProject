@@ -1,4 +1,4 @@
-package com.jslee.traveling;
+package com.pro.reservation;
 
 public class ReservationInfo {
 	int reservationId, roomId, people, price;

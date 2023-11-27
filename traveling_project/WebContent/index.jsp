@@ -54,42 +54,42 @@
 		<section class="korea_popular_region">
 			<h2>국내 인기 여행지</h2>
 			<div class="slider">
-				<a href="#">
+				<a href="search_stays.condb?comm=pop_stays">
 					<div>
 						<img src="images/jeju.jpg" alt="" />
 					</div>
 					<h2>제주</h2>
 					<p>숙소 4,878개</p>
 				</a>
-				<a href="#">
+				<a href="search_stays.condb?comm=pop_stays">
 					<div>
 						<img src="images/seoul.jpg" alt="" />
 					</div>
 					<h2>서울</h2>
 					<p>숙소 5,923개</p>
 				</a>
-				<a href="#">
+				<a href="search_stays.condb?comm=pop_stays">
 					<div>
 						<img src="images/busan.jpg" alt="" />
 					</div>
 					<h2>부산</h2>
 					<p>숙소 2,719개</p>
 				</a>
-				<a href="#">
+				<a href="search_stays.condb?comm=pop_stays">
 					<div>
 						<img src="images/sokcho.jpg" alt="" />
 					</div>
 					<h2>속초</h2>
 					<p>숙소 797개</p>
 				</a>
-				<a href="#">
+				<a href="search_stays.condb?comm=pop_stays">
 					<div>
 						<img src="images/incheon.jpg" alt="" />
 					</div>
 					<h2>인천</h2>
 					<p>숙소 2,154개</p>
 				</a>
-				<a href="#">
+				<a href="search_stays.condb?comm=pop_stays">
 					<div>
 						<img src="images/gangneung.jpg" alt="" />
 					</div>
