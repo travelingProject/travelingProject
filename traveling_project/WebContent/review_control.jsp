@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="css/my_info.css" />
 <link rel="stylesheet" href="css/review_modal.css" />
 <!-- js -->
-<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="js/review_modal.js"></script>
 <script src="js/review_control.js"></script>
 </head>
@@ -49,6 +48,7 @@
 					</ul>
 					<div id="review_list">
 						<!-- ajax로 동적으로 생성 -->
+						
 					</div>
 					<div class="review_modal_wrap">
 						<div id="review_modal_index">

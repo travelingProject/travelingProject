@@ -82,6 +82,7 @@ $(document).ready(function() {
 	});
 });
 
+
 // 리뷰 삭제하기 버튼 함수
 function delete_review(event) {
 	if (confirm("삭제된 리뷰는 복원이 불가능합니다. 삭제하시겠습니까?")) {

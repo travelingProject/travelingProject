@@ -41,7 +41,7 @@
 	%>
 	<ul class='index_list'>
 		<li><a href='#'> <span class='r_location'><%=location%></span>
-				<h6 class='r_stay_name'><%=stayName%></h6>
+		<h6 class='r_stay_name'><%=stayName%></h6>
 		</a></li>
 		<li class='r_chk_date'><%=chkIn%> ~ <%=chkOut%></li>
 		<li class='r_people'><%=people%></li>
