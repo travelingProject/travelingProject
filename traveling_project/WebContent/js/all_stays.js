@@ -118,10 +118,8 @@ function createOverlays(locations) {
   }
 }
 
-$(document).ready(function () {
-            
+$(document).ready(function () {            
   var locations = {};
-
   // 위도와 경도 값을 포함하는 각 요소에 대해 반복합니다.
   $(".latitude").each(function (index, element) {
     var latitude = parseFloat(element.value);

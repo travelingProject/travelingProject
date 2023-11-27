@@ -15,7 +15,8 @@
 <head>	
     <!-- favicon -->
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon"/>
-	<%@ include file="header.jsp"%>	
+	<%@ include file="header.jsp"%>
+	<script src="js/main.js"></script>
 </head>
 <body>
 	<section id="video">
