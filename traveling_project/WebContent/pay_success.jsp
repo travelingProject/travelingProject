@@ -17,7 +17,7 @@
 
 	if (customerParam != null && !customerParam.isEmpty()) {
 		try {						
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 			stmt = conn.createStatement();
 			

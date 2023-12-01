@@ -35,8 +35,8 @@
  			    <div>
  			        <a href="stay_info.condb?comm=stay_info&stay_id=<%=popStays.get(i).getStay_id()%>">
  			            <div class="image_slider">
- 			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage1() %>" alt="이미지1" /> 
- 			                <img src="<%=path %>/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" />
+ 			                <img src="<%=path %>/images/stay_images/<%=popStays.get(i).getImage1() %>" alt="이미지1" /> 
+ 			                <img src="<%=path %>/images/stay_images/<%=popStays.get(i).getImage2() %>" alt="이미지2" />
  			            </div>
  			            <h3><%=popStays.get(i).getStayName() %></h3>
 			            <p><%=popStays.get(i).getStayAddr() %></p>
@@ -108,8 +108,8 @@
  					<div class="swiper-slide banner">
  						<a href="stay_info.condb?comm=stay_info&stay_id=<%=bestReviewStays.get(i).getStay_id()%>">
  							<div class="image_slider">
- 								<img src="<%=path %>/stay_images/<%=bestReviewStays.get(i).getImage1() %>" alt="이미지1" />
- 								<img src="<%=path %>/stay_images/<%=bestReviewStays.get(i).getImage2() %>" alt="이미지1" />
+ 								<img src="<%=path %>/images/stay_images/<%=bestReviewStays.get(i).getImage1() %>" alt="이미지1" />
+ 								<img src="<%=path %>/images/stay_images/<%=bestReviewStays.get(i).getImage2() %>" alt="이미지1" />
  							</div>
  							<h3><%=bestReviewStays.get(i).getStayName() %></h3>
  							<p><%=bestReviewStays.get(i).getStayAddr() %></p>
@@ -135,8 +135,8 @@
  				<div>
  					<a href="stay_info.condb?comm=stay_info&stay_id=<%=cheepStays.get(i).getStay_id()%>">
  						<div class="image_slider">
- 							<img src="<%=path %>/stay_images/<%=cheepStays.get(i).getImage1() %>" alt="이미지1" />
- 							<img src="<%=path %>/stay_images/<%=cheepStays.get(i).getImage2() %>" alt="이미지2" />
+ 							<img src="<%=path %>/images/stay_images/<%=cheepStays.get(i).getImage1() %>" alt="이미지1" />
+ 							<img src="<%=path %>/images/stay_images/<%=cheepStays.get(i).getImage2() %>" alt="이미지2" />
  						</div>
  						<h3><%=cheepStays.get(i).getStayName() %></h3>
  						<p><%=cheepStays.get(i).getStayAddr() %></p>

@@ -46,23 +46,23 @@
 		<div class="swiper mySwiper">
 		  <div class="swiper-wrapper">
 			<c:if test="${not empty detailStayList[0].image1}">
-			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image1}'/>"></div>
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/images/stay_images/${detailStayList[0].image1}'/>"></div>
 			</c:if>
 			
 			<c:if test="${not empty detailStayList[0].image2}">
-			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image2}'/>"></div>
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/images/stay_images/${detailStayList[0].image2}'/>"></div>
 			</c:if>
 			
 			<c:if test="${not empty detailStayList[0].image3}">
-			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image3}'/>"></div>
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/images/stay_images/${detailStayList[0].image3}'/>"></div>
 			</c:if>
 			
 			<c:if test="${not empty detailStayList[0].image4}">
-			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image4}'/>"></div>
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/images/stay_images/${detailStayList[0].image4}'/>"></div>
 			</c:if>
 			
 			<c:if test="${not empty detailStayList[0].image5}">
-			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/stay_images/${detailStayList[0].image5}'/>"></div>
+			  <div class="swiper-slide"><img alt="숙소 이미지" src="<c:url value='/images/stay_images/${detailStayList[0].image5}'/>"></div>
 			</c:if>	    	    
 		  </div>		  	  	  
 		</div>		
@@ -243,7 +243,7 @@
 			<li class="room-item" data-room_id="<%=roomList.get(i).getRoom_id()%>">
 				<div class="room-item-wrap">
 					<div class="room-item-image">
-						<img alt="객실 이미지" src="<%=path %>/room_images/<%=roomList.get(i).getImage1() %>">
+						<img alt="객실 이미지" src="<%=path %>/images/room_images/<%=roomList.get(i).getImage1() %>">
 					</div>
 					<div class="room-item-info">
 						<div class="room-info-name">
@@ -269,7 +269,7 @@
 								<span class="room-price">
 								₩ <%
 									String formattedPrice = formatter.format(roomList.get(i).getPrice());
-									out.println(formattedPrice);
+									out.println(formattedPrice);									
 								%> 
 								</span>
 							</div>

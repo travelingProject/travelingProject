@@ -24,7 +24,7 @@
 	Statement stmt = null;
 	// db 비밀번호
 	try {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
 		stmt = conn.createStatement();
  		stmt.executeUpdate("insert into user_info values ('"

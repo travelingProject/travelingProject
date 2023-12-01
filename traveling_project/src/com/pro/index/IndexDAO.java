@@ -6,12 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.HashMap;
-import java.io.*;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.pro.dto.PopStayInfo;
 
@@ -25,7 +19,7 @@ public class IndexDAO{
 	//connect
 	public void connect() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "xhddlf336!");
 			stmt = con.createStatement();	
 		} catch(Exception e) {

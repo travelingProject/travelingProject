@@ -46,23 +46,23 @@
 			</div>
 			<div class="room-info-images">
 				<div class="room-info-image">
-					<img alt="이미지1" src="<%=path + "/room_images/" + rv.getImage1() %>" width="580px" height="480px">
+					<img alt="이미지1" src="<%=path + "/images/room_images/" + rv.getImage1() %>" width="580px" height="480px">
 				</div>
 				<div class="images-others">
 					<div class="others-row">
-						<img alt="이미지2" src="<%=path + "/room_images/" + rv.getImage2() %>" width="190px">
-						<img alt="이미지3" src="<%=path + "/room_images/" + rv.getImage3() %>" width="190px">
-						<img alt="이미지4" src="<%=path + "/room_images/" + rv.getImage4() %>" width="190px">
+						<img alt="이미지2" src="<%=path + "/images/room_images/" + rv.getImage2() %>" width="190px">
+						<img alt="이미지3" src="<%=path + "/images/room_images/" + rv.getImage3() %>" width="190px">
+						<img alt="이미지4" src="<%=path + "/images/room_images/" + rv.getImage4() %>" width="190px">
 					</div>
 					<div class="others-row">
-						<img alt="이미지5" src="<%=path + "/room_images/" + rv.getImage5() %>" width="190px">
-						<img alt="이미지6" src="<%=path + "/room_images/" + rv.getImage6() %>" width="190px">
-						<img alt="이미지7" src="<%=path + "/room_images/" + rv.getImage7() %>" width="190px">
+						<img alt="이미지5" src="<%=path + "/images/room_images/" + rv.getImage5() %>" width="190px">
+						<img alt="이미지6" src="<%=path + "/images/room_images/" + rv.getImage6() %>" width="190px">
+						<img alt="이미지7" src="<%=path + "/images/room_images/" + rv.getImage7() %>" width="190px">
 					</div>
 					<div class="others-row">
-						<img alt="이미지8" src="<%=path + "/room_images/" + rv.getImage8() %>" width="190px">
-						<img alt="이미지9" src="<%=path + "/room_images/" + rv.getImage9() %>" width="190px">
-						<img alt="이미지10" src="<%=path + "/room_images/" + rv.getImage10() %>" width="190px">
+						<img alt="이미지8" src="<%=path + "/images/room_images/" + rv.getImage8() %>" width="190px">
+						<img alt="이미지9" src="<%=path + "/images/room_images/" + rv.getImage9() %>" width="190px">
+						<img alt="이미지10" src="<%=path + "/images/room_images/" + rv.getImage10() %>" width="190px">
 					</div>
 				</div>
 			</div>
