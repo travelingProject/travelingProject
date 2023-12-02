@@ -16,7 +16,7 @@ public class ReservationAcception {
 	public void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/project?characterEncoding=utf-8", "root", "xhddlf336!");
+			conn = DriverManager.getConnection("jdbc:mysql://3.39.190.40:3306/project?characterEncoding=utf-8", "joonsby", "xhddlf336!");
 			stmt = conn.createStatement();
 		} catch (Exception e) {
 			System.out.println(e);

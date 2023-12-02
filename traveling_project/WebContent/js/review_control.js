@@ -38,7 +38,7 @@ $(document).ready(function() {
 			$("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", false);
 			saveInitialValues();
 			$(".r_images").val("");
-			$(".r_image_label").css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+			$(".r_image_label").css('background', 'url(/traveling_project/images/image.png) no-repeat center/60px');
 			$(".r_image_label").text('이미지를 선택해주세요.');
 		}
 	});
@@ -69,7 +69,7 @@ $(document).ready(function() {
 		    $("#rtitle, #rcontent, .r_images, input[name='rating']").prop("disabled", true);
 		    
 		    $(".r_images").val('');
-		    $(".r_image_label").css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+		    $(".r_image_label").css('background', 'url(/traveling_project/images/image.png) no-repeat center/60px');
 		    $(".r_image_label").text('이미지를 선택해주세요.');
 		    
 		    $(".r_images").val('');
@@ -152,7 +152,7 @@ function replace(event) {
 				var imagePath = rimg; // 예: rimg1, rimg2, ...
 				
 				if (imagePath == "/traveling_project/images/review/null") {
-					$imageLabel.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+					$imageLabel.css('background', 'url(/traveling_project/images/image.png) no-repeat center/60px');
 			    	$imageLabel.text('');
 			    	$removeButton.hide();
 				} else {

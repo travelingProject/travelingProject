@@ -20,8 +20,8 @@ public class IndexDAO{
 	public void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "xhddlf336!");
-			stmt = con.createStatement();	
+			con = DriverManager.getConnection("jdbc:mysql://3.39.190.40:3306/project", "joonsby", "xhddlf336!");
+			stmt = con.createStatement();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

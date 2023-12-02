@@ -45,7 +45,7 @@ $(document).ready(function() {
             };
             reader.readAsDataURL(file);
         } else {
-            label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+            label.css('background', 'url(/traveling_project/images/image.png) no-repeat center/60px');
             label.text('이미지를 선택해주세요.');
             removeBtn.hide();
         }
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
     function handleImageRemoval(input, label, removeBtn) {
         input.val('');
-        label.css('background', 'url(http://localhost:8080/traveling_project/images/image.png) no-repeat center/60px');
+        label.css('background', 'url(/traveling_project/images/image.png) no-repeat center/60px');
         label.text('이미지를 선택해주세요.');
         removeBtn.hide();
     }

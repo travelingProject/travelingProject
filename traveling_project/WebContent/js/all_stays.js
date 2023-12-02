@@ -60,7 +60,7 @@ function sendFilterRequest(filterData) {
               <a href="stay_info.condb?comm=stay_info&stay_id=${item.stayId}">
                 <div class="accomodation_box">
                   <div>
-                    <img class="image" src="/traveling_project/stay_images/${item.image}" alt="이미지1" />
+                    <img class="image" src="/traveling_project/images/stay_images/${item.image}" alt="이미지1" />
                   </div>
                   <div>
                     <h2 class="stay-name">${item.stayName}</h2>
