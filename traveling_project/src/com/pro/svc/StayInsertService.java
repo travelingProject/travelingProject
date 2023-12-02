@@ -27,7 +27,7 @@ public class StayInsertService implements ControlQuery {
 		StayInfo stayInfo = new StayInfo();
 		StayManagementDAO stayManagementDAO = StayManagementDAO.instance();
 		String hostId = (String) session.getAttribute("host_id");
-		String uploadPath = rq.getRealPath("/stay_images");
+		String uploadPath = rq.getRealPath("/images//stay_images");
 		int size = 10 * 1024 * 1024;
 		String stayName = "";
 		String latitude = "";

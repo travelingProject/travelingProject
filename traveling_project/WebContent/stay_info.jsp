@@ -81,20 +81,20 @@
 						<th>숙소 이미지</th>
 						<td id="image_td">							
 							<div id="att_zone">
-								<div>
-									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage1()%>" width="128" height="128">
+								<div class="img-box">
+									<img src="<%=path%>/images/stay_images/<%=stayInfo.get(0).getImage1()%>" height="128">
 								</div>			
-								<div>
-									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage2()%>" width="128" height="128">
+								<div class="img-box">
+									<img src="<%=path%>/images/stay_images/<%=stayInfo.get(0).getImage2()%>" height="128">
 								</div>								
-								<div>
-									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage3()%>" width="128" height="128">								
+								<div class="img-box">
+									<img src="<%=path%>/images/stay_images/<%=stayInfo.get(0).getImage3()%>" height="128">								
 								</div>								
-								<div>
-									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage4()%>" width="128" height="128">
+								<div class="img-box">
+									<img src="<%=path%>/images/stay_images/<%=stayInfo.get(0).getImage4()%>" height="128">
 								</div>								
-								<div>
-									<img src="<%=path%>/stay_images/<%=stayInfo.get(0).getImage5()%>" width="128" height="128">		
+								<div class="img-box">
+									<img src="<%=path%>/images/stay_images/<%=stayInfo.get(0).getImage5()%>" height="128">		
 								</div>
 							</div>
 							<input id="image-edit-btn" type="button" value="수정하기">

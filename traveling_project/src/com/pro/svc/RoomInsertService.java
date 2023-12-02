@@ -25,7 +25,7 @@ public class RoomInsertService implements ControlQuery {
 		rs.setCharacterEncoding("UTF-8");
 		HttpSession session = rq.getSession();
 		String hostId = (String) session.getAttribute("host_id");		
-		String uploadPath = rq.getRealPath("/room_images");
+		String uploadPath = rq.getRealPath("/images/room_images");
 		int size = 10 * 1024 * 1024;		
 		String roomName = "";
 		String content = "";
