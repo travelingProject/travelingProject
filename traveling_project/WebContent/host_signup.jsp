@@ -31,7 +31,7 @@
 	// db 비밀번호
 	try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://3.39.190.40:3306/project?characterEncoding=utf-8", "joonsby", "xhddlf336!");
+		conn = DriverManager.getConnection("jdbc:mysql://15.164.100.42:3306/project?characterEncoding=utf-8", "joonsby", "xhddlf336!");
 		stmt = conn.createStatement();
  		stmt.executeUpdate("insert into host_info values ('"
 		        + hostId + "', '"

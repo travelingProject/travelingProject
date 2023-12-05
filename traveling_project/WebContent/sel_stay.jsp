@@ -9,7 +9,7 @@
 	// db 비밀번호
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://3.39.190.40:3306/project", "joonsby", "xhddlf336!");
+			conn = DriverManager.getConnection("jdbc:mysql://15.164.100.42:3306/project", "joonsby", "xhddlf336!");
 			if (conn == null) {
 				throw new Exception("데이터베이스에 연결할 수 없습니다.<br>");
 			}

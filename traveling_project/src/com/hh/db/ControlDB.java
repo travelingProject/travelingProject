@@ -20,7 +20,7 @@ public class ControlDB {
 	public void condb() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://3.39.190.40:3306/project?characterEncoding=utf-8", "joonsby","xhddlf336!");
+			con = DriverManager.getConnection("jdbc:mysql://15.164.100.42:3306/project?characterEncoding=utf-8", "joonsby","xhddlf336!");
 			sta = con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
